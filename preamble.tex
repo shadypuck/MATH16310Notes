@@ -2,6 +2,7 @@
 \usepackage{fancyhdr}
 \usepackage{xr}
 \usepackage{marginnote}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage[hidelinks]{hyperref}
 
 \fancypagestyle{main}{
@@ -20,6 +21,14 @@
 
 \reversemarginpar
 
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
 \renewcommand{\chaptername}{Script}
+
+\newcommand{\R}{\mathbb{R}}
 
 \usepackage{subfiles}

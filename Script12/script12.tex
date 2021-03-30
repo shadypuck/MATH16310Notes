@@ -2,7 +2,7 @@
 
 \pagestyle{main}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
-\setcounter{chapter}{10}
+\setcounter{chapter}{11}
 
 \begin{document}
 
@@ -11,7 +11,36 @@
 
 \chapter{Derivatives}\label{sct:12}
 \section{Journal}
-\marginnote{3/30:}hi
+\marginnote{3/30:}Throughout this sheet, we let $f:A\to\R$ be a real valued function with domain $A\subset\R$. We also now assume the domain $A\subset\R$ is open.
+\begin{definition}\label{dfn:12.1}
+    The \textbf{derivative} of $f$ at a point $a\in A$ is the number $f'(a)$ defined by the limit
+    \begin{equation*}
+        f'(a) = \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}
+    \end{equation*}
+    provided that the limit on the right-hand side exists. If $f'(a)$ exists, we say that $f$ is \textbf{differentiable} (at $a$). If $f$ is differentiable at all points of its domain, we say that $f$ is \textbf{differentiable}. In this case, the values $f'(a)$ define a new function $f':A\to\R$ called the \textbf{derivative} (of $f$).
+\end{definition}
+
+\begin{remark}\label{rmk:12.2}
+    If $A$ is not open, the limit in Definition \ref{dfn:12.1} may not exist. For example, if $f:[a,b]\to\R$, then we cannot define the derivative at the endpoints. For any $c$ in the domain of $f$, we define the \textbf{right-hand derivative} $f'_+(c)$ and the \textbf{left-hand derivative} $f'_-(c)$ by
+    \begin{align*}
+        f'_+(c) &= \lim_{h\to 0^+}\frac{f(c+h)-f(c)}{h}&
+        f'_-(c) &= \lim_{h\to 0^-}\frac{f(c+h)-f(c)}{h}
+    \end{align*}
+    We say that $f$ is \textbf{differentiable} (on $[a,b]$) if $f$ is differentiable on $(a,b)$ and $f'_+(a)$ and $f'_-(b)$ exist.
+\end{remark}
+
+% Take out exercise in preamble!!!
+\begin{lemma}\label{lem:12.3}
+    Let $a\in\R$. Then
+    \begin{equation*}
+        \lim_{x\to a}f(x) = \lim_{h\to 0}f(a+h)
+    \end{equation*}
+    assuming that one of the two limits exists. (So if the limit on the left exists, so does the one on the right, and they are equal. Similarly, if the limit on the right exists, then so does the one on the left, and they are equal.)
+    \begin{proof}
+        Suppose first that $\lim_{x\to a}f(x)$ exists, and let it be equal to $L$. To prove that $\lim_{h\to 0}f(a+h)$ exists and that it equals $\lim_{x\to a}f(x)$, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $(h+a)\in A$ and $0<|h-0|=|h|<\delta$, then $|f(a+h)-L|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{x\to a}f(x)$ exists, Definition \ref{dfn:11.1} implies that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L|<\epsilon$. We will choose this $\delta$ to be our $\delta$. Now suppose that $h$ is any number satisfying both $(h+a)\in A$ and $0<|h|<\delta$; we seek to show that $|f(a+h)-L|<\epsilon$. Since $(h+a)\in A$, $h+a=x$ for some $x\in A$. It follows that $h=x-a$, meaning that $x$ is an object that is both an element of $A$ and that satisfies $0<|h|=|x-a|<\delta$, so we know that $|f(a+h)-L|=|f(x)-L|<\epsilon$, as desired.\par
+        The proof is symmetric in the other direction.
+    \end{proof}
+\end{lemma}
 
 
 

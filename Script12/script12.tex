@@ -42,6 +42,205 @@
     \end{proof}
 \end{lemma}
 
+\begin{theorem}\label{trm:12.4}
+    Let $a\in\R$. Then $f$ is differentiable at $a$ if and only if $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}$ exists. Moreover, if $f$ is differentiable at $a$, then the derivative of $f$ at $a$ is given by the limit
+    \begin{equation*}
+        f'(a) = \lim_{x\to a}\frac{f(x)-f(a)}{x-a}
+    \end{equation*}
+    \begin{proof}
+        Suppose first that $f$ is differentiable at $a$. Then by Definition \ref{dfn:12.1}, $f'(a)$ exists. It follows that
+        \begin{align*}
+            f'(a) &= \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}\tag*{Definition \ref{dfn:12.1}}\\
+            &= \lim_{h\to 0}\frac{f(a+h)-f(a)}{(a+h)-a}\\
+            &= \lim_{x\to a}\frac{f(x)-f(a)}{x-a}\tag*{Lemma \ref{lem:12.3}}
+        \end{align*}
+        Note that the substitution in the last step follows from using $\tilde{f}(x)=\frac{f(x)-f(a)}{x-a}$ as the "$f(x)$" function in Lemma \ref{lem:12.3}.\par
+        The proof is symmetric in the reverse direction.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:12.5}
+    If $f$ is differentiable at $a$, then $f$ is continuous at $a$.
+    \begin{proof}
+        To prove that $f$ is continuous at $a$, Theorem \ref{trm:11.5} tells us that it will suffice to show that $\lim_{x\to a}f(x)=f(a)$. By Definition \ref{dfn:12.1}, the hypothesis implies that $f'(a)$ exists. Additionally, by Exercise \ref{exr:11.6}, $g(x)=x-a$ is continuous at $a$. Thus, by Theorem \ref{trm:11.5}, $\lim_{x\to a}g(x)$ exists (and equals $g(a)$). Consequently, knowing that both $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}$ and $\lim_{x\to a}g(x)$ exist (the former by Theorem \ref{trm:12.4}), we have by Theorem \ref{trm:11.9} that the limit of their product exists and equals
+        \begin{align*}
+            \lim_{x\to a}\left( \frac{f(x)-f(a)}{x-a}\cdot(x-a) \right) = \lim_{x\to a}(f(x)-f(a))
+        \end{align*}
+        Moreover, since $g$ is continuous at $a$, $\lim_{x\to a}g(x)=g(a)=a-a=0$. Thus,
+        \begin{align*}
+            \lim_{x\to a}(f(x)-f(a)) &= \left( \lim_{x\to a}\frac{f(x)-f(a)}{x-a} \right)\left( \lim_{x\to a}(x-a) \right)\\
+            &= \left( \lim_{x\to a}\frac{f(x)-f(a)}{x-a} \right)\cdot 0\\
+            &= 0
+        \end{align*}
+        But then it follows by Theorem \ref{trm:11.9} if we consider $f(a)$ to be a constant function that
+        \begin{align*}
+            \lim_{x\to a}(f(x)-f(a))+f(a) &= 0+f(a)\\
+            \lim_{x\to a}(f(x)-f(a)+f(a)) &= f(a)\\
+            \lim_{x\to a}f(x) &= f(a)
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:12.6}
+    Show that the converse of Theorem \ref{trm:12.5} is not true.
+    \begin{proof}
+        % Consider the absolute value function (Exercise \ref{exr:11.7}).
+
+        The converse of Theorem \ref{trm:12.5} asserts that "if $f$ is continuous at $a$, then $f$ is differentiable at $a$." To falsify this statement, we will use the absolute value function $|x|$ as a counterexample. Let's begin.\par
+        By Exercise \ref{exr:11.7}, $|x|$ is continuous. It follows by Theorem \ref{trm:9.10} that $|x|$ is continuous at 0. However, we can show that $|x|$ is not differentiable at 0.\par
+        To do this, Definition \ref{dfn:12.1} and Theorem \ref{trm:12.4} tell us that it will suffice to verify that $\lim_{x\to 0}\frac{|x|-|0|}{x-0}=\lim_{x\to 0}\frac{|x|}{x}$ does not exist. Suppose for the sake of contradiction that $\lim_{x\to 0}\frac{|x|}{x}=L$. Then by Definition \ref{dfn:11.1}, for $\epsilon=1>0$, there exists a $\delta>0$ such that if $0<|x-0|=|x|<\delta$, then $|\frac{|x|}{x}-L|<1$. However, we can show that no such $\delta$ exists. Let $\delta>0$ be arbitrary. By Theorem \ref{trm:5.2}, there exists a number $x\in\R$ such that $0<x<\delta$. It follows by Definition \ref{dfn:8.4} and Exercise \ref{exr:8.5} that $0<|x|=|-x|<\delta$. Since both $x$ and $-x$ are in the appropriate range, we know that
+        \begin{align*}
+            \left| \frac{|x|}{x}-L \right| &= \left| \frac{x}{x}-L \right|&
+                \left| \frac{|-x|}{-x}-L \right| &= \left| \frac{x}{-x}-L \right|\tag*{Definition \ref{dfn:8.4}}\\
+            &= |1-L|&
+                &= |-1-L|\tag*{Script \ref{sct:7}}\\
+            &= |L-1|&
+                &= |L+1|\tag*{Exercise \ref{exr:8.5}}\\
+            &< 1&
+                &< 1
+        \end{align*}
+        By consecutive applications of the lemma from Exercise \ref{exr:8.9}, it follows that
+        \begin{align*}
+            -1 &< L-1 < 1&
+                -1 &< L+1 < 1\\
+            0 &< L < 2&
+                -2 &< L < 0
+        \end{align*}
+        But this implies that $L<0$ and $L>0$, a contradiction.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}\label{exr:12.7}
+    Show that for all $n\in\N$,
+    \begin{equation*}
+        x^n-a^n = (x-a)\left( x^{n-1}+ax^{n-2}+a^2x^{n-3}+\cdots+a^{n-2}x+a^{n-1} \right)
+    \end{equation*}
+    or equivalently,
+    \begin{equation*}
+        x^n-a^n = (x-a)\left( \sum_{i=0}^{n-1}x^{n-1-i}a^i \right)
+    \end{equation*}
+    \begin{proof}
+        By simple algebra (see Script \ref{sct:7}), we have
+        \begin{align*}
+            (x-a)\left( \sum_{i=0}^{n-1}x^{n-1-i}a^i \right) &= \sum_{i=0}^{n-1}(x-a)x^{n-1-i}a^i\\
+            &= \sum_{i=0}^{n-1}\left( x^{n-i}a^i-x^{n-1-i}a^{i+1} \right)\\
+            &= x^n+\sum_{i=1}^{n-1}x^{n-i}a^i-\sum_{i=0}^{n-2}x^{n-1-i}a^{i+1}-a^n\\
+            &= x^n+\sum_{i=1}^{n-1}x^{n-i}a^i-\sum_{i=0+1}^{n-2+1}x^{n-1-(i-1)}a^{(i-1)+1}-a^n\\
+            &= x^n+\sum_{i=1}^{n-1}x^{n-i}a^i-\sum_{i=1}^{n-1}x^{n-i}a^i-a^n\\
+            &= x^n-a^n
+        \end{align*}
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}\label{exr:12.8}\leavevmode
+    \begin{enumerate}[label={(\alph*)}]
+        \item Let $n\in\N$. Suppose $f:\R\to\R$ is given by $f(x)=x^n$. Use Exercise \ref{exr:12.7} to prove that $f'(a)=na^{n-1}$ for all $a\in\R$.
+        \begin{proof}
+            To prove that $f'(a)=na^{n-1}$ for all $a\in\R$, Theorem \ref{trm:12.4} tell us that it will suffice to show that $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=na^{n-1}$ for all $a\in\R$. Let $a$ be an arbitrary element of $\R$. By Corollary \ref{cly:11.12}, the polynomial $\sum_{i=0}^{n-1}x^{n-1-i}a^i$ is continuous. Thus, by Theorem \ref{trm:9.10}, it is continuous at $a$. It follows by Theorem \ref{trm:11.5} that $\lim_{x\to a}\sum_{i=0}^{n-1}x^{n-1-i}a^i=\sum_{i=0}^{n-1}a^{n-1-i}a^i$. Therefore,
+            \begin{align*}
+                na^{n-1} &= \underbrace{a^{n-1}+\cdots+a^{n-1}}_{n\text{ times}}\\
+                &= \sum_{i=0}^{n-1}a^{n-1}\\
+                &= \sum_{i=1}^{n-1}a^{n-1-i}a^i\\
+                &= \lim_{x\to a}\sum_{i=0}^{n-1}x^{n-1-i}a^i\\
+                &= \lim_{x\to a}\frac{x-a}{x-a}\cdot\sum_{i=0}^{n-1}x^{n-1-i}a^i
+                \intertext{Note that we can make the above change because $\frac{x-a}{x-a}=1$ for all $x$ satisfying $0<|x-a|<\delta$, whatever $\delta$ may be.}
+                &= \lim_{x\to a}\frac{x^n-a^n}{x-a}\tag*{Exercise \ref{exr:12.7}}\\
+                &= \lim_{x\to a}\frac{f(x)-f(a)}{x-a}\\
+                &= f'(a)\tag*{Theorem \ref{trm:12.4}}
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item Let $k\in\R$. Prove that if $f:\R\to\R$ is given by $f(x)=k$, then $f'(a)=0$ for all $a\in\R$.
+        \begin{proof}
+            To prove that $f'(a)=0$ for all $a\in\R$, Definition \ref{dfn:12.1} tells us that it will suffice to show that $\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}=0$ for all $a\in\R$. Let $a$ be an arbitrary element of $\R$. By Exercise \ref{exr:11.6}, the function $g(x)=0$ is continuous. Thus, by Theorem \ref{trm:9.10}, it is continuous at $a$. It follows by Theorem \ref{trm:11.5} that $\lim_{h\to 0}g(h)=g(0)=0$. Therefore,
+            \begin{align*}
+                0 &= \lim_{h\to 0}g(h)\\
+                &= \lim_{h\to 0}0\\
+                &= \lim_{h\to 0}\frac{h}{h}\cdot 0
+                \intertext{Note that we can make the above change for the same reason as part (a).}
+                &- \lim_{h\to 0}\frac{0}{h}\\
+                &= \lim_{h\to 0}\frac{k-k}{h}\\
+                &= \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exr:12.9}
+    Suppose that $f:A\to\R$ and $g:A\to\R$ are differentiable at $a\in A$.
+    \begin{enumerate}[label={(\alph*)}]
+        \item Prove that $f+g$ is differentiable at $a$ and compute $(f+g)'(a)$ in terms of $f'(a)$ and $g'(a)$.
+        \begin{proof}
+            To prove that $f+g$ is differentiable at $a$, Definition \ref{dfn:12.1} tells us that it will suffice to show $\lim_{h\to 0}\frac{(f+g)(a+h)-(f+g)(a)}{h}$ exists. Since $f,g$ are differentiable at $a$, we know by Definition \ref{dfn:12.1} that $\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}$ and $\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}$ exist. Thus, by Theorem \ref{trm:11.9} the limit of their sum exists and equals
+            \begin{align*}
+                \lim_{h\to 0}\left( \frac{f(a+h)-f(a)}{h}+\frac{g(a+h)-g(a)}{h} \right) &= \lim_{h\to 0}\frac{f(a+h)+g(a+h)-f(a)-g(a)}{h}\\
+                &= \lim_{h\to 0}\frac{(f+g)(a+h)-(f+g)(a)}{h}
+            \end{align*}
+            as desired. Having established that $\lim_{h\to 0}\frac{(f+g)(a+h)-(f+g)(a)}{h}$ exists, $(f+g)'(a)$ can be computed in terms of $f'(a)$ and $g'(a)$ with the following algebra.
+            \begin{align*}
+                (f+g)'(a) &= \lim_{h\to 0}\frac{(f+g)(a+h)-(f+g)(a)}{h}\tag*{Definition \ref{dfn:12.1}}\\
+                &= \lim_{h\to 0}\left( \frac{f(a+h)-f(a)}{h}+\frac{g(a+h)-g(a)}{h} \right)\\
+                &= \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}+\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}\tag*{Theorem \ref{trm:11.9}}\\
+                &= f'(a)+g'(a)\tag*{Definition \ref{dfn:12.1}}
+            \end{align*}
+        \end{proof}
+        \item Prove that $fg$ is differentiable and compute $(fg)'(a)$ in terms of $f(a)$, $g(a)$, $f'(a)$, and $g'(a)$.
+        \begin{proof}
+            To prove that $fg$ is differentiable at $a$, Definition \ref{dfn:12.1} tells us that it will suffice to show $\lim_{h\to 0}\frac{(fg)(a+h)-(fg)(a)}{h}$ exists. Since $f,g$ are differentiable at $a$, we know by Definition \ref{dfn:12.1} that $\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}$ and $\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}$ exist. For the same reason, we know by Theorem \ref{trm:12.5} that $g$ is continuous, i.e., continuous at $a$ by Theorem \ref{trm:9.10}. Consequently, by Theorem \ref{trm:11.5}, $\lim_{x\to a}g(x)$ exists (and equals $g(a)$). Note that the preceding limit is equal to $\lim_{h\to 0}g(a+h)$ by Lemma \ref{lem:12.3}. Lastly, we have by Exercise \ref{exr:11.6} that the constant function $f(a)$ is continuous at 0. Consequently, by Theorem \ref{trm:11.5}, $\lim_{h\to 0}f(a)$ exists (and equals $f(a)$). Combining all of these results, consecutive applications of Theorem \ref{trm:11.9} assert that the limits
+            \begin{align*}
+                \lim_{h\to 0}g(a+h)\cdot\frac{f(a+h)-f(a)}{h}&&
+                \lim_{h\to 0}f(a)\cdot\frac{g(a+h)-g(a)}{h}
+            \end{align*}
+            exist. Furthermore, it asserts that the limit of their sum exists and equals
+            \begin{align*}
+                \lim_{h\to 0}\left( g(a+h)\cdot\frac{f(a+h)-f(a)}{h}+f(a)\cdot\frac{g(a+h)-g(a)}{h} \right)\\
+                &\hspace{-5cm}= \lim_{h\to 0}\frac{g(a+h)(f(a+h)-f(a))+f(a)(g(a+h)-g(a))}{h}\\
+                &\hspace{-5cm}= \lim_{h\to 0}\frac{f(a+h)g(a+h)-f(a)g(a+h)+f(a)g(a+h)-f(a)g(a)}{h}\\
+                &\hspace{-5cm}= \lim_{h\to 0}\frac{f(a+h)g(a+h)-f(a)g(a)}{h}\\
+                &\hspace{-5cm}= \lim_{h\to 0}\frac{(fg)(a+h)-(fg)(a)}{h}
+            \end{align*}
+            as desired. Having established that $\lim_{h\to 0}\frac{(fg)(a+h)-(fg)(a)}{h}$ exists, $(fg)'(a)$ can be computed in terms of $f(a)$, $g(a)$, $f'(a)$, and $g'(a)$ with the following algebra.
+            \begin{align*}
+                (fg)'(a) &= \lim_{h\to 0}\frac{(fg)(a+h)-(fg)(a)}{h}\tag*{Definition \ref{dfn:12.1}}\\
+                &= \lim_{h\to 0}\left( g(a+h)\cdot\frac{f(a+h)-f(a)}{h}+f(a)\cdot\frac{g(a+h)-g(a)}{h} \right)\\
+                &= \lim_{h\to 0}g(a+h)\cdot\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}+\lim_{h\to 0}f(a)\cdot\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}\tag*{Theorem \ref{trm:11.9}}\\
+                &= g(a)f'(a)+f(a)g'(a)
+            \end{align*}
+        \end{proof}
+        \item Prove that $\frac{1}{g}$ is differentiable at $a$ (under an appropriate assumption) and compute $(\frac{1}{g})'(a)$ in terms of $g'(a)$ and $g(a)$. What assumption do you need to make?
+        \begin{proof}
+            Assume, in addition to the fact that $g:A\to\R$ is differentiable at $a\in A$, that $g(a)\neq 0$.\par
+            To prove that $\frac{1}{g}$ is differentiable at $a$, Definition \ref{dfn:12.1} tells us that it will suffice to show $\lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}$ exists. Since $g$ is differentiable at $a$, we know by Definition \ref{dfn:12.1} that $\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}$ exists. For the same reason, we know by Theorem \ref{trm:12.5} that $g$ is continuous, i.e., continuous at $a$ by Theorem \ref{trm:9.10}. Consequently, by Theorem \ref{trm:11.5}, $\lim_{x\to a}g(x)$ exists (and equals $g(a)$). It follows by Lemma \ref{lem:12.3} that the preceding limit is equal to $\lim_{h\to 0}g(a+h)$. Thus, since it is also equal to $g(a)\neq 0$, we have by Theorem \ref{trm:11.9} that $\lim_{h\to 0}\frac{1}{g}(a+h)$ exists (and equals $\frac{1}{g(a)}$). Lastly, we have by Exercise \ref{exr:11.6} that the constant function $-\frac{1}{g(a)}$ is continuous at 0. Consequently, by Theorem \ref{trm:11.5}, $\lim_{h\to 0}-\frac{1}{g(a)}$ exists (and equals $-\frac{1}{g(a)}$). Combining this with the previous result, Theorem \ref{trm:11.9} asserts that the limit $\lim_{h\to 0}-\frac{1}{g(a+h)g(a)}$ exists (and equals $-\frac{1}{g(a)^2}$). Furthermore, it asserts that the limit of its product with $\lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}$ exists and equals
+            \begin{align*}
+                \lim_{h\to 0}-\frac{1}{g(a+h)g(a)}\cdot\frac{g(a+h)-g(a)}{h} &= \lim_{h\to 0}\frac{\frac{g(a)-g(a+h)}{g(a+h)g(a)}}{h}\\
+                &= \lim_{h\to 0}\frac{\frac{1}{g(a+h)}-\frac{1}{g(a)}}{h}\\
+                &= \lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}
+            \end{align*}
+            as desired. Having established that $\lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}$ exists, $(\frac{1}{g})'(a)$ can be computed in terms of $g(a)$ and $g'(a)$ with the following algebra.
+            \begin{align*}
+                \left( \frac{1}{g} \right)'(a) &= \lim_{h\to 0}\frac{\left( \frac{1}{g} \right)(a+h)-\left( \frac{1}{g} \right)(a)}{h}\tag*{Definition \ref{dfn:12.1}}\\
+                &= \lim_{h\to 0}-\frac{1}{g(a+h)g(a)}\cdot\frac{g(a+h)-g(a)}{h}\\
+                &= \lim_{h\to 0}-\frac{1}{g(a+h)g(a)}\cdot\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}\tag*{Theorem \ref{trm:11.9}}\\
+                &= -\frac{g'(a)}{g(a)^2}
+            \end{align*}
+        \end{proof}
+        \item Prove that $\frac{f}{g}$ is differentiable at $a$ (under an appropriate assumption) and compute $(\frac{f}{g})'(a)$ in terms of $f(a)$, $g(a)$, $f'(a)$, and $g'(a)$. What assumption do you need to make?
+        \begin{proof}
+            Assume, in addition to the fact that $g:A\to\R$ is differentiable at $a\in A$, that $g(a)\neq 0$.\par
+            It follows by part (c) that $\frac{1}{g}$ is differentiable at $a$, and then by part (b) that $f\cdot\frac{1}{g}=\frac{f}{g}$ is differentiable at $a$.\par
+            Having established that $(\frac{f}{g})'(a)$ exists, it can be computed in terms of $f(a)$, $g(a)$, $f'(a)$, and $g'(a)$ with the following algebra.
+            \begin{align*}
+                \left( \frac{f}{g} \right)'(a) &= \left( f\cdot\frac{1}{g} \right)'(a)\\
+                &= f(a)\left( \frac{1}{g} \right)'(a)+f'(a)\left( \frac{1}{g} \right)(a)\\
+                &= f(a)\cdot -\frac{g'(a)}{g(a)^2}+\frac{f'(a)g(a)}{g(a)^2}\\
+                &= \frac{f'(a)g(a)-f(a)g'(a)}{g(a)^2}
+            \end{align*}
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
 
 
 

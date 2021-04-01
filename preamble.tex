@@ -1,7 +1,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{fancyhdr}
+\usepackage{csquotes}
 \usepackage{xr}
 \usepackage{marginnote}
+\usepackage{enumitem}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[hidelinks]{hyperref}
 
@@ -16,6 +18,8 @@
     \renewcommand{\headrulewidth}{0pt}
 }
 
+\MakeOuterQuote{"}
+
 \externaldocument{main}
 \externaldocument{../../../Misc./Sequence Combined Notes/Honors Calculus IBL/combined}
 
@@ -25,10 +29,12 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}[theorem]{Exercise}
 \newtheorem{remark}[theorem]{Remark}
 
 \renewcommand{\chaptername}{Script}
 
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 
 \usepackage{subfiles}

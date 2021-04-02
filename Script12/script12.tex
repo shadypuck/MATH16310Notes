@@ -273,6 +273,79 @@
     \end{proof}
 \end{theorem}
 
+We now come to the most important theorem in differential calculus, Corollary \ref{cly:12.16}.
+
+\begin{definition}\label{dfn:12.11}
+    Let $f:A\to\R$ be a function. If $f(a)$ is the last point of $f(A)$, then $f(a)$ is called the \textbf{maximum value} of $f$. If $f(a)$ is the first point of $f(A)$, then $f(a)$ is the \textbf{minimum value} of $f$. We say that $f(a)$ is a \textbf{local maximum value} of $f$ if there exists a region $R$ containing $a$ such that $f(a)$ is the last point of $f(A\cap R)$. We say that $f(a)$ is a \textbf{local minimum value} of $f$ if there exists a region $R$ containing $a$ such that $f(a)$ is the first point of $f(A\cap R)$.
+\end{definition}
+
+\begin{remark}\label{rmk:12.12}
+    Equivalently, $f(a)$ is a local maximum (resp. minimum) value of $f$ if there exists $U$ open in $A$ such that $f(a)$ is the last (resp. first) point of $f(U)$.
+\end{remark}
+
+\begin{theorem}\label{trm:12.13}
+    Let $f:A\to\R$ be differentiable at $a$. Suppose that $f(a)$ is the maximum value or minimum value of $f$. Then $f'(a)=0$.
+    \begin{proof}
+        Suppose first that $f(a)$ is the maximum value of $f$, and suppose for the sake of contradiction that $f'(a)\neq 0$. Then $f'(a)>0$ or $f'(a)<0$. We now divide into two cases. If $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=f'(a)>0$, then for $\epsilon=f'(a)$, we have by Definition \ref{dfn:11.1} that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\frac{f(x)-f(a)}{x-a}-f'(a)|<f'(a)$. Let $x_0\in A$ satisfy $0<x-a<\delta$. Then by Definition \ref{dfn:8.4}, $0<|x_0-a|<\delta$. Consequently, $|\frac{f(x_0)-f(a)}{x_0-a}-f'(a)|<f'(a)$. It follows by the lemma from Exercise \ref{exr:8.9} that $-f'(a)<\frac{f(x_0)-f(a)}{x_0-a}-f'(a)<f'(a)$. Thus, by Script \ref{sct:7}, we have that $0<\frac{f(x_0)-f(a)}{x_0-a}$, implying since $x-a>0$ that $0<f(x_0)-f(a)$. But this means that $f(x_0)>f(a)$, i.e., that $f(a)$ is not the last point of $f(A)$ (by Definition \ref{dfn:3.3}), i.e., that $f(a)$ is not the maximum value of $f$ (by Definition \ref{dfn:12.11}), a contradiction. The argument is symmetric in the other case.\par
+        The proof is symmetric in the other case.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:12.14}
+    Let $f:A\to\R$ be differentiable at $a$. Suppose that $f(a)$ is a local maximum or local minimum value of $f$. Then $f'(a)=0$.
+    \begin{proof}
+        Suppose first that $f(a)$ is a local maximum of $f$. Then by Definition \ref{dfn:12.11}, there exists a region $R$ containing $a$ such that $f(a)$ is the last point of $f(A\cap R)$. Now consider the restriction of $f$ to $A\cap R$. It follows from Definition \ref{dfn:9.6} that $f|_{A\cap R}$ is differentiable at $a$, that $f|_{A\cap R}(A\cap R)=f(A\cap R)$, and that $f_{A\cap R}(a)=f(a)$ is the last point of $f|_{A\cap R}(A\cap R)$. The latter two results imply by Definition \ref{dfn:12.11} that $f_{A\cap R}(a)$ is the maximum value of $f|_{A\cap R}$. This combined with the fact that $f|_{A\cap R}$ is differentiable at $a$ implies by Theorem \ref{trm:12.13} that $f|_{A\cap R}'(a)=f'(a)=0$, as desired.
+    \end{proof}
+\end{corollary}
+
+\begin{theorem}\label{trm:12.15}
+    Suppose that $f:[a,b]\to\R$ is continuous, differentiable on $(a,b)$, and that $f(a)=f(b)=0$. Then there exists a point $\lambda\in(a,b)$ such that $f'(\lambda)=0$.
+    \begin{proof}
+        We divide into two cases ($f(x)=0$ for all $x\in[a,b]$, and $f(x)\neq 0$ for some $x\in[a,b]$).\par
+        Suppose first that $f(x)=0$ for all $x\in[a,b]$. By Theorem \ref{trm:5.2}, we can choose a $\lambda\in(a,b)$. It follows from the hypothesis that $f(\lambda)=f(x)$ for all $f(x)\in f([a,b])$. This can be weakened to $f(\lambda)\geq f(x)$ for all $f(x)\in f([a,b])$. Thus, by Definition \ref{dfn:3.3}, $f(\lambda)$ is the last point of $f([a,b])$. Consequently, by Definition \ref{dfn:12.11}, $f(\lambda)$ is the maximum value of $f$. This combined with the fact that $f$ is differentiable at $\lambda$ (since $\lambda\in(a,b)$ and $f$ is differentiable on $(a,b)$) implies by Theorem \ref{trm:12.13} that $f'(\lambda)=0$, as desired.\par
+        Now suppose that $f(x)\neq 0$ for some $x\in[a,b]$ which we shall call $x_0$. We divide into two cases again ($f(x_0)>0$ and $f(x_0)<0$). If $f(x_0)>0$, then by Exercise \ref{exr:10.21}, there exists a point $\lambda\in[a,b]$ such that $f(\lambda)\geq f(x)$ for all $x\in[a,b]$. It follows that $f(\lambda)\geq f(x_0)>0$, so $f(\lambda)\neq f(a)=f(b)$. Thus, by Definition \ref{dfn:1.16}, $\lambda\neq a$ and $\lambda\neq b$. This combined with the fact that $\lambda\in[a,b]$ implies by Script \ref{sct:8} that $\lambda\in(a,b)$. Now as before, we can determine from the fact that $f(\lambda)\geq f(x)$ for all $x\in[a,b]$ that $f(\lambda)$ is the maximum value of $f$. This combined with the fact that $f$ is differentiable at $\lambda$ (since $\lambda\in(a,b)$ and $f$ is differentiable on $(a,b)$) implies by Theorem \ref{trm:12.13} that $f'(\lambda)=0$, as desired. The argument is symmetric in the other case.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:12.16}
+    Suppose that $f:[a,b]\to\R$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then there exists a point $\lambda\in(a,b)$ such that
+    \begin{equation*}
+        f(b)-f(a) = f'(\lambda)(b-a)
+    \end{equation*}
+    \begin{proof}
+        Let $h:[a,b]\to\R$ be defined by
+        \begin{equation*}
+            h(x) = f(x)-\frac{f(b)-f(a)}{b-a}(x-a)-f(a)
+        \end{equation*}
+        By hypothesis, $f(x)$ is continuous on $[a,b]$. By Exercise \ref{exr:11.6} and Theorem \ref{trm:11.9}, $-\frac{f(b)-f(a)}{b-a}(x-a)-f(a)$ is continuous on $[a,b]$. Thus, by Theorem \ref{trm:11.9}, their sum (i.e., $h(x)$) is continuous on $[a,b]$. Additionally, by hypothesis, $f(x)$ is differentiable on $(a,b)$. By Exercises \ref{exr:12.8} and \ref{exr:12.9}, $-\frac{f(b)-f(a)}{b-a}(x-a)-f(a)$ is differentiable on $[a,b]$. Thus, by Exercise \ref{exr:12.9}, their sum (i.e., $h(x)$) is differentiable on $(a,b)$. Furthermore, by simple algebra, we can determine that
+        \begin{align*}
+            h(a) &= f(a)-\frac{f(b)-f(a)}{b-a}(a-a)-f(a)&
+                h(b) &= f(b)-\frac{f(b)-f(a)}{b-a}(b-a)-f(a)\\
+            &= -\frac{f(b)-f(a)}{b-a}\cdot 0&
+                &= f(b)-(f(b)-f(a))-f(a)\\
+            &= 0&
+                &= 0
+        \end{align*}
+        Thus, by Theorem \ref{trm:12.15}, there exists a point $\lambda\in(a,b)$ such that $h'(\lambda)=0$.\par
+        We can also calculate $h'(x)$ as follows.
+        \begin{align*}
+            h'(x) &= \left( f(x)-\frac{f(b)-f(a)}{b-a}(x-a)-f(a) \right)'\\
+            &= \left( (f(x))+\left( -\frac{f(b)-f(a)}{b-a}\cdot x \right)+\left( \frac{f(b)-f(a)}{b-a}\cdot a-f(a) \right) \right)'\\
+            &= f'(x)+\left( -\frac{f(b)-f(a)}{b-a}\cdot x \right)'+\left( \frac{f(b)-f(a)}{b-a}\cdot a-f(a) \right)'\tag*{Exercise \ref{exr:12.9}}\\
+            &= f'(x)+\left( -\frac{f(b)-f(a)}{b-a} \right)'\cdot(x)+\left( -\frac{f(b)-f(a)}{b-a} \right)\cdot(x)'+\left( \frac{f(b)-f(a)}{b-a}\cdot a-f(a) \right)'\tag*{Exercise \ref{exr:12.9}}\\
+            &= f'(x)+0\cdot x+\frac{f(b)-f(a)}{b-a}\cdot 1x^0+0\tag*{Exercise \ref{exr:12.8}}\\
+            &= f'(x)+\frac{f(b)-f(a)}{b-a}
+        \end{align*}
+        But it follows that at $\lambda$,
+        \begin{align*}
+            0 &= f'(\lambda)-\frac{f(b)-f(a)}{b-a}\\
+            \frac{f(b)-f(a)}{b-a} &= f'(\lambda)\\
+            f(b)-f(a) &= f'(\lambda)(b-a)
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{corollary}
+
 
 
 

@@ -241,6 +241,38 @@
     \end{enumerate}
 \end{exercise}
 
+\marginnote{4/1:}One of the most important results concerning the differentiation of functions is the rule for the derivative of a composition of functions. Let $f:B\to\R,g:A\to\R$ be functions such that $g(A)\subset B$. The composition $(f\circ g)(x)=f(g(x))$ is defined for all $x\in A$.
+
+\begin{theorem}\label{trm:12.10}
+    Let $a\in A$, $g:A\to\R$, and $f:I\to\R$ where $I$ is an interval containing $g(A)$. Suppose that $g$ is differentiable at $a$ and $f$ is differentiable at $g(a)$. Then $f\circ g$ is differentiable $a$ and
+    \begin{equation*}
+        (f\circ g)'(a) = f'(g(a))\cdot g'(a)
+    \end{equation*}
+    \begin{proof}
+        To prove that $f\circ g$ is differentiable at $a$, Theorem \ref{trm:12.4} tells us that it will suffice to show that $\lim_{x\to a}\frac{(f\circ g)(x)-(f\circ g)(a)}{x-a}$ exists. To do so, we will define a special function $\varphi$ and prove that it is continuous at $a$. It will follow that $(f\circ g)'(a)$ exists and equals $f'(g(a))\cdot g'(a)$. Let's begin.\par
+        Let $\varphi:I\to\R$ be defined by
+        \begin{equation*}
+            \varphi(x) =
+            \begin{cases}
+                \frac{f(g(x))-f(g(a))}{g(x)-g(a)} & g(x)\neq g(a)\\
+                f'(g(a)) & g(x)=g(a)
+            \end{cases}
+        \end{equation*}
+        It is clear from the definition that the function is defined for all $x\in A$.\par
+        To demonstrate that $\varphi$ is continuous at $a$, Theorem \ref{trm:11.5} tells us that it will suffice to confirm that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|\varphi(x)-\varphi(a)|=|\varphi(x)-f'(g(a))|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is differentiable at $g(a)$, we know that $\lim_{y\to g(a)}\frac{f(y)-f(g(a))}{y-g(a)}=f'(g(a))$. It follows by Definition \ref{dfn:11.1} that there is some $\delta'>0$ such that if $y\in I$ and $0<|y-g(a)|<\delta'$, then $|\frac{f(y)-f(g(a))}{y-g(a)}-f'(g(a))|<\epsilon$. Additionally, since $g$ is differentiable (hence continuous by Theorem \ref{trm:12.5}) at $a$, we have by Theorem \ref{trm:11.5} that there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|g(x)-g(a)|<\delta'$.\par
+        Using the above $\delta$, let $x$ be an arbitrary element of $A$ such that $|x-a|<\delta$. We now divide into two cases ($g(x)=g(a)$ and $g(x)\neq g(a)$). If $g(x)=g(a)$, then $|\varphi(x)-f'(g(a))|=|f'(g(a))-f'(g(a))|=0<\epsilon$, as desired. If $g(x)\neq g(a)$, then we continue. Since $|x-a|<\delta$, we have that $|g(x)-g(a)|<\delta'$. This combined with the fact that $g(x)\in I$ and $g(x)\neq g(a)$, i.e., $0<|g(x)-g(a)|$ illustrates that $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))|=|\varphi(x)-f'(g(a))|<\epsilon$. Therefore, $\varphi$ is continuous at $a$.\par
+        It follows by Theorem \ref{trm:11.5} that $\lim_{x\to a}\varphi(x)=\varphi(a)=f'(g(a))$. Additionally, since $g$ is differentiable at $a$, Definition \ref{dfn:12.1} and Theorem \ref{trm:12.4} tell us that $\lim_{x\to a}\frac{g(x)-g(a)}{x-a}$ exists (and equals $g'(a)$). The combination of the past two results imply by Theorem \ref{trm:11.9} that the product of the limits exists and equals
+        \begin{align*}
+            f'(g(a))\cdot g'(a) &= \lim_{x\to a}\varphi(x)\cdot\frac{g(x)-g(a)}{x-a}\\
+            &= \lim_{x\to a}\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\cdot\frac{g(x)-g(a)}{x-a}\\
+            &= \lim_{x\to a}\frac{f(g(x))-f(g(a))}{x-a}\\
+            &= \lim_{x\to a}\frac{(f\circ g)(x)-(f\circ g)(a)}{x-a}\\
+            &= (f\circ g)'(a)
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
 
 
 

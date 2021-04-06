@@ -346,6 +346,49 @@ We now come to the most important theorem in differential calculus, Corollary \r
     \end{proof}
 \end{corollary}
 
+\begin{corollary}\label{cly:12.17}\marginnote{\emph{4/6:}}
+    Suppose that $f:[a,b]\to\R$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item If $f'(x)>0$ for all $x\in(a,b)$, then $f$ is strictly increasing on $[a,b]$.
+        \begin{proof}
+            To prove that $f$ is strictly increasing on $[a,b]$, Definition \ref{dfn:8.16} tells us that it will suffice to show that if $x,y\in[a,b]$ with $x<y$, then $f(x)<f(y)$. Let $x,y$ be arbitrary elements of $[a,b]$ that satisfy $x<y$. If we apply Corollary \ref{cly:12.16} to the restriction of $f$ to $[x,y]$ (which we know is continuous by Proposition \ref{prp:9.7} and similarly is differentiable), then we can find that there exists a point $\lambda\in(x,y)$ such that $f(y)-f(x)=f'(\lambda)(y-x)$. Since $\lambda\in(x,y)\subset(a,b)$, we have by hypothesis that $f'(\lambda)>0$. Additionally, we know that $y-x>0$ since $y>x$. Thus, by Definition \ref{dfn:7.21}, $f'(\lambda)(y-x)>0$. It follows that $f(y)-f(x)>0$, i.e., that $f(x)<f(y)$, as desired.
+        \end{proof}
+        \item If $f'(x)<0$ for all $x\in(a,b)$, then $f$ is strictly decreasing on $[a,b]$.
+        \begin{proof}
+            The proof is symmetric to that of part (a).
+        \end{proof}
+        \item If $f'(x)=0$ for all $x\in(a,b)$, then $f$ is constant on $[a,b]$.
+        \begin{proof}
+            Suppose for the sake of contradiction that $f$ is not constant on $[a,b]$. In other words, there exist $x,y\in[a,b]$ for which $f(x)\neq f(y)$. WLOG, let $x<y$. Since $f$ is, by Exercise \ref{exr:11.6}, everywhere continuous on $[a,b]$ and, by hypothesis, everywhere differentiable on $(a,b)$, Corollary \ref{cly:12.16} applies to the restriction of $f$ to $[x,y]$ and asserts that there exists a point $\lambda\in(x,y)$ such that $f(y)-f(x)=f'(\lambda)(b-a)$. But since $f'(\lambda)=0$ by hypothesis, $f(y)-f(x)=0$, i.e., $f(y)=f(x)$, a contradiction.
+        \end{proof}
+    \end{enumerate}
+\end{corollary}
+
+\begin{remark}\label{rmk:12.18}
+    Corollary \ref{cly:12.17} also holds if instead of $[a,b]$, we have an arbitrary interval $I$; and instead of $(a,b)$, we have the interior of $I$.
+\end{remark}
+
+\begin{corollary}\label{cly:12.19}
+    Suppose that $f:[a,b]\to\R$ and $g:[a,b]\to\R$ are continuous on $[a,b]$, differentiable on $(a,b)$, and $f'(x)=g'(x)$ for all $x\in(a,b)$. Then there is some $c\in\R$ such that for all $x\in[a,b]$, we have $f(x)=g(x)+c$.
+    \begin{proof}
+        Let $h:[a,b]\to\R$ be defined by $h(x)=f(x)-g(x)$. Since $f,g$ are continuous on $[a,b]$, Corollary \ref{cly:11.10} asserts that $h$ is continuous on $[a,b]$. Since $f,g$ are differentiable on $(a,b)$, Exercise \ref{exr:12.9} asserts that $h$ is differentiable on $(a,b)$. Since $f'(x)=g'(x)$ for all $x\in(a,b)$, Exercise \ref{exr:12.9} implies that $h'(x)=f'(x)-g'(x)=0$ for all $x\in(a,b)$. These three results satisfy the conditions of Corollary \ref{cly:12.17}, which means that $h$ is constant on $[a,b]$, i.e., that $h(x)=c$ for all $x\in[a,b]$ where $c\in\R$. But by the definition of $h$, this implies that for all $x\in[a,b]$, we have $f(x)-g(x)=c$, i.e., $f(x)=g(x)+c$.
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}\label{cly:12.20}
+    Suppose that $f:[a,b]\to\R$ and $g:[a,b]\to\R$ are continuous on $[a,b]$ and differentiable on $(a,b)$. Then there is a point $\lambda\in(a,b)$ such that
+    \begin{equation*}
+        (f(b)-f(a))g'(\lambda) = (g(b)-g(a))f'(\lambda)
+    \end{equation*}
+    \begin{proof}
+        Let $h:[a,b]\to\R$ be defined by $h(x)=(g(b)-g(a))f(x)-(f(b)-f(a))g(x)-f(a)g(b)+f(b)g(a)$. For the same reasons as in the proof of Corollary \ref{cly:12.19}, $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Additionally, we can show with basic algebra that $h(a)=h(b)=0$. These results satisfy the conditions of Theorem \ref{trm:12.15}, which means that there exists a point $\lambda\in(a,b)$ such that $h'(\lambda)=0$. We can also calculate that $h'(x)=(g(b)-g(a))f'(x)-(f(b)-f(a))g'(x)$ via a similar method to that used in the proof of Corollary \ref{cly:12.16}. But it follows that at $\lambda$,
+        \begin{align*}
+            0 &= (g(b)-g(a))f'(\lambda)-(f(b)-f(a))g'(\lambda)\\
+            (f(b)-f(a))g'(\lambda) &= (g(b)-g(a))f'(\lambda)
+        \end{align*}
+    \end{proof}
+\end{corollary}
+
 
 
 

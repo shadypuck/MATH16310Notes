@@ -286,7 +286,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
 \begin{theorem}\label{trm:12.13}
     Let $f:A\to\R$ be differentiable at $a$. Suppose that $f(a)$ is the maximum value or minimum value of $f$. Then $f'(a)=0$.
     \begin{proof}
-        Suppose first that $f(a)$ is the maximum value of $f$, and suppose for the sake of contradiction that $f'(a)\neq 0$. Then $f'(a)>0$ or $f'(a)<0$. We now divide into two cases. If $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=f'(a)>0$, then for $\epsilon=f'(a)$, we have by Definition \ref{dfn:11.1} that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\frac{f(x)-f(a)}{x-a}-f'(a)|<f'(a)$. Let $x_0\in A$ satisfy $0<x-a<\delta$. Then by Definition \ref{dfn:8.4}, $0<|x_0-a|<\delta$. Consequently, $|\frac{f(x_0)-f(a)}{x_0-a}-f'(a)|<f'(a)$. It follows by the lemma from Exercise \ref{exr:8.9} that $-f'(a)<\frac{f(x_0)-f(a)}{x_0-a}-f'(a)<f'(a)$. Thus, by Script \ref{sct:7}, we have that $0<\frac{f(x_0)-f(a)}{x_0-a}$, implying since $x-a>0$ that $0<f(x_0)-f(a)$. But this means that $f(x_0)>f(a)$, i.e., that $f(a)$ is not the last point of $f(A)$ (by Definition \ref{dfn:3.3}), i.e., that $f(a)$ is not the maximum value of $f$ (by Definition \ref{dfn:12.11}), a contradiction. The argument is symmetric in the other case.\par
+        Suppose first that $f(a)$ is the maximum value of $f$, and suppose for the sake of contradiction that $f'(a)\neq 0$. Then $f'(a)>0$ or $f'(a)<0$. We now divide into two cases. If $f'(a)>0$, then by Theorem \ref{trm:12.4}, $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}>0$. Thus, by Lemma \ref{lem:11.8}, there exists a region $R$ with $a\in\R$ such that $\frac{f(x)-f(a)}{x-a}>0$ for all $x\in R\cap A$. Additionally, since $A$ is open, Theorem \ref{trm:4.10} implies that there exists a region $S$ with $a\in S$ and $S\subset A$. The previous two results when combined imply by Theorem \ref{trm:3.18} that $R\cap S=(c,d)$, where $(c,d)$ is a region containing $a$. Since $a\in(c,d)$, Theorem \ref{trm:5.2} implies that there exists a point $y\in\R$ such that $a<y<d$. Clearly, since $y\in(c,d)=R\cap S$ and $S\subset A$, we have that $y\in R\cap A$. It follows that $\frac{f(y)-f(a)}{y-a}>0$. Furthermore, $y>a$ implies that $y-a>0$. Therefore, by Definition \ref{dfn:7.21}, $f(y)-f(a)=\frac{f(y)-f(a)}{y-a}\cdot(y-a)>0$. But this means that $f(y)>f(a)$, i.e., that $f(a)$ is not the last point of $f(A)$ (by Definition \ref{dfn:3.3}), i.e., that $f(a)$ is not the maximum value of $f$ (by Definition \ref{dfn:12.11}), a contradiction. The argument is symmetric in the other case.\par
         The proof is symmetric in the other case.
     \end{proof}
 \end{theorem}
@@ -351,7 +351,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
     \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
         \item If $f'(x)>0$ for all $x\in(a,b)$, then $f$ is strictly increasing on $[a,b]$.
         \begin{proof}
-            To prove that $f$ is strictly increasing on $[a,b]$, Definition \ref{dfn:8.16} tells us that it will suffice to show that if $x,y\in[a,b]$ with $x<y$, then $f(x)<f(y)$. Let $x,y$ be arbitrary elements of $[a,b]$ that satisfy $x<y$. If we apply Corollary \ref{cly:12.16} to the restriction of $f$ to $[x,y]$ (which we know is continuous by Proposition \ref{prp:9.7} and similarly is differentiable), then we can find that there exists a point $\lambda\in(x,y)$ such that $f(y)-f(x)=f'(\lambda)(y-x)$. Since $\lambda\in(x,y)\subset(a,b)$, we have by hypothesis that $f'(\lambda)>0$. Additionally, we know that $y-x>0$ since $y>x$. Thus, by Definition \ref{dfn:7.21}, $f'(\lambda)(y-x)>0$. It follows that $f(y)-f(x)>0$, i.e., that $f(x)<f(y)$, as desired.
+            To prove that $f$ is strictly increasing on $[a,b]$, Definition \ref{dfn:8.16} tells us that it will suffice to show that if $x,y\in[a,b]$ with $x<y$, then $f(x)<f(y)$. Let $x,y$ be arbitrary elements of $[a,b]$. WLOG, let $x<y$. Since $f$ is continuous  on $[a,b]$ and differentiable on $(a,b)$, Corollary \ref{cly:12.16} asserts that there exists a point $\lambda\in(x,y)$ such that $f(y)-f(x)=f'(\lambda)(y-x)$. But since $f'(\lambda)>0$ by hypothesis and $y-x>0$ because $y>x$, we have by Definition \ref{dfn:7.21} that $f'(\lambda)(y-x)>0$. It follows that $f(y)-f(x)>0$, i.e., that $f(x)<f(y)$, as desired.
         \end{proof}
         \item If $f'(x)<0$ for all $x\in(a,b)$, then $f$ is strictly decreasing on $[a,b]$.
         \begin{proof}
@@ -359,7 +359,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
         \end{proof}
         \item If $f'(x)=0$ for all $x\in(a,b)$, then $f$ is constant on $[a,b]$.
         \begin{proof}
-            Suppose for the sake of contradiction that $f$ is not constant on $[a,b]$. In other words, there exist $x,y\in[a,b]$ for which $f(x)\neq f(y)$. WLOG, let $x<y$. Since $f$ is, by Exercise \ref{exr:11.6}, everywhere continuous on $[a,b]$ and, by hypothesis, everywhere differentiable on $(a,b)$, Corollary \ref{cly:12.16} applies to the restriction of $f$ to $[x,y]$ and asserts that there exists a point $\lambda\in(x,y)$ such that $f(y)-f(x)=f'(\lambda)(b-a)$. But since $f'(\lambda)=0$ by hypothesis, $f(y)-f(x)=0$, i.e., $f(y)=f(x)$, a contradiction.
+            To prove that $f$ is constant on $[a,b]$, it will suffice to show that $f(x)=f(y)$ for all $x,y\in[a,b]$. Let $x,y$ be arbitrary elements of $[a,b]$. WLOG, let $x<y$. Since $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, Corollary \ref{cly:12.16} asserts that there exists a point $\lambda\in(x,y)$ such that $f(y)-f(x)=f'(\lambda)(y-x)$. But since $f'(\lambda)=0$ by hypothesis, $f(y)-f(x)=0$, i.e., $f(y)=f(x)$, as desired.
         \end{proof}
     \end{enumerate}
 \end{corollary}
@@ -381,13 +381,91 @@ We now come to the most important theorem in differential calculus, Corollary \r
         (f(b)-f(a))g'(\lambda) = (g(b)-g(a))f'(\lambda)
     \end{equation*}
     \begin{proof}
-        Let $h:[a,b]\to\R$ be defined by $h(x)=(g(b)-g(a))f(x)-(f(b)-f(a))g(x)-f(a)g(b)+f(b)g(a)$. For the same reasons as in the proof of Corollary \ref{cly:12.19}, $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Additionally, we can show with basic algebra that $h(a)=h(b)=0$. These results satisfy the conditions of Theorem \ref{trm:12.15}, which means that there exists a point $\lambda\in(a,b)$ such that $h'(\lambda)=0$. We can also calculate that $h'(x)=(g(b)-g(a))f'(x)-(f(b)-f(a))g'(x)$ via a similar method to that used in the proof of Corollary \ref{cly:12.16}. But it follows that at $\lambda$,
+        Let $h:[a,b]\to\R$ be defined by $h(x)=(g(b)-g(a))f(x)-(f(b)-f(a))g(x)-f(a)g(b)+f(b)g(a)$. For the same reasons as in the proof of Corollary \ref{cly:12.19}, $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Additionally, we can show with basic algebra that
+        \begin{align*}
+            h(a) &= (g(b)-g(a))f(a)-(f(b)-f(a))g(a)-f(a)g(b)+f(b)g(a)\\  
+            &= f(a)g(b)-f(a)g(a)-f(b)g(a)+f(a)g(a)-f(a)g(b)+f(b)g(a)\\
+            &= 0
+        \end{align*}
+        \begin{align*}
+            h(b) &= (g(b)-g(a))f(b)-(f(b)-f(a))g(b)-f(a)g(b)+f(b)g(a)\\
+            &= f(b)g(b)-f(b)g(a)-f(b)g(b)+f(a)g(b)-f(a)g(b)+f(b)g(a)\\
+            &= 0
+        \end{align*}
+        These results satisfy the conditions of Theorem \ref{trm:12.15}, which means that there exists a point $\lambda\in(a,b)$ such that $h'(\lambda)=0$. We can also calculate that $h'(x)=(g(b)-g(a))f'(x)-(f(b)-f(a))g'(x)$ via a similar method to that used in the proof of Corollary \ref{cly:12.16}. But it follows that at $\lambda$,
         \begin{align*}
             0 &= (g(b)-g(a))f'(\lambda)-(f(b)-f(a))g'(\lambda)\\
             (f(b)-f(a))g'(\lambda) &= (g(b)-g(a))f'(\lambda)
         \end{align*}
     \end{proof}
 \end{corollary}
+
+Finally, we prove another very important theorem that tells us about inverse functions and their derivatives.
+
+\begin{theorem}\label{trm:12.21}
+    Suppose that $f:(a,b)\to\R$ is differentiable and that the derivative $f':(a,b)\to\R$ is continuous. Also suppose that there is a point $p\in(a,b)$ such that $f'(p)\neq 0$. Then there exists a region $R\subset(a,b)$ such that $p\in R$ and $f$ with domain restricted to $R$ is injective. Furthermore, $f^{-1}:f(R)\to R$ is differentiable at the point $f(p)$ and
+    \begin{equation*}
+        (f^{-1})'(f(p)) = \frac{1}{f'(p)}
+    \end{equation*}
+    \begin{proof}
+        % \begin{itemize}
+        %     \item WTS: $(f^{-1})'(f(p))$ exists and $=\frac{1}{f'(p)}$.
+        %     \item Theorem \ref{trm:12.4}: Will suffice to show $\lim_{y\to f(p)}\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}=\frac{1}{f'(p)}$.
+        %     \item Theorem \ref{dfn:12.1}: Will suffice to confirm that for all $\epsilon>0$, there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}-\frac{1}{f'(p)}|<\epsilon$.
+        %     \item Let $\epsilon>0$ be arbitrary.
+        %     \item Various:
+        %     \begin{align*}
+        %         \frac{1}{f'(p)} &= \frac{1}{\lim_{x\to p}\frac{f(x)-f(p)}{x-p}}\tag*{Theorem \ref{trm:12.4}}\\
+        %         &= \lim_{x\to p}\frac{x-p}{f(x)-f(p)}\tag*{Theorem \ref{trm:11.9}}\\
+        %         &= \lim_{x\to p}\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}\tag*{Definition \ref{dfn:1.18}}
+        %     \end{align*}
+        %     \item Definition \ref{dfn:11.1}: There exists $\delta'>0$ such that if $x\in R$ and $0<|x-p|<\delta'$, then $|\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}-\frac{1}{f'(p)}|<\epsilon$.
+        %     \item \emph{Paragraph break/lane change}.
+        %     \item Theorem \ref{trm:9.10}: $f^{-1}$ is continuous at $f(p)$.
+        %     \item Theorem \ref{trm:11.5}: Either $f(p)\notin LP(f(R))$ or $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$.
+        %     \item $f(p)\in LP(f(R))$.
+        %     \begin{itemize}
+        %         \item Lemma \ref{lem:8.3}: $R$ is an interval.
+        %         \item Theorem \ref{trm:8.15}: $R$ is connected.
+        %         \item Theorem \ref{trm:9.11}: $f(R)$ is connected.
+        %         \item Theorem \ref{trm:8.15}: $f(R)$ is an interval.
+        %         \item Extension of Corollaries \ref{cly:5.5} and \ref{cly:5.14}: $f(p)\in LP(f(R))$.
+        %     \end{itemize}
+        %     \item Thus: $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$.
+        %     \item Definition \ref{dfn:11.1}: There exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|f^{-1}(y)-f^{-1}(f(p))|<\delta'$.
+        %     \item Definition \ref{dfn:1.18}: There exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|x-p|<\delta'$.
+        %     \item Choose this as our $\delta$. Let $y=f(x)$ be an arbitrary element of $f(R)$ such that $0<|y-f(p)|<\delta$.
+        %     \item Then $|x-p|<\delta'$.
+        %     \item $0<|x-p|$.
+        %     \begin{itemize}
+        %         \item Script \ref{sct:8}: $0<|y-f(p)|$ implies $f(x)\neq f(p)$.
+        %         \item Definition \ref{dfn:1.20}: $x\neq p$.
+        %         \item Script \ref{sct:8}: $0<|x-p|$.
+        %     \end{itemize}
+        %     \item Definition \ref{dfn:1.18}: $x\in R$.
+        %     \item Thus, $x\in R$ and $0<|x-p|<\delta'$. Consequently, $|\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}-\frac{1}{f'(p)}|<\epsilon$.
+        %     \item Definition \ref{dfn:1.18}: $|\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}-\frac{1}{f'(p)}|<\epsilon$.
+        %     % \item Various:
+        %     % \begin{align*}
+        %     %     (f^{-1})'(f(p)) &= \lim_{y\to f(p)}\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}\tag*{Theorem \ref{trm:12.4}}\\
+        %     %     &= \lim_{f(x)\to f(p)}\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}\tag*{Script \ref{sct:1}}\\
+        %     %     &= \lim_{f(x)\to f(p)}\frac{x-p}{f(x)-f(p)}\tag*{Script \ref{sct:1}}
+        %     % \end{align*}
+        % \end{itemize}
+
+        Since $f':(a,b)\to\R$ is continuous, Theorem \ref{trm:9.10} implies that it is continuous at $p\in(a,b)$. Thus, by Theorem \ref{trm:11.5}, either $p\notin LP((a,b))$ or $\lim_{x\to p}f'(x)=f'(p)$. However, the fact that $p\in(a,b)$ implies that $p\in LP((a,b))$ by Corollary \ref{cly:5.5}, so we know that $\lim_{x\to p}f'(x)=f'(p)$. This combined with the facts that $f'(p)\neq 0$ (i.e., $f'(p)>0$ or $f'(p)<0$) and $f'$ is continuous at $p$ implies by Lemma \ref{lem:11.8} that there exists a region $R$ with $p\in R$ such that $f'(x)>0$ for all $x\in R\cap(a,b)$ or $f'(x)<0$ for all $x\in R\cap(a,b)$. Clearly, $R\cap(a,b)=R$. Consequently, since $f'(x)>0$ for all $x\in R$ or $f'(x)<0$ for all $x\in R$, Corollary \ref{cly:12.17} asserts that $f$ is strictly increasing or strictly decreasing on $R$. Since $R$ is an interval by Lemma \ref{lem:8.3}, the previous result implies by Lemma \ref{lem:8.17} that $f$ is injective on $R$. Therefore, $R=R\cap(a,b)\subset(a,b)$ by Theorem \ref{trm:1.7}, $p\in R$ by definition, and $f|_R$ is injective, as desired.\par
+        From now on, we will denote $f|_R:R\to\R$ by $f$. Since $f$ is differentiable, Definition \ref{dfn:12.1} asserts that it is differentiable for all $x\in R$. Thus, by Theorem \ref{trm:12.5}, $f$ is continuous for all $x\in R$. Consequently, by Theorem \ref{trm:9.10}, $f$ is continuous. This combined with the previously proven fact that $f$ is injective implies by Theorem \ref{trm:9.14} that the inverse function $f^{-1}:f(R)\to R$ exists and is continuous.\par
+        To prove that $(f^{-1})'(f(p))$ exists and equals $\frac{1}{f'(p)}$, Theorem \ref{trm:12.4} tells us that it will suffice to show that $\lim_{y\to f(p)}\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}=\frac{1}{f'(p)}$. To do this, Theorem \ref{dfn:12.1} tells us that it will suffice to confirm that for all $\epsilon>0$, there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|\frac{f^{-1}(y)-f^{-1}(f(p))}{y-p}-\frac{1}{f'(p)}|<\epsilon$. Let $\epsilon>0$ be arbitrary. We have that
+        \begin{align*}
+            \frac{1}{f'(p)} &= \frac{1}{\lim_{x\to p}\frac{f(x)-f(p)}{x-p}}\tag*{Theorem \ref{trm:12.4}}\\
+            &= \lim_{x\to p}\frac{x-p}{f(x)-f(p)}\tag*{Theorem \ref{trm:11.9}}\\
+            &= \lim_{x\to p}\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}\tag*{Definition \ref{dfn:1.18}}
+        \end{align*}
+        Thus, by Definition \ref{dfn:11.1}, there exists a $\delta'>0$ such that if $x\in R$ and $0<|x-p|<\delta'$, then $|\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}-\frac{1}{f'(p)}|<\epsilon$.\par
+        The previously proven fact that $f^{-1}$ is continuous implies by Theorem \ref{trm:9.10} that $f^{-1}$ is continuous at $f(p)$. It follows by Theorem \ref{trm:11.5} that either $f(p)\notin LP(f(R))$ or $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$. However, as we will now see, $f(p)\in LP(f(R))$. To begin, the fact that $R$ is a region implies by Lemma \ref{lem:8.3} that $R$ is an interval. It follows by Theorem \ref{trm:8.15} that $R$ is connected, by Theorem \ref{trm:9.11} that $f(R)$ is connected, by Theorem \ref{trm:8.15} again that $f(R)$ is an interval, and finally by extensions of Corollaries \ref{cly:5.5} and \ref{cly:5.14} that $f(p)\in LP(f(R))$. Thus, with this case eliminated, we know that $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$. Consequently, by Definition \ref{dfn:1.11}, there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|f^{-1}(y)-f^{-1}(f(p))|<\delta'$. With a slight modification from Definition \ref{dfn:1.18}, we have that there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|x-p|<\delta'$.\par
+        Choose the above $\delta$ as our $\delta$. Let $y=f(x)$ be an arbitrary element of $f(R)$ satisfying $0<|y-f(p)|<\delta$. Then $|x-p|<\delta'$. We can also show that $0<|x-p|$: From Script \ref{sct:8}, the fact that $0<|y-f(p)|$ implies that $f(x)\neq f(p)$; hence by Definition \ref{dfn:1.20} and the fact that $f$ is injective, $x\neq p$; hence by Script \ref{sct:8} again, $0<|x-p|$. Continuing, since $y=f(x)\in f(R)$, we have by Definition \ref{dfn:1.18} that $x\in R$. Thus, we have that $x\in R$ and $0<|x-p|<\delta'$, so we know that $|\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}-\frac{1}{f'(p)}|<\epsilon$. Therefore, with a slight modification from Definition \ref{dfn:1.18}, we have that $|\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}-\frac{1}{f'(p)}|<\epsilon$, as desired.
+    \end{proof}
+\end{theorem}
 
 
 

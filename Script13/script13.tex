@@ -1,0 +1,216 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{12}
+
+\begin{document}
+
+
+
+
+\chapter{Uniform Continuity and Integration}\label{sct:13}
+\section{Journal}
+\begin{definition}\label{dfn:13.1}\marginnote{4/8:}
+    Let $f:A\to\R$ be a function. We say that $f$ is \textbf{uniformly continuous} if for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$.
+\end{definition}
+
+\begin{theorem}\label{trm:13.2}
+    If $f$ is uniformly continuous, then $f$ is continuous.
+    \begin{proof}
+        To prove that $f$ is continuous, Theorem \ref{trm:9.10} tells us that it will suffice to show that $f$ is continuous at every $x\in A$. Let $x$ be an arbitrary element of $A$. To show that $f$ is continuous at $x$, Theorem \ref{trm:11.5} tells us that it will suffice to verify that for every $\epsilon>0$, there exists a $\delta>0$ such that if $y\in A$ and $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Then since $f$ is uniformly continuous by hypothesis, Definition \ref{dfn:13.1} asserts that there exists a $\delta>0$ such that for all $y\in A$ satisfying $|y-x|<\delta$, we have $|f(y)-f(x)|<\epsilon$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:13.3}
+    Determine with proof whether each function $f$ is uniformly continuous on the given interval $A$.
+    \begin{enumerate}[label={(\alph*)}]
+        \item $f(x)=x^2$ on $A=\R$.
+        \begin{proof}
+            % \begin{itemize}
+            %     \item Suppose (contradiction): $f$ is uniformly continuous on $\R$.
+            %     \item Let $\epsilon=2>0$.
+            %     \item Definition \ref{dfn:13.1}: There exists a $\delta>0$ such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|y^2-x^2|<\epsilon$.
+            %     \item Let $x=0$.
+            %     \item Theorem \ref{trm:5.2}: There exists a point $y\in\R$ such that $0<y<\delta$.
+            %     \item Lemma \ref{lem:7.23}: $-\delta<0$.
+            %     \item Definitions \ref{dfn:3.6} and \ref{dfn:3.10}: $y\in(-\delta,\delta)$.
+            %     \item Exercise \ref{exr:8.9}: $|y|<\delta$.
+            %     \item Script \ref{sct:7}: $|(y+n)-n|<\delta$.
+            %     \item $|(y+n)^2-n^2|<2$.
+            %     \item Script \ref{sct:7}: $|y^2+2ny|<2$.
+            %     \item Choose $n=\frac{1}{y}$.
+            %     \item Script \ref{sct:7}: $|y^2+2|<2$.
+            %     \item Lemma \ref{lem:7.26}: $y^2>0$.
+            %     \item Definition \ref{dfn:7.21}: $y^2+2>2$.
+            %     \item Definition \ref{dfn:8.4}: $|y^2+2|>2$.
+            %     \item Contradiction.
+            % \end{itemize}
+
+            To prove that $f$ is not uniformly continuous on $\R$, Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ for which no $\delta>0$ exists such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|y^2-x^2|<\epsilon$. Let $\epsilon=2$, and suppose for the sake of contradiction that $\delta>0$ is a number such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|y^2-x^2|<2$. By Theorem \ref{trm:5.2}, there exists a number $y$ such that $0<y<\delta$. Since $-\delta<0<y<\delta$ by Lemma \ref{lem:7.23}, it follows by Definitions \ref{dfn:3.6} and \ref{dfn:3.10} that $y\in(-\delta,\delta)$. Thus, by Exercise \ref{exr:8.9}, $|y-0|=|y|<\delta$. Consequently, $|(y+n)-n|<\delta$. It follows by the above that $|(y+n)^2-n^2|=|y^2+2yn|<2$. If we now let $n=\frac{1}{y}$, then $|y^2+2|<2$. But since $y>0$, we have that $y^2>0$ by Lemma \ref{lem:7.26}. It follows that $y^2+2>2$ by Definition \ref{dfn:7.21}. Therefore, by Definition \ref{dfn:8.4}, we can also show that $|y^2+2|>2$, a contradiction.
+        \end{proof}
+        \item $f(x)=x^2$ on $A=(-2,2)$.
+        \begin{proof}
+            To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{4}$, and let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Since $x,y\in A$, consecutive applications of Equations \ref{eqn:8.1} and the lemma from Exercise \ref{exr:8.9} imply that $|x|<2$ and $|y|<2$. It follows that $|x|+|y|<2+2=4$. Consequently, by Lemma \ref{lem:8.8}, $|x+y|<4$. Additionally, since $0\leq|y+x|$ by Definition \ref{dfn:8.4}, we have $|x-y|\cdot|x+y|\leq\frac{\epsilon}{4}\cdot|x+y|$. Combining all of the above results, we have that
+            \begin{align*}
+                |f(y)-f(x)| &= |y^2-x^2|\\
+                &= |y+x|\cdot|y-x|\\
+                &< 4\cdot|y-x|\\
+                &\leq 4\cdot\frac{\epsilon}{4}\\
+                &= \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item $f(x)=\frac{1}{x}$ on $A=(0,+\infty)$.
+        \begin{proof}
+            To prove that $f$ is not uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ for which no $\delta>0$ exists such that for all $x,y\in A$, if $|y-x|<\delta$, then $|\frac{1}{y}-\frac{1}{x}|<\epsilon$. Let $\epsilon=1$, and suppose for the sake of contradiction that $\delta>0$ is a number such that for all $x,y\in A$, if $|y-x|<\delta$, then $|\frac{1}{y}-\frac{1}{x}|<1$. As in part (a), choose $0<x<\min(\delta,\frac{1}{2})$. Consequently, $|(x+x)-x|<\delta$. It follows by the above that $|\frac{1}{2x}-\frac{1}{x}|<1$. But this implies that $|\frac{x-2x}{2x^2}|=|\frac{-1}{2x}|=\frac{1}{2x}<1$. However, $x<\frac{1}{2}$ implies that $1<\frac{1}{2x}$, a contradiction.
+        \end{proof}
+        \item $f(x)=\frac{1}{x}$ on $A=[1,+\infty)$.
+        \begin{proof}
+            To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$, and let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Since $x,y\in A$, consecutive applications of Equations \ref{eqn:8.1} imply that $1\leq x$ and $1\leq y$. It follows by Script \ref{sct:7} that $1\leq|xy|$. This combined with the fact that $|y-x|<\delta=\epsilon$ implies that
+            \begin{align*}
+                |f(y)-f(x)| &= \left| \frac{1}{y}-\frac{1}{x} \right|\\
+                &= \left| \frac{x-y}{yx} \right|\\
+                &= \frac{|y-x|}{|xy|}\\
+                &< \frac{\epsilon}{|xy|}\\
+                &\leq \frac{\epsilon}{1}\\
+                &= \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item $f(x)=\sqrt{x}$ on $A=[1,+\infty)$.
+        \begin{proof}
+            To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$, and let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Since $x,y\in A$, consecutive applications of Equations \ref{eqn:8.1} imply that $1\leq x$ and $1\leq y$. It follows by Script \ref{sct:7} that $1\leq\sqrt{x}$ and $1\leq\sqrt{y}$. Thus, by Script \ref{sct:7} again, $2\leq|\sqrt{y}+\sqrt{x}|$. Note that it follows that $1<|\sqrt{y}+\sqrt{x}|$. This combined with the fact that $|y-x|<\delta=\epsilon$ implies that
+            \begin{align*}
+                |f(y)-f(x)| &= |\sqrt{y}-\sqrt{x}|\\
+                &< |\sqrt{y}-\sqrt{x}|\cdot|\sqrt{y}+\sqrt{x}|\\
+                &= |y-x|\\
+                &= \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exr:13.4}
+    Let $f:\R\to\R$ be defined by $f(x)=x^n$ for $n\in\N$. Show that $f$ is uniformly continuous if and only if $n=1$.
+    \begin{proof}
+        % \begin{itemize}
+        %     \item Suppose (contradiction): $f$ is uniformly continuous.
+        %     \item Let $\epsilon=1>0$.
+        %     \item Definition \ref{dfn:13.1}: There exists a $\delta>0$ such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|y^n-x^n|<\epsilon$.
+        %     \item Let $x=0$.
+        %     \item Theorem \ref{trm:5.2}: There exists a point $y\in\R$ such that $0<y<\delta$.
+        %     \item Lemma \ref{lem:7.23}: $-\delta<0$.
+        %     \item Definitions \ref{dfn:3.6} and \ref{dfn:3.10}: $y\in(-\delta,\delta)$.
+        %     \item Exercise \ref{exr:8.9}: $|y|<\delta$.
+        %     \item Script \ref{sct:7}: $|(y+a)-a|<\delta$.
+        %     \item $|(y+a)^n-a^n|<1$.
+        %     \item Additional Exercise \ref{axr:0.7}: $|\sum_{k=0}^n\binom{n}{k}y^{n-k}a^k-a^n|=|y^n+ny^{n-1}a+\sum_{k=2}^{n-1}\binom{n}{k}y^{n-k}a^k|<1$.
+        %     \item Choose $a=\frac{1}{ny^{n-1}}$.
+        %     \item Script \ref{sct:7}: $|y^n+1+\sum_{k=2}^{n-1}y^{n-k}a^k|<1$.
+        %     \item Exercise \ref{exr:12.22}: $y^n>0$.
+        %     \item Script \ref{sct:7}: $y^n+1>0$
+        %     \item Script \ref{sct:7}: $\sum_{k=2}^{n-1}y^{n-k}a^k>0$ since $a,y>0$.
+        %     \item Scripts \ref{sct:7} and \ref{sct:8}: $|y^n+1|<|y^n+1+\sum_{k=2}^{n-1}y^{n-k}a^k|<1$.
+        %     \item Definition \ref{dfn:7.21}: $y^n+1>1$.
+        %     \item Definition \ref{dfn:8.4}: $|y^n+1|>1$.
+        %     \item Contradiction.
+        % \end{itemize}
+
+        Suppose first that $n=1$. To prove that $f$ is uniformly continuous, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$. Now let $x,y$ be arbitrary elements of $\R$ that satisfy $|y-x|<\delta$. Then by the definition of $f$, $|f(y)-f(x)|=|y-x|<\delta=\epsilon$, as desired.\par
+        Now suppose that $n>1$. Additionally, suppose for the sake of contradiction that $f$ is uniformly continuous. Let $\epsilon=1>0$. Then by Definition \ref{dfn:13.1}, there exists a $\delta>0$ such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|y^n-x^n|<1$. Let $x=0\in\R$. By Theorem \ref{trm:5.2}, there exists a point $y\in\R$ such that $0<y<\delta$. Additionally, since $\delta>0$, Lemma \ref{lem:7.23} asserts that $-\delta<0$. This combined with the previous result demonstrates by transitivity that $-\delta<0<y<\delta$, so by the lemma from Exercise \ref{exr:8.9}, we have that $|y|<\delta$. Consequently, by Script \ref{sct:7}, we know that $|(y+a)-a|<\delta$ for any $a\in\R$. It follows by the above that $|(y+a)^n-a^n|<1$. Thus, by Additional Exercise \ref{axr:0.7}, $|\sum_{k=0}^n\binom{n}{k}y^{n-k}a^k-a^n|=|y^n+ny^{n-1}a+\sum_{k=2}^{n-1}\binom{n}{k}y^{n-k}a^k|<1$. If we now choose $a=\frac{1}{ny^{n-1}}$, Script \ref{sct:7} reduces the above to $|y^n+1+\sum_{k=2}^{n-1}y^{n-k}a^k|<1$. We now seek to reduce the previous statement further to $|y^n+1|<1$. To begin, Exercise \ref{exr:12.22} implies that $y^n>0$ since $y>0$ and $0^n=0$, meaning by Script \ref{sct:7} that $y^n+1>0$. Additionally, Script \ref{sct:7} asserts that $\sum_{k=2}^{n-1}y^{n-k}a^k>0$ since $a>0$ and $y>0$. This combined with the previous result implies by Scripts \ref{sct:7} and \ref{sct:8} that $|y^n+1|<|y^n+1+\sum_{k=2}^{n-1}y^{n-k}a^k|<1$, as desired. However, since $y^n>0$, Definition \ref{dfn:7.21} asserts that $y^n+1>1$. But by Definition \ref{dfn:8.4}, this implies that $|y^n+1|>1$, a contradiction.
+    \end{proof}\par\medskip
+    % \textbf{Challenge}: Let $p:\R\to\R$ be a polynomial with real coefficients. Show that $p$ is uniformly continuous on $\R$ if and only if $\deg(p)\leq 1$.
+    % \begin{lemma*}
+    %     Let $f$ be such that it is not uniformly continuous on $A\subset\R$, and let $g$ be uniformly continuous on $A\subset\R$. It follows that
+    %     \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+    %         \item The function $f+g$ is not uniformly continuous on $A$.
+    %         \begin{proof}
+    %             % \begin{itemize}
+    %             %     \item WTS: There exists $\epsilon>0$ such that for all $\delta>0$, there exist $x,y\in A$ with $|y-x|<\delta$ such that $|(f+g)(y)-(f+g)(x)|\geq\epsilon$.
+    %             %     \item Definition \ref{dfn:13.1}: There exists a number $2\epsilon>0$ such that for all $\delta_1>0$, there exist $x,y\in A$ with $|y-x|<\delta_1$ such that $|f(y)-f(x)|\geq 2\epsilon$.
+    %             %     \item Pick $\epsilon$ to be our $\epsilon$, and let $\delta>0$ be arbitrary.
+    %             %     \item The above: There exist $a,b\in A$ with $|b-a|<\delta$ such that $|f(b)-f(a)|\geq 2\epsilon$.
+    %             %     \item Definition \ref{dfn:13.1}: There exists a $\delta_2>0$ such that for all $x,y\in A$, if $|y-x|<\delta_2$, then $|g(y)-g(x)|<\epsilon$.
+    %             %     \item Divide into two cases ($\delta\leq\delta_2$ and $\delta>\delta_2$):
+    %             %     \item If $\delta\leq\delta_2$:
+    %             %     \begin{itemize}
+    %             %         \item Transitivity: $|b-a|<\delta_2$.
+    %             %         \item The above: $|g(b)-g(a)|<\epsilon$.
+    %             %         \item Scripts \ref{sct:7} and \ref{sct:8}: $|f(b)-f(a)+g(b)-g(a)|\geq\epsilon$.
+    %             %         \item Therefore: $|(f+g)(b)-(f+g)(a)|\geq\epsilon$.
+    %             %     \end{itemize}
+    %             %     \item If $\delta>\delta_2$:
+    %             %     \begin{itemize}
+    %             %         \item The above: There exist $c,d\in A$ with $|d-c|<\delta_2$ such that $|f(d)-f(c)|\geq 2\epsilon$.
+    %             %         \item The above: $|g(d)-g(c)|<\epsilon$.
+    %             %         \item Transitivity: $|d-c|<\delta$.
+    %             %         \item Scripts \ref{sct:7} and \ref{sct:8}: $|f(d)-g(c)+f(d)-f(c)|\geq\epsilon$.
+    %             %         \item Therefore: $|(f+g)(d)-(f+g)(c)|\geq\epsilon$.
+    %             %     \end{itemize}
+    %             % \end{itemize}
+                
+    %             % It follows from the above that there exist $a,b\in A$ with $|b-a|<\delta$ such that $|f(b)-f(a)|\geq 2\epsilon$. Additionally, since $g$ is uniformly continuous, we have by Definition \ref{dfn:13.1} that there exists a $\delta_2>0$ such that for all $x,y\in A$, if $|y-x|<\delta_2$, then $|g(y)-g(x)|<\epsilon$. We now divide into two cases ($\delta\leq\delta_2$ and $\delta>\delta_2$). If $\delta\leq\delta_2$, then since $|b-a|<\delta$, transitivity implies that $|b-a|<\delta_2$. It follows by the above that $|g(b)-g(a)|<\epsilon$. This combined with the fact that $|f(b)-f(a)|\geq 2\epsilon$ implies by Scripts \ref{sct:7} and \ref{sct:8} that $|f(b)-f(a)+g(b)-g(a)|\geq\epsilon$. Therefore, $|(f+g)(b)-(f+g)(a)|\geq\epsilon$, as desired. On the other hand, suppose $\delta>\delta_2$. We know by the above that there exist $c,d\in A$ with $|d-c|<\delta_2$ such that $|f(d)-f(c)|\geq 2\epsilon$. Additionally, we know that $|g(d)-g(c)|<\epsilon$. It follows from the previous two results as before that $|(f+g)(d)-(f+g)(c)|\geq\epsilon$, and since transitivity implies that $|d-c|<\delta_2<\delta$, we have proven the claim in this other case, too.
+
+    %             To prove that $f+g$ is not uniformly continuous on $A$, the contrapositive of Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ such that for all $\delta>0$, there exist $x,y\in A$ with $|y-x|<\delta$ such that $|(f+g)(y)-(f+g)(x)|\geq\epsilon$. Since $f$ is not uniformly continuous, Definition \ref{dfn:13.1} tells us that there exists a number $2\epsilon>0$ such that for all $\delta_1>0$, there exist $x,y\in A$ with $|y-x|<\delta_1$ such that $|f(y)-f(x)|\geq 2\epsilon$. Choose $\frac{2\epsilon}{2}=\epsilon$ be our $\epsilon$. Let $\delta>0$ be arbitrary. Since $g$ is uniformly continuous, we have by Definition \ref{dfn:13.1} that there exists a $\delta_2>0$ such that for all $x,y\in A$, if $|y-x|<\delta_2$, then $|g(y)-g(x)|<\epsilon$. We now divide into two cases ($\delta\leq\delta_2$ and $\delta>\delta_2$). Suppose $\delta\leq\delta_2$. We know by the above that there exist $a,b\in A$ with $|b-a|<\delta$ such that $|f(b)-f(a)|\geq 2\epsilon$. Additionally, since $|b-a|<\delta$, transitivity implies that $|b-a|<\delta_2$. It follows by the above that $|g(b)-g(a)|<\epsilon$. This combined with the fact that $|f(b)-f(a)|\geq 2\epsilon$ implies by Scripts \ref{sct:7} and \ref{sct:8} that $|f(b)-f(a)+g(b)-g(a)|\geq\epsilon$. Therefore, $|(f+g)(b)-(f+g)(a)|\geq\epsilon$, as desired. On the other hand, suppose $\delta>\delta_2$. We know by the above that there exist $c,d\in A$ with $|d-c|<\delta_2$ such that $|f(d)-f(c)|\geq 2\epsilon$. Additionally, we know that $|g(d)-g(c)|<\epsilon$. It follows from the previous two results as before that $|(f+g)(d)-(f+g)(c)|\geq\epsilon$, and since transitivity implies that $|d-c|<\delta_2<\delta$, we have proven the claim in this case, too.
+    %         \end{proof}
+    %         \item For any constant $c\in\R$ such that $c\neq 0$, the function $c\cdot f$ is not uniformly continuous on $A$.
+    %         \begin{proof}
+    %             To prove that $c\cdot f$ is not uniformly continuous on $A$, the contrapositive of Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ such that for all $\delta>0$, there exist $x,y\in A$ with $|y-x|<\delta$ such that $|c\cdot f(y)-c\cdot f(x)|\geq\epsilon$. Since $f$ is not uniformly continuous, Definition \ref{dfn:13.1} tells us that there exists a number $\frac{\epsilon}{|c|}>0$ such that for all $\delta_1>0$, there exist $x,y\in A$ with $|y-x|<\delta_1$ such that $|f(y)-f(x)|\geq\frac{\epsilon}{|c|}$. Choose $|c|\cdot\frac{\epsilon}{|c|}=\epsilon$ to be our $\epsilon$. Let $\delta>0$ be arbitrary. We know by the above that there exist $a,b\in A$ with $|b-a|<\delta$ such that $|f(b)-f(a)|\geq\frac{\epsilon}{|c|}$. Therefore,
+    %             \begin{align*}
+    %                 |c|\cdot|f(b)-f(a)| &\geq \epsilon\\
+    %                 |c\cdot f(b)-c\cdot f(a)| &\geq \epsilon
+    %             \end{align*}
+    %             as desired.
+    %         \end{proof}
+    %     \end{enumerate}
+    % \end{lemma*}
+    % \begin{proof}[Proof of Challenge]
+    %     Suppose first that $\deg(p)\leq 1$. Then by Definition \ref{dfn:11.11}, $p(x)=ax+b$ where $a,b\in\R$. To prove that $p$ is uniformly continuous, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. We divide into two cases ($a=0$ and $a\neq 0$). If $a=0$, then choose $\delta=1$. Now let $x,y$ be arbitrary elements of $\R$ that satisfy $|y-x|<1$. Then by the definition of $f$, we have
+    %     \begin{align*}
+    %         |f(y)-f(x)| &= |0\cdot y+b-(0\cdot x+b)|\\
+    %         &= |b-b|\\
+    %         &= 0\\
+    %         &< \epsilon
+    %     \end{align*}
+    %     as desired. If $a\neq 0$, then choose $\delta=\frac{\epsilon}{|a|}$. Now let $x,y$ be arbitrary elements of $\R$ that satisfy $|y-x|<\frac{\epsilon}{|a|}$. Then by the definition of $f$, we have
+    %     \begin{align*}
+    %         |f(y)-f(x)| &= |ay+b-(ax+b)|\\
+    %         &= |ay-ax|\\
+    %         &= |a|\cdot|y-x|\\
+    %         &< |a|\cdot\frac{\epsilon}{|a|}\\
+    %         &= \epsilon
+    %     \end{align*}
+    %     as desired.\par
+    %     Now suppose that $\deg(p)>1$. Thus, by Definition \ref{dfn:11.11}, $p$ contains at least one term of the form $a_nx^n$ where $n>2$ and $a_n\neq 0$. Since $x^n$ is not uniformly continuous by Exercise \ref{exr:13.4} and $a_n\neq 0$, Lemma (b) implies that $a_nx^n$ is not uniformly continuous. It follows by Lemma (a) that $p$, as the sum of some uniformly continuous terms (at least 0) and some not uniformly continuous terms (at least $a_nx^n$), is not uniformly continuous.
+
+    %     % This proof is not actually accurate. Maybe just prove that $a_{n+1}x^{n+1}+a_nx^n$ is not uniformly continuous for $n\geq 1$ and induct?
+    % \end{proof}
+\end{exercise}
+
+\begin{exercise}\label{exr:13.5}
+    Let $f$ and $g$ be uniformly continuous on $A\subset\R$. Show that
+    \begin{enumerate}[label={(\alph*)}]
+        \item The function $f+g$ is uniformly continuous on $A$.
+        \item For any constant $c\in\R$, the function $c\cdot f$ is uniformly continuous on $A$.
+    \end{enumerate}
+    \begin{proof}[Proof of a]
+        To prove that $f+g$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|(f+g)(y)-(f+g)(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f,g$ are uniformly continuous on $A$, consecutive applications of Definition \ref{dfn:13.1} reveal that there exist $\delta_1,\delta_2>0$ such that for all $x,y\in A$, $|y-x|<\delta_1$ implies $|f(y)-f(x)|<\frac{\epsilon}{2}$ and $|y-x|<\delta_2$ implies $|g(y)-f(x)|<\frac{\epsilon}{2}$. Choose $\delta=\min(\delta_1,\delta_2)$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. It follows that $|y-x|<\delta_1$ (so $|f(y)-f(x)|<\frac{\epsilon}{2}$), and that $|y-x|<\delta_2$ (so $|g(y)-g(x)|<\frac{\epsilon}{2}$). These two results when combined imply by Script \ref{sct:7} that $|f(y)-f(x)|+|g(y)-g(x)|<\frac{\epsilon}{2}+\frac{\epsilon}{2}$. Therefore, since $|f(y)-f(x)+g(y)-g(x)|\leq|f(y)-f(x)|+|g(y)-g(x)|$ by Lemma \ref{lem:8.8}, we have that
+        \begin{align*}
+            |(f+g)(y)-(f+g)(x)| &= |f(y)-f(x)+g(y)-g(x)|\\
+            &\leq |f(y)-f(x)|+|g(y)-g(x)|\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+    \begin{proof}[Proof of b]
+        To prove that $c\cdot f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|c\cdot f(y)-c\cdot f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. We divide into two cases ($c=0$ and $c\neq 0$). Suppose first that $c=0$. Choose $\delta=1$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. It follows that $|0\cdot f(y)-0\cdot f(x)|=0<\epsilon$, as desired. Now suppose that $c\neq 0$. Then since $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\frac{\epsilon}{|c|}$. Choose this $\delta$ to be our $\delta$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Then by the above, we have that $|f(y)-f(x)|<\frac{\epsilon}{|c|}$. Therefore, $|c|\cdot|f(y)-f(x)|<\epsilon$, so we have that $|c\cdot f(y)-c\cdot f(x)|<\epsilon$, as desired.
+    \end{proof}
+\end{exercise}
+
+
+
+
+\end{document}

@@ -467,6 +467,48 @@ Finally, we prove another very important theorem that tells us about inverse fun
     \end{proof}
 \end{theorem}
 
+\begin{exercise}\label{exr:12.22}\marginnote{4/8:}
+    Consider the function $f(x)=x^n$ for a fixed $n\in\N$. Show that if $n$ is even, then $f$ is strictly increasing on the set of nonnegative real numbers and that if $n$ is odd, then $f$ is strictly increasing on all of $\R$. For a given $n$, let $A$ be the aforementioned set on which $f$ is strictly increasing. Define the inverse function $f^{-1}:f(A)\to A$ by $f^{-1}(x)=\sqrt[n]{x}$, which we sometimes also denote $f^{-1}(x)=x^{1/n}$. Use Theorem \ref{trm:12.21} to find the points $y\in f(A)$ at which $f^{-1}$ is differentiable, and determine $(f^{-1})'(y)$ at these points.
+    \begin{proof}
+        % $x^n$ is strictly increasing on $\R^+$ and $f'(0)=0$, so $f'(x)>0$ for all $x\in(0,\infty)$. \ref{cly:12.17}: $f$ is strictly increasing.
+        % \begin{itemize}
+        %     % \item Inductive hypothesis: $x^n$ is strictly increasing on $\R^+$.
+        %     \item Let $n$ be an arbitrary natural number.
+        %     \item Divide into two cases ($n$ is even; $n$ is odd).
+        %     \item If $n$ is even, WTS: Show that $f(x)=x^{n+1}$ is strictly increasing on $\R^+$.
+        %     \item Lemma \ref{lem:8.17}: $x^n$ is injective on $\R^+$.
+        %     \item $f'$ is injective on $\R^+$:
+        %     \begin{align*}
+        %         f'(x) &= f'(y)\\
+        %         (n+1)x^n &= (n+1)y^n\\
+        %         x^n &= y^n\tag*{Script \ref{sct:7}}\\
+        %         x &= y
+        %     \end{align*}
+        %     \item Corollary \ref{cly:11.12}: $f'$ is continuous.
+        %     \item Lemma \ref{lem:9.13}: $f'$ is strictly increasing or strictly decreasing.
+        %     \item $f'$ is strictly increasing.
+        %     \begin{itemize}
+        %         \item 
+        %     \end{itemize}
+        %     \item Script \ref{sct:7}: $f'(0)=0$.
+        % \end{itemize}
+
+        For the first part of the question, we must prove that $f$ is strictly increasing on $\R^+$ if $n$ is even and that $f$ is strictly increasing on $\R$ if $n$ is odd. To do so, we induct on $n$. For the base case $n=1$, we must confirm that $f(x)=x$ is strictly increasing on $\R$ (since $n$ is odd). By Exercise \ref{exr:12.8}, $f'(x)=1>0$ for all $x\in\R$. Thus, by Corollary \ref{cly:12.17} and Remark \ref{rmk:12.18}, $f$ is strictly increasing on $\R$, as desired. Now suppose inductively that the claim holds for some natural number $n\in\N$; we wish to confirm it for $n+1$. We divide into two cases ($n+1$ is even and $n+1$ is odd).\par\smallskip
+        If $n+1$ is even, then we must confirm that $f(x)=x^{n+1}$ is strictly increasing on $\R^+$. By Exercise \ref{exr:12.8}, $f'(x)=(n+1)x^n$, where $n$ is odd. To verify that $f'$ is strictly increasing on $\R^+$, Definition \ref{dfn:8.16} tells us that it will suffice to demonstrate that for all $x,y\in\R^+$ satisfying $x<y$, $f'(x)<f'(y)$. Let $x,y$ be arbitrary elements of $\R^+$ that satisfy $x<y$. Since $x^n$ is strictly increasing on $\R^+\subset\R$ by the inductive hypothesis, Definition \ref{dfn:8.16} tells us that $x^n<y^n$. This combined with the fact that $0<n+1$ by Script \ref{sct:0} implies by Lemma \ref{lem:7.24} that $(n+1)x^n<(n+1)y^n$. Thus, by the definition of $f'$, $f'(x)<f'(y)$, as desired. Note also that $f'(0)=(n+1)0^n=0$. Having established that $f'$ is strictly increasing on $\R^+$ and that $f'(0)=0$, we have that $f'(x)>0$ for all $x\in(0,\infty)$ by Definition \ref{dfn:8.16} because $0<x$ implies $0=f'(0)<f'(x)$. Thus, by Corollary \ref{cly:12.17} and Remark \ref{rmk:12.18}, $f$ is strictly increasing on $\R^+$, as desired.\par\smallskip
+        If $n+1$ is odd, then we must confirm that $f(x)=x^{n+1}$ is strictly increasing on $\R$. By Exercise \ref{exr:12.8}, $f'(x)=(n+1)x^n$, where $n$ is even. With a symmetric argument to that used above, we can verify that $f'$ is strictly increasing on $\R^+$. Since $f'(-x)=(n+1)(-x)^n=(n+1)x^n=f'(x)$ by Script \ref{sct:7}, we can similarly prove that $f'$ is strictly \emph{decreasing} on $\R^-$ (essentially, if $x,y\in\R^-$, then $x<y$ implies $-y<-x$ implies $f(-y)<f(-x)$ implies $f(x)>f(y)$, as desired). These two results combined with the fact that we still have $f'(0)=0$ imply by a symmetric argument to the above that $f'(x)>0$ for all $x\in(-\infty,0)\cup(0,\infty)$. But it follows by consecutive applications of Corollary \ref{cly:12.17} and Remark \ref{rmk:12.18} that $f$ is strictly increasing on $\R$, as desired.\par\medskip
+        For the second part of the question, we must find all of the points $y$ where $f^{-1}$ is differentiable and determine the derivative $(f^{-1})'(y)$ at these points for an arbitrary $n$. Let $n$ be an arbitrary element of $\N$. By Exercise \ref{exr:12.8}, $f$ is differentiable, and by both Exercise \ref{exr:12.8} and Corollary \ref{cly:11.12}, $f'$ is continuous. We divide into two cases ($n$ is even and $n$ is odd).\par\smallskip
+        Suppose first that $n$ is even. To begin, we will verify that $f(\R^+)=\R^+$. By Definition \ref{dfn:1.2}, to do so it will suffice to show that every $y\in f(\R^+)$ is an element of $\R^+$ and vice versa. Let $y$ be an arbitrary element of $f(\R^+)$. Then by Definition \ref{dfn:1.18}, $y=f(x)$ for some $x\in\R^+$. It follows since $x\in\R^+$ that $x\geq 0$. Consequently, since $f$ is strictly increasing on $\R^+$, Definition \ref{dfn:8.16} implies that $f(x)\geq f(0)=0$. But if $y=f(x)\geq 0$, then $y\in\R^+$, as desired. Now let $y$ be an arbitrary element of $\R^+$. We divide into three cases ($y=0$, $0<y\leq 1$ and $1<y$). If $y=0$, then since $f(0)=0^n=0=y$ and $0\in\R^+$, $y=f(x)$ for an $x\in\R^+$. Therefore, Definition \ref{dfn:1.18} asserts that $y\in f(\R^+)$, as desired. If $0<y\leq 1$, then since $f$ is continuous (notably on $[0,2]$) and $f(0)=0<y<2^n=f(2)$ (by Script \ref{sct:7}), Exercise \ref{exr:9.12} asserts that there exists a point $x\in\R$ with $0<x<2$ such that $f(x)=y$. Therefore, since $y=f(x)$ for an $x\in\R^+$ (we do know that $x>0$), Definition \ref{dfn:1.18} asserts that $y\in f(\R^+)$, as desired. If $y>1$, then since $f(0)=0<1<y<y^n=f(y)$ (by Script \ref{sct:7}), Exercise \ref{exr:9.12} asserts that there exists a point $x\in\R$ with $0<x<y$ such that $f(x)=y$. Therefore, since $y=f(x)$ for an $x\in\R^+$ (we do know that $x>0$), Definition \ref{dfn:1.18} asserts that $y\in f(\R^+)$, as desired.\par
+        Having established that $f(\R^+)=\R^+$, our task becomes one of finding all points $y\in\R^+$ at which $f^{-1}$ is differentiable, and determining $(f^{-1})'(y)$ at these points. By Theorem \ref{trm:12.21}, this means that we need only find all points $f(p)$ corresponding to a $p$ that satisfies $f'(p)\neq 0$. Since $f'(x)=nx^{n-1}$ by Exercise \ref{exr:12.8}, Script \ref{sct:7} implies that the only point $p$ where $f'(p)=0$ is $p=0$. Thus, we need only exclude $f(0)=0$ from our set of points at which $f^{-1}$ is differentiable. Therefore, we know that $f^{-1}$ is differentiable at every $y\in\R^+$ such that $y\neq 0$, or more simply, all $y$ in the interval $(0,\infty)$. Additionally, Theorem \ref{trm:12.21} implies that for any $y\in(0,\infty)$,
+        \begin{align*}
+            (f^{-1})'(y) &= \frac{1}{f'(f^{-1}(y))}\\
+            &= \frac{1}{n(f^{-1}(y))^{n-1}}\\
+            &= \frac{1}{n(y^{1/n})^{n-1}}\\
+            &= \frac{1}{n}\cdot y^{\frac{1-n}{n}}
+        \end{align*}\par\smallskip
+        The proof is symmetric if $n$ is odd.
+    \end{proof}
+\end{exercise}
+
 
 
 

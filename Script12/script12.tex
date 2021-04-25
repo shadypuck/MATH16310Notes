@@ -29,7 +29,6 @@
     We say that $f$ is \textbf{differentiable} (on $[a,b]$) if $f$ is differentiable on $(a,b)$ and $f'_+(a)$ and $f'_-(b)$ exist.
 \end{remark}
 
-% Take out exercise in preamble!!!
 \begin{lemma}\label{lem:12.3}
     Let $a\in\R$. Then
     \begin{equation*}
@@ -37,7 +36,7 @@
     \end{equation*}
     assuming that one of the two limits exists. (So if the limit on the left exists, so does the one on the right, and they are equal. Similarly, if the limit on the right exists, then so does the one on the left, and they are equal.)
     \begin{proof}
-        Suppose first that $\lim_{x\to a}f(x)$ exists, and let it be equal to $L$. To prove that $\lim_{h\to 0}f(a+h)$ exists and that it equals $\lim_{x\to a}f(x)$, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $(h+a)\in A$ and $0<|h-0|=|h|<\delta$, then $|f(a+h)-L|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{x\to a}f(x)$ exists, Definition \ref{dfn:11.1} implies that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L|<\epsilon$. We will choose this $\delta$ to be our $\delta$. Now suppose that $h$ is any number satisfying both $(h+a)\in A$ and $0<|h|<\delta$; we seek to show that $|f(a+h)-L|<\epsilon$. Since $(h+a)\in A$, $h+a=x$ for some $x\in A$. It follows that $h=x-a$, meaning that $x$ is an object that is both an element of $A$ and that satisfies $0<|h|=|x-a|<\delta$, so we know that $|f(a+h)-L|=|f(x)-L|<\epsilon$, as desired.\par
+        Suppose first that $\lim_{x\to a}f(x)$ exists, and let it be equal to $L$. To prove that $\lim_{h\to 0}f(a+h)$ exists and that it equals $\lim_{x\to a}f(x)$, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $(h+a)\in A$ and $0<|h-0|=|h|<\delta$, then $|f(a+h)-L|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{x\to a}f(x)$ exists, Definition \ref{dfn:11.1} implies that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L|<\epsilon$. We will choose this $\delta$ to be our $\delta$. Now let $h$ be an arbitrary number satisfying both $(h+a)\in A$ and $0<|h|<\delta$; we seek to show that $|f(a+h)-L|<\epsilon$. Since $(h+a)\in A$, $h+a=x$ for some $x\in A$. It follows that $h=x-a$, meaning that $x$ is an object that is both an element of $A$ and that satisfies $0<|h|=|x-a|<\delta$, so we know that $|f(a+h)-L|=|f(x)-L|<\epsilon$, as desired.\par
         The proof is symmetric in the other direction.
     \end{proof}
 \end{lemma}
@@ -62,20 +61,17 @@
 \begin{theorem}\label{trm:12.5}
     If $f$ is differentiable at $a$, then $f$ is continuous at $a$.
     \begin{proof}
-        To prove that $f$ is continuous at $a$, Theorem \ref{trm:11.5} tells us that it will suffice to show that $\lim_{x\to a}f(x)=f(a)$. By Definition \ref{dfn:12.1}, the hypothesis implies that $f'(a)$ exists. Additionally, by Exercise \ref{exr:11.6}, $g(x)=x-a$ is continuous at $a$. Thus, by Theorem \ref{trm:11.5}, $\lim_{x\to a}g(x)$ exists (and equals $g(a)$). Consequently, knowing that both $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}$ and $\lim_{x\to a}g(x)$ exist (the former by Theorem \ref{trm:12.4}), we have by Theorem \ref{trm:11.9} that the limit of their product exists and equals
+        To prove that $f$ is continuous at $a$, Theorem \ref{trm:11.5} tells us that it will suffice to show that $\lim_{x\to a}f(x)=f(a)$. By Definition \ref{dfn:12.1}, the hypothesis implies that $f'(a)$ exists. Thus, by Theorem \ref{trm:12.4}, we know that $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}$ exists. Additionally, by Exercise \ref{exr:11.6}, $g(x)=x-a$ is continuous at $a$. It follows by Theorem \ref{trm:11.5} that either $a\notin LP(A)$ or $\lim_{x\to a}g(x)$ exists (and equals $g(a)$). However, since $A$ is open by hypothesis and $a\in A$, Theorem \ref{trm:4.10} implies that there exists a region $R$ such that $a\in R$ and $R\subset A$. But $a\in R$ implies that $a\in LP(R)$ by Corollary \ref{cly:5.5}, and this combined with the fact that $R\subset A$ implies by Theorem \ref{trm:3.14} that $a\in LP(A)$\footnote{I will not go through this or similar derivations again, although they may be technically necessary. Indeed, assume moving on that statements analogous to $a\in LP(A)$ hold true.}. Thus, we have that $\lim_{x\to a}g(x)=g(a)=a-a=0$. Combining the last few results, we have
         \begin{align*}
-            \lim_{x\to a}\left( \frac{f(x)-f(a)}{x-a}\cdot(x-a) \right) = \lim_{x\to a}(f(x)-f(a))
+            0 &= \left( \lim_{x\to a}\frac{f(x)-f(a)}{x-a} \right)\cdot 0\\
+            &= \left( \lim_{x\to a}\frac{f(x)-f(a)}{x-a} \right)\left( \lim_{x\to a}(x-a) \right)\\
+            &= \lim_{x\to a}\left( \frac{f(x)-f(a)}{x-a}\cdot(x-a) \right)\tag*{Theorem \ref{trm:11.9}}\\
+            &= \lim_{x\to a}(f(x)-f(a))
         \end{align*}
-        Moreover, since $g$ is continuous at $a$, $\lim_{x\to a}g(x)=g(a)=a-a=0$. Thus,
+        If we now consider $f(a)$ to be a constant function (i.e., $\lim_{x\to a}f(a)=f(a)$ by Exercise \ref{exr:11.6}, Theorem \ref{trm:11.5}, and the above result that $a\in LP(A)$), it follows from the above that
         \begin{align*}
-            \lim_{x\to a}(f(x)-f(a)) &= \left( \lim_{x\to a}\frac{f(x)-f(a)}{x-a} \right)\left( \lim_{x\to a}(x-a) \right)\\
-            &= \left( \lim_{x\to a}\frac{f(x)-f(a)}{x-a} \right)\cdot 0\\
-            &= 0
-        \end{align*}
-        But then it follows by Theorem \ref{trm:11.9} if we consider $f(a)$ to be a constant function that
-        \begin{align*}
-            \lim_{x\to a}(f(x)-f(a))+f(a) &= 0+f(a)\\
-            \lim_{x\to a}(f(x)-f(a)+f(a)) &= f(a)\\
+            \lim_{x\to a}(f(x)-f(a))+\lim_{x\to a}f(a) &= 0+f(a)\\
+            \lim_{x\to a}(f(x)-f(a)+f(a)) &= f(a)\tag*{Theorem \ref{trm:11.9}}\\
             \lim_{x\to a}f(x) &= f(a)
         \end{align*}
         as desired.
@@ -85,8 +81,6 @@
 \begin{exercise}\label{exr:12.6}
     Show that the converse of Theorem \ref{trm:12.5} is not true.
     \begin{proof}
-        % Consider the absolute value function (Exercise \ref{exr:11.7}).
-
         The converse of Theorem \ref{trm:12.5} asserts that "if $f$ is continuous at $a$, then $f$ is differentiable at $a$." To falsify this statement, we will use the absolute value function $|x|$ as a counterexample. Let's begin.\par
         By Exercise \ref{exr:11.7}, $|x|$ is continuous. It follows by Theorem \ref{trm:9.10} that $|x|$ is continuous at 0. However, we can show that $|x|$ is not differentiable at 0.\par
         To do this, Definition \ref{dfn:12.1} and Theorem \ref{trm:12.4} tell us that it will suffice to verify that $\lim_{x\to 0}\frac{|x|-|0|}{x-0}=\lim_{x\to 0}\frac{|x|}{x}$ does not exist. Suppose for the sake of contradiction that $\lim_{x\to 0}\frac{|x|}{x}=L$. Then by Definition \ref{dfn:11.1}, for $\epsilon=1>0$, there exists a $\delta>0$ such that if $0<|x-0|=|x|<\delta$, then $|\frac{|x|}{x}-L|<1$. However, we can show that no such $\delta$ exists. Let $\delta>0$ be arbitrary. By Theorem \ref{trm:5.2}, there exists a number $x\in\R$ such that $0<x<\delta$. It follows by Definition \ref{dfn:8.4} and Exercise \ref{exr:8.5} that $0<|x|=|-x|<\delta$. Since both $x$ and $-x$ are in the appropriate range, we know that
@@ -130,6 +124,7 @@
             &= x^n+\sum_{i=1}^{n-1}x^{n-i}a^i-\sum_{i=1}^{n-1}x^{n-i}a^i-a^n\\
             &= x^n-a^n
         \end{align*}
+        as desired.
     \end{proof}
 \end{exercise}
 
@@ -137,14 +132,17 @@
     \begin{enumerate}[label={(\alph*)}]
         \item Let $n\in\N$. Suppose $f:\R\to\R$ is given by $f(x)=x^n$. Use Exercise \ref{exr:12.7} to prove that $f'(a)=na^{n-1}$ for all $a\in\R$.
         \begin{proof}
-            To prove that $f'(a)=na^{n-1}$ for all $a\in\R$, Theorem \ref{trm:12.4} tell us that it will suffice to show that $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=na^{n-1}$ for all $a\in\R$. Let $a$ be an arbitrary element of $\R$. By Corollary \ref{cly:11.12}, the polynomial $\sum_{i=0}^{n-1}x^{n-1-i}a^i$ is continuous. Thus, by Theorem \ref{trm:9.10}, it is continuous at $a$. It follows by Theorem \ref{trm:11.5} that $\lim_{x\to a}\sum_{i=0}^{n-1}x^{n-1-i}a^i=\sum_{i=0}^{n-1}a^{n-1-i}a^i$. Therefore,
+            Let $a$ be an arbitrary element of $\R$. To prove that $f'(a)=na^{n-1}$, Theorem \ref{trm:12.4} tell us that it will suffice to show that $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=na^{n-1}$. By Corollary \ref{cly:11.12}, the polynomial $\sum_{i=0}^{n-1}x^{n-1-i}a^i$ is continuous. Thus, by Theorem \ref{trm:9.10}, it is continuous at $a$. It follows by Theorem \ref{trm:11.5} that $\lim_{x\to a}\sum_{i=0}^{n-1}x^{n-1-i}a^i=\sum_{i=0}^{n-1}a^{n-1-i}a^i$.\par
+            Additionally, we can demonstrate that $\lim_{x\to a}\frac{x-a}{x-a}=1$. To verify that $\lim_{h\to 0}\frac{h}{h}=1$, Definition \ref{dfn:11.1} tells us that it will suffice to confirm that for all $\epsilon>0$, there exists a $\delta>0$ such that if $h\in\R$ and $0<|h-0|=|h|<\delta$, then $|\frac{h}{h}-1|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=1$, and let $h$ be an arbitrary element of $\R$ satisfying $0<|h|<\delta$. It follows by Script \ref{sct:7} that $|\frac{h}{h}-1|=|1-1|=0<\epsilon$, as desired. Since $\lim_{h\to 0}\frac{h}{h}=1$, we know by Script \ref{sct:7} that $\lim_{h\to 0}\frac{(a+h)-a}{(a+h)-a}=1$. Thus, by Lemma \ref{lem:12.3}, $\lim_{x\to a}\frac{x-a}{x-a}=1$, as desired.\par
+            It follows from the above two results that
             \begin{align*}
                 na^{n-1} &= \underbrace{a^{n-1}+\cdots+a^{n-1}}_{n\text{ times}}\\
                 &= \sum_{i=0}^{n-1}a^{n-1}\\
                 &= \sum_{i=1}^{n-1}a^{n-1-i}a^i\\
                 &= \lim_{x\to a}\sum_{i=0}^{n-1}x^{n-1-i}a^i\\
-                &= \lim_{x\to a}\frac{x-a}{x-a}\cdot\sum_{i=0}^{n-1}x^{n-1-i}a^i
-                \intertext{Note that we can make the above change because $\frac{x-a}{x-a}=1$ for all $x$ satisfying $0<|x-a|<\delta$, whatever $\delta$ may be.}
+                &= 1\cdot\left( \lim_{x\to a}\sum_{i=0}^{n-1}x^{n-1-i}a^i \right)\\
+                &= \left( \lim_{x\to a}\frac{x-a}{x-a} \right)\left( \lim_{x\to a}\sum_{i=0}^{n-1}x^{n-1-i}a^i \right)\\
+                &= \lim_{x\to a}\frac{x-a}{x-a}\cdot\sum_{i=0}^{n-1}x^{n-1-i}a^i\tag*{Theorem \ref{trm:11.9}}\\
                 &= \lim_{x\to a}\frac{x^n-a^n}{x-a}\tag*{Exercise \ref{exr:12.7}}\\
                 &= \lim_{x\to a}\frac{f(x)-f(a)}{x-a}\\
                 &= f'(a)\tag*{Theorem \ref{trm:12.4}}
@@ -153,15 +151,14 @@
         \end{proof}
         \item Let $k\in\R$. Prove that if $f:\R\to\R$ is given by $f(x)=k$, then $f'(a)=0$ for all $a\in\R$.
         \begin{proof}
-            To prove that $f'(a)=0$ for all $a\in\R$, Definition \ref{dfn:12.1} tells us that it will suffice to show that $\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}=0$ for all $a\in\R$. Let $a$ be an arbitrary element of $\R$. By Exercise \ref{exr:11.6}, the function $g(x)=0$ is continuous. Thus, by Theorem \ref{trm:9.10}, it is continuous at $a$. It follows by Theorem \ref{trm:11.5} that $\lim_{h\to 0}g(h)=g(0)=0$. Therefore,
+            Let $a$ be an arbitrary element of $\R$. To prove that $f'(a)=0$, Definition \ref{dfn:12.1} tells us that it will suffice to show that $\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}=0$. By Exercise \ref{exr:11.6}, the function $g:\R\to\R$ defined by $g(x)=0$ is continuous at every $x\in\R$, including 0. It follows by Theorem \ref{trm:11.5} that $\lim_{h\to 0}g(h)=g(0)=0$. Therefore,
             \begin{align*}
                 0 &= \lim_{h\to 0}g(h)\\
                 &= \lim_{h\to 0}0\\
-                &= \lim_{h\to 0}\frac{h}{h}\cdot 0
-                \intertext{Note that we can make the above change for the same reason as part (a).}
-                &- \lim_{h\to 0}\frac{0}{h}\\
+                &= \lim_{h\to 0}\frac{0}{h}\\
                 &= \lim_{h\to 0}\frac{k-k}{h}\\
-                &= \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}
+                &= \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}\\
+                &= f'(a)\tag*{Definition \ref{dfn:12.1}}
             \end{align*}
             as desired.
         \end{proof}
@@ -211,16 +208,16 @@
         \end{proof}
         \item Prove that $\frac{1}{g}$ is differentiable at $a$ (under an appropriate assumption) and compute $(\frac{1}{g})'(a)$ in terms of $g'(a)$ and $g(a)$. What assumption do you need to make?
         \begin{proof}
-            Assume, in addition to the fact that $g:A\to\R$ is differentiable at $a\in A$, that $g(a)\neq 0$.\par
-            To prove that $\frac{1}{g}$ is differentiable at $a$, Definition \ref{dfn:12.1} tells us that it will suffice to show $\lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}$ exists. Since $g$ is differentiable at $a$, we know by Definition \ref{dfn:12.1} that $\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}$ exists. For the same reason, we know by Theorem \ref{trm:12.5} that $g$ is continuous, i.e., continuous at $a$ by Theorem \ref{trm:9.10}. Consequently, by Theorem \ref{trm:11.5}, $\lim_{x\to a}g(x)$ exists (and equals $g(a)$). It follows by Lemma \ref{lem:12.3} that the preceding limit is equal to $\lim_{h\to 0}g(a+h)$. Thus, since it is also equal to $g(a)\neq 0$, we have by Theorem \ref{trm:11.9} that $\lim_{h\to 0}\frac{1}{g}(a+h)$ exists (and equals $\frac{1}{g(a)}$). Lastly, we have by Exercise \ref{exr:11.6} that the constant function $-\frac{1}{g(a)}$ is continuous at 0. Consequently, by Theorem \ref{trm:11.5}, $\lim_{h\to 0}-\frac{1}{g(a)}$ exists (and equals $-\frac{1}{g(a)}$). Combining this with the previous result, Theorem \ref{trm:11.9} asserts that the limit $\lim_{h\to 0}-\frac{1}{g(a+h)g(a)}$ exists (and equals $-\frac{1}{g(a)^2}$). Furthermore, it asserts that the limit of its product with $\lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}$ exists and equals
+            Assume that $g(a)\neq 0$.\par
+            To prove that $\frac{1}{g}$ is differentiable at $a$, Definition \ref{dfn:12.1} tells us that it will suffice to show that the limit $\lim_{h\to 0}\frac{(1/g)(a+h)-(1/g)(a)}{h}$ exists. Since $g$ is differentiable at $a$, we know by Definition \ref{dfn:12.1} that $\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}$ exists. For the same reason, we know by Theorem \ref{trm:12.5} that $g$ is continuous, i.e., continuous at $a$ by Theorem \ref{trm:9.10}. Consequently, by Theorem \ref{trm:11.5}, $\lim_{x\to a}g(x)$ exists (and equals $g(a)$). It follows by Lemma \ref{lem:12.3} that the preceding limit is equal to $\lim_{h\to 0}g(a+h)$. Thus, since it is also equal to $g(a)\neq 0$, we have by Theorem \ref{trm:11.9} that $\lim_{h\to 0}\frac{1}{g}(a+h)$ exists (and equals $\frac{1}{g(a)}$). Lastly, we have by Exercise \ref{exr:11.6} that the constant function $-\frac{1}{g(a)}$ is continuous at 0. Consequently, by Theorem \ref{trm:11.5}, $\lim_{h\to 0}-\frac{1}{g(a)}$ exists (and equals $-\frac{1}{g(a)}$). Combining this with the previous result, Theorem \ref{trm:11.9} asserts that the limit $\lim_{h\to 0}-\frac{1}{g(a+h)g(a)}$ exists (and equals $-\frac{1}{g(a)^2}$). Furthermore, it asserts that the limit of its product with $\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}$ exists and equals
             \begin{align*}
                 \lim_{h\to 0}-\frac{1}{g(a+h)g(a)}\cdot\frac{g(a+h)-g(a)}{h} &= \lim_{h\to 0}\frac{\frac{g(a)-g(a+h)}{g(a+h)g(a)}}{h}\\
                 &= \lim_{h\to 0}\frac{\frac{1}{g(a+h)}-\frac{1}{g(a)}}{h}\\
-                &= \lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}
+                &= \lim_{h\to 0}\frac{\frac{1}{g}(a+h)-\frac{1}{g}(a)}{h}
             \end{align*}
-            as desired. Having established that $\lim_{h\to 0}\frac{(\frac{1}{g})(a+h)-(\frac{1}{g})(a)}{h}$ exists, $(\frac{1}{g})'(a)$ can be computed in terms of $g(a)$ and $g'(a)$ with the following algebra.
+            as desired. Having established that $\lim_{h\to 0}\frac{(1/g)(a+h)-(1/g)(a)}{h}$ exists, $(\frac{1}{g})'(a)$ can be computed in terms of $g(a)$ and $g'(a)$ with the following algebra.
             \begin{align*}
-                \left( \frac{1}{g} \right)'(a) &= \lim_{h\to 0}\frac{\left( \frac{1}{g} \right)(a+h)-\left( \frac{1}{g} \right)(a)}{h}\tag*{Definition \ref{dfn:12.1}}\\
+                \left( \frac{1}{g} \right)'(a) &= \lim_{h\to 0}\frac{\frac{1}{g}(a+h)-\frac{1}{g}(a)}{h}\tag*{Definition \ref{dfn:12.1}}\\
                 &= \lim_{h\to 0}-\frac{1}{g(a+h)g(a)}\cdot\frac{g(a+h)-g(a)}{h}\\
                 &= \lim_{h\to 0}-\frac{1}{g(a+h)g(a)}\cdot\lim_{h\to 0}\frac{g(a+h)-g(a)}{h}\tag*{Theorem \ref{trm:11.9}}\\
                 &= -\frac{g'(a)}{g(a)^2}
@@ -228,7 +225,7 @@
         \end{proof}
         \item Prove that $\frac{f}{g}$ is differentiable at $a$ (under an appropriate assumption) and compute $(\frac{f}{g})'(a)$ in terms of $f(a)$, $g(a)$, $f'(a)$, and $g'(a)$. What assumption do you need to make?
         \begin{proof}
-            Assume, in addition to the fact that $g:A\to\R$ is differentiable at $a\in A$, that $g(a)\neq 0$.\par
+            Assume that $g(a)\neq 0$.\par
             It follows by part (c) that $\frac{1}{g}$ is differentiable at $a$, and then by part (b) that $f\cdot\frac{1}{g}=\frac{f}{g}$ is differentiable at $a$.\par
             Having established that $(\frac{f}{g})'(a)$ exists, it can be computed in terms of $f(a)$, $g(a)$, $f'(a)$, and $g'(a)$ with the following algebra.
             \begin{align*}
@@ -259,8 +256,9 @@
             \end{cases}
         \end{equation*}
         It is clear from the definition that the function is defined for all $x\in A$.\par
-        To demonstrate that $\varphi$ is continuous at $a$, Theorem \ref{trm:11.5} tells us that it will suffice to confirm that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|\varphi(x)-\varphi(a)|=|\varphi(x)-f'(g(a))|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is differentiable at $g(a)$, we know that $\lim_{y\to g(a)}\frac{f(y)-f(g(a))}{y-g(a)}=f'(g(a))$. It follows by Definition \ref{dfn:11.1} that there is some $\delta'>0$ such that if $y\in I$ and $0<|y-g(a)|<\delta'$, then $|\frac{f(y)-f(g(a))}{y-g(a)}-f'(g(a))|<\epsilon$. Additionally, since $g$ is differentiable (hence continuous by Theorem \ref{trm:12.5}) at $a$, we have by Theorem \ref{trm:11.5} that there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|g(x)-g(a)|<\delta'$.\par
+        To confirm that $\varphi$ is continuous at $a$, Theorem \ref{trm:11.5} tells us that it will suffice to demonstrate that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|\varphi(x)-\varphi(a)|=|\varphi(x)-f'(g(a))|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is differentiable at $g(a)$, Theorem \ref{trm:12.4} asserts that $\lim_{y\to g(a)}\frac{f(y)-f(g(a))}{y-g(a)}=f'(g(a))$. It follows by Definition \ref{dfn:11.1} that there is some $\delta'>0$ such that if $y\in I$ and $0<|y-g(a)|<\delta'$, then $|\frac{f(y)-f(g(a))}{y-g(a)}-f'(g(a))|<\epsilon$. Additionally, since $g$ is differentiable (hence continuous by Theorem \ref{trm:12.5}) at $a$, we have by Theorem \ref{trm:11.5} that there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|g(x)-g(a)|<\delta'$.\par
         Using the above $\delta$, let $x$ be an arbitrary element of $A$ such that $|x-a|<\delta$. We now divide into two cases ($g(x)=g(a)$ and $g(x)\neq g(a)$). If $g(x)=g(a)$, then $|\varphi(x)-f'(g(a))|=|f'(g(a))-f'(g(a))|=0<\epsilon$, as desired. If $g(x)\neq g(a)$, then we continue. Since $|x-a|<\delta$, we have that $|g(x)-g(a)|<\delta'$. This combined with the fact that $g(x)\in I$ and $g(x)\neq g(a)$, i.e., $0<|g(x)-g(a)|$ illustrates that $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))|=|\varphi(x)-f'(g(a))|<\epsilon$. Therefore, $\varphi$ is continuous at $a$.\par
+        % We now seek to use this result to verify that $\lim_{x\to a}\frac{f(g(x))-f(g(a))}{g(x)-g(a)}=f'(g(a))$. To do so, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\varphi$ is continuous at $a$, Theorem \ref{trm:11.5} asserts that there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|\varphi(x)-\varphi(a)|<\epsilon$. Choose this $\delta$ to be our $\delta$. Let $x$ be an arbitrary element of $A$ that satisfies $0<|x-a|<\delta$. We divide into two cases ($g(x)=g(a)$ and $g(x)\neq g(a)$). If $g(x)=g(a)$ ... Perhaps a case where $g'(a)=0$ and $g'(a)\neq 0$???
         It follows by Theorem \ref{trm:11.5} that $\lim_{x\to a}\varphi(x)=\varphi(a)=f'(g(a))$. Additionally, since $g$ is differentiable at $a$, Definition \ref{dfn:12.1} and Theorem \ref{trm:12.4} tell us that $\lim_{x\to a}\frac{g(x)-g(a)}{x-a}$ exists (and equals $g'(a)$). The combination of the past two results imply by Theorem \ref{trm:11.9} that the product of the limits exists and equals
         \begin{align*}
             f'(g(a))\cdot g'(a) &= \lim_{x\to a}\varphi(x)\cdot\frac{g(x)-g(a)}{x-a}\\
@@ -286,7 +284,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
 \begin{theorem}\label{trm:12.13}
     Let $f:A\to\R$ be differentiable at $a$. Suppose that $f(a)$ is the maximum value or minimum value of $f$. Then $f'(a)=0$.
     \begin{proof}
-        Suppose first that $f(a)$ is the maximum value of $f$, and suppose for the sake of contradiction that $f'(a)\neq 0$. Then $f'(a)>0$ or $f'(a)<0$. We now divide into two cases. If $f'(a)>0$, then by Theorem \ref{trm:12.4}, $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}>0$. Thus, by Lemma \ref{lem:11.8}, there exists a region $R$ with $a\in\R$ such that $\frac{f(x)-f(a)}{x-a}>0$ for all $x\in R\cap A$. Additionally, since $A$ is open, Theorem \ref{trm:4.10} implies that there exists a region $S$ with $a\in S$ and $S\subset A$. The previous two results when combined imply by Theorem \ref{trm:3.18} that $R\cap S=(c,d)$, where $(c,d)$ is a region containing $a$. Since $a\in(c,d)$, Theorem \ref{trm:5.2} implies that there exists a point $y\in\R$ such that $a<y<d$. Clearly, since $y\in(c,d)=R\cap S$ and $S\subset A$, we have that $y\in R\cap A$. It follows that $\frac{f(y)-f(a)}{y-a}>0$. Furthermore, $y>a$ implies that $y-a>0$. Therefore, by Definition \ref{dfn:7.21}, $f(y)-f(a)=\frac{f(y)-f(a)}{y-a}\cdot(y-a)>0$. But this means that $f(y)>f(a)$, i.e., that $f(a)$ is not the last point of $f(A)$ (by Definition \ref{dfn:3.3}), i.e., that $f(a)$ is not the maximum value of $f$ (by Definition \ref{dfn:12.11}), a contradiction. The argument is symmetric in the other case.\par
+        Suppose first that $f(a)$ is the maximum value of $f$, and suppose for the sake of contradiction that $f'(a)\neq 0$. Then $f'(a)>0$ or $f'(a)<0$. We now divide into two cases. If $f'(a)>0$, then by Theorem \ref{trm:12.4}, $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}>0$. Thus, by Lemma \ref{lem:11.8}, there exists a region $R$ with $a\in\R$ such that $\frac{f(x)-f(a)}{x-a}>0$ for all $x\in R\cap A$. Additionally, since $A$ is open, Theorem \ref{trm:4.10} implies that there exists a region $S$ with $a\in S$ and $S\subset A$. It follows by Theorem \ref{trm:3.18} that $R\cap S=(c,d)$, where $(c,d)$ is a region containing $a$. Since $a\in(c,d)$, Theorem \ref{trm:5.2} implies that there exists a point $y\in\R$ such that $a<y<d$. Clearly, since $y\in(c,d)=R\cap S$ and $S\subset A$, we have that $y\in R\cap A$. It follows that $\frac{f(y)-f(a)}{y-a}>0$. Furthermore, $y>a$ implies that $y-a>0$. Therefore, by Definition \ref{dfn:7.21}, $f(y)-f(a)=\frac{f(y)-f(a)}{y-a}\cdot(y-a)>0$. But this means that $f(y)>f(a)$, i.e., that $f(a)$ is not the last point of $f(A)$ (by Definition \ref{dfn:3.3}), i.e., that $f(a)$ is not the maximum value of $f$ (by Definition \ref{dfn:12.11}), a contradiction. The argument is symmetric in the other case.\par
         The proof is symmetric in the other case.
     \end{proof}
 \end{theorem}
@@ -294,7 +292,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
 \begin{corollary}\label{cly:12.14}
     Let $f:A\to\R$ be differentiable at $a$. Suppose that $f(a)$ is a local maximum or local minimum value of $f$. Then $f'(a)=0$.
     \begin{proof}
-        Suppose first that $f(a)$ is a local maximum of $f$. Then by Definition \ref{dfn:12.11}, there exists a region $R$ containing $a$ such that $f(a)$ is the last point of $f(A\cap R)$. Now consider the restriction of $f$ to $A\cap R$. It follows from Definition \ref{dfn:9.6} that $f|_{A\cap R}$ is differentiable at $a$, that $f|_{A\cap R}(A\cap R)=f(A\cap R)$, and that $f_{A\cap R}(a)=f(a)$ is the last point of $f|_{A\cap R}(A\cap R)$. The latter two results imply by Definition \ref{dfn:12.11} that $f_{A\cap R}(a)$ is the maximum value of $f|_{A\cap R}$. This combined with the fact that $f|_{A\cap R}$ is differentiable at $a$ implies by Theorem \ref{trm:12.13} that $f|_{A\cap R}'(a)=f'(a)=0$, as desired.
+        Suppose first that $f(a)$ is a local maximum of $f$. Then by Definition \ref{dfn:12.11}, there exists a region $R$ containing $a$ such that $f(a)$ is the last point of $f(A\cap R)$. Now consider the restriction of $f$ to $A\cap R$. It follows from Definition \ref{dfn:9.6} that $f|_{A\cap R}$ is differentiable at $a$, that $f|_{A\cap R}(A\cap R)=f(A\cap R)$, and that $f|_{A\cap R}(a)=f(a)$ is the last point of $f|_{A\cap R}(A\cap R)$. The latter two results imply by Definition \ref{dfn:12.11} that $f|_{A\cap R}(a)$ is the maximum value of $f|_{A\cap R}$. This combined with the fact that $f|_{A\cap R}$ is differentiable at $a$ implies by Theorem \ref{trm:12.13} that $(f|_{A\cap R})'(a)=f'(a)=0$, as desired.
     \end{proof}
 \end{corollary}
 
@@ -303,7 +301,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
     \begin{proof}
         We divide into two cases ($f(x)=0$ for all $x\in[a,b]$, and $f(x)\neq 0$ for some $x\in[a,b]$).\par
         Suppose first that $f(x)=0$ for all $x\in[a,b]$. By Theorem \ref{trm:5.2}, we can choose a $\lambda\in(a,b)$. It follows from the hypothesis that $f(\lambda)=f(x)$ for all $f(x)\in f([a,b])$. This can be weakened to $f(\lambda)\geq f(x)$ for all $f(x)\in f([a,b])$. Thus, by Definition \ref{dfn:3.3}, $f(\lambda)$ is the last point of $f([a,b])$. Consequently, by Definition \ref{dfn:12.11}, $f(\lambda)$ is the maximum value of $f$. This combined with the fact that $f$ is differentiable at $\lambda$ (since $\lambda\in(a,b)$ and $f$ is differentiable on $(a,b)$) implies by Theorem \ref{trm:12.13} that $f'(\lambda)=0$, as desired.\par
-        Now suppose that $f(x)\neq 0$ for some $x\in[a,b]$ which we shall call $x_0$. We divide into two cases again ($f(x_0)>0$ and $f(x_0)<0$). If $f(x_0)>0$, then by Exercise \ref{exr:10.21}, there exists a point $\lambda\in[a,b]$ such that $f(\lambda)\geq f(x)$ for all $x\in[a,b]$. It follows that $f(\lambda)\geq f(x_0)>0$, so $f(\lambda)\neq f(a)=f(b)$. Thus, by Definition \ref{dfn:1.16}, $\lambda\neq a$ and $\lambda\neq b$. This combined with the fact that $\lambda\in[a,b]$ implies by Script \ref{sct:8} that $\lambda\in(a,b)$. Now as before, we can determine from the fact that $f(\lambda)\geq f(x)$ for all $x\in[a,b]$ that $f(\lambda)$ is the maximum value of $f$. This combined with the fact that $f$ is differentiable at $\lambda$ (since $\lambda\in(a,b)$ and $f$ is differentiable on $(a,b)$) implies by Theorem \ref{trm:12.13} that $f'(\lambda)=0$, as desired. The argument is symmetric in the other case.
+        Now suppose that $f(x)\neq 0$ for some $x\in[a,b]$ which we shall call $x_0$. We divide into two cases again ($f(x_0)>0$ and $f(x_0)<0$). Suppose first that $f(x_0)>0$. Since $f:[a,b]\to\R$ is continuous, Exercise \ref{exr:10.21} asserts that there exists a point $\lambda\in[a,b]$ such that $f(\lambda)\geq f(x)$ for all $x\in[a,b]$. It follows that $f(\lambda)\geq f(x_0)>0$, so $f(\lambda)\neq f(a)=f(b)$. Thus, by Definition \ref{dfn:1.16}, $\lambda\neq a$ and $\lambda\neq b$. This combined with the fact that $\lambda\in[a,b]$ implies by Script \ref{sct:8} that $\lambda\in(a,b)$. Now as before, we can determine from the fact that $f(\lambda)\geq f(x)$ for all $x\in[a,b]$ that $f(\lambda)$ is the maximum value of $f$. This combined with the fact that $f$ is differentiable at $\lambda$ (since $\lambda\in(a,b)$ and $f$ is differentiable on $(a,b)$) implies by Theorem \ref{trm:12.13} that $f'(\lambda)=0$, as desired. The argument is symmetric in the other case.
     \end{proof}
 \end{theorem}
 
@@ -453,16 +451,16 @@ Finally, we prove another very important theorem that tells us about inverse fun
         %     % \end{align*}
         % \end{itemize}
 
-        Since $f':(a,b)\to\R$ is continuous, Theorem \ref{trm:9.10} implies that it is continuous at $p\in(a,b)$. Thus, by Theorem \ref{trm:11.5}, either $p\notin LP((a,b))$ or $\lim_{x\to p}f'(x)=f'(p)$. However, the fact that $p\in(a,b)$ implies that $p\in LP((a,b))$ by Corollary \ref{cly:5.5}, so we know that $\lim_{x\to p}f'(x)=f'(p)$. This combined with the facts that $f'(p)\neq 0$ (i.e., $f'(p)>0$ or $f'(p)<0$) and $f'$ is continuous at $p$ implies by Lemma \ref{lem:11.8} that there exists a region $R$ with $p\in R$ such that $f'(x)>0$ for all $x\in R\cap(a,b)$ or $f'(x)<0$ for all $x\in R\cap(a,b)$. Clearly, $R\cap(a,b)=R$. Consequently, since $f'(x)>0$ for all $x\in R$ or $f'(x)<0$ for all $x\in R$, Corollary \ref{cly:12.17} asserts that $f$ is strictly increasing or strictly decreasing on $R$. Since $R$ is an interval by Lemma \ref{lem:8.3}, the previous result implies by Lemma \ref{lem:8.17} that $f$ is injective on $R$. Therefore, $R=R\cap(a,b)\subset(a,b)$ by Theorem \ref{trm:1.7}, $p\in R$ by definition, and $f|_R$ is injective, as desired.\par
+        Since $f':(a,b)\to\R$ is continuous, Theorem \ref{trm:9.10} implies that it is continuous at $p\in(a,b)$. Thus, by Theorem \ref{trm:11.5}, $\lim_{x\to p}f'(x)=f'(p)$. This combined with the facts that $f'(p)\neq 0$ (i.e., $f'(p)>0$ or $f'(p)<0$) and $f'$ is continuous at $p$ implies by Lemma \ref{lem:11.8} that there exists a region $R$ with $p\in R$ such that $f'(x)>0$ for all $x\in R\cap(a,b)$ or $f'(x)<0$ for all $x\in R\cap(a,b)$. Clearly, $R\cap(a,b)=R$. Consequently, since $f'(x)>0$ for all $x\in R$ or $f'(x)<0$ for all $x\in R$, Corollary \ref{cly:12.17} asserts that $f$ is strictly increasing or strictly decreasing on $R$. Since $R$ is an interval by Lemma \ref{lem:8.3}, the previous result implies by Lemma \ref{lem:8.17} that $f$ is injective on $R$. Therefore, we have found an $R=R\cap(a,b)\subset(a,b)$ by Theorem \ref{trm:1.7} with $p\in R$ such that $f|_R$ is injective, as desired.\par
         From now on, we will denote $f|_R:R\to\R$ by $f$. Since $f$ is differentiable, Definition \ref{dfn:12.1} asserts that it is differentiable for all $x\in R$. Thus, by Theorem \ref{trm:12.5}, $f$ is continuous for all $x\in R$. Consequently, by Theorem \ref{trm:9.10}, $f$ is continuous. This combined with the previously proven fact that $f$ is injective implies by Theorem \ref{trm:9.14} that the inverse function $f^{-1}:f(R)\to R$ exists and is continuous.\par
-        To prove that $(f^{-1})'(f(p))$ exists and equals $\frac{1}{f'(p)}$, Theorem \ref{trm:12.4} tells us that it will suffice to show that $\lim_{y\to f(p)}\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}=\frac{1}{f'(p)}$. To do this, Theorem \ref{dfn:12.1} tells us that it will suffice to confirm that for all $\epsilon>0$, there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|\frac{f^{-1}(y)-f^{-1}(f(p))}{y-p}-\frac{1}{f'(p)}|<\epsilon$. Let $\epsilon>0$ be arbitrary. We have that
+        To prove that $(f^{-1})'(f(p))$ exists and equals $\frac{1}{f'(p)}$, Theorem \ref{trm:12.4} tells us that it will suffice to show that $\lim_{y\to f(p)}\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}=\frac{1}{f'(p)}$. To do this, Definition \ref{dfn:11.1} tells us that it will suffice to confirm that for all $\epsilon>0$, there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|\frac{f^{-1}(y)-f^{-1}(f(p))}{y-p}-\frac{1}{f'(p)}|<\epsilon$. Let $\epsilon>0$ be arbitrary. We have that
         \begin{align*}
             \frac{1}{f'(p)} &= \frac{1}{\lim_{x\to p}\frac{f(x)-f(p)}{x-p}}\tag*{Theorem \ref{trm:12.4}}\\
             &= \lim_{x\to p}\frac{x-p}{f(x)-f(p)}\tag*{Theorem \ref{trm:11.9}}\\
             &= \lim_{x\to p}\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}\tag*{Definition \ref{dfn:1.18}}
         \end{align*}
         Thus, by Definition \ref{dfn:11.1}, there exists a $\delta'>0$ such that if $x\in R$ and $0<|x-p|<\delta'$, then $|\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}-\frac{1}{f'(p)}|<\epsilon$.\par
-        The previously proven fact that $f^{-1}$ is continuous implies by Theorem \ref{trm:9.10} that $f^{-1}$ is continuous at $f(p)$. It follows by Theorem \ref{trm:11.5} that either $f(p)\notin LP(f(R))$ or $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$. However, as we will now see, $f(p)\in LP(f(R))$. To begin, the fact that $R$ is a region implies by Lemma \ref{lem:8.3} that $R$ is an interval. It follows by Theorem \ref{trm:8.15} that $R$ is connected, by Theorem \ref{trm:9.11} that $f(R)$ is connected, by Theorem \ref{trm:8.15} again that $f(R)$ is an interval, and finally by extensions of Corollaries \ref{cly:5.5} and \ref{cly:5.14} that $f(p)\in LP(f(R))$. Thus, with this case eliminated, we know that $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$. Consequently, by Definition \ref{dfn:1.11}, there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|f^{-1}(y)-f^{-1}(f(p))|<\delta'$. With a slight modification from Definition \ref{dfn:1.18}, we have that there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|x-p|<\delta'$.\par
+        The previously proven fact that $f^{-1}$ is continuous implies by Theorem \ref{trm:9.10} that $f^{-1}$ is continuous at $f(p)$. It follows by Theorem \ref{trm:11.5} that either $f(p)\notin LP(f(R))$ or $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$. However, as we will now see, $f(p)\in LP(f(R))$. To begin, the fact that $R$ is a region implies by Lemma \ref{lem:8.3} that $R$ is an interval. It follows by Theorem \ref{trm:8.15} that $R$ is connected, by Theorem \ref{trm:9.11} that $f(R)$ is connected, by Theorem \ref{trm:8.15} again that $f(R)$ is an interval, and finally by extensions of Corollaries \ref{cly:5.5} and \ref{cly:5.14} that $f(p)\in LP(f(R))$. Thus, with this case eliminated, we know that $\lim_{y\to f(p)}f^{-1}(y)=f^{-1}(f(p))$. Consequently, by Definition \ref{dfn:1.11}, there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|f^{-1}(y)-f^{-1}(f(p))|<\delta'$. With a slight modification from Definition \ref{dfn:1.18} (and the definition that $y=f(x)$), we have that there exists a $\delta>0$ such that if $y\in f(R)$ and $0<|y-f(p)|<\delta$, then $|x-p|<\delta'$.\par
         Choose the above $\delta$ as our $\delta$. Let $y=f(x)$ be an arbitrary element of $f(R)$ satisfying $0<|y-f(p)|<\delta$. Then $|x-p|<\delta'$. We can also show that $0<|x-p|$: From Script \ref{sct:8}, the fact that $0<|y-f(p)|$ implies that $f(x)\neq f(p)$; hence by Definition \ref{dfn:1.20} and the fact that $f$ is injective, $x\neq p$; hence by Script \ref{sct:8} again, $0<|x-p|$. Continuing, since $y=f(x)\in f(R)$, we have by Definition \ref{dfn:1.18} that $x\in R$. Thus, we have that $x\in R$ and $0<|x-p|<\delta'$, so we know that $|\frac{f^{-1}(f(x))-f^{-1}(f(p))}{f(x)-f(p)}-\frac{1}{f'(p)}|<\epsilon$. Therefore, with a slight modification from Definition \ref{dfn:1.18}, we have that $|\frac{f^{-1}(y)-f^{-1}(f(p))}{y-f(p)}-\frac{1}{f'(p)}|<\epsilon$, as desired.
     \end{proof}
 \end{theorem}
@@ -506,6 +504,10 @@ Finally, we prove another very important theorem that tells us about inverse fun
             &= \frac{1}{n}\cdot y^{\frac{1-n}{n}}
         \end{align*}\par\smallskip
         The proof is symmetric if $n$ is odd.
+        
+        
+        % then by Theorem \ref{trm:12.21}, $f^{-1}$ is differentiable at all points $f(p)\in f(\R^+)$ corresponding to a $p$ that satisfies $f'(p)\neq 0$. $f^{-1}:f(\R^+)\to\R^+$.
+        % If $n$ is even, then to find the points $f(p)$ where $f^{-1}$ is differentiable and determine the derivative $(f^{-1})'(f(p))$ at these points, Theorem \ref{trm:12.21} tells us that it will suffice to locate all points $f(p)$ corresponding to a $p$ that satisfies $f'(p)\neq 0$.
     \end{proof}
 \end{exercise}
 

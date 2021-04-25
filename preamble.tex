@@ -3,6 +3,7 @@
 \usepackage{csquotes}
 \usepackage{xr}
 \usepackage{marginnote}
+\usepackage{scrextend}
 \usepackage{enumitem}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[hidelinks]{hyperref}
@@ -24,6 +25,9 @@
 \externaldocument{../../../Misc./Sequence Combined Notes/Honors Calculus IBL/combined}
 
 \reversemarginpar
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
 \setitemize[3]{label=\scriptsize$\blacksquare$}
 

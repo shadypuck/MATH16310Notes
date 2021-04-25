@@ -210,6 +210,107 @@
     \end{proof}
 \end{exercise}
 
+\begin{theorem}\label{trm:13.6}\marginnote{\emph{4/13:}}
+    Suppose that $X\subset\R$ is compact and $f:X\to\R$ is continuous. Then $f$ is uniformly continuous.
+    \begin{proof}
+        % \begin{itemize}
+        %     \item Theorem \ref{trm:9.10}: $f$ is continuous at every $x\in X$.
+        %     \item Theorem \ref{trm:11.5}: For every $x\in X$, there exists a $\delta_x>0$ such that if $y\in X$ and $|y-x|<\delta_x$, then $|f(y)-f(x)|<\frac{\epsilon}{2}$.
+        %     \item Let $\mathcal{G}=\{(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})\mid x\in X\}$.
+        %     \item (Confirm $\mathcal{G}$ is an open cover of $X$) Definition \ref{dfn:10.3}: Demonstrate that every $x\in X$ is an element of $(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})$ for some $(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})\in\mathcal{G}$.
+        %     \begin{itemize}
+        %         \item Let $x$ be an arbitrary element of $X$.
+        %         \item Exercise \ref{exr:8.9}: $|x-x|=0<\frac{\delta_x}{2} \Rightarrow x\in(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})$.
+        %         \item The above: $(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})\in\mathcal{G}$.
+        %         \item We are done.
+        %     \end{itemize}
+        %     \item Definition \ref{dfn:10.4}: There exists a finite subset $\mathcal{G}'$ of $\mathcal{G}$ that is also an open cover of $X$.
+        %     \item $\mathcal{G}'$ will be of the form $\{(x_i-\frac{\delta_{x_i}}{2},x+\frac{\delta_{x_i}}{2})\mid 1\leq i\leq n\}$.
+        %     \item Choose $\delta=\min_{1\leq i\leq n}(\frac{\delta_{x_i}}{2})$.
+        %     \item Let $x,y$ be arbitrary elements of $X$ that satisfy $|y-x|<\delta$.
+        %     \item Definition \ref{dfn:10.3}: $x\in(x_i-\frac{\delta_{x_i}}{2},x_i+\frac{\delta_{x_i}}{2})$ for some $(x_i-\frac{\delta_{x_i}}{2},x_i+\frac{\delta_{x_i}}{2})\in\mathcal{G}'$.
+        %     \item Exercise \ref{exr:8.9}: $|x-x_i|<\frac{\delta_{x_i}}{2}$.
+        %     \item Script \ref{sct:7}: $|y-x|+|x-x_i|<\delta+\frac{\delta_{x_i}}{2}$.
+        %     \item By definition: $\delta\leq\frac{\delta_{x_i}}{2}$.
+        %     \item Combining the last few results:
+        %     \begin{align*}
+        %         |y-x_i| &\leq |y-x|+|x-x_i|\tag*{Lemma \ref{lem:8.8}}\\
+        %         &< \delta+\frac{\delta_{x_i}}{2}\\
+        %         &\leq \frac{\delta_{x_i}}{2}+\frac{\delta_{x_i}}{2}\\
+        %         &= \delta_{x_i}
+        %     \end{align*}
+        %     \item The above: $|f(y)-f(x_i)|<\frac{\epsilon}{2}$.
+        %     \item Additionally: $|x-x_i|<\frac{\delta_{x_i}}{2}<\delta_{x_i}$.
+        %     \item The above: $|f(x)-f(x_i)|<\frac{\epsilon}{2}$.
+        %     \item Script \ref{sct:7}: $|f(y)-f(x_i)|+|f(x)-f(x_i)|<\frac{\epsilon}{2}+\frac{\epsilon}{2}$.
+        %     \item Combining the last few results:
+        %     \begin{align*}
+        %         |f(y)-f(x)| &\leq |f(y)-f(x_i)|+|f(x_i)-f(x)|\tag*{Lemma \ref{lem:8.8}}\\
+        %         &= |f(y)-f(x_i)|+|f(x)-f(x_i)|\tag*{Exercise \ref{exr:8.5}}\\
+        %         &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+        %         &= \epsilon
+        %     \end{align*}
+        % \end{itemize}
+
+        To prove that $f$ is uniformly continuous, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is continuous on $X$, Theorem \ref{trm:9.10} asserts that $f$ is continuous at every $x\in X$. Thus, by Theorem \ref{trm:11.5}, for every $x\in X$, there exists a $\delta_x>0$ such that if $y\in X$ and $|y-x|<\delta_x$, then $|f(y)-f(x)|<\frac{\epsilon}{2}$. Let $\mathcal{G}=\{(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})\mid x\in X\}$. We will now confirm that $\mathcal{G}$ is an open cover of $X$. To do so, Definition \ref{dfn:10.3} tells us that it will suffice to demonstrate that every $x\in X$ is an element of $(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})$ for some $(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})\in\mathcal{G}$. Let $x$ be an arbitrary element of $X$. We know that $|x-x|=0<\frac{\delta_x}{2}$. Thus, by Exercise \ref{exr:8.9}, we have that $x\in(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})$. Since it follows from the above that $(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2})\in\mathcal{G}$, we are done.\par
+        Having shown that $\mathcal{G}$ is an open cover of $X$, the fact that $X$ is compact implies by Definition \ref{dfn:10.4} that there exists a finite subset $\mathcal{G}'$ of $\mathcal{G}$ that is also an open cover of $X$. It follows that $\mathcal{G}'$ will be of the form $\{(x_i-\frac{\delta_{x_i}}{2},x+\frac{\delta_{x_i}}{2})\mid 1\leq i\leq n\}$ where $n$ is some natural number. Thus, choose $\delta=\min_{1\leq i\leq n}(\frac{\delta_{x_i}}{2})$.\par
+        Let $x,y$ be arbitrary elements of $X$ that satisfy $|y-x|<\delta$. Since $\mathcal{G}'$ is an open cover of $X$, Definition \ref{dfn:10.3} implies that $x\in(x_i-\frac{\delta_{x_i}}{2},x_i+\frac{\delta_{x_i}}{2})$ for some $(x_i-\frac{\delta_{x_i}}{2},x_i+\frac{\delta_{x_i}}{2})\in\mathcal{G}'$. Considering this $x_i$ more closely, we can determine from the previous result and Exercise \ref{exr:8.9} that $|x-x_i|<\frac{\delta_{x_i}}{2}$. This combined with the hypothesis that $|y-x|<\delta$ implies by Script \ref{sct:7} that $|y-x|+|x-x_i|<\delta+\frac{\delta_{x_i}}{2}$. Additionally, note that by definition, $\delta\leq\frac{\delta_{x_i}}{2}$. Thus, combining the last few results, we have that
+        \begin{align*}
+            |y-x_i| &\leq |y-x|+|x-x_i|\tag*{Lemma \ref{lem:8.8}}\\
+            &< \delta+\frac{\delta_{x_i}}{2}\\
+            &\leq \frac{\delta_{x_i}}{2}+\frac{\delta_{x_i}}{2}\\
+            &= \delta_{x_i}
+        \end{align*}\par
+        At this point, we know that $|x-x_i|<\frac{\delta_{x_i}}{2}<\delta_{x_i}$ and that $|y-x_i|<\delta_{x_i}$. It follows by consecutive applications of the above that $|f(x)-f(x_i)|<\frac{\epsilon}{2}$ and $|f(y)-f(x_i)|<\frac{\epsilon}{2}$, respectively. Consequently, we have by Script \ref{sct:7} that $|f(y)-f(x_i)|+|f(x)-f(x_i)|<\frac{\epsilon}{2}+\frac{\epsilon}{2}$. Therefore, if we combine the last several results, we get
+        \begin{align*}
+            |f(y)-f(x)| &\leq |f(y)-f(x_i)|+|f(x_i)-f(x)|\tag*{Lemma \ref{lem:8.8}}\\
+            &= |f(y)-f(x_i)|+|f(x)-f(x_i)|\tag*{Exercise \ref{exr:8.5}}\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:13.7}
+    Prove that $f(x)=\sqrt{x}$ is uniformly continuous on $A=[0,+\infty)$.
+    \begin{lemma*}
+        Let $x,y$ be arbitrary elements of $A$. Then $|\sqrt{y}-\sqrt{x}|^2\leq|(\sqrt{y}-\sqrt{x})(\sqrt{y}+\sqrt{x})|$.
+        \begin{proof}
+            We will first verify that $|\sqrt{y}-\sqrt{x}|\leq|\sqrt{y}+\sqrt{x}|$. To do so, we divide into two cases ($\sqrt{y}\geq\sqrt{x}$ and $\sqrt{y}<\sqrt{x}$). If $\sqrt{y}\geq\sqrt{x}$, then by Definition \ref{dfn:7.21}, $\sqrt{y}-\sqrt{x}\geq 0$. It follows by Definition \ref{dfn:8.4} that $|\sqrt{y}-\sqrt{x}|=\sqrt{y}-\sqrt{x}$. Additionally, we have by an extension of Exercise \ref{exr:12.22} that $\sqrt{x}\geq 0$, implying that $2\sqrt{x}\geq 0$ by Definition \ref{dfn:7.21}. Thus, combining the last few results, we have that $|\sqrt{y}-\sqrt{x}|=\sqrt{y}-\sqrt{x}\leq\sqrt{y}-\sqrt{x}+2\sqrt{x}=\sqrt{y}+\sqrt{x}$. Consequently, we know that $0\leq|\sqrt{y}-\sqrt{x}|\leq\sqrt{y}+\sqrt{x}$, so Definition \ref{dfn:8.4} implies that $|\sqrt{y}+\sqrt{x}|=\sqrt{y}+\sqrt{x}$. Therefore, we have that $|\sqrt{y}-\sqrt{x}|\leq\sqrt{y}+\sqrt{x}=|\sqrt{y}+\sqrt{x}|$, as desired. The argument is symmetric in the other case.\par
+            Having established that $|\sqrt{y}-\sqrt{x}|\leq|\sqrt{y}+\sqrt{x}|$ and knowing that $0\leq|\sqrt{y}-\sqrt{x}|$, we have by Lemma \ref{lem:7.24} that $|\sqrt{y}-\sqrt{x}|\cdot|\sqrt{y}-\sqrt{x}|\leq|\sqrt{y}+\sqrt{x}|\cdot|\sqrt{y}-\sqrt{x}|$. It follows by basic algebra that $|\sqrt{y}-\sqrt{x}|^2\leq|(\sqrt{y}-\sqrt{x})(\sqrt{y}+\sqrt{x})|$, as desired.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Exercise \ref{exr:13.7}]
+        To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon^2$. Let $x,y$ be arbitrary elements of $X$ that satisfy $|y-x|<\delta$. Thus, since $(\sqrt{y}-\sqrt{x})(\sqrt{y}+\sqrt{x})=y-x$, the lemma asserts that $|\sqrt{y}-\sqrt{x}|^2\leq|(\sqrt{y}-\sqrt{x})(\sqrt{y}+\sqrt{x})|=|y-x|<\epsilon^2$. Therefore, by Script \ref{sct:7}, $|\sqrt{y}-\sqrt{x}|<\epsilon$, i.e., $|f(y)-f(x)|<\epsilon$, as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{corollary}\label{cly:13.8}
+    Suppose that $f:[a,b]\to\R$ is continuous. Then $f$ is uniformly continuous.
+    \begin{proof}
+        By Theorem \ref{trm:10.14}, $[a,b]$ is compact. This combined with the hypothesis that $f$ is continuous proves by Theorem \ref{trm:13.6} that $f$ is uniformly continuous.
+    \end{proof}
+\end{corollary}
+
+\begin{exercise}\label{exr:13.9}
+    Show that if $f$ and $g$ are bounded on $A$ and uniformly continuous on $A$, then $fg$ is uniformly continuous on $A$.
+    \begin{proof}
+        To prove that $fg$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|(fg)(y)-(fg)(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary.\par
+        Since $f$ is bounded on $A$, Definition \ref{dfn:10.1} implies that $f(A)$ is a bounded subset of $\R$. Thus, by consecutive applications of Definition \ref{dfn:5.6}, there exist numbers $l,u$ such that for all $f(x)\in f(A)$, $l\leq f(x)\leq u$. Let $a=\max(|l|,|u|)+1$. It follows by Scripts \ref{sct:7} and \ref{sct:8} that $-a<f(x)<a$ for all $f(x)\in f(A)$. Thus, by the lemma from Exercise \ref{exr:8.9}, $|f(x)|<a$ for all $f(x)\in f(A)$. Similarly, there exists a number $b$ such that $|g(x)|<b$ for all $g(x)\in g(A)$.\par
+        Since $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} implies that there exists a $\delta_1>0$ such that for all $x,y\in A$, if $|y-x|<\delta_1$, then $|f(y)-f(x)|<\frac{\epsilon}{2b}$. Similarly, there exists a $\delta_2>0$ such that for all $x,y\in A$, if $|y-x|<\delta_2$, then $|g(y)-g(x)|<\frac{\epsilon}{2a}$. Choose $\delta=\min(\delta_1,\delta_2)$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. It follows by consecutive applications of the above that $|f(x)|<a$ and $|g(y)|<b$. Additionally, $|y-x|<\delta\leq\delta_1$ implies that $|f(y)-f(x)|<\frac{\epsilon}{2b}$ and $|y-x|<\delta\leq\delta_2$ implies that $|g(y)-g(x)|<\frac{\epsilon}{2a}$. Therefore, combining the last four results, we have that
+        \begin{align*}
+            |(fg)(y)-(fg)(x)| &= |f(x)g(x)-f(y)g(y)|\\
+            &= |f(x)g(x)-f(x)g(y)+f(x)g(y)-f(y)g(y)|\\
+            &= |f(x)(g(x)-g(y))+g(y)(f(x)-f(y))|\\
+            &\leq |f(x)|\cdot|g(x)-g(y)|+|g(y)|\cdot|f(x)-f(y)|\tag*{Lemma \ref{lem:8.8}}\\
+            &< a\cdot\frac{\epsilon}{2a}+b\cdot\frac{\epsilon}{2b}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{exercise}
+
 
 
 

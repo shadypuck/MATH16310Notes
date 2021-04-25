@@ -51,7 +51,18 @@
 
 \section{Discussion}
 \begin{itemize}
-    \item The key to $\epsilon$-$\delta$ proofs is to find a way to get $|y-x|$ into the $|f(y)-f(x)|$ expression and then deal with the others.
+    \item \marginnote{4/8:}The key to $\epsilon$-$\delta$ proofs is to find a way to get $|y-x|$ into the $|f(y)-f(x)|$ expression and then deal with the others.
+    \item \marginnote{4/13:}Note that we can also prove Exercise \ref{exr:13.7} with the following procedure:
+    \begin{itemize}
+        \item Lemma: If $f$ is uniformly continuous on two intervals $I,J$ whose union $I\cup J$ is also an interval, then $f$ is uniformly continuous on $I\cup J$.
+        \item Establish that $f(x)=\sqrt{x}$ is uniformly continuous on $[0,1]$ using Theorem \ref{trm:13.6}.
+        \begin{itemize}
+            \item Note that the continuity of $f$ on $[0,1]$ follows from the fact that $f$ is differentiable on $(0,1)\subset\R^+$ (Exercise \ref{exr:12.22}) by Theorems \ref{trm:12.5} and \ref{trm:9.10}.
+            \item Note that the compactness of $[0,1]$ follows from Theorem \ref{trm:10.14}.
+        \end{itemize}
+        \item Recall that $f$ is uniformly continuous on $[1,\infty)$ from Exercise \ref{exr:13.3}.
+        \item Apply the lemma.
+    \end{itemize}
 \end{itemize}
 
 

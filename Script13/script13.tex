@@ -311,6 +311,223 @@
     \end{proof}
 \end{exercise}
 
+\begin{definition}\label{dfn:13.10}\marginnote{4/15:}
+    A \textbf{partition} of the interval $[a,b]$ is a finite set of points in $[a,b]$ that includes $a$ and $b$. We usually write partitions as $P=\{t_0,t_1,\dots,t_n\}$, with the convention that
+    \begin{equation*}
+        a = t_0 < t_1 < \cdots < t_{n-1} < t_n = b
+    \end{equation*}
+    If $P$ and $Q$ are partitions of the interval $[a,b]$ and $P\subset Q$, we refer to $Q$ as a \textbf{refinement} of $P$.
+\end{definition}
+
+\begin{definition}\label{dfn:13.11}
+    Suppose that $f:[a,b]\to\R$ is bounded and that $P=\{t_0,\dots,t_n\}$ is a partition of $[a,b]$. Define
+    \begin{align*}
+        m_i(f) &= \inf\{f(x)\mid t_{i-1}\leq x\leq t_i\}&
+        M_i(f) &= \sup\{f(x)\mid t_{i-1}\leq x\leq t_i\}
+    \end{align*}
+    The \textbf{lower sum} of $f$ for the partition $P$ is the number
+    \begin{equation*}
+        L(f,P) = \sum_{i=1}^nm_i(f)(t_i-t_{i-1})
+    \end{equation*}
+    The \textbf{upper sum} of $f$ for the partition $P$ is the number
+    \begin{equation*}
+        U(f,P) = \sum_{i=1}^nM_i(f)(t_i-t_{i-1})
+    \end{equation*}
+    Notice that it is always the case that $L(f,P)\leq U(f,P)$.
+\end{definition}
+
+\begin{lemma}\label{lem:13.12}
+    Suppose that $P$ and $Q$ are partitions of $[a,b]$ and that $Q$ is a refinement of $P$. Then $L(f,P)\leq L(f,Q)$ and $U(f,P)\geq U(f,Q)$.
+    \begin{lemma*}
+        Let $P$ be a partition of $[a,b]$ and let $y$ be an arbitrary element of $[a,b]\setminus P$. Then $L(f,P)\leq L(f,P\cup\{y\})$ and $U(f,P)\geq U(f,P\cup\{y\})$.
+        \begin{proof}
+            We will prove that $L(f,P)\leq L(f,P\cup\{y\})$. The proof will be symmetric in the other case. Let's begin.\par
+            By Definition \ref{dfn:13.10}, $P$ is of the form $\{t_0,\dots,t_n\}$ where $a=t_0<\cdots<t_n=b$. This combined with the hypothesis that $y\in[a,b]\setminus P$ implies by Theorem \ref{trm:3.5} that $a=t_0<\cdots<t_{k-1}<y<t_k<\cdots<t_n=b$. Thus, we have by consecutive applications of Definition \ref{dfn:13.11} that
+            \begin{align*}
+                L(f,P) &= \sum_{i=1}^nm_i(f)(t_i-t_{i-1})\\
+                &= \sum_{i=1}^{k-1}m_i(f)(t_i-t_{i-1})+m_k(f)(t_k-t_{k-1})+\sum_{i=k+1}^nm_i(f)(t_i-t_{i-1})
+            \end{align*}
+            and that
+            \begin{equation*}
+                L(f,P\cup\{y\}) = \sum_{i=1}^{k-1}m_i(f)(t_i-t_{i-1})+m_y^-(f)(y-t_{k-1})+m_y^+(f)(t_k-y)+\sum_{i=k+1}^nm_i(f)(t_i-t_{i-1})
+            \end{equation*}
+            where
+            \begin{align*}
+                m_y^-(f) &= \inf\{f(x)\mid t_{k-1}\leq x\leq y\}&
+                m_y^+(f) &= \inf\{f(x)\mid y\leq x\leq t_k\}
+            \end{align*}\par
+            As such, to prove that $L(f,P)\leq L(f,P\cup\{y\})$, it will suffice to show that $m_k(f)(t_k-t_{k-1})\leq m_y^-(f)(y-t_{k-1})+m_y^+(f)(t_k-y)$. To do so, it will suffice to show that $m_k(f)(y-t_{k-1})+m_k(f)(t_k-y)\leq m_y^-(f)(y-t_{k-1})+m_y^+(f)(t_k-y)$, i.e., that $m_k(f)(y-t_{k-1})\leq m_y^-(f)(y-t_{k-1})$ and that $m_k(f)(t_k-y)\leq m_y^+(f)(t_k-y)$, i.e., that $m_k(f)\leq m_y^-(f)$ and that $m_k(f)\leq m_y^+(f)$.\par
+            For the sake of proving the first expression, let $A=\{f(x)\mid t_{k-1}<x<t_k\}$ and let $B=\{f(x)\mid t_{k-1}\leq x\leq y\}$. It follows by Definition \ref{dfn:13.10} that $m_k(f)=\inf A$ and $m_y^-(f)=\inf B$. Thus, we need only show that $\inf A\leq\inf B$. Since $y<t_k$, we know by Script \ref{sct:1} that $B\subset A$. Thus, since $\inf A$ is a lower bound on $A$, Script \ref{sct:5} implies that it is also a lower bound on $B$. Consequently, by Definition \ref{dfn:5.7}, $\inf A\leq\inf B$, as desired.\par
+            The argument is symmetric for the other statement.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Lemma \ref{lem:13.12}]
+        % \begin{itemize}
+        %     \item First address the $L(f,P)\leq L(f,Q)$ statement.
+        %     \item Definition \ref{dfn:13.10}: $P\subset Q$.
+        %     \item Theorem \ref{exr:1.34}: $|P|\leq|Q|$, $|Q|=|P|+|Q\setminus P|$, $|Q\setminus P|=n\in\Z^+$.
+        %     \item We divide into two cases ($n=0$ and $n\in\N$).
+        %     \item If $n=0$:
+        %     \begin{itemize}
+        %         \item $P=Q$.
+        %         \item Therefore, $L(f,P)=L(f,Q)$, so we can weaken this to $L(f,P)\leq L(f,Q)$.
+        %     \end{itemize}
+        %     \item If $n\in\N$, we continue.
+        %     \item We induct on $n$.
+        %     \item For the base case $n=1$:
+        %     \begin{itemize}
+        %         \item Script \ref{sct:1}: $|Q\setminus P|=1$ implies that $Q=P\cup\{x\}$ where $x\notin P$.
+        %         \item Lemma: $L(f,P)\leq L(f,Q)$
+        %     \end{itemize}
+        %     \item Now suppose inductively that the claim holds for $n$. We now seek to prove it for $n+1$.
+        %     \begin{itemize}
+        %         \item Let $x$ be an arbitrary element of $Q\setminus P$.
+        %         \item Script \ref{sct:1}: $|(Q\setminus\{x\})\setminus P|=n$.
+        %         \item Inductive hypothesis: $L(f,P)\leq L(f,Q\setminus\{x\})$.
+        %         \item Lemma: $L(f,Q\setminus\{x\})\leq L(f,Q)$.
+        %         \item Transitivity: $L(f,P)\leq L(f,Q)$.
+        %     \end{itemize}
+        %     \item The proof is symmetric in the other direction.
+        % \end{itemize}
+
+        We will prove that $L(f,P)\leq L(f,Q)$. The proof will be symmetric in the other case. Let's begin.\par
+        By Definition \ref{dfn:13.10}, $P\subset Q$. Thus, by Theorem \ref{exr:1.34}, $|P|\leq|Q|$. It follows by Script \ref{sct:1} that $|Q|-|P|=n\in\Z^+$. Thus, to prove the claim for $P$ and $Q$ in general, it will suffice to prove it for each $n$. To do so, we divide into two cases ($n=0$ and $n\in\N$). If $n=0$, then $|P|=|Q|$. This combined with the fact that $P\subset Q$ implies by Script \ref{sct:1} that $P=Q$. Therefore, $L(f,P)=L(f,Q)$, which we can weaken to $L(f,P)\leq L(f,Q)$, as desired.\par
+        On the other hand, if $n\in\N$, then we induct on $n$. For the base case $n=1$, we have by Script \ref{sct:1} that $Q=P\cup\{y\}$ where $y\notin P$. Therefore, by the lemma, we have that $L(f,P)\leq L(f,P\cup\{y\})=L(f,Q)$, as desired. Now suppose inductively that the claim holds or $n$; we wish to prove it for $n+1$. Let $y$ be an arbitrary element of $Q$. Then by Script \ref{sct:1}, $|Q\setminus\{y\}|-|P|=n$. Thus, by the inductive hypothesis, $L(f,P)\leq L(f,Q\setminus\{x\})$. Additionally, by the lemma, $L(f,Q\setminus\{x\})\leq L(f,Q)$. Therefore, by transitivity, $L(f,P)\leq L(f,Q)$, as desired.
+    \end{proof}
+\end{lemma}
+
+\begin{theorem}\label{trm:13.13}
+    Let $P_1$ and $P_2$ be partitions of $[a,b]$ and suppose that $f:[a,b]\to\R$ is bounded. Then $L(f,P_1)\leq U(f,P_2)$.
+    \begin{proof}
+        To confirm that $P_1\cup P_2$ is a partition of $[a,b]$, Definition \ref{dfn:13.10} tells us that it will suffice to demonstrate that it is a finite set, that it is a subset of $[a,b]$, and that it includes $a$ and $b$. Since $P_1,P_2$ are partitions of $[a,b]$, Definition \ref{dfn:13.10} implies that they are finite subsets of $[a,b]$ that contain $a,b$. It follows by Script \ref{sct:1} that their union is finite, a subset of $[a,b]$, and a set containing $a$ and $b$. Additionally, we have by Theorem \ref{trm:1.7} that $P_1\subset P_1\cup P_2$ and that $P_2\subset P_1\cup P_2$. Combining the last two results with consecutive applications of Definition \ref{dfn:13.10} reveals that $P_1\cup P_2$ is a refinement of both $P_1$ and $P_2$.\par
+        Since $P_1$ and $P_1\cup P_2$ are partitions of $[a,b]$ and $P_1\cup P_2$ is a refinement of $P_1$, Lemma \ref{lem:13.12} implies that $L(f,P_1)\leq L(f,P_1\cup P_2)$. Similarly, $U(f,P_1\cup P_2)\leq U(f,P_2)$. Additionally, we have by Definition \ref{dfn:13.11} that $L(f,P_1\cup P_2)\leq U(f,P_1\cup P_2)$. Therefore, if we combine the last three results with transitivity, we have that $L(f,P_1)\leq U(f,P_2)$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:13.14}
+    Let $f:[a,b]\to\R$ be bounded. We define
+    \begin{align*}
+        L(f) &= \sup\{L(f,P)\mid P\text{ is a partition of }[a,b]\}&
+        U(f) &= \inf\{U(f,P)\mid P\text{ is a partition of }[a,b]\}
+    \end{align*}
+    to be, respectively, the \textbf{lower integral} and \textbf{upper integral} of $f$ from $a$ to $b$.
+\end{definition}
+
+\begin{exercise}\label{exr:13.15}
+    Why do $L(f)$ and $U(f)$ exist? Find a function $f$ for which $L(f)=U(f)$. Find a function $f$ for which $L(f)\neq U(f)$. Prove that $L(f)\leq U(f)$.
+    \begin{lemma*}
+        Given $a,b\in\R$ with $a<b$, there exists $p\in\R$ such that $p\notin\Q$ and $a<p<b$.
+        \begin{proof}
+            By Definition \ref{dfn:7.21}, $a+\sqrt{2}<b+\sqrt{2}$. Thus, by Lemma \ref{lem:6.10}, there exists a point $\frac{c}{d}\in\Q$ such that $a+\sqrt{2}<\frac{c}{d}<b+\sqrt{2}$. It follows that $a<\frac{c}{d}-\sqrt{2}<b$.\par
+            Now suppose for the sake of contradiction that $\frac{c}{d}-\sqrt{2}$ is rational. Then by Script \ref{sct:2}, $\frac{c}{d}-\sqrt{2}=\frac{e}{f}$ where $e,f\in\Z$ and $f\neq 0$. It follows by Theorem \ref{trm:2.10} that $\sqrt{2}=\frac{cf-de}{df}$, i.e., that $\sqrt{2}$ is rational. But by the proof of Exercise \ref{exr:4.24}, $\sqrt{2}$ is not rational, a contradiction.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Exercise \ref{exr:13.15}]
+        Let $A=\{L(f,P)\mid P\text{ is a partition of }[a,b]\}$. To prove that $L(f)=\sup A$ exists, Theorem \ref{trm:5.17} tells us that it will suffice to show that $A$ is nonempty and bounded above.\par
+        To confirm that $A$ is nonempty, Definition \ref{dfn:1.8} tells us that it will suffice to find an element of it. Since $\{a,b\}$ is a finite set of points in $[a,b]$ that includes $a$ and $b$ (by Script \ref{sct:1}), Definition \ref{dfn:13.10} asserts that $\{a,b\}$ is a partition of $[a,b]$. It follows by Definition \ref{dfn:13.11} that $L(f,\{a,b\})$ exists. Therefore, by the definition of $A$, we have that $L(f,\{a,b\})\in A$, as desired.\par
+        To confirm that $A$ is bounded above, Definition \ref{dfn:5.6} tells us that it will suffice to find a point in $u\in\R$ such that for all $L(f,P)\in A$, $L(f,P)\leq u$. Let $u=U(f,\{a,b\})$ (since $\{a,b\}$ is a partition of $[a,b]$ by the above, Definition \ref{dfn:13.10} guarantees that $U(f,\{a,b\})$ exists). Now let $L(f,P)$ be an arbitrary element of $A$. It follows from Theorem \ref{trm:13.13} that $L(f,P)\leq U(f,\{a,b\})=u$, as desired.\par
+        The proof is symmetric for $U(f)$.\par\medskip
+        Let $f:[0,1]\to\R$ be defined by $f(x)=0$. To prove that $L(f)=U(f)$, it will suffice to show that $L(f)=0$ and $U(f)=0$. To do this, Script \ref{sct:5} tells us that it will suffice to verify that $\{L(f,P)\mid P\text{ is a partition of }[a,b]\}=\{0\}$ and $\{U(f,P)\mid P\text{ is a partition of }[a,b]\}=\{0\}$. We will start with the first equality.\par
+        Let $L(f,P)$ be an arbitrary element of $\{L(f,P)\mid P\text{ is a partition of }[a,b]\}$. Since we have
+        \begin{align*}
+            m_i(f) &= \inf\{f(x)\mid t_{i-1}\leq x\leq t_i\}\\
+            &= \inf\{0\mid t_{i-1}\leq x\leq t_i\}\\
+            &= \inf\{0\}\\
+            &= 0
+        \end{align*}
+        for all $m_i(f)$, it follows that
+        \begin{align*}
+            L(f,P) &= \sum_{i=1}^nm_i(f)(t_i-t_{i-1})\\
+            &= \sum_{i=1}^n 0(t_i-t_{i-1})\\
+            &= 0
+        \end{align*}
+        Therefore, since every element of $\{L(f,P)\mid P\text{ is a partition of }[a,b]\}$ is equal to 0, the set is equal to the singleton set containing 0. The argument is symmetric for the other equality.\par\medskip
+        Let $f:[0,1]\to\R$ be defined by
+        \begin{equation*}
+            f(x) =
+            \begin{cases}
+                1 & x\in\Q\\
+                0 & x\notin\Q
+            \end{cases}
+        \end{equation*}
+        To prove that $L(f)\neq U(f)$, it will suffice to show that $L(f)=0$ and $U(f)=1$. To do this, Script \ref{sct:5} tells us that it will suffice to verify that $\{L(f,P)\mid P\text{ is a partition of }[a,b]\}=\{0\}$ and $\{U(f,P)\mid P\text{ is a partition of }[a,b]\}=\{1\}$. We will start with the first equality.\par
+        Let $L(f,P)$ be an arbitrary element of $\{L(f,P)\mid P\text{ is a partition of }[a,b]\}$. To confirm that $L(f,P)=0$, Definition \ref{dfn:13.11} tells us that it will suffice to demonstrate that $m_i(f)=0$ for all $m_i(f)$. Let $m_i(f)$ be an arbitrary such object. By Definition \ref{dfn:13.10}, $m_i(f)=\inf\{f(x)\mid t_{i-1}\leq x\leq t_i\}$. By the lemma, there exists $p\in\R$ such that $p\notin\Q$ and $t_{i-1}\leq p\leq t_i$. Thus, since $f(p)=0$, $0\in\{f(x)\mid t_{i-1}\leq x\leq t_i\}$. Additionally, since $f(x)\not<0$ for any $x\in[0,1]$ by definition, we have that $m_i(f)=0$. Therefore, since every element of $\{L(f,P)\mid P\text{ is a partition of }[a,b]\}$ is equal to 0, the set is equal to the singleton set containing 0.\par
+        As to the other equality, let $U(f,P)$ be an arbitrary element of $\{U(f,P)\mid P\text{ is a partition of }[a,b]\}$. To confirm that $U(f,P)=1$, Definition \ref{dfn:13.11} tells us that we must first demonstrate that $M_i(f)=1$ for all $M_i(f)$. Let $M_i(f)$ be an arbitrary such object. By Definition \ref{dfn:13.10}, $M_i(f)=\sup\{f(x)\mid t_{i-1}\leq x\leq t_i\}$. By Lemma \ref{lem:6.10}, there exists $p\in\Q$ such that $t_{i-1}\leq p\leq t_i$. Thus, since $f(p)=1$, $1\in\{f(x)\mid t_{i-1}\leq x\leq t_i\}$. Additionally, since $f(x)\not>1$ for any $x\in[0,1]$ by definition, we have that $M_i(f)=1$. It follows by Definition \ref{dfn:13.11} that
+        \begin{align*}
+            U(f,P) &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})\\
+            &= \sum_{i=1}^n(t_i-t_{i-1})\\
+            &= t_n-t_0\\
+            &= 1-0\\
+            &= 1
+        \end{align*}
+        Therefore, since every element of $\{U(f,P)\mid P\text{ is a partition of }[a,b]\}$ is equal to 1, the set is equal to the singleton set containing 1.\par\medskip
+        Suppose for the sake of contradiction that there exists a function $f:[a,b]\to\R$ for which $U(f)<L(f)$. It follows by consecutive applications of Definition \ref{dfn:13.14} and Lemma \ref{lem:5.11} that there exists an $L(f,P_1)$ such that $U(f)<L(f,P_1)\leq L(f)$, and thus that there exists a $U(f,P_2)$ such that $U(f)\leq U(f,P_2)<L(f,P_1)$. But this means that there exist partitions $P_1,P_2$ of $[a,b]$ such that $L(f,P_1)>U(f,P_2)$, contradicting Theorem \ref{trm:13.13}.
+    \end{proof}
+\end{exercise}
+
+\begin{definition}\label{dfn:13.16}
+    Let $f:[a,b]\to\R$ be bounded. We say that $f$ is \textbf{integrable} on $[a,b]$ if $L(f)=U(f)$. In this case, the common value $L(f)=U(f)$ is called the \textbf{integral} of $f$ from $a$ to $b$ and we write it as
+    \begin{equation*}
+        \int_a^bf
+    \end{equation*}
+    Note that if $f$ is an integrable function on $[a,b]$, it is necessarily bounded.\par
+    When we want to display the variable of integration, we write the integral as follows, including the symbol $\dd{x}$ to indicate that variable of integration:
+    \begin{equation*}
+        \int_a^bf(x)\dd{x}
+    \end{equation*}
+    For example, if $f(x)=x^2$, we could write $\int_a^bx^2\dd{x}$ but not $\int_a^bx^2$.
+\end{definition}
+
+\begin{exercise}\label{exr:13.17}
+    Fix $c\in\R$ and let $f:[a,b]\to\R$ be defined by $f(x)=c$, for each $x\in[a,b]$. Show that $f$ is integrable on $[a,b]$ and that $\int_a^bf=c(b-a)$.
+    \begin{proof}
+        To prove that $f$ is integrable on $[a,b]$ and that $\int_a^bf=c(b-a)$, Definition \ref{dfn:13.16} tells us that it will suffice to show that $f$ is bounded on $[a,b]$, and that $L(f)=U(f)=c(b-a)$.\par
+        To confirm that $f$ is bounded on $[a,b]$, Definition \ref{dfn:10.1} tells us that it will suffice to demonstrate that $f([a,b])$ is a bounded subset of $\R$. By Definition \ref{dfn:1.18}, $f([a,b])=\{f(x)\in\R\mid x\in[a,b]\}$. But since $f(x)=c$ for all $x\in[a,b]$, $f([a,b])=\{c\}$. Thus, since $c\leq c\leq c$, Definition \ref{dfn:5.6} implies that $f([a,b])$ is bounded. Additionally, since $c\in\R$, Definition \ref{dfn:1.3} asserts that $f([a,b])=\{c\}\subset\R$.\par
+        To confirm that $L(f)=U(f)=c(b-a)$, Definition \ref{dfn:13.14} tells us that it will suffice to demonstrate that $L(f,P)=U(f,P)=c(b-a)$ for all partitions $P$ of $[a,b]$. For similar reasons to the above (i.e., $f(x)=c$ for all $x\in[a,b]$), we can show that $m_i(f)=M_i(f)=c$ for all $m_i(f)$ and $M_i(f)$. Therefore, by Definition \ref{dfn:13.11} that
+        \begin{align*}
+            L(f,P) &= \sum_{i=1}^nc(t_i-t_{i-1})&
+                U(f,P) &= \sum_{i=1}^nc(t_i-t_{i-1})\\
+            &= c\sum_{i=1}^n(t_{i-1}-t_i)&
+                &= c\sum_{i=1}^n(t_{i-1}-t_i)\\
+            &= c(t_n-t_0)&
+                &= c(t_n-t_0)\\
+            &= c(b-a)&
+                &= c(b-a)
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:13.18}
+    Let $f:[a,b]\to\R$ be bounded. Then $f$ is integrable if and only if for every $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$.
+    \begin{proof}
+        % Now suppose that for every $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$. Suppose for the sake of contradiction that $f$ is not integrable. Then by Definition \ref{dfn:13.16}, $L(f)\neq U(f)$. It follows by Exercise \ref{exr:13.15} that $L(f)<U(f)$. Thus, we can define $\epsilon=U(f)-L(f)>0$. Consequently, we have by the hypothesis that there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$. But since $L(f,P)\leq L(f)$ by Definitions \ref{dfn:13.14}, \ref{dfn:5.7}, and \ref{dfn:5.6}, we have that
+        % \begin{align*}
+        %     U(f,P) &< \epsilon+L(f,P)\\
+        %     &\leq \epsilon+L(f)\\
+        %     &= U(f)-L(f)+L(f)\\
+        %     &= U(f)
+        % \end{align*}
+        % But by Definitions \ref{dfn:13.14}, \ref{dfn:5.7}, and \ref{dfn:5.6}, we know that $U(f,P)\geq U(f)$, a contradiction.
+
+        % We might also be able to do the forward direction simpler by contrapositive.
+
+
+        Suppose first that $f$ is integrable. Then by Definition \ref{dfn:13.16}, $L(f)=U(f)$. Let $\epsilon>0$ be arbitrary. By Script \ref{sct:7}, $L(f)-\frac{\epsilon}{2}<L(f)$. Thus, by Definition \ref{dfn:13.14} and Lemma \ref{lem:5.11}, there exists an $L(f,P_1)\in\{L(f,P)\mid P\text{ is a partition of }[a,b]\}$ such that $L(f)-\frac{\epsilon}{2}<L(f,P_1)\leq L(f)$. Similarly, there exists a $U(f,P_2)\in\{U(f,P)\mid P\text{ is a partition of }[a,b]\}$ such that $U(f)\leq U(f,P_2)<U(f)+\frac{\epsilon}{2}$. Now consider $P_1\cup P_2$ (which we will prove is the desired partition). By Theorem \ref{trm:1.7}, $P_1\subset P_1\cup P_2$ and $P_2\subset P_1\cup P_2$. It follows by consecutive applications of Definition \ref{dfn:13.10} that $P_1\cup P_2$ is a refinement of both $P_1$ and $P_2$. Thus, by Lemma \ref{lem:13.12}, $L(f,P_1)\leq L(f,P_1\cup P_2)$ and $U(f,P_1\cup P_2)\leq U(f,P_2)$. Combining the last several results with transitivity yields
+        \begin{align*}
+            L(f)-\frac{\epsilon}{2} &< L(f,P_1) \leq L(f,P_1\cup P_2)&
+            U(f,P_1\cup P_2) &\leq U(f,P_2) < U(f)+\frac{\epsilon}{2}
+        \end{align*}
+        Therefore, knowing that $U(f,P_1\cup P_2)<U(f)+\frac{\epsilon}{2}$ and that $-L(f,P_1\cup P_2)<\frac{\epsilon}{2}-L(f)$ (the latter by Lemma \ref{lem:7.24}), we have by Definition \ref{dfn:7.21} that
+        \begin{align*}
+            U(f,P_1\cup P_2)-L(f,P_1\cup P_2) &< U(f)+\frac{\epsilon}{2}+\frac{\epsilon}{2}-L(f)\\
+            &= \epsilon
+        \end{align*}
+        as desired.\par
+        Now suppose that $f$ is not integrable; we seek to prove that there exists an $\epsilon>0$ such that for all partitions $P$ of $[a,b]$, $U(f,P)-L(f,P)\geq\epsilon$. Since $f$ is not integrable, we have by Definition \ref{dfn:13.16} that $L(f)\neq U(f)$. It follows by Exercise \ref{exr:13.15} that $L(f)<U(f)$. Thus, we can define $\epsilon=\frac{U(f)-L(f)}{2}>0$. Now let $P$ be an arbitrary partition of $[a,b]$. It follows that $L(f,P)\leq L(f)$ by Definitions \ref{dfn:13.14}, \ref{dfn:5.7}, and \ref{dfn:5.6}. Similarly, $U(f)\leq U(f,P)$. Therefore, knowing that $U(f)\leq U(f,P)$ and that $-L(f)\leq -L(f,P)$ (the latter by Lemma \ref{lem:7.24}), we have by Definition \ref{dfn:7.21} that $\epsilon<U(f)-L(f)\leq U(f,P)-L(f,P)$, as desired.
+    \end{proof}
+\end{theorem}
+
 
 
 

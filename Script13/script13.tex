@@ -528,6 +528,302 @@
     \end{proof}
 \end{theorem}
 
+\begin{theorem}\label{trm:13.19}\marginnote{\emph{4/20:}}
+    If $f:[a,b]\to\R$ is continuous, then $f$ is integrable.
+    \begin{proof}
+        % \begin{itemize}
+        %     \item Corollary \ref{cly:13.8}: $f$ is uniformly continuous.
+        %     \item Definition \ref{dfn:13.1}: There exists a $\delta>0$ such that for all $x,y\in[a,b]$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\frac{\epsilon}{b-a}$.
+        %     \item Corollary \ref{cly:6.12}: There exists $n\in\N$ such that $\frac{2(b-a)}{\delta}<n$.
+        %     \item Let $P=\{\frac{b-a}{n}\cdot i+a\mid 0\leq i\leq n\}$.
+        %     \item To confirm that $P$ is a partition of $[a,b]$, Definition \ref{dfn:13.10} tells us that it will suffice to demonstrate that $P$ is finite, $P\subset[a,b]$, and $a,b\in P$.
+        %     \begin{itemize}
+        %         \item Script \ref{sct:1}: $P$ is finite.
+        %         \item To demonstrate that $P\subset[a,b]$, Definition \ref{dfn:1.3} and Equations \ref{eqn:8.1} tell us that it will suffice to show that every $t_i\in P$ satisfies $a\leq t_i\leq b$.
+        %         \item Script \ref{sct:7}:
+        %         \begin{align*}
+        %             0 &\leq i \leq n\\
+        %             0 &\leq \frac{b-a}{n}\cdot i \leq b-a\\
+        %             a & \leq \frac{b-a}{n}\cdot i+a \leq b
+        %         \end{align*}
+        %         as desired.
+        %         \item Let $i=0$. Then by the definition of $P$, $\frac{b-a}{n}\cdot 0+a=a\in P$.
+        %         \item Let $i=n$. Then by the definition of $P$, $\frac{b-a}{n}\cdot n+a=b-a+a=b\in P$.
+        %     \end{itemize}
+        %     \item We now seek to confirm that $t_i-t_{i-1}<\delta$.
+        %     \begin{itemize}
+        %         \item Script \ref{sct:7}: $0<\frac{2(b-a)}{\delta}$, $0<\delta$, $0<n$.
+        %         \item Script \ref{sct:7}: $\frac{2(b-a)}{\delta}<n$ implies $\frac{2(b-a)}{n}<\delta$.
+        %         \item Script \ref{sct:7}:
+        %         \begin{align*}
+        %             t_i-t_{i-1} &= \left( \frac{b-a}{n}\cdot i+a \right)-\left( \frac{b-a}{n}\cdot(i-1)+a \right)\\
+        %             &= \frac{b-a}{n}\\
+        %             &\leq \frac{2(b-a)}{n}\\
+        %             &< \delta
+        %         \end{align*}
+        %     \end{itemize}
+        %     \item We now seek to confirm that $M_i(f)-m_i(f)<\frac{\epsilon}{b-a}$ for all $i$.
+        %     \begin{itemize}
+        %         \item Let $i$ be an arbitrary number such that $1\leq i\leq n$.
+        %         \item Consider $f|_{[t_{i-1},t_i]}$.
+        %         \item Proposition \ref{prp:9.7}: $f|_{[t_{i-1},t_i]}$ is continuous.
+        %         \item (consecutive) Exercise \ref{exr:10.21}: There exist $c,d\in[t_{i-1},t_i]$ such that $f(c)\leq f(x)\leq f(d)$ for all $x\in[t_{i-1},t_i]$.
+        %         \item (consecutive) Definition \ref{dfn:13.11} and Exercise \ref{exr:5.9}: $m_i(f)=f(c)$ and $M_i(f)=f(d)$.
+        %         \item Script \ref{sct:8}: $c,d\in[t_{i-1},t_i]$ implies $|d-c|\leq t_i-t_{i-1}$.
+        %         \item The above: $|d-c|<\delta$.
+        %         \item The above:
+        %         \begin{align*}
+        %             M_i(f)-m_i(f) &= f(d)-f(c)\\
+        %             &\leq |f(d)-f(c)|\\
+        %             &< \frac{\epsilon}{b-a}
+        %         \end{align*}
+        %     \end{itemize}
+        %     \item It follows that\dots
+        %     \begin{align*}
+        %         U(f,P)-L(f,P) &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})-\sum_{i=1}^nm_i(f)(t_i-t_{i-1})\\
+        %         &= \sum_{i=1}^n(M_i(f)-m_i(f))(t_i-t_{i-1})\\
+        %         &< \sum_{i=1}^n\frac{\epsilon}{b-a}(t_i-t_{i-1})\\
+        %         &= \frac{\epsilon}{b-a}\sum_{i=1}^n(t_i-t_{i-1})\\
+        %         &= \frac{\epsilon}{b-a}(b-a)\\
+        %         &= \epsilon
+        %     \end{align*}
+        % \end{itemize}
+
+
+        To prove that $f$ is integrable, Theorem \ref{trm:13.18} tells us that it will suffice to show that $f$ is bounded and that for every $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$. We will verify the two requirements separately. Let's begin.\par\smallskip
+        To confirm that $f$ is bounded, Definitions \ref{dfn:10.1} and \ref{dfn:5.6} tell us that it will suffice to find points $l,u\in\R$ such that $l\leq f(x)\leq u$ for all $x\in[a,b]$. But since $f:[a,b]\to\R$ is continuous, consecutive applications of Exercise \ref{exr:10.21} imply that there exist points $c,d\in[a,b]$ such that $f(c)\leq f(x)\leq f(d)$ for all $x\in[a,b]$, so we can just choose $l=f(c)$ and $u=f(d)$.\par\smallskip
+        As to the other stipulation, let $\epsilon>0$ be arbitrary. Since $f:[a,b]\to\R$ is continuous, Corollary \ref{cly:13.8} implies that $f$ is uniformly continuous. Thus, by Definition \ref{dfn:13.1}, there exists a $\delta>0$ such that for all $x,y\in[a,b]$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\frac{\epsilon}{b-a}$. Considering this $\delta$, we have by Corollary \ref{cly:6.12} that there exist a number $n\in\N$ such that $\frac{2(b-a)}{\delta}<n$. Equipped with this $n$, we can now define the set $P=\{\frac{b-a}{n}\cdot i+a\mid 0\leq i\leq n\}$.\par
+        We now seek to confirm that $P$ is a partition of $[a,b]$. To do so, Definition \ref{dfn:13.10} tells us that it will suffice to demonstrate that $P$ is finite, $P\subset[a,b]$, and $a,b\in P$. By Script \ref{sct:1}, $P$ is finite. To demonstrate that $P\subset[a,b]$, Definition \ref{dfn:1.3} and Equations \ref{eqn:8.1} tell us that it will suffice to show that every $t_i\in P$ satisfies $a\leq t_i\leq b$. But by Script \ref{sct:7}, we have that
+        \begin{align*}
+            0 &\leq i \leq n\\
+            0 &\leq \frac{b-a}{n}\cdot i \leq b-a\\
+            a & \leq \frac{b-a}{n}\cdot i+a \leq b
+        \end{align*}
+        as desired. Lastly, consider the elements of $P$ corresponding to $i=0$ and $i=n$. By consecutive applications of the definition of $P$, we have that $a=(\frac{b-a}{n}\cdot 0+a)\in P$ and that $b=b-a+a=(\frac{b-a}{n}\cdot n+a)\in P$.\par
+        We now seek to confirm that if $t_i,t_{i-1}\in P$, then $t_i-t_{i-1}<\delta$. Let $t_i,t_{i-1}$ be arbitrary sequential elements of $P$. By Script \ref{sct:0}, we have that $0<n$. Additionally, we have by hypothesis that $0<\delta$. It follows by consecutive applications of Lemma \ref{lem:7.24} that the fact that $\frac{2(b-a)}{\delta}<n$ implies that $\frac{2(b-a)}{n}<\delta$. Therefore, we have by Script \ref{sct:7} that
+        \begin{align*}
+            t_i-t_{i-1} &= \left( \frac{b-a}{n}\cdot i+a \right)-\left( \frac{b-a}{n}\cdot(i-1)+a \right)\\
+            &= \frac{b-a}{n}\\
+            &\leq \frac{2(b-a)}{n}\\
+            &< \delta
+        \end{align*}
+        as desired.\par
+        We now seek to confirm that $M_i(f)-m_i(f)<\frac{\epsilon}{b-a}$ for all $i$ satisfying $1\leq i\leq n$. Let $i$ be an arbitrary such number, and consider $f|_{[t_{i-1},t_i]}$. Since $f$ is continuous and $[t_{i-1},t_i]\subset[a,b]$, Proposition \ref{prp:9.7} asserts that $f|_{[t_{i-1},t_i]}$ is continuous. Thus, by Exercise \ref{exr:10.21}, there exist $c,d\in[t_{i-1},t_i]$ such that $f(c)\leq f(x)\leq f(d)$ for all $x\in[t_{i-1},t_i]$. It follows by consecutive applications of Definitions \ref{dfn:13.11} and \ref{dfn:3.3} as well as Exercise \ref{exr:5.9} that $m_i(f)=f(c)$ and $M_i(f)=f(d)$. Additionally, since $c,d\in[t_{i-1},t_i]$, we have by Script \ref{sct:8} that $|d-c|\leq t_i-t_{i-1}$. This combined with the fact that $t_i-t_{i-1}<\delta$ by the above implies by transitivity that $|d-c|<\delta$. But this implies by the above that
+        \begin{align*}
+            M_i(f)-m_i(f) &= f(d)-f(c)\\
+            &\leq |f(d)-f(c)|\\
+            &< \frac{\epsilon}{b-a}
+        \end{align*}
+        as desired.\par
+        Having established that $M_i(f)-m_i(f)<\frac{\epsilon}{b-a}$ for all $i$ in the partition $P$, we have by Definition \ref{dfn:13.11} and basic algebra that
+        \begin{align*}
+            U(f,P)-L(f,P) &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})-\sum_{i=1}^nm_i(f)(t_i-t_{i-1})\\
+            &= \sum_{i=1}^n(M_i(f)-m_i(f))(t_i-t_{i-1})\\
+            &< \sum_{i=1}^n\frac{\epsilon}{b-a}(t_i-t_{i-1})\\
+            &= \frac{\epsilon}{b-a}\sum_{i=1}^n(t_i-t_{i-1})\\
+            &= \frac{\epsilon}{b-a}(b-a)\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{lemma}\label{lem:13.20}
+    Let $f:[a,b]\to\R$ be bounded. Given $\Omega\in\R$, we have $\Omega=\int_a^bf$ if and only if for all $\epsilon>0$, there is some partition $P$ such that
+    \begin{align*}
+        U(f,P)-\Omega &< \epsilon&
+        \Omega-L(f,P) &< \epsilon
+    \end{align*}
+    \begin{proof}
+        % \begin{itemize}
+        %     \item Theorem \ref{trm:13.18}: There exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$.
+        %     \item Choose this $P$ to be our $P$.
+        %     \item Definition \ref{dfn:13.16}: $\Omega=L(f)=U(f)$.
+        %     \item (consecutive) Definition \ref{dfn:13.14}, \ref{dfn:5.7}, \ref{dfn:5.6}: $L(f,P)\leq L(f)=\Omega$ and $\Omega=U(f)\leq U(f,P)$.
+        %     \item Script \ref{sct:7}: $-\Omega\leq -L(f,P)$.
+        %     \item Therefore, having established that $\Omega\leq U(f,P)$, $-\Omega\leq -L(f,P)$, and $U(f,P)-L(f,P)<\epsilon$, we have that
+        %     \begin{align*}
+        %         \Omega-L(f,P) &\leq U(f,P)-L(f,P)&
+        %             U(f,P)-\Omega &\leq U(f,P)-L(f,P)\\
+        %         &< \epsilon&
+        %             &< \epsilon
+        %     \end{align*}
+        % \end{itemize}
+
+        % \begin{itemize}
+        %     \item Suppose that $\Omega\neq\int_a^bf$; we seek to prove that there exists an $\epsilon>0$ such that for all partitions $P$, $U(f,P)-\Omega\geq\epsilon$ or $\Omega-L(f,P)\geq\epsilon$.
+        %     \item We divide into two cases ($\int_a^bf$ exists and $\int_a^bf$ doesn't exist).
+        %     \item Suppose first that $\int_a^bf$ exists.
+        %     \item We divide into two subcases ($\Omega>\int_a^bf$ and $\Omega<\int_a^bf$).
+        %     \item If $\Omega>\int_a^bf$, choose $\epsilon=\Omega-\int_a^bf>0$.
+        %     \begin{itemize}
+        %         \item Let $P$ be an arbitrary partition.
+        %         \item Definition \ref{dfn:13.14}, \ref{dfn:5.7}, \ref{dfn:5.6}: $L(f,P)\leq L(f)$.
+        %         \item Definition \ref{dfn:13.16}: $L(f)=\int_a^bf$.
+        %         \item Transitivity: $L(f,P)\leq\int_a^bf$.
+        %         \item Script \ref{sct:7}: $-\int_a^bf\leq -L(f,P)$.
+        %         \item Therefore,
+        %         \begin{align*}
+        %             \epsilon &= \Omega-\int_a^bf\\
+        %             &\leq \Omega-L(f,P)
+        %         \end{align*}
+        %         as desired.
+        %     \end{itemize}
+        %     \item The argument is symmetric in the other subcase.
+        %     \item Now suppose that $\int_a^bf$ does not exist.
+        %     \item Exercise \ref{exr:13.15}: $L(f)$ and $U(f)$ exist.
+        %     \item Definition \ref{dfn:13.16}: $L(f)\neq U(f)$.
+        %     \item Exercise \ref{exr:13.15}: $L(f)<U(f)$.
+        %     \item We divide into three subcases ($\Omega\leq L(f)$, $L(f)<\Omega<U(f)$, and $U(f)\leq\Omega$).
+        %     \item If $\Omega\leq L(f)$, choose $\epsilon=U(f)-L(f)>0$.
+        %     \begin{itemize}
+        %         \item Let $P$ be an arbitrary partition.
+        %         \item As above: $U(f)\leq U(f,P)$.
+        %         \item Therefore,
+        %         \begin{align*}
+        %             \epsilon &= U(f)-L(f)\\
+        %             &\leq U(f,P)-L(f)\\
+        %             &\leq U(f,P)-\Omega
+        %         \end{align*}
+        %     \end{itemize}
+        %     \item If $L(f)<\Omega<U(f)$, choose $\epsilon=U(f)-\Omega>0$.
+        %     \begin{itemize}
+        %         \item Let $P$ be an arbitrary partition.
+        %         \item As above: $U(f)\leq U(f,P)$.
+        %         \item Therefore,
+        %         \begin{align*}
+        %             \epsilon &= U(f)-\Omega\\
+        %             &\leq U(f,P)-\Omega
+        %         \end{align*}
+        %     \end{itemize}
+        %     \item If $U(f)\leq\Omega$, then the argument is symmetric to that of the first subcase.
+        % \end{itemize}
+
+
+        Suppose first that $\Omega=\int_a^bf$. Let $\epsilon>0$ be arbitrary. By Theorem \ref{trm:13.18}, there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$. Choose this $P$ to be our $P$. By Definition \ref{dfn:13.16}, $\Omega=L(f)=U(f)$. Thus, by consecutive applications of Definitions \ref{dfn:13.14}, \ref{dfn:5.7}, and \ref{dfn:5.6}, we have that $L(f,P)\leq L(f)=\Omega$ and $\Omega=U(f)\leq U(f,P)$. With respect to the former result, it follows by Script \ref{sct:7} that $-\Omega\leq -L(f,P)$. Therefore, having established that $\Omega\leq U(f,P)$, $-\Omega\leq -L(f,P)$, and $U(f,P)-L(f,P)<\epsilon$, we have that
+        \begin{align*}
+            \Omega-L(f,P) &\leq U(f,P)-L(f,P)&
+                U(f,P)-\Omega &\leq U(f,P)-L(f,P)\\
+            &< \epsilon&
+                &< \epsilon
+        \end{align*}\par\smallskip
+        Now suppose that $\Omega\neq\int_a^bf$; we seek to prove that there exists an $\epsilon>0$ such that for all partitions $P$, $U(f,P)-\Omega\geq\epsilon$ or $\Omega-L(f,P)\geq\epsilon$. We divide into two cases ($\int_a^bf$ exists and $\int_a^bf$ doesn't exist).\par
+        First, suppose that $\int_a^bf$ exists. We divide into two subcases ($\Omega>\int_a^bf$ and $\Omega<\int_a^bf$). If $\Omega>\int_a^bf$, choose $\epsilon=\Omega-\int_a^bf>0$. Let $P$ be an arbitrary partition. As before, we have that $L(f,P)\leq L(f)$. Additionally, Definition \ref{dfn:13.16} asserts that $L(f)=\int_a^bf$. Thus, transitivity implies that $L(f,P)\leq\int_a^bf$. It follows by Script \ref{sct:7} that $-\int_a^bf\leq -L(f,P)$. Therefore,
+        \begin{align*}
+            \epsilon &= \Omega-\int_a^bf\\
+            &\leq \Omega-L(f,P)
+        \end{align*}
+        as desired. The argument is symmetric in the other subcase.\par
+        Second, suppose that $\int_a^bf$ does not exist. By Exercise \ref{exr:13.15}, $L(f)$ and $U(f)$ exist. However, since $\int_a^bf$ does not exist, Definition \ref{dfn:13.16} asserts that $L(f)\neq U(f)$. It follows by Exercise \ref{exr:13.15} again that $L(f)<U(f)$. We now divide into three subcases ($\Omega\leq L(f)$, $L(f)<\Omega<U(f)$, and $U(f)\leq\Omega$). If $\Omega\leq L(f)$, choose $\epsilon=U(f)-L(f)>0$. Let $P$ be an arbitrary partition. As above, $U(f)\leq U(f,P)$. Therefore,
+        \begin{align*}
+            \epsilon &= U(f)-L(f)\\
+            &\leq U(f,P)-L(f)\\
+            &\leq U(f,P)-\Omega
+        \end{align*}
+        as desired. If $L(f)<\Omega<U(f)$, choose $\epsilon=U(f)-\Omega>0$. Let $P$ be an arbitrary partition. As above, $U(f)\leq U(f,P)$. Therefore,
+        \begin{align*}
+            \epsilon &= U(f)-\Omega\\
+            &\leq U(f,P)-\Omega
+        \end{align*}
+        as desired. The argument for the last subcase is symmetric to that of the first.
+    \end{proof}
+\end{lemma}
+
+\begin{exercise}\label{exr:13.21}
+    Define $f:[0,b]\to\R$ by the formula $f(x)=x$. Show that $f$ is integrable on $[0,b]$ and that $\int_0^bf=\frac{b^2}{2}$.
+    \begin{proof}
+        To prove that $f$ is integrable on $[0,b]$ and that $\int_0^bf=\frac{b^2}{2}$, Lemma \ref{lem:13.20} tells us that it will suffice to show that for all $\epsilon>0$, there is some partition $P$ such that $U(f,P)-\frac{b^2}{2}<\epsilon$ and $\frac{b^2}{2}-L(f,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\frac{2\epsilon}{b^2}$ is a positive real number by Script \ref{sct:7}, Corollary \ref{cly:6.12} asserts that there exists a number $n\in\N$ such that $\frac{1}{n}<\frac{2\epsilon}{b^2}$. Equipped with this $n$, we can now define the set $P=\{\frac{b}{n}\cdot i\mid 0\leq i\leq n\}$. By a symmetric argument to that used in the proof of Theorem \ref{trm:13.19}, we can confirm that $P$ is a partition of $[a,b]$ and that $t_i-t_{i-1}=\frac{b}{n}$.\par
+        We now turn our attention strictly to proving that $U(f,P)-\frac{b^2}{2}<\epsilon$; the proof of the other statement will be symmetric. Under the partition $P$ as defined, consider an arbitrary $M_i(f)$. By Definition \ref{dfn:13.11}, $M_i(f)=\sup\{f(x)\mid t_{i-1}\leq x\leq t_i\}$. Since $f(x)=x$ for all $x\in[t_{i-1},t_i]\subset[0,b]$, we have by Equations \ref{eqn:8.1} that $M_i(f)=\sup[t_{i-1},t_i]$. Thus, by Script \ref{sct:5}, $M_i(f)=t_i=\frac{bi}{n}$. Therefore,
+        \begin{align*}
+            U(f,P)-\frac{b^2}{2} &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})-\frac{b^2}{2}\tag*{Definition \ref{dfn:13.11}}\\
+            &= \sum_{i=1}^n\frac{bi}{n}\left( \frac{bi}{n}-\frac{b(i-1)}{n} \right)-\frac{b^2}{2}\\
+            &= \frac{b^2}{n^2}\sum_{i=1}^ni(i-(i-1))-\frac{b^2}{2}\\
+            &= \frac{b^2}{n^2}\sum_{i=1}^ni-\frac{b^2}{2}\\
+            &= \frac{b^2}{n^2}\left( \frac{1}{2}n(n+1) \right)-\frac{b^2}{2}\\
+            &= \frac{b^2}{2}+\frac{b^2}{2n}-\frac{b^2}{2}\\
+            &= \frac{b^2}{2}\cdot\frac{1}{n}\\
+            &< \frac{b^2}{2}\cdot\frac{2\epsilon}{b^2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}\label{exr:13.22}
+    Show that the converse of Theorem \ref{trm:13.19} is false in general.
+    \begin{proof}
+        To prove that even if $f$ is integrable, $f:[a,b]\to\R$ is not necessarily continuous, we need only find an example of an integrable, discontinuous function $f$. Let $f:[-1,1]\to\R$ be defined by
+        \begin{equation*}
+            f(x) =
+            \begin{cases}
+                1 & x\geq 0\\
+                0 & x<0
+            \end{cases}
+        \end{equation*}
+        To confirm that $f$ is integrable, Theorem \ref{trm:13.18} tells us that it will suffice to show that for every $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $P=\{-1,-\frac{\epsilon}{2},0,1\}$ (clearly $P$ is a partition of $[-1,1]$ by Definition \ref{dfn:13.10}). It follows by consecutive applications of Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6} that
+        \begin{align*}
+            m_1(f) &= 0&
+                M_1(f) &= 0\\
+            m_2(f) &= 0&
+                M_2(f) &= 1\\
+            m_3(f) &= 1&
+                M_3(f) &= 1\\
+        \end{align*}
+        Therefore,
+        \begin{align*}
+            U(f,P)-L(f,P) ={}& \sum_{i=1}^3M_i(f)(t_i-t_{i-1})-\sum_{i=1}^3m_i(f)(t_i-t_{i-1})\tag*{Definition \ref{dfn:13.11}}\\
+            \begin{split}
+                ={}& \left[ 0\left( -\frac{\epsilon}{2}-(-1) \right)+1\left( 0-\left( -\frac{\epsilon}{2} \right) \right)+1(1-0) \right]\\
+                   &\quad -\left[ 0\left( -\frac{\epsilon}{2}-(-1) \right)+0\left( 0-\left( -\frac{\epsilon}{2} \right) \right)+1(1-0) \right]
+            \end{split}\\
+            ={}& \frac{\epsilon}{2}\\
+            <{}& \epsilon
+        \end{align*}\par
+        However, by Corollary \ref{cly:5.5} and Theorem \ref{trm:3.14}, $0\in LP([-1,1])$. Additionally, by the proof of Exercise \ref{exr:11.4}, $\lim_{x\to 0}f(x)$ does not exist. Combining the last two results with Theorem \ref{trm:11.5} reveals that $f$ is not continuous at 0. Therefore, by Theorem \ref{trm:9.10}, $f$ is not continuous.
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:13.23}
+    Let $a<b<c$. A function $f:[a,c]\to\R$ is integrable on $[a,c]$ if and only if $f$ is integrable on $[a,b]$ and $[b,c]$. When $f$ is integrable on $[a,c]$, we have
+    \begin{equation*}
+        \int_a^cf = \int_a^bf+\int_b^cf
+    \end{equation*}
+    \begin{lemma*}
+        Let $P_1,P_2$ be partitions of $[a,b]$ and $[b,c]$, respectively. Define $P'=P_1\cup P_2$. Then $P'$ is a partition of $[a,c]$, $L(f,P')=L(f,P_1)+L(f,P_2)$, and $U(f,P')=U(f,P_1)+U(f,P_2)$.
+        \begin{proof}
+            To prove that $P'$ is a partition of $[a,c]$, Definition \ref{dfn:13.10} tells us that it will suffice to show that $P'$ is finite, that $P'\subset[a,c]$, and that $a,c\in P'$. By Definition \ref{dfn:13.10}, $P_1$ and $P_2$ are finite. Thus, by Script \ref{sct:1}, their union $P_1\cup P_2=P'$ is also finite. To confirm that $P'\subset[a,c]$, Definition \ref{dfn:1.3} tells us that it will suffice to demonstrate that every $x\in P'$ is an element of $[a,c]$. Let $x$ be an arbitrary element of $P'$. Then by Definition \ref{dfn:1.5}, $x\in P_1$ or $x\in P_2$. We now divide into two cases. If $x\in P_1$, then since $P_1\subset[a,b]$ by Definition \ref{dfn:13.10}, Definition \ref{dfn:1.3} asserts that $x\in[a,b]$. Thus, by Equations \ref{eqn:8.1}, $a\leq x\leq b$. Moreover, by hypothesis, we have that $a\leq x\leq b<c$, from which it follows by Equations \ref{eqn:8.1} that $x\in[a,c]$, as desired. The argument is symmetric in the other case. Lastly, by consecutive applications of Definition \ref{dfn:13.10}, $a\in P_1$ and $c\in P_2$. It follows by Definition \ref{dfn:1.5} that $a,c\in P'$, as desired.\par
+            Additionally, if we express $P_1$ as containing the objects $a=t_0,\dots,t_n=b$ and $P_2$ as containing the objects $b=t_n,\dots,t_{n+m}=c$, we have that $P'$ contains every object $t_0$ through $t_{n+m}$. Therefore, we have by consecutive applications of Definition \ref{dfn:13.11} that
+            \begin{align*}
+                L(f,P') &= \sum_{i=1}^{n+m}m_i(f)(t_i-t_{i-1})\\
+                &= \sum_{i=1}^nm_i(f)(t_i-t_{i-1})+\sum_{i=n+1}^{n+m}m_i(f)(t_i-t_{i-1})\\
+                &= L(f,P_1)+L(f,P_2)
+            \end{align*}
+            The proof is symmetric for the other statement.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:13.23}]
+        Suppose first that $f$ is integrable on $[a,c]$. To prove that $f$ is integrable on $[a,b]$ and $[b,c]$, Theorem \ref{trm:13.18} tells us that it will suffice to show that for every $\epsilon>0$, there exist partitions $P_1,P_2$ of $[a,b]$ and $[b,c]$, respectively, such that $U(f,P_1)-L(f,P_1)<\epsilon$ and $U(f,P_2)-L(f,P_2)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is integrable on $[a,c]$, there exists a partition $P$ of $[a,c]$ such that $U(f,P)-L(f,P)<\epsilon$. Now define $P'=P\cup\{b\}$. Since $P'$ is finite (by Script \ref{sct:1}), a subset of $[a,c]$ (because $P\subset[a,c]$ by Definition \ref{dfn:13.10} and $\{b\}\subset[a,c]$), and contains $a,c$ (because $a,c\in P$ implies $a,c\in P\cup\{b\}$ by Definition \ref{dfn:1.5}), Definition \ref{dfn:13.10} asserts that $P'$ is a partition of $[a,c]$. Furthermore, since $P\subset P'$ by Theorem \ref{trm:1.7}, Definition \ref{dfn:13.10} implies that $P'$ is a refinement of $P$. Thus, by Lemma \ref{lem:13.12}, $L(f,P)\leq L(f,P')$ and $U(f,P)\geq U(f,P')$. This combined with the fact that $U(f,P)-L(f,P)<\epsilon$ implies by Script \ref{sct:7} that $U(f,P')-L(f,P')\leq U(f,P)-U(f,P)<\epsilon$.\par
+        Let $P_1=P'\cap[a,b]$ and $P_2=P'\cap[b,c]$. In the same manner as before, we have that $P_1$ is a partition of $[a,b]$ and $P_2$ is a partition of $[b,c]$. This combined with the fact that $P_1\cup P_2=P'\cap([a,b]\cup[b,c])=P'$ by Script \ref{sct:1} implies by the lemma that $L(f,P')=L(f,P_1)+L(f,P_2)$ and $U(f,P')=U(f,P_1)+U(f,P_2)$. Thus, we have that
+        \begin{align*}
+            (U(f,P_1)-L(f,P_1))+(U(f,P_2)-L(f,P_2)) &= U(f,P')-L(f,P')\\
+            &< \epsilon
+        \end{align*}
+        Additionally, we have by consecutive applications of Definition \ref{dfn:13.11} that $L(f,P_1)\leq U(f,P_1)$ and $L(f,P_2)\leq U(f,P_2)$. It follows by consecutive applications of Definition \ref{dfn:7.21} that $0\leq U(f,P_1)-L(f,P_1)$ and $0\leq U(f,P_2)-L(f,P_2)$. This combined with the above result that $(U(f,P_1)-L(f,P_1))+(U(f,P_2)-L(f,P_2))<\epsilon$ implies by Script \ref{sct:7} that $U(f,P_1)-L(f,P_1)<\epsilon$ and $U(f,P_2)-L(f,P_2)<\epsilon$.\par\smallskip
+        Now suppose that $f$ is integrable on $[a,b]$ and $[b,c]$. Let $\Omega_1=\int_a^bf$, $\Omega_2=\int_b^cf$, and $\Omega=\Omega_1+\Omega_2$. Thus, to prove that $f$ is integrable on $[a,c]$ and that $\int_a^cf=\int_a^bf+\int_b^cf$, Lemma \ref{lem:13.20} tells us that it will suffice to show that for all $\epsilon>0$, there is some partition $P'$ of $[a,c]$ such that $U(f,P')-\Omega<\epsilon$ and $\Omega-L(f,P')<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is integrable on $[a,b]$ and $[b,c]$, we have by consecutive applications of Lemma \ref{lem:13.20} that there exist partitions $P_1$ of $[a,b]$ and $P_2$ of $[b,c]$ such that $U(f,P_1)-\Omega_1<\frac{\epsilon}{2}$, $\Omega_1-L(f,P_1)<\frac{\epsilon}{2}$, $U(f,P_2)-\Omega_2<\frac{\epsilon}{2}$, and $\Omega_2-L(f,P_2)<\frac{\epsilon}{2}$. Choose $P'=P_1\cup P_2$. By the lemma, $P'$ is a partition of $[a,c]$. Combining all of the above results implies by Script \ref{sct:7} and the lemma that
+        \begin{align*}
+            U(f,P')-\Omega &= U(f,P_1)+U(f,P_2)-\Omega_1-\Omega_2&
+                \Omega-L(f,P') &= \Omega_1+\Omega_2-L(f,P_1)-L(f,P_2)\\
+            &= (U(f,P_1)-\Omega_1)+(U(f,P_2)-\Omega_2)&
+                &= (\Omega_1-L(f,P_1))+(\Omega_2-L(f,P_2))\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}&
+                &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon&
+                &< \epsilon
+        \end{align*}
+        Note that since the claim technically asks us to prove that $\int_a^cf=\int_a^bf+\int_b^cf$ follows from $f$ being integrable on $[a,c]$, not $[a,b]$ and $[b,c]$, we can do this with the above using the following logic. Let $f$ be integrable on $[a,c]$. Then by the first part of the proof, it is integrable on $[a,b]$ and $[b,c]$. It follows by the second part of the proof that $\int_a^cf=\int_a^bf+\int_b^cf$, as desired.
+    \end{proof}
+\end{theorem}
+
 
 
 

@@ -823,6 +823,83 @@
         Note that since the claim technically asks us to prove that $\int_a^cf=\int_a^bf+\int_b^cf$ follows from $f$ being integrable on $[a,c]$, not $[a,b]$ and $[b,c]$, we can do this with the above using the following logic. Let $f$ be integrable on $[a,c]$. Then by the first part of the proof, it is integrable on $[a,b]$ and $[b,c]$. It follows by the second part of the proof that $\int_a^cf=\int_a^bf+\int_b^cf$, as desired.
     \end{proof}
 \end{theorem}
+\pagebreak
+
+\marginnote{4/22:}If $b<a$, we define
+\begin{equation*}
+    \int_a^bf = -\int_b^af
+\end{equation*}
+whenever the latter integral exists. With this notational convention, it follows that the equation
+\begin{equation*}
+    \int_a^cf = \int_a^bf+\int_b^cf
+\end{equation*}
+always holds, regardless of the ordering of $a,b,c$ whenever $f$ is integrable on the largest of the three intervals.
+
+\begin{theorem}\label{trm:13.24}
+    Suppose that $f$ and $g$ are integrable functions on $[a,b]$ and that $c\in\R$ is a constant. Then $f+g$ and $cf$ are integrable on $[a,b]$ and
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}},ref={\thetheorem\alph*}]
+        \item \label{trm:13.24a}$\int_a^b(f+g) = \int_a^bf+\int_a^bg$.
+        \item \label{trm:13.24b}$\int_a^bcf = c\int_a^bf$.
+    \end{enumerate}
+    \begin{lemma*}\leavevmode
+        \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+            \item Let $P=\{t_0,\dots,t_n\}$ be an arbitrary partition of $[a,b]$. Then for any $i\in[n]$, we have $M_i(f+g)\leq M_i(f)+M_i(g)$ and $m_i(f+g)\geq m_i(f)+m_i(g)$.
+            \item Let $P=\{t_0,\dots,t_n\}$ be an arbitrary partition of $[a,b]$. Then if $c>0$, we have $M_i(cf)=c\cdot M_i(f)$ and $m_i(cf)=c\cdot m_i(f)$ for any $i\in[n]$.
+            \item Let $P=\{t_0,\dots,t_n\}$ be an arbitrary partition of $[a,b]$. Then if $c<0$, we have $M_i(cf)=c\cdot m_i(f)$ and $m_i(cf)=c\cdot M_i(f)$ for any $i\in[n]$.
+        \end{enumerate}
+        \begin{proof}[Proof of Lemma \textup{(}a\textup{)}]
+            Let $i$ be an arbitrary natural number satisfying $1\leq i\leq n$. By Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6}, $f(x)\leq M_i(f)$ for all $x\in[t_{i-1},t_i]$. Similarly, $g(x)\leq M_i(g)$ for all $x\in[t_{i-1},t_i]$. Thus, we have by Definition \ref{dfn:7.21} that $(f+g)(x)\leq M_i(f)+M_i(g)$ for all $x\in[t_{i-1},t_i]$. Consequently, Definition \ref{dfn:5.6} asserts that $M_i(f)+M_i(g)$ is an upper bound on $\{(f+g)(x)\mid t_{i-1}\leq x\leq t_i\}$. Therefore, the supremum of that set will be less than or equal to $M_i(f)+M_i(g)$ by Definition \ref{dfn:5.7}. But since $M_i(f+g)$ \emph{is} said supremum by Definition \ref{dfn:13.11}, we have that $M_i(f+g)\leq M_i(f)+M_i(g)$ as desired.\par
+            The proof is symmetric in the other case.
+        \end{proof}
+        \begin{proof}[Proof of Lemma \textup{(}b\textup{)}]
+            Suppose for the sake of contradiction that $M_i(cf)\neq c\cdot M_i(f)$. We divide into two cases ($M_i(cf)<c\cdot M_i(f)$ and $M_i(cf)>c\cdot M_i(f)$). If $M_i(cf)<c\cdot M_i(f)$, then since $c>0$, Lemma \ref{lem:7.24} implies that $\frac{M_i(cf)}{c}<M_i(f)$. It follows by Lemma \ref{lem:5.11} that there exists $f(x)\in\{f(x)\mid t_{i-1}\leq x\leq t_i\}$ such that $\frac{M_i(cf)}{c}<f(x)\leq M_i(f)$, i.e., $M_i(cf)<cf(x)$. But by Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6}, $cf(x)\leq M_i(cf)$ for all $x\in[t_{i-1},t_i]$, a contradiction. The argument is symmetric in the other case.\par
+            The proof is symmetric in the other case.
+        \end{proof}
+        \begin{proof}[Proof of Lemma \textup{(}c\textup{)}]
+            Suppose for the sake of contradiction that $M_i(cf)\neq c\cdot m_i(f)$. We divide into two cases ($M_i(cf)<c\cdot m_i(f)$ and $M_i(cf)>c\cdot m_i(f)$). If $M_i(cf)<c\cdot m_i(f)$, then since $c<0$, Lemma \ref{lem:7.24} implies that $\frac{M_i(cf)}{c}>m_i(f)$. It follows by Lemma \ref{lem:5.11} that there exists $f(x)\in\{f(x)\mid t_{i-1}\leq x\leq t_i\}$ such that $\frac{M_i(cf)}{c}>f(x)\geq m_i(f)$, i.e., $M_i(cf)<cf(x)$. But by Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6}, $cf(x)\leq M_i(cf)$ for all $x\in[t_{i-1},t_i]$, a contradiction. The argument is symmetric in the other case.\par
+            The proof is symmetric in the other case.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:13.24a}]
+        Let $\Omega_f=\int_a^bf$, $\Omega_g=\int_a^bg$, and $\Omega=\Omega_f+\Omega_g$. To prove that $f+g$ is integrable on $[a,b]$ and that $\int_a^b(f+g)=\int_a^bf+\int_a^bg$, Lemma \ref{lem:13.20} tells us that it will suffice to show that for all $\epsilon>0$, there is some partition $P$ such that $U(f+g,P)-\Omega<\epsilon$ and $\Omega-L(f+g,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f,g$ are integrable on $[a,b]$, we have by consecutive applications of Lemma \ref{lem:13.20} that there exist partitions $Q,R$ of $[a,b]$ such that $U(f,Q)-\Omega_f<\frac{\epsilon}{2}$, $\Omega_f-L(f,Q)<\frac{\epsilon}{2}$, $U(g,R)-\Omega_g<\frac{\epsilon}{2}$, and $\Omega_g-L(g,R)<\frac{\epsilon}{2}$. As in previous proofs, $P=Q\cup R$ is also a partition of $[a,b]$ and a refinement of both $Q$ and $R$. Consequently, we have that $U(f,P)-\Omega_f\leq U(f,Q)-\Omega_f<\frac{\epsilon}{2}$, $\Omega_f-L(f,P)\leq\Omega_f-L(f,Q)<\frac{\epsilon}{2}$, $U(g,P)-\Omega_g\leq U(g,R)-\Omega_g<\frac{\epsilon}{2}$, and $\Omega_g-L(g,P)\leq\Omega_g-L(g,R)<\frac{\epsilon}{2}$. It follows by consecutive applications of Script \ref{sct:7} that $U(f,P)+U(g,P)-\Omega<\epsilon$ and that $\Omega-(L(f,P)+L(g,P))<\epsilon$. Therefore, we have that
+        \begin{align*}
+            U(f+g,P)-\Omega &= \sum_{i=1}^nM_i(f+g)(t_i-t_{i-1})-\Omega\tag*{Definition \ref{dfn:13.11}}\\
+            &\leq \sum_{i=1}^n(M_i(f)+M_i(g))(t_i-t_{i-1})-\Omega\tag*{Lemma (a)}\\
+            &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})+\sum_{i=1}^nM_i(g)(t_i-t_{i-1})-\Omega\\
+            &= U(f,P)+U(g,P)-\Omega\tag*{Definition \ref{dfn:13.11}}\\
+            &< \epsilon
+        \end{align*}
+        and something similar for $\Omega-L(f+g,P)$.
+    \end{proof}
+    \begin{proof}[Proof of Theorem \ref{trm:13.24b}]
+        We divide into three cases ($c=0$, $c>0$, and $c<0$).\par
+        If $c=0$, then we have that $cf(x)=0$ for all $x\in[a,b]$. Therefore, we have by Exercise \ref{exr:13.17} that $cf$ is integrable on $[a,b]$ and
+        \begin{align*}
+            \int_a^bcf &= 0(b-a)\\
+            &= 0\\
+            &= 0\cdot\int_a^bf\\
+            &= c\int_a^bf
+        \end{align*}\par
+        If $c>0$, then let $\Omega=\int_a^bf$. To prove that $cf$ is integrable on $[a,b]$ and that $\int_a^bcf=c\int_a^bf$, Lemma \ref{lem:13.20} tells us that it will suffice to show that for all $\epsilon>0$, there is some partition $P$ such that $U(cf,P)-c\,\Omega<\epsilon$ and $c\,\Omega-L(cf,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is integrable on $[a,b]$, we have by Lemma \ref{lem:13.20} that there exists a partition $P$ such that $U(f,P)-\Omega<\frac{\epsilon}{c}$ and $\Omega-L(f,P)<\frac{\epsilon}{c}$. It follows by consecutive applications of Lemma \ref{lem:7.24} that $c\, U(f,P)-c\,\Omega<\epsilon$ and $c\,\Omega-c\, L(f,P)<\epsilon$. Therefore, we have that
+        \begin{align*}
+            U(cf,P)-c\,\Omega &= \sum_{i=1}^nM_i(cf)(t_i-t_{i-1})-c\,\Omega\tag*{Definition \ref{dfn:13.11}}\\
+            &= \sum_{i=1}^nc\cdot M_i(f)(t_i-t_{i-1})-c\,\Omega\tag*{Lemma (b)}\\
+            &= c\sum_{i=1}^nM_i(f)(t_i-t_{i-1})-c\,\Omega\\
+            &= c\, U(f,P)-c\,\Omega\tag*{Definition \ref{dfn:13.11}}\\
+            &< \epsilon
+        \end{align*}
+        and something similar for $c\,\Omega-L(cf,P)$.\par
+        If $c<0$, then let $\Omega=\int_a^bf$. To prove that $cf$ is integrable on $[a,b]$ and that $\int_a^bcf=c\int_a^bf$, Lemma \ref{lem:13.20} tells us that it will suffice to show that for all $\epsilon>0$, there is some partition $P$ such that $U(cf,P)-c\,\Omega<\epsilon$ and $c\,\Omega-L(cf,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is integrable on $[a,b]$, we have by Lemma \ref{lem:13.20} that there exists a partition $P$ such that $U(f,P)-\Omega<\frac{\epsilon}{-c}$ and $\Omega-L(f,P)<\frac{\epsilon}{-c}$. It follows by consecutive applications of Lemma \ref{lem:7.24} that $c\,\Omega-c\, U(f,P)<\epsilon$ and $c\, L(f,P)-c\,\Omega<\epsilon$. Therefore, we have that
+        \begin{align*}
+            U(cf,P)-c\,\Omega &= \sum_{i=1}^nM_i(cf)(t_i-t_{i-1})-c\,\Omega\tag*{Definition \ref{dfn:13.11}}\\
+            &= \sum_{i=1}^nc\cdot m_i(f)(t_i-t_{i-1})-c\,\Omega\tag*{Lemma (c)}\\
+            &= c\sum_{i=1}^nm_i(f)(t_i-t_{i-1})-c\,\Omega\\
+            &= c\, L(f,P)-c\,\Omega\tag*{Definition \ref{dfn:13.11}}\\
+            &< \epsilon
+        \end{align*}
+        and something similar for $c\,\Omega-L(cf,P)$.
+    \end{proof}
+\end{theorem}
 
 
 

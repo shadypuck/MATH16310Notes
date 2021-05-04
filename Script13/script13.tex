@@ -1005,6 +1005,35 @@ always holds, regardless of the ordering of $a,b,c$ whenever $f$ is integrable o
     \end{proof}
 \end{theorem}
 
+\begin{theorem}\label{trm:13.27}\marginnote{\emph{5/4:}}
+    Suppose that $f$ is integrable on $[a,b]$ and $m\leq f(x)\leq M$ for all $x\in[a,b]$. Then
+    \begin{equation*}
+        m(b-a) \leq \int_a^bf \leq M(b-a)
+    \end{equation*}
+    \begin{proof}
+        Let $g,h:[a,b]\to\R$ be defined by $g(x)=m$ and $h(x)=M$. By consecutive applications of Exercise \ref{exr:13.17}, $g$ and $h$ are integrable on $[a,b]$ with $\int_a^bg=m(b-a)$ and $\int_a^bh=M(b-a)$. Additionally, we have by the definitions of $g$ and $h$ that $g(x)=m\leq f(x)\leq M=h(x)$. This combined with the fact that both $g$ and $h$ are integrable implies by consecutive applications of Theorem \ref{trm:13.25} that $\int_a^bg\leq\int_a^bf\leq\int_a^bh$. But this implies by the above that $m(b-a)\leq\int_a^bf\leq M(b-a)$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:13.28}
+    Suppose that $f$ is integrable on $[a,b]$. Define $F:[a,b]\to\R$ by
+    \begin{equation*}
+        F(x) = \int_a^xf
+    \end{equation*}
+    Then $F$ is continuous.
+    \begin{proof}
+        To prove that $F$ is continuous, Theorem \ref{trm:9.10} tells us that it will suffice to show that $F$ is continuous at every $x\in[a,b]$. Let $x$ be an arbitrary element of $[a,b]$. To show that $F$ is continuous at $x$, Theorem \ref{trm:11.5} tells us that it will suffice to verify that for every $\epsilon>0$, there exists a $\delta>0$ such that if $y\in[a,b]$ and $|y-x|<\delta$, then $|F(y)-F(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Define $s=\sup\{|f(x)|\mid x\in[a,b]\}$ so that we may choose $\delta=\frac{\epsilon}{s}$. Now let $y$ be an arbitrary element of $[a,b]$ such that $|y-x|<\delta$. Therefore,
+        \begin{align*}
+            |F(y)-F(x)| &= \left| \int_a^yf-\int_a^xf \right|\\
+            &= \left| \int_x^yf \right|\tag*{Theorem \ref{trm:13.23}}\\
+            &\leq \int_x^y|f|\tag*{Theorem \ref{trm:13.26}}\\
+            &\leq s(y-x)\tag*{Theorem \ref{trm:13.27}}\\
+            &< s\cdot\frac{\epsilon}{s}\\
+            &= \epsilon
+        \end{align*}
+    \end{proof}
+\end{theorem}
+
 
 
 

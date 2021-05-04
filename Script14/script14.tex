@@ -1,0 +1,68 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{13}
+
+\begin{document}
+
+
+
+
+\chapter{Integrals and Derivatives}\label{sct:14}
+\section{Journal}
+\begin{theorem}\marginnote{\emph{5/4:}}
+    Suppose that $f$ is integrable on $[a,b]$. Define $F:[a,b]\to\R$ by
+    \begin{equation*}
+        F(x) = \int_a^xf
+    \end{equation*}
+    If $f$ is continuous at $p\in(a,b)$, then $F$ is differentiable at $p$ and
+    \begin{equation*}
+        F'(p) = f(p)
+    \end{equation*}
+    If $f$ is continuous at $a$, then $F_+'(a)$ exists and equals $f(a)$. Similarly, if $f$ is continuous at $b$, $F_-'(b)$ exists and equals $f(b)$.
+    \begin{proof}
+        % \begin{itemize}
+        %     \item Theorem \ref{trm:11.5}: There exists a $\delta_1>0$ such that if $x\in[a,b]$ and $|x-p|<\delta_1$, $|f(x)-f(p)|<\epsilon$.
+        %     \item Theorem \ref{trm:4.10}: There exists a region $R$ containing $p$ such that $R\subset(a,b)$.
+        %     \item Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}: $R$ is an open interval.
+        %     \item Lemma \ref{lem:8.10}: There exists a $\delta_2>0$ such that $(p-\delta_2,p+\delta_2)\subset R$.
+        %     \item Choose $\delta=\min(\frac{\delta_1}{2},\delta_2)$.
+        %     \item Script \ref{sct:8}: $[p-\delta,p+\delta]\subset[a,b]$.
+        %     \item Exercise \ref{exr:10.21}: There exists a point $c\in[p-\delta,p+\delta]$ such that $f(c)\geq f(x)$ for all $x\in[p-\delta,p+\delta]$.
+        %     \item Let $x$ be an arbitrary element of $[a,b]$ that satisfies $0<|x-p|<\delta$.
+        %     \item Therefore,
+        %     \begin{align*}
+        %         \left| \frac{F(x)-F(p)}{x-p}-f(p) \right| &= \left| \frac{\int_a^xf-\int_a^pf}{x-p}-f(p) \right|\\
+        %         &= \left| \frac{\int_p^xf}{x-p}-f(p) \right|\tag*{Theorem \ref{trm:13.23}}\\
+        %         &\leq \left| \frac{f(c)(x-p)}{x-p}-f(p) \right|\tag*{Theorem \ref{trm:13.27}}\\
+        %         &= |f(c)-f(p)|\\
+        %         &< \epsilon
+        %     \end{align*}
+        %     as desired.
+        % \end{itemize}
+
+        % seek to confirm that $[p-\delta,p+\delta]\subset[a,b]$. To do so, Definition \ref{dfn:1.3} tells us that it will suffice to demonstrate that every $x\in[p-\delta,p+\delta]$ is an element of $[a,b]$. Let $x$ be an arbitrary element of $[p-\delta,p+\delta]$. We divide into three cases ($x=p-\delta$, $x=p+\delta$, and $x\in(p-\delta,p+\delta)$)
+
+
+        To prove that $F$ is differentiable at $p$ and $F'(p)=f(p)$, Definition \ref{dfn:12.1} and Theorem \ref{trm:12.4} tell us that it will suffice to show that $\lim_{x\to p}\frac{F(x)-F(p)}{x-p}=f(p)$. To do this, Definition \ref{dfn:11.1} tells us that it will suffice to verify that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in[a,b]$ and $0<|x-p|<\delta$, then $|\frac{F(x)-F(p)}{x-p}-f(p)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is continuous at $p$, Theorem \ref{trm:11.5} asserts that there exists a $\delta_1>0$ such that if $x\in[a,b]$ and $|x-p|<\delta_1$, $|f(x)-f(p)|<\epsilon$. Additionally, since $p\in(a,b)$, we have by Theorem \ref{trm:4.10} that there exists a region $R$ containing $p$ such that $R\subset(a,b)$. It follows by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3} that $R$ is an open interval. Thus, by Lemma \ref{lem:8.10}, there exists a $\delta_2>0$ such that $(p-\delta_2,p+\delta_2)\subset R$.\par
+        Choose $\delta=\min(\frac{\delta_1}{2},\delta_2)$. Before we can prove the desired inequality, we need a few preliminary results. First off, we can show that $[p-\delta,p+\delta]\subset[a,b]$ by Script \ref{sct:1} and the fact that $\delta\leq\delta_2$. Additionally, Exercise \ref{exr:10.21} implies that there exists a point $c\in[p-\delta,p+\delta]$ such that $f(c)\geq f(x)$ for all $x\in[p-\delta,p+\delta]$. By the previous result, $c\in[p-\delta,p+\delta]$ implies that $c\in[a,b]$. Furthermore, we have by an extension of Lemma \ref{exr:8.9} that $|c-p|\leq\delta\leq\frac{\delta_1}{2}<\delta_1$. This combined with the previous result implies by the above that $|f(c)-f(p)|<\epsilon$. Now let $x$ be an arbitrary element of $[a,b]$ that satisfies $0<|x-p|<\delta$. However, before we go into the inequality, we have one final result to confirm: that $\int_p^xf\leq f(c)(x-p)$. Since $f(y)\leq f(c)$ for all $y\in[p-\delta,p+\delta]$, we naturally have that $f(y)\leq f(c)$ for all $y\in[p,x]\cup[x,p]\subset[p-\delta,p+\delta]$. Thus, by Theorem \ref{trm:13.27}, $\int_p^xf\leq f(c)(x-p)$ as desired. Therefore,
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            \left| \frac{F(x)-F(p)}{x-p}-f(p) \right| &= \left| \frac{\int_a^xf-\int_a^pf}{x-p}-f(p) \right|\\
+            &= \left| \frac{\int_p^xf}{x-p}-f(p) \right|\tag*{Theorem \ref{trm:13.23}}\\
+            &\leq \left| \frac{f(c)(x-p)}{x-p}-f(p) \right|\\
+            &= |f(c)-f(p)|\\
+            &< \epsilon
+        \end{align*}
+        \endgroup
+        as desired.\par
+        The proof is symmetric in the other two cases, with the help of Remark \ref{rmk:12.2}.
+    \end{proof}
+\end{theorem}
+
+
+
+
+\end{document}

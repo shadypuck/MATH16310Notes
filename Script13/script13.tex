@@ -901,6 +901,110 @@ always holds, regardless of the ordering of $a,b,c$ whenever $f$ is integrable o
     \end{proof}
 \end{theorem}
 
+\begin{theorem}\label{trm:13.25}\marginnote{\emph{4/27:}}
+    Suppose that $f$ and $g$ are integrable functions on $[a,b]$ with $f(x)\leq g(x)$ for all $x\in[a,b]$. Then
+    \begin{equation*}
+        \int_a^bf \leq \int_a^bg
+    \end{equation*}
+    \begin{proof}
+        Suppose for the sake of contradiction that $\int_a^bf>\int_a^bg$. Then by Definition \ref{dfn:13.16}, $L(f)>L(g)$. It follows by Lemma \ref{lem:5.11} that there exists a $L(f,P)\in\{L(f,P)\mid P\text{ is a partition of }[a,b]\}$ such that $L(f)\geq L(f,P)>L(g)$. Thus, since $L(g,P)\leq L(g)$ by Definitions \ref{dfn:13.14}, \ref{dfn:5.7}, and \ref{dfn:5.6}, we have that $L(g,P)<L(f,P)$. Consequently, by Definition \ref{dfn:13.11}, $\sum_{i=1}^nm_i(g)(t_i-t_{i-1})<\sum_{i=1}^nm_i(f)(t_i-t_{i-1})$. Thus, by Script \ref{sct:7}, there exists an $i$ such that $m_i(g)<m_i(f)$. It follows by Lemma \ref{lem:5.11} that there exists a $g(x)\in\{g(x)\mid t_{i-1}\leq x\leq t_i\}$ such that $m_i(g)\leq g(x)<m_i(f)$. But this implies by Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6} that $g(x)<f(x)$, a contradiction.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:13.26}
+    Suppose that $f$ is an integrable function on $[a,b]$. Then $|f|$ is also integrable on $[a,b]$ and
+    \begin{equation*}
+        \left| \int_a^bf \right| \leq \int_a^b|f|
+    \end{equation*}
+    \begin{lemma*}
+        Let $P=\{t_0,\dots,t_n\}$ be an arbitrary partition of $[a,b]$. Then for any $i\in[n]$, the following inequality holds.
+        \begin{equation*}
+            M_i(|f|)-m_i(|f|) \leq M_i(f)-m_i(f)
+        \end{equation*}
+        \begin{proof}
+            % \begin{itemize}
+            %     \item Suppose first that $|M_i(f)|\geq|m_i(f)|$.
+            %     \begin{itemize}
+            %         \item Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6}: $M_i(f)\geq f(y)>0$.
+            %         \item Definition \ref{dfn:8.4}: $|M_i(f)|=M_i(f)$.
+            %         \item Similarly: $|m_i(f)|=-m_i(f)$.
+            %         \item The above: $M_i(f)\geq -m_i(f)$.
+            %         \item Lemma (c), Theorem \ref{trm:13.24}: $M_i(f)\geq M_i(-f)$.
+            %         \item Additionally: $M_i(f)\geq M_i(f)$.
+            %         \item Last 2: $M_i(f)\geq M_i(|f|)$.
+            %         \item Furthermore: $m_i(|f|)\geq 0>f(x)\geq m_i(f)$.
+            %         \item Therefore:
+            %         \begin{align*}
+            %             M_i(|f|)-m_i(|f|) &\leq M_i(f)-m_i(|f|)\\
+            %             &< M_i(f)-m_i(f)
+            %         \end{align*}
+            %         \item Can be weakened to $M_i(|f|)-m_i(|f|)\leq M_i(f)-m_i(f)$.
+            %     \end{itemize}
+            %     \item Now suppose that $|M_i(f)|<|m_i(f)|$.
+            %     \begin{itemize}
+            %         \item As before: $M_i(f)>0$ and $m_i(|f|)\geq 0$.
+            %         \item Lemma \ref{lem:7.23}: $-M_i(f)<0$.
+            %         \item Last 2: $-M_i(f)<m_i(|f|)$.
+            %         \item Furthermore: $-m_i(f)=M_i(-f)$ and $M_i(f)<M_i(-f)$ implies $-m_i(f)=M_i(|f|)$.
+            %         \item Definition \ref{dfn:7.21}: $M_i(|f|)-M_i(f)<m_i(|f|)-m_i(f)$.
+            %         \item Definition \ref{dfn:7.21}: $M_i(|f|)-m_i(|f|)<M_i(f)-m_i(f)$.
+            %         \item Can be weakened to $M_i(|f|)-m_i(|f|)\leq M_i(f)-m_i(f)$.
+            %     \end{itemize}
+            % \end{itemize}
+
+
+            Let $i$ be an arbitrary natural number satisfying $1\leq i\leq n$. We divide into three cases ($f(x)\geq 0$ for all $x\in[a,b]$, $f(x)\leq 0$ for all $x\in[a,b]$, and there exist $x,y\in[a,b]$ such that $f(x)<0<f(y)$). Let's begin.\par\smallskip
+            First, suppose that $f(x)\geq 0$ for all $x\in[a,b]$. Then by Definition \ref{dfn:8.4}, $|f(x)|=f(x)$ for all $x\in[a,b]$. It follows that $M_i(|f|)-m_i(|f|)=M_i(f)-m_i(f)$, which can be weakened to $M_i(|f|)-m_i(|f|)\leq M_i(f)-m_i(f)$, as desired.\par\smallskip
+            Second, suppose that $f(x)\leq 0$ for all $x\in[a,b]$. Then by Definition \ref{dfn:8.4}, $|f(x)|=-f(x)$ for all $x\in[a,b]$. It follows that
+            \begin{align*}
+                M_i(|f|)-m_i(|f|) &= M_i(-f)-m_i(-f)\\
+                &= -m_i(f)-(-M_i(f))\tag*{Lemma (c), Theorem \ref{trm:13.24}}\\
+                &= M_i(f)-m_i(f)
+            \end{align*}
+            which can be weakened to $M_i(|f|)-m_i(|f|)\leq M_i(f)-m_i(f)$, as desired.\par\smallskip
+            Third, suppose that there exist $x,y\in[a,b]$ such that $f(x)<0<f(y)$. We divide into two subcases ($|M_i(f)|\geq|m_i(f)|$ and $|M_i(f)|<|m_i(f)|$).\par
+            Suppose first that $|M_i(f)|\geq|m_i(f)|$. By Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6} as well as the hypothesis, $M_i(f)\geq f(y)>0$. Thus, by Definition \ref{dfn:8.4}, $|M_i(f)|=M_i(f)$. Similarly, $|m_i(f)|=-m_i(f)$. It follows by Lemma (c) from Theorem \ref{trm:13.24} that $-m_i(f)=M_i(-f)$. This combined with the fact that $|M_i(f)|=M_i(f)$ implies by the hypothesis that $M_i(f)\geq M_i(-f)$. Additionally, we clearly have that $M_i(f)\geq M_i(f)$. Consequently, since $M_i(f)\geq M_i(-f)$ and $M_i(f)\geq M_i(f)$, we have by Script \ref{sct:5} that $M_i(f)\geq M_i(|f|)$. Furthermore, we have by Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, \ref{dfn:5.6}, and \ref{dfn:8.4} that $m_i(|f|)\geq 0>f(x)\geq m_i(f)$. Therefore, since $M_i(|f|)\leq M_i(f)$ and $m_i(f)<m_i(|f|)$, we have that
+            \begin{align*}
+                M_i(|f|)-m_i(|f|) &\leq M_i(f)-m_i(|f|)\\
+                &< M_i(f)-m_i(f)
+            \end{align*}
+            which can be weakened to $M_i(|f|)-m_i(|f|)\leq M_i(f)-m_i(f)$, as desired.\par
+            Now suppose that $|M_i(f)|<|m_i(f)|$. As before, $M_i(f)>0$ and $m_i(|f|)\geq 0$. It follows from the former result by Lemma \ref{lem:7.23} that $-M_i(f)<0$. This combined with the previous result implies by transitivity that $-M_i(f)\leq m_i(|f|)$. Additionally, we have as before that $-m_i(f)=M_i(-f)$ and $M_i(f)=|M_i(f)|<|m_i(f)|=-m_i(f)=M_i(-f)$. Thus, $M_i(|f|)=M_i(-f)=-m_i(f)$. This combined with the fact that $-M_i(f)\leq m_i(|f|)$ implies by Definition \ref{dfn:7.21} that $M_i(|f|)-M_i(f)<m_i(|f|)-m_i(f)$. It follows by consecutive applications of Definition \ref{dfn:7.21} that $M_i(|f|)-m_i(|f|)<M_i(f)-m_i(f)$, which can be weakened to $M_i(|f|)-m_i(|f|)\leq M_i(f)-m_i(f)$, as desired.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:13.26}]
+        % \begin{itemize}
+        %     \item Theorem \ref{trm:13.18}: There exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$.
+        %     \item Therefore,
+        %     \begin{align*}
+        %         U(|f|,P)-L(|f|,P) &= \sum_{i=1}^nM_i(|f|)(t_i-t_{i-1})-\sum_{i=1}^nm_i(|f|)(t_i-t_{i-1})\tag*{Definition \ref{dfn:13.11}}\\
+        %         &= \sum_{i=1}^n(M_i(|f|)-m_i(|f|))(t_i-t_{i-1})\\
+        %         &\leq \sum_{i=1}^n(M_i(f)-m_i(f))(t_i-t_{i-1})\tag*{The Lemma}\\
+        %         &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})-\sum_{i=1}^nm_i(f)(t_i-t_{i-1})\\
+        %         &= U(f,P)-L(f,P)\tag*{Definition \ref{dfn:13.11}}\\
+        %         &< \epsilon
+        %     \end{align*}
+        %     \item Script \ref{sct:8}: $-|f(x)|\leq f(x)\leq |f(x)|$ for all $x\in[a,b]$.
+        %     \item (consecutive) Theorem \ref{trm:13.25}: $\int_a^b-|f|\leq\int_a^bf\leq\int_a^b|f|$.
+        %     \item Theorem \ref{trm:13.24}: $\int_a^b-|f|=-\int_a^b|f|$.
+        %     \item The lemma to Exercise \ref{exr:8.9}: $|\int_a^bf|\leq\int_a^b|f|$.
+        % \end{itemize}
+
+
+        To prove that $|f|$ is integrable on $[a,b]$, Theorem \ref{trm:13.18} tells us that it will suffice to show that for every $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $U(|f|,P)-L(|f|,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. By Theorem \ref{trm:13.18}, there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$. Therefore,
+        \begin{align*}
+            U(|f|,P)-L(|f|,P) &= \sum_{i=1}^nM_i(|f|)(t_i-t_{i-1})-\sum_{i=1}^nm_i(|f|)(t_i-t_{i-1})\tag*{Definition \ref{dfn:13.11}}\\
+            &= \sum_{i=1}^n(M_i(|f|)-m_i(|f|))(t_i-t_{i-1})\\
+            &\leq \sum_{i=1}^n(M_i(f)-m_i(f))(t_i-t_{i-1})\tag*{The Lemma}\\
+            &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})-\sum_{i=1}^nm_i(f)(t_i-t_{i-1})\\
+            &= U(f,P)-L(f,P)\tag*{Definition \ref{dfn:13.11}}\\
+            &< \epsilon
+        \end{align*}
+        as desired.\par
+        We now seek to prove that $|\int_a^bf|\leq\int_a^b|f|$. By Script \ref{sct:8}, $-|f(x)|\leq f(x)\leq |f(x)|$ for all $x\in[a,b]$. It follows by consecutive applications of Theorem \ref{trm:13.25} that $\int_a^b-|f|\leq\int_a^bf\leq\int_a^b|f|$. Thus, since Theorem \ref{trm:13.24} asserts that $\int_a^b-|f|=-\int_a^b|f|$, we have that $-\int_a^b|f|\leq\int_a^bf\leq\int_a^b|f|$. Therefore, by the lemma to Exercise \ref{exr:8.9}, $|\int_a^bf|\leq\int_a^b|f|$, as desired.
+    \end{proof}
+\end{theorem}
+
 
 
 

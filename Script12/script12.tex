@@ -245,7 +245,43 @@
     \begin{equation*}
         (f\circ g)'(a) = f'(g(a))\cdot g'(a)
     \end{equation*}
+    % \begin{lemma*}
+    %     % Continuity of $\varphi$ as a lemma?
+
+    %     Suppose that for all regions $R$ containing $a$, there exists a point $x\in R$ such that $g(x)\neq g(a)$. Then there exists a region $R$ containing $a$ such that $g(x)\neq g(a)$ for all $x\in R\setminus\{a\}$.
+    %     \begin{proof}
+    %         We divide into two cases ($g'(a)=0$ and $g'(a)\neq 0$).\par
+    %         Suppose first that $g'(a)=0$. Then...
+            
+    %         % Using MVT: There are points $x$ arbitrarily close to 0 with $g'(x)\neq 0$. Around all of these points, there exists a region where $g(x)\neq g(a)$. The union of all of these regions is the desired region.
+
+    %         % Theorem \ref{trm:12.5}: $g$ is continuous at $a$. Theorem \ref{trm:11.5}: $\lim_{x\to a}g(x)=g(a)$. We can opt to work with $S\subset A$ such that $a\in S$. There are points arbitrarily close to $a$ with $g(x)\neq g(a)$. At each of these points, 
+            
+    %         % \par
+    %         Now suppose that $g'(a)\neq 0$. Then we divide into two subcases ($g'(a)>0$ and $g'(a)<0$). If $g'(a)>0$, then by Theorem \ref{trm:12.4}, $\lim_{x\to a}\frac{g(x)-g(a)}{x-a}>0$. Thus, by Lemma \ref{lem:11.8}, there exists a region $S$ with $a\in S$ such that $\frac{g(x)-g(a)}{x-a}>0$ for all $x\in S\cap A$. Additionally, since $A$ is open, Theorem \ref{trm:4.10} implies that there exists a region $T$ with $a\in T$ such that $T\subset A$. It follows by Theorem \ref{trm:3.18} that $S\cap T=R$ where $R$ is a region containing $a$. Choose this $R$ to be our $R$. By definition, $a\in R$. To prove that $g(x)\neq g(a)$ for all $x\in R\setminus\{a\}$, let $x$ be an arbitrary element of $R\setminus\{a\}$. Then by Definition \ref{dfn:1.11}, $x\in R$ and $x\neq a$. It follows from the former result by the above and Definition \ref{dfn:1.6} that $x\in S$ and $x\in T$. Since $x\in T$ and $T\subset A$, Definition \ref{dfn:1.3} implies that $x\in A$. This combined with the fact that $x\in S$ implies by Definition \ref{dfn:1.6} that $x\in S\cap A$. Thus, by the above, $\frac{g(x)-g(a)}{x-a}>0$. Therefore, by Script \ref{sct:7}, $g(x)-g(a)\neq 0$, i.e., $g(x)\neq g(a)$, as desired.
+    %     \end{proof}
+    % \end{lemma*}
     \begin{proof}
+        % We divide into two cases (there exists a region $R$ with $a\in R$ such that $g(x)=g(a)$ for all $x\in R$; and for all regions $R$ with $a\in R$, there exists $x\in R$ such that $g(x)\neq g(a)$). If there exists a region $R$ with $a\in R$ such that $g(x)=g(a)$ for all $x\in R$, then $(f\circ g)(x)=(f\circ g)(a)$ for all $x\in R$. It follows by consecutive applications of Exercise \ref{exr:12.8} that $f\circ g$ is differentiable at $a$, $(f\circ g)'(a)=0$, and $g'(a)=0$. Therefore, we have that
+        % \begin{align*}
+        %     (f\circ g)'(a) &= 0\\
+        %     &= f'(g(a))\cdot 0\\
+        %     &= f'(g(a))\cdot g'(a)
+        % \end{align*}
+        % as desired.\par
+
+        % We divide into two cases (there exists a region $(p,a)$ or $(a,q)$ such that $g(x)=g(a)$ for all $x$ in the region; and for all regions $R$ with $a\in\R$, there exist $x,y\in R$ such that $x<a<y$ and $g(x)\neq g(a)\neq g(y)$). Suppose first that there exists a region $(p,a)$ or $(a,q)$ such that $g(x)=g(a)$ for all $x$ in the region. Then we divide into two subcases (the region is of the form $(p,a)$ and the region is of the form $(a,q)$). If the region is of the form $(p,a)$, then we know that $(f\circ g)(x)=(f\circ g)(a)$ for all $x\in(p,a)$. It follows by an extension of Exercise \ref{exr:12.8} and Remark \ref{rmk:12.2} that $f\circ g$ is left-hand differentiable at $a$, $(f\circ g)_-'(a)=0$, and $g_-'(a)=0$, i.e., $g'(a)=0$ since $g$ is differentiable at $a$. Therefore, we have that
+        % \begin{align*}
+        %     (f\circ g)'(a) &= 0\\
+        %     &= f'(g(a))\cdot 0\\
+        %     &= f'(g(a))\cdot g'(a)
+        % \end{align*}
+        % as desired.\par
+        % Now suppose that for all regions $R$ with $a\in\R$, there exist $x,y\in R$ such that $x<a<y$ and $g(x)\neq g(a)\neq g(y)$.
+
+        % We now seek to use this result to verify that $\lim_{x\to a}\frac{f(g(x))-f(g(a))}{g(x)-g(a)}=f'(g(a))$. To do so, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\varphi$ is continuous at $a$, Theorem \ref{trm:11.5} asserts that there exists a $\delta_1>0$ such that if $x\in A$ and $|x-a|<\delta_1$, then $|\varphi(x)-\varphi(a)|<\epsilon$. Additionally, since it is true that for all regions $R$ with $a\in\R$, there exists $x\in R$ such that $g(x)\neq g(a)$, we have by the lemma that there exists a region $R$ with $a\in R$ such that $g(x)\neq g(a)$ for all $x\in R\setminus\{a\}$. It follows by Lemma \ref{lem:8.3} that $R$ is an interval and by Corollary \ref{cly:4.11} that $R$ is open. Thus, by Lemma \ref{lem:8.10}, there exists a number $\delta_2>0$ such that $(a-\delta_2,a+\delta_2)\subset R$. Choose $\delta=\min(\delta_1,\delta_2)$. Let $x$ be an arbitrary element of $A$ that satisfies $0<|x-a|<\delta$. It follows that $|x-a|<\delta_1$. Thus, by the above, $|\varphi(x)-\varphi(a)|<\epsilon$. Additionally, we have by the fact that $0<|x-a|<\delta$ that $|x-a|<\delta_2$ and $x\neq a$. It follows from the former result by Exercise \ref{exr:8.9} that $x\in(a-\delta_2,a+\delta_2)$, i.e., $x\in R$ by the above and Definition \ref{dfn:1.3}. It follows from the latter result by Script \ref{sct:1} that $x\notin\{a\}$. This combined with the previous result implies by Definition \ref{dfn:1.11} that $x\in R\setminus\{a\}$. Thus, by the above, $g(x)\neq g(a)$. This combined with the fact that $|\varphi(x)-\varphi(a)|<\epsilon$ implies by the definition of $\varphi$ that $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))|<\epsilon$, as desired.\par
+
+
         To prove that $f\circ g$ is differentiable at $a$, Theorem \ref{trm:12.4} tells us that it will suffice to show that $\lim_{x\to a}\frac{(f\circ g)(x)-(f\circ g)(a)}{x-a}$ exists. To do so, we will define a special function $\varphi$ and prove that it is continuous at $a$. It will follow that $(f\circ g)'(a)$ exists and equals $f'(g(a))\cdot g'(a)$. Let's begin.\par
         Let $\varphi:I\to\R$ be defined by
         \begin{equation*}
@@ -258,15 +294,26 @@
         It is clear from the definition that the function is defined for all $x\in A$.\par
         To confirm that $\varphi$ is continuous at $a$, Theorem \ref{trm:11.5} tells us that it will suffice to demonstrate that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|\varphi(x)-\varphi(a)|=|\varphi(x)-f'(g(a))|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f$ is differentiable at $g(a)$, Theorem \ref{trm:12.4} asserts that $\lim_{y\to g(a)}\frac{f(y)-f(g(a))}{y-g(a)}=f'(g(a))$. It follows by Definition \ref{dfn:11.1} that there is some $\delta'>0$ such that if $y\in I$ and $0<|y-g(a)|<\delta'$, then $|\frac{f(y)-f(g(a))}{y-g(a)}-f'(g(a))|<\epsilon$. Additionally, since $g$ is differentiable (hence continuous by Theorem \ref{trm:12.5}) at $a$, we have by Theorem \ref{trm:11.5} that there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|g(x)-g(a)|<\delta'$.\par
         Using the above $\delta$, let $x$ be an arbitrary element of $A$ such that $|x-a|<\delta$. We now divide into two cases ($g(x)=g(a)$ and $g(x)\neq g(a)$). If $g(x)=g(a)$, then $|\varphi(x)-f'(g(a))|=|f'(g(a))-f'(g(a))|=0<\epsilon$, as desired. If $g(x)\neq g(a)$, then we continue. Since $|x-a|<\delta$, we have that $|g(x)-g(a)|<\delta'$. This combined with the fact that $g(x)\in I$ and $g(x)\neq g(a)$, i.e., $0<|g(x)-g(a)|$ illustrates that $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))|=|\varphi(x)-f'(g(a))|<\epsilon$. Therefore, $\varphi$ is continuous at $a$.\par
-        % We now seek to use this result to verify that $\lim_{x\to a}\frac{f(g(x))-f(g(a))}{g(x)-g(a)}=f'(g(a))$. To do so, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}-f'(g(a))|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\varphi$ is continuous at $a$, Theorem \ref{trm:11.5} asserts that there exists a $\delta>0$ such that if $x\in A$ and $|x-a|<\delta$, then $|\varphi(x)-\varphi(a)|<\epsilon$. Choose this $\delta$ to be our $\delta$. Let $x$ be an arbitrary element of $A$ that satisfies $0<|x-a|<\delta$. We divide into two cases ($g(x)=g(a)$ and $g(x)\neq g(a)$). If $g(x)=g(a)$ ... Perhaps a case where $g'(a)=0$ and $g'(a)\neq 0$???
-        It follows by Theorem \ref{trm:11.5} that $\lim_{x\to a}\varphi(x)=\varphi(a)=f'(g(a))$. Additionally, since $g$ is differentiable at $a$, Definition \ref{dfn:12.1} and Theorem \ref{trm:12.4} tell us that $\lim_{x\to a}\frac{g(x)-g(a)}{x-a}$ exists (and equals $g'(a)$). The combination of the past two results imply by Theorem \ref{trm:11.9} that the product of the limits exists and equals
+        It follows by Theorem \ref{trm:11.5} that $\lim_{x\to a}\varphi(x)=\varphi(a)=f'(g(a))$. Additionally, since $g$ is differentiable at $a$, Definition \ref{dfn:12.1} and Theorem \ref{trm:12.4} tell us that $\lim_{x\to a}\frac{g(x)-g(a)}{x-a}$ exists (and equals $g'(a)$). This combined with the previous result implies by Theorem \ref{trm:11.9} that the product of the limits exists and equals $f'(g(a))\cdot g'(a)$, i.e., we have that $\lim_{x\to a}\varphi(x)\cdot\frac{g(x)-g(a)}{x-a}=f'(g(a))\cdot g'(a)$.\par
+        We now seek to confirm that $\lim_{x\to a}\frac{f(g(x))-f(g(a))}{x-a}=f'(g(a))\cdot g'(a)$. To do so, Definition \ref{dfn:11.1} tells us that it will suffice to demonstrate that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\frac{f(g(x))-f(g(a))}{x-a}-f'(g(a))\cdot g'(a)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{x\to a}\varphi(x)\cdot\frac{g(x)-g(a)}{x-a}=f'(g(a))\cdot g'(a)$, we have by Definition \ref{dfn:11.1} that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\varphi(x)\cdot\frac{g(x)-g(a)}{x-a}-f'(g(a))\cdot g'(a)|<\epsilon$. Choose this $\delta$ to be our $\delta$. Let $x$ be an arbitrary element of $A$ that satisfies $0<|x-a|<\delta$. We divide into two cases ($g(x)=g(a)$ and $g(x)\neq g(a)$). Suppose first that $g(x)=g(a)$. Since $0<|x-a|<\delta$, we have by the above and the definition of $\varphi$ that $|f'(g(a))\cdot\frac{g(x)-g(a)}{x-a}-f'(g(a))\cdot g'(a)|<\epsilon$. Additionally, it follows from the hypothesis that $g(x)-g(a)=0$ and $f(g(x))-f(g(a))=0$. Therefore,
         \begin{align*}
-            f'(g(a))\cdot g'(a) &= \lim_{x\to a}\varphi(x)\cdot\frac{g(x)-g(a)}{x-a}\\
-            &= \lim_{x\to a}\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\cdot\frac{g(x)-g(a)}{x-a}\\
-            &= \lim_{x\to a}\frac{f(g(x))-f(g(a))}{x-a}\\
-            &= \lim_{x\to a}\frac{(f\circ g)(x)-(f\circ g)(a)}{x-a}\\
-            &= (f\circ g)'(a)
+            \begin{split}
+                \left| \frac{f(g(x))-f(g(a))}{x-a}-f'(g(a))\cdot g'(a) \right| \leq{}& \left| \frac{f(g(x))-f(g(a))}{x-a}-f'(g(a))\cdot\frac{g(x)-g(a)}{x-a} \right|\\
+                &+ \left| f'(g(a))\cdot\frac{g(x)-g(a)}{x-a}-f'(g(a))\cdot g'(a) \right|
+            \end{split}\tag*{Lemma \ref{lem:8.8}}\\
+            \begin{split}
+                ={}& \left| \frac{0}{x-a}-f'(g(a))\cdot\frac{0}{x-a} \right|\\
+                &+ \left| f'(g(a))\cdot\frac{g(x)-g(a)}{x-a}-f'(g(a))\cdot g'(a) \right|
+            \end{split}\\
+            ={}& 0+\left| f'(g(a))\cdot\frac{g(x)-g(a)}{x-a}-f'(g(a))\cdot g'(a) \right|\\
+            <{}& \epsilon
         \end{align*}
+        as desired. Now suppose that $g(x)\neq g(a)$. Since $0<|x-a|<\delta$, we have by the above and the definition of $\varphi$ that $|\frac{f(g(x))-f(g(a))}{g(x)-g(a)}\cdot\frac{g(x)-g(a)}{x-a}-f'(g(a))\cdot g'(a)|<\epsilon$. Additionally, it follows from the hypothesis that $g(x)-g(a)\neq 0$. Therefore, we have by Script \ref{sct:7} that $|\frac{f(g(x))-f(g(a))}{x-a}-f'(g(a))\cdot g'(a)|<\epsilon$, as desired.\par
+        It follows by Definition \ref{dfn:1.25} that $\lim_{x\to a}\frac{(f\circ g)(x)-(f\circ g)(a)}{x-a}=f'(g(a))\cdot g'(a)$. This proves that $f\circ g$ is differentiable at $a$. Lastly, it directly follows from Theorem \ref{trm:12.4} that
+        \begin{equation*}
+            (f\circ g)'(a) = \lim_{x\to a}\frac{(f\circ g)(x)-(f\circ g)(a)}{x-a}
+            = f'(g(a))\cdot g'(a)
+        \end{equation*}
         as desired.
     \end{proof}
 \end{theorem}
@@ -284,7 +331,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
 \begin{theorem}\label{trm:12.13}
     Let $f:A\to\R$ be differentiable at $a$. Suppose that $f(a)$ is the maximum value or minimum value of $f$. Then $f'(a)=0$.
     \begin{proof}
-        Suppose first that $f(a)$ is the maximum value of $f$, and suppose for the sake of contradiction that $f'(a)\neq 0$. Then $f'(a)>0$ or $f'(a)<0$. We now divide into two cases. If $f'(a)>0$, then by Theorem \ref{trm:12.4}, $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}>0$. Thus, by Lemma \ref{lem:11.8}, there exists a region $R$ with $a\in\R$ such that $\frac{f(x)-f(a)}{x-a}>0$ for all $x\in R\cap A$. Additionally, since $A$ is open, Theorem \ref{trm:4.10} implies that there exists a region $S$ with $a\in S$ and $S\subset A$. It follows by Theorem \ref{trm:3.18} that $R\cap S=(c,d)$, where $(c,d)$ is a region containing $a$. Since $a\in(c,d)$, Theorem \ref{trm:5.2} implies that there exists a point $y\in\R$ such that $a<y<d$. Clearly, since $y\in(c,d)=R\cap S$ and $S\subset A$, we have that $y\in R\cap A$. It follows that $\frac{f(y)-f(a)}{y-a}>0$. Furthermore, $y>a$ implies that $y-a>0$. Therefore, by Definition \ref{dfn:7.21}, $f(y)-f(a)=\frac{f(y)-f(a)}{y-a}\cdot(y-a)>0$. But this means that $f(y)>f(a)$, i.e., that $f(a)$ is not the last point of $f(A)$ (by Definition \ref{dfn:3.3}), i.e., that $f(a)$ is not the maximum value of $f$ (by Definition \ref{dfn:12.11}), a contradiction. The argument is symmetric in the other case.\par
+        Suppose first that $f(a)$ is the maximum value of $f$, and suppose for the sake of contradiction that $f'(a)\neq 0$. Then $f'(a)>0$ or $f'(a)<0$. We now divide into two cases. If $f'(a)>0$, then by Theorem \ref{trm:12.4}, $\lim_{x\to a}\frac{f(x)-f(a)}{x-a}>0$. Thus, by Lemma \ref{lem:11.8}, there exists a region $R$ with $a\in R$ such that $\frac{f(x)-f(a)}{x-a}>0$ for all $x\in R\cap A$. Additionally, since $A$ is open, Theorem \ref{trm:4.10} implies that there exists a region $S$ with $a\in S$ and $S\subset A$. It follows by Theorem \ref{trm:3.18} that $R\cap S=(c,d)$, where $(c,d)$ is a region containing $a$. Since $a\in(c,d)$, Theorem \ref{trm:5.2} implies that there exists a point $y\in\R$ such that $a<y<d$. Clearly, since $y\in(c,d)=R\cap S$ and $S\subset A$, we have that $y\in R\cap A$. It follows that $\frac{f(y)-f(a)}{y-a}>0$. Furthermore, $y>a$ implies that $y-a>0$. Therefore, by Definition \ref{dfn:7.21}, $f(y)-f(a)=\frac{f(y)-f(a)}{y-a}\cdot(y-a)>0$. But this means that $f(y)>f(a)$, i.e., that $f(a)$ is not the last point of $f(A)$ (by Definition \ref{dfn:3.3}), i.e., that $f(a)$ is not the maximum value of $f$ (by Definition \ref{dfn:12.11}), a contradiction. The argument is symmetric in the other case.\par
         The proof is symmetric in the other case.
     \end{proof}
 \end{theorem}

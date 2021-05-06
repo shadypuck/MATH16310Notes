@@ -1,0 +1,74 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{14}
+
+\begin{document}
+
+
+
+
+\chapter{Sequences}\label{sct:15}
+\section{Journal}
+\begin{definition}\label{dfn:15.1}\marginnote{5/6:}
+    A \textbf{sequence} (of real numbers) is a function $a:\N\to\R$.\par
+    By setting $a_n=a(n)$, we can think of a sequence as a list $a_1,a_2,a_3,\dots$ of real numbers. We use the notation $(a_n)_{n=1}^\infty$ for such a sequence, or if there is no possibility of confusion, we sometimes abbreviate this and write simply $(a_n)$. More generally, we also use the term sequence to refer to the function defined on $\{n\in\N\cup\{0\}\mid n\geq n_0\}$ for any fixed $n_0\in\N\cup\{0\}$. We write $(a_n)_{n=n_0}^\infty$ for such a sequence.
+\end{definition}
+
+\begin{definition}\label{dfn:15.2}
+    We say that a sequence $(a_n)$ \textbf{converges} to a point $p\in\R$ if for every open interval $I$ containing $p$, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in I$. If a sequence converges to some point, we say it is \textbf{convergent}. If $(a_n)$ does not converge to any point, we say that the sequence \textbf{diverges} or is \textbf{divergent}.
+\end{definition}
+
+\begin{exercise}\label{exr:15.3}
+    Show that a sequence $(a_n)$ converges to $p$ if and only if any region containing $p$ contains all but finitely many terms of the sequence.
+    \begin{proof}
+        Suppose first that $(a_n)$ converges to $p$. Let $R$ be an arbitrary region containing $p$. By Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, $R$ is an open interval. Thus, by Definition \ref{dfn:15.2}, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in R$. To prove that $R$ contains all but finitely many terms of the sequence, it will suffice to show that the set $A=\{a_n\mid a_n\notin R\}$ is finite. Since $a_n\in R$ for all $n\geq N$, it follows that $a_n\in R$ only if $n<N$. Thus, by Script \ref{sct:1}, $A\subset\{a_n\mid 0\leq n<N\}$. Since the latter set is clearly finite, it follows by Script \ref{sct:1} that $A$ is finite.\par
+        Now suppose that any region containing $p$ contains all but finitely many terms $(a_n)$. To prove that $(a_n)$ converges to $p$, Definition \ref{dfn:15.2} tells us that it will suffice to show that for every open interval $I$ containing $p$, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in I$. Let $I$ be an arbitrary open interval containing $p$. Then by Lemma \ref{lem:8.10}, there exists a region $R$ containing $p$ such that $R\subset I$. It follows by the hypothesis that $A=\{a_n\mid a_n\notin R\}$ is finite. We divide into two cases ($|A|=0$ and $|A|\in\N$). Suppose first that $|A|=0$. Choose $N=n_0$. It follows that if $n\geq N$, then $a_n\notin A$, so $a_n\in R$, so $a_n\in I$, as desired. Now suppose that $|A|\in\N$. By Definition \ref{dfn:1.18}, $a^{-1}(A)\subset\N$. Consequently, by Lemma \ref{lem:3.4}, $a^{-1}(A)$ has a last point $N-1$. Choose $N=(N-1)+1$. It follows that if $n\geq N$, then $n\notin a^{-1}(A)$, so $a_n\notin A$, so $a_n\in R$, so $a_n\in I$, as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:15.4}
+    Suppose that $(a_n)$ converges to both $p$ and to $p'$. Then $p=p'$.
+    \begin{proof}
+        Suppose for the sake of contradiction that $p\neq p'$. Then by Theorem \ref{trm:3.22}, there exist disjoint regions $R,R'$ containing $p,p'$, respectively. Additionally, by consecutive applications of Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, $R,R'$ are open intervals. Combining these last two results, we have by consecutive applications of Definition \ref{dfn:15.2} that there exist $N,N'\in\N$ such that if $n\geq N$, then $a_n\in R$ and if $n\geq N'$, then $a_n\in R'$. Let $M=\max(N,N')$. It follows that $M\geq N$ and $M\geq N'$. Thus, by the above, $a_M\in R$ and $a_M\in R'$. But this implies by Definition \ref{dfn:1.6} that $a_M\in R\cap R'$. Therefore, by Definition \ref{dfn:1.9}, $R$ and $R'$ are not disjoint, a contradiction.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:15.5}
+    If a sequence $(a_n)$ converges to $p\in\R$, we call $p$ the \textbf{limit} of $(a_n)$ and write
+    \begin{equation*}
+        \lim_{n\to\infty}a_n = p
+    \end{equation*}
+\end{definition}
+
+\begin{exercise}\label{exr:15.6}
+    Which of the following sequences $(a_n)$ converge? Which diverge? For each that converges, what is the limit? Give proofs for your answers.
+    \begin{enumerate}[label={(\alph*)}]
+        \item $a_n=5$.
+        \begin{proof}
+            To prove that this sequence converges with limit $\lim_{n\to\infty}a_n=5$, Definition \ref{dfn:15.5} tells us that it will suffice to show that $(a_n)$ converges to 5. To do so, Definition \ref{dfn:15.2} tells us that it will suffice to verify that for every open interval $I$ containing 5, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in I$. Let's begin.\par
+            Let $I$ be an arbitrary open interval containing 5. Choose $N=1$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows by the definition of the sequence that $a_n=5\in I$, as desired.
+        \end{proof}
+        \item $a_n=n$.
+        \begin{proof}
+            To prove that this sequence diverges, Definition \ref{dfn:15.2} tells us that it will suffice to show that for every point $p\in\R$, there exists an open interval $I$ containing $p$ such that for all $N\in\N$, there exists an $n\geq N$ such that $a_n\notin I$. Let's begin.\par
+            Let $p$ be an arbitrary element of $\R$. Choose $I=(p-1,p+1)$. Clearly $p\in I$. Let $N$ be an arbitrary natural number. By Corollary \ref{cly:6.12}, there exists a natural number $N'$ such that $p+1<N'$. Choose $M=\max(N,N')$. Thus, $M\geq N$. Additionally, it follows by the definition of the sequence that $a_M=M$. But this implies that $a_M\geq N'>p+1$, i.e., $a_M\notin I$ by Equations \ref{eqn:8.1}.
+        \end{proof}
+        \item $a_n=\frac{1}{n}$.
+        \begin{proof}
+            To prove that this sequence converges with limit $\lim_{n\to\infty}a_n=0$, Definitions \ref{dfn:15.5} and \ref{dfn:15.2} tell us that it will suffice to show that for every open interval $I$ containing 0, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in I$. Let's begin.\par
+            Let $I$ be an arbitrary interval containing 0. By Lemma \ref{lem:8.10}, there exists a region $(a,b)$ containing 0 such that $(a,b)\subset I$. By Corollary \ref{cly:6.12}, there exists a natural number $N$ such that $\frac{1}{b}<N$. Choose this $N$ to be our $N$. Now let $n$ be an arbitrary natural number such that $n\geq N$. It follows that $\frac{1}{b}<n$. Thus, since $0<b$ and $0<n$, we have by consecutive applications of Lemma \ref{lem:7.24} that $0<\frac{1}{n}<b$. Consequently, since we also know that $a<0$ and $a_n=\frac{1}{n}$, we have by transitivity and substitution that $a<a_n<b$. It follows by Equations \ref{eqn:8.1} that $a_n\in(a,b)$. Therefore, by Definition \ref{dfn:1.3}, $a_n\in I$, as desired.
+        \end{proof}
+        \item $a_n=(-1)^n$.
+        \begin{proof}
+            To prove that this sequence diverges, Definition \ref{dfn:15.2} tells us that it will suffice to show that for every point $p\in\R$, there exists an open interval $I$ containing $p$ such that for all $N\in\N$, there exists an $n\geq N$ such that $a_n\notin I$. Let's begin.\par
+            Let $p$ be an arbitrary element of $R$. Choose $I=(p-1,p+1)$. Clearly $p\in I$. Let $N$ be an arbitrary natural number. By Script \ref{sct:0}, either $N$ is even and $N+1$ is odd or vice versa. Thus, let $N$ be even (the case where $N$ is odd is symmetric). It follows that $N\geq N$ yields $a_N=(-1)^{2m}=((-1)^2)^m=1^m=1$ and that $N+1\geq N$ yields $a_{N+1}=(-1)^{2m+1}=1(-1)^1=-1$. Now suppose for the sake of contradiction that $a_N\in I$ and $a_{N+1}\in I$. Since $a_N=1\in I$, we have by Equations \ref{eqn:8.1} that $p-1<1<p+1$. It follows by Definition \ref{dfn:7.21} that $p-3<-1<p-1$. But $-1<p-1$ implies by Equations \ref{eqn:8.1} that $a_{N+1}=-1\notin I$, a contradiction. Therefore, $N+1\geq N$ is a number such that $a_{N+1}\notin I$, as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+
+
+
+\end{document}

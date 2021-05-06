@@ -11,7 +11,7 @@
 
 \chapter{Integrals and Derivatives}\label{sct:14}
 \section{Journal}
-\begin{theorem}\marginnote{\emph{5/4:}}
+\begin{theorem}\label{trm:14.1}\marginnote{\emph{5/4:}}
     Suppose that $f$ is integrable on $[a,b]$. Define $F:[a,b]\to\R$ by
     \begin{equation*}
         F(x) = \int_a^xf
@@ -55,6 +55,59 @@
         Suppose for the sake of contradiction that $\int_a^bf\neq\Omega$. We divide into two cases ($\int_a^bf<\Omega$ and $\int_a^bf>\Omega$). If $\int_a^bf<\Omega$, then by Definition \ref{dfn:13.16}, $U(f)=\int_a^bf<\Omega$. It follows by Definition \ref{dfn:13.14} and \ref{lem:5.11} that there exists an object $U(f,P)\in\{U(f,P)\mid P\text{ is a partition of }[a,b]\}$ such that $U(f)\leq U(f,P)<\Omega$. But this contradicts the hypothesis that $U(f,P)\geq\Omega$ for all partitions $P$ of $[a,b]$. The argument is symmetric in the other case.
     \end{proof}
 \end{lemma}
+
+\begin{theorem}\label{trm:14.4}\marginnote{\emph{5/6:}}
+    Let $f$ be integrable on $[a,b]$. Suppose that there is a function $G$ that is continuous on $[a,b]$ and differentiable on $(a,b)$ and such that $f=G'$ on $(a,b)$. Then
+    \begin{equation*}
+        \int_a^bf = G(b)-G(a)
+    \end{equation*}
+    % \begin{lemma*}
+    %     If $f:[a,b]\to\R$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then its derivative $f':[a,b]\to\R$ is continuous on $[a,b]$.
+    %     \begin{proof}
+    %         To prove that $f'$ is continuous on $[a,b]$, Theorem \ref{trm:9.10} tells us that it will suffice to show that $f'$ is continuous at $x$ for all $x\in[a,b]$. We divide into three cases ($x\in(a,b)$, $x=a$, and $x=b$). Suppose first that $x\in(a,b)$.
+
+    %         \begin{itemize}
+    %             \item Theorem \ref{trm:11.5}: $\lim_{y\to x}f(y)=f(x)$.
+    %             \item Theorem \ref{trm:12.4}: $\lim_{y\to x}\frac{f(y)-f(x)}{y-x}=f'(x)$.
+    %             \item WTS: $\lim_{y\to x}f'(y)=f'(x)$, i.e., $\lim_{y\to x}\left( \lim_{z\to y}\frac{f(z)-f(y)}{z-y} \right)=f'(x)$, i.e., $\lim_{y\to x}\left( \lim_{z\to y}\frac{f(z)-f(y)}{z-y} \right)=\lim_{y\to x}\frac{f(y)-f(x)}{y-x}$.
+    %         \end{itemize}
+    %     \end{proof}
+    % \end{lemma*}
+    \begin{proof}
+        By Script \ref{sct:12}, the hypothesis that $G$ is continuous on $[a,b]$ and differentiable on $(a,b)$ implies that $G'=f$ is continuous on $(a,b)$. Now define $F:[a,b]\to\R$ by $F(x)=\int_a^xf$. It follows by Theorem \ref{trm:13.28} that $F$ is continuous on $[a,b]$. Additionally, the fact that $f$ is continuous on $(a,b)$ implies by Theorem \ref{trm:14.1} that $F$ is differentiable on $(a,b)$ with $F'=f$. Thus, since $F,G$ are continuous on $[a,b]$, differentiable on $(a,b)$, and $F'(x)=f(x)=G'(x)$ for all $x\in(a,b)$, Corollary \ref{cly:12.19} asserts that there is some $c\in\R$ such that $F(x)=G(x)+c$ for all $x\in[a,b]$. Consequently, we have that $G(b)-G(a)=(F(b)-c)-(F(a)-c)=F(b)-F(a)$. Furthermore, Theorem \ref{trm:13.23} implies that $F(b)-F(a)=\int_a^bf-\int_a^af=\int_a^bf$. Therefore, we have by transitivity that $\int_a^bf=F(b)-F(a)=G(b)-G(a)$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:14.5}
+    Let $f,g$ be functions defined on some open interval containing $[a,b]$ such that $f'$ and $g'$ exist and are continuous on $[a,b]$. Then
+    \begin{equation*}
+        \int_a^bfg' = [f(b)g(b)-f(a)g(a)]-\int_a^bf'g
+    \end{equation*}
+    \begin{proof}
+        Since $f$ and $g$ are differentiable on $[a,b]$, Exercise \ref{exr:12.9} implies that $fg$ is differentiable on $[a,b]$ with $(fg)'(x)=f'(x)g(x)+f(x)g'(x)$ for all $x\in[a,b]$. We now seek to prove that $f'g+fg'$ is integrable on $[a,b]$. By hypothesis, $f'$ and $g'$ are continuous on $[a,b]$. Additionally, since $f$ and $g$ are differentiable on $[a,b]$, Theorem \ref{trm:12.5} asserts that they are continuous on $[a,b]$. Thus, since $f$, $g$, $f'$, and $g'$ are continuous on $[a,b]$, we have by consecutive applications of Corollary \ref{cly:11.10} that $f'g+fg'$ is continuous on $[a,b]$. Consequently, by Theorem \ref{trm:13.19}, $f'g+fg'$ is integrable on $[a,b]$, as desired. Furthermore, in a similar manner to the above, we can show that $f'g$ and $fg'$ are integrable on $[a,b]$. Lastly, it follows from the fact that $f$ and $g$ are continuous on $[a,b]$ by Corollary \ref{cly:11.10} that $fg$ is continuous on $[a,b]$.\par
+        Having established that $f'g+fg'$ is integrable on $[a,b]$, that $fg$ is a function that is continuous on $[a,b]$, differentiable on $(a,b)\subset[a,b]$, and such that $f'g+fg'=(fg)'$ on $(a,b)$, and that $f'g$ and $fg'$ are integrable on $[a,b]$, we have that
+        \begin{align*}
+            \int_a^b(f'g+fg') &= (fg)(b)-(fg)(a)\tag*{Theorem \ref{trm:14.4}}\\
+            \int_a^bf'g+\int_a^bfg' &= f(b)g(b)-f(a)g(a)\tag*{Theorem \ref{trm:13.24}}\\
+            \int_a^bfg' &= [f(b)g(b)-f(a)g(a)]-\int_a^bf'g
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}\label{cly:14.6}
+    Let $g$ be a function defined on some interval containing $[a,b]$ such that $g'$ is continuous on $[a,b]$. Suppose that $g([a,b])\subset[c,d]$ and $f:[c,d]\to\R$ is continuous. Define $F:[c,d]\to\R$ by $F(x)=\int_c^xf$. Then
+    \begin{equation*}
+        \int_a^bf(g(x))\cdot g'(x)\dd{x} = F(g(b))-F(g(a))
+    \end{equation*}
+    \begin{proof}
+        To prove that $\int_a^bf(g(x))\cdot g'(x)\dd{x}=F(g(b))-F(g(a))$, Theorem \ref{trm:14.4} tells us that it will suffice to show that $(f\circ g)\cdot g'$ is integrable on $[a,b]$, $F\circ g$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and $(f\circ g)\cdot g'=(F\circ g)'$ on $(a,b)$. We will confirm each requirement in turn. Let's begin.\par
+        To confirm that $(f\circ g)\cdot g'$ is integrable on $[a,b]$, Theorem \ref{trm:13.19} tells us that it will suffice to demonstrate that $(f\circ g)\cdot g'$ is continuous on $[a,b]$. By hypothesis, $f$ is continuous on $[c,d]$. Additionally, since $g'$ is defined on $[a,b]$, we know that $g$ is differentiable on $[a,b]$, which implies by Theorem \ref{trm:12.5} that $g$ is continuous on $[a,b]$. The combination of the previous two results implies by Corollary \ref{cly:11.15} that $f\circ g$ is continuous on $[a,b]$. This combined with the hypothesis that $g'$ is continuous on $[a,b]$ implies by Corollary \ref{cly:11.10} that $(f\circ g)\cdot g'$ is continuous on $[a,b]$.\par
+        To confirm that $F\circ g$ is continuous on $[a,b]$, Corollary \ref{cly:11.15} tells us that it will suffice to demonstrate that $F$ is continuous on $[c,d]$ and $g$ is continuous on $[a,b]$. By Theorem \ref{trm:13.28}, $F$ is continuous on $[c,d]$. Additionally, we know by the above that $g$ is continuous on $[a,b]$.\par
+        To confirm that $F\circ g$ is differentiable on $(a,b)$, Theorem \ref{trm:12.10} tells us that it will suffice to demonstrate that $F$ is differentiable on $(c,d)$ and $g$ is differentiable on $(a,b)$. Since $f$ is continuous on $(c,d)\subset[c,d]$, we have by Theorem \ref{trm:14.1} that $F$ is differentiable on $(c,d)$. Additionally, we know by the above that $g$ is differentiable on $(a,b)\subset[a,b]$.\par
+        Since $F\circ g$ is differentiable on $(a,b)$, we have by Theorem \ref{trm:12.10} again that $(F\circ g)'=(F'\circ g)\cdot g'$ for all $x\in(a,b)$. Thus, since $F'=f$ by Theorem \ref{trm:14.1}, we have that $(f\circ g)\cdot g'=(F\circ g)'$ on $(a,b)$, as desired.
+    \end{proof}
+\end{corollary}
 
 
 

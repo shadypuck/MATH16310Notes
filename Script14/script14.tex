@@ -61,20 +61,26 @@
     \begin{equation*}
         \int_a^bf = G(b)-G(a)
     \end{equation*}
-    % \begin{lemma*}
-    %     If $f:[a,b]\to\R$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then its derivative $f':[a,b]\to\R$ is continuous on $[a,b]$.
-    %     \begin{proof}
-    %         To prove that $f'$ is continuous on $[a,b]$, Theorem \ref{trm:9.10} tells us that it will suffice to show that $f'$ is continuous at $x$ for all $x\in[a,b]$. We divide into three cases ($x\in(a,b)$, $x=a$, and $x=b$). Suppose first that $x\in(a,b)$.
-
-    %         \begin{itemize}
-    %             \item Theorem \ref{trm:11.5}: $\lim_{y\to x}f(y)=f(x)$.
-    %             \item Theorem \ref{trm:12.4}: $\lim_{y\to x}\frac{f(y)-f(x)}{y-x}=f'(x)$.
-    %             \item WTS: $\lim_{y\to x}f'(y)=f'(x)$, i.e., $\lim_{y\to x}\left( \lim_{z\to y}\frac{f(z)-f(y)}{z-y} \right)=f'(x)$, i.e., $\lim_{y\to x}\left( \lim_{z\to y}\frac{f(z)-f(y)}{z-y} \right)=\lim_{y\to x}\frac{f(y)-f(x)}{y-x}$.
-    %         \end{itemize}
-    %     \end{proof}
-    % \end{lemma*}
     \begin{proof}
-        By Script \ref{sct:12}, the hypothesis that $G$ is continuous on $[a,b]$ and differentiable on $(a,b)$ implies that $G'=f$ is continuous on $(a,b)$. Now define $F:[a,b]\to\R$ by $F(x)=\int_a^xf$. It follows by Theorem \ref{trm:13.28} that $F$ is continuous on $[a,b]$. Additionally, the fact that $f$ is continuous on $(a,b)$ implies by Theorem \ref{trm:14.1} that $F$ is differentiable on $(a,b)$ with $F'=f$. Thus, since $F,G$ are continuous on $[a,b]$, differentiable on $(a,b)$, and $F'(x)=f(x)=G'(x)$ for all $x\in(a,b)$, Corollary \ref{cly:12.19} asserts that there is some $c\in\R$ such that $F(x)=G(x)+c$ for all $x\in[a,b]$. Consequently, we have that $G(b)-G(a)=(F(b)-c)-(F(a)-c)=F(b)-F(a)$. Furthermore, Theorem \ref{trm:13.23} implies that $F(b)-F(a)=\int_a^bf-\int_a^af=\int_a^bf$. Therefore, we have by transitivity that $\int_a^bf=F(b)-F(a)=G(b)-G(a)$, as desired.
+        To prove that $\int_a^bf=G(b)-G(a)$, Lemma \ref{lem:14.3} tells us that it will suffice to show that for all partitions $P=\{t_0,\dots,t_n\}$ of $[a,b]$, $L(f,P)\leq G(b)-G(a)\leq U(f,P)$. Let $P$ be an arbitrary partition of $[a,b]$. If $t_i,t_{i-1}$ are two sequential elements of $P$, then since $G$ is continuous on $[t_{i-1},t_i]\subset[a,b]$ and differentiable on $(t_{i-1},t_i)\subset(a,b)$, Corollary \ref{cly:12.16} asserts that there exists a point $\lambda\in(t_{i-1},t_i)$ such that $G(t_i)-G(t_{i-1})=G'(\lambda)(t_i-t_{i-1})$. It follows since $f=G'$ on $(a,b)$ that
+        \begin{equation*}
+            G(t_i)-G(t_{i-1}) = f(\lambda)(t_i-t_{i-1})
+        \end{equation*}
+        Thus, since we have proven the above statement for an arbitrary $i$, we can apply it to all $i$ and sum to get
+        \begin{align*}
+            \sum_{i=1}^nf(\lambda)(t_i-t_{i-1}) &= \sum_{i=1}^nG(t_i)-G(t_{i-1})\\
+            &= G(b)-G(a)
+        \end{align*}
+        But by Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6}, we have that $m_i(f)\leq f(\lambda)\leq M_i(f)$ for all $i$. It follows that
+        \begin{equation*}
+            \sum_{i=1}^nm_i(f)(t_i-t_{i-1}) \leq \sum_{i=1}^nf(\lambda)(t_i-t_{i-1})
+            \leq \sum_{i=1}^nM_i(f)(t_i-t_{i-1})
+        \end{equation*}
+        Therefore, we have by Definition \ref{dfn:13.11} and substitution that
+        \begin{equation*}
+            L(f,P) \leq G(b)-G(a) \leq U(f,P)
+        \end{equation*}
+        as desired.
     \end{proof}
 \end{theorem}
 

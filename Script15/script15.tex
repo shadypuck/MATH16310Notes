@@ -68,6 +68,99 @@
     \end{enumerate}
 \end{exercise}
 
+\begin{theorem}\label{trm:15.7}\marginnote{\emph{5/11:}}
+    A sequence $(a_n)$ converges to $p\in\R$ if and only if for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\epsilon$.
+    \begin{proof}
+        Suppose first that $(a_n)$ converges to $p$. Let $\epsilon>0$ be arbitrary. Consider the $p$-containing region $R=(p-\epsilon,p+\epsilon)$. By Corollary \ref{cly:4.11} and \ref{lem:8.3}, $R$ is an open interval. Thus, by Definition \ref{dfn:15.2}, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in R$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then $a_n\in(p-\epsilon,p+\epsilon)$. Therefore, by Exercise \ref{exr:8.9}, $|a_n-p|<\epsilon$, as desired.\par
+        Now suppose that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\epsilon$. To prove that $(a_n)$ converges to $p$, Definition \ref{dfn:15.2} tells us that it will suffice to show that for every open interval $I$ containing $p$, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in I$. Let $I$ be an arbitrary open interval that satisfies $p\in I$. It follows by Lemma \ref{lem:8.10} that there exists a number $\epsilon>0$ such that $(p-\epsilon,p+\epsilon)\subset I$. With respect to this $\epsilon$, we have by hypothesis that there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\epsilon$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then $|a_n-p|<\epsilon$. Consequently, by Exercise \ref{exr:8.9}, $a_n\in(p-\epsilon,p+\epsilon)$. Therefore, by Definition \ref{dfn:1.3}, $a_n\in I$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:15.8}\leavevmode
+    \begin{enumerate}[label={(\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:15.8a}Prove that $\lim_{n\to\infty}\frac{(-1)^n}{n}=0$.
+        \begin{proof}
+            To prove that $\lim_{n\to\infty}\frac{(-1)^n}{n}=0$, Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} tell us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-0|=|a_n|<\epsilon$. Let $\epsilon>0$ be arbitrary. By Corollary \ref{cly:6.12}, there exists a natural number $N$ such that $\frac{1}{\epsilon}<N$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows by transitivity that $\frac{1}{\epsilon}<n$. Thus, since $0<n$ and $0<\epsilon$, we have by consecutive applications of Lemma \ref{lem:7.24} that $0<\frac{1}{n}<\epsilon$. Additionally, since $(-1)^n=1$ or $(-1)^n=-1$ for all $n\in\N$ by Script \ref{sct:0}, we have by Definition \ref{dfn:8.4} that $|\frac{(-1)^n}{n}|=|\frac{1}{n}|=\frac{1}{n}$. Consequently, we know that $|\frac{(-1)^n}{n}|<\epsilon$. But since $a_n=\frac{(-1)^n}{n}$, we have that $|a_n|<\epsilon$, as desired.
+        \end{proof}
+        \item \label{exr:15.8b}Let $x\in\R$ with $|x|<1$. Prove that $\lim_{n\to\infty}x^n=0$.
+        \begin{lemma*}
+            If $|y|>1$ and $n$ is a natural number, then $|y|^n\geq n(|y|-1)+1$.
+            \begin{proof}
+                Define $1+x=|y|$. It follows by Definition \ref{dfn:7.21} that $x>0>-1$, which can be weakened to $x\geq -1$. Additionally, since $n$ is a natural number, $n\geq 1$ by Script \ref{sct:0}. Thus, since $x\geq -1$ and $n\geq 1$, we have by Additional Exercise \ref{axr:12.3b} that $(1+x)^n\geq 1+nx$. Substituting, we have $|y|^n\geq n(|y|-1)+1$, as desired.
+            \end{proof}
+        \end{lemma*}
+        \begin{proof}[Proof of Exercise \ref{exr:15.8b}]
+            To prove that $\lim_{n\to\infty}x^n=0$, Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} tell us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-0|=|a_n|<\epsilon$. Let $\epsilon>0$ be arbitrary. By Corollary \ref{cly:6.12}, there exists a natural number $N$ such that $\frac{1}{\epsilon(|\frac{1}{x}|-1)}<N$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows by Script \ref{sct:7}, the lemma, and the fact that $\frac{1}{|x|}>1$ (since $1>|x|$) that
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                |x^n| &= |x^n|\cdot\frac{1}{\epsilon\left( \left| \frac{1}{x} \right|-1 \right)}\cdot\epsilon\left( \left| \tfrac{1}{x} \right|-1 \right)\\
+                &< |x^n|\cdot n\cdot\epsilon\left( \left| \tfrac{1}{x} \right|-1 \right)\\
+                &< \epsilon\cdot|x^n|\cdot n\left( \left| \tfrac{1}{x} \right|-1 \right)+1\\
+                &\leq \epsilon\cdot|x^n|\cdot\left| \tfrac{1}{x} \right|^n\\
+                &= \epsilon\cdot|x^n|\cdot\frac{1}{|x^n|}\\
+                &= \epsilon
+            \end{align*}
+            \endgroup
+            as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{theorem}\label{trm:15.9}
+    If $\lim_{n\to\infty}a_n=a$ and $\lim_{n\to\infty}b_n=b$ both exist, then\footnote{Note that these proofs are entirely symmetric to those in Theorem \ref{trm:11.9}.}
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item $\lim_{n\to\infty}(a_n+b_n)=\lim_{n\to\infty}a_n+\lim_{n\to\infty}b_n$.
+        \begin{proof}
+            Let $p=\lim_{n\to\infty}a_n$ and let $q=\lim_{n\to\infty}b_n$. To prove that $\lim_{n\to\infty}(a_n+b_n)$ exists and equals $\lim_{n\to\infty}a_n+\lim_{n\to\infty}b_n$, Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} tell us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n+b_n-(p+q)|<\epsilon$. Let $\epsilon>0$ be arbitrary. It follows by consecutive applications of Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} that there exist natural numbers $N_a,N_b$ such that for all $n\geq N_a$, we have $|a_n-p|<\frac{\epsilon}{2}$ and for all $n\geq N_b$, we have $|b_n-q|<\frac{\epsilon}{2}$. Now choose $N=\max(N_a,N_b)$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows that $n\geq N\geq N_a$, so we know that $|a_n-p|<\frac{\epsilon}{2}$. Similarly, $|b_n-q|<\frac{\epsilon}{2}$. Therefore, we have that
+            \begin{align*}
+                |a_n+b_n-(p+q)| &\leq |a_n-p|+|b_n-q|\tag*{Lemma \ref{lem:8.8}}\\
+                &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+                &= \epsilon
+            \end{align*}
+        \end{proof}
+        \item $\lim_{n\to\infty}(a_n\cdot b_n)=\left( \lim_{n\to\infty}a_n \right)\cdot\left( \lim_{n\to\infty}b_n \right)$.
+        \begin{proof}
+            Let $p=\lim_{n\to\infty}a_n$ and let $q=\lim_{n\to\infty}b_n$. To prove that $\lim_{n\to\infty}(a_n\cdot b_n)$ exists and equals $\left( \lim_{n\to\infty}a_n \right)\cdot\left( \lim_{n\to\infty}b_n \right)$, Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} tell us that it will suffice too show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n\cdot b_n-p\cdot q|<\epsilon$. Let $\epsilon>0$ be arbitrary. It follows by consecutive applications of Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} that there exist natural numbers $N_a,N_b$ such that for all $n\geq N_a$, we have $|a_n-p|<\min(\frac{\epsilon}{2(|q|+1)},1)$ and for all $n\geq N_b$, we have $|b_n-q|<\frac{\epsilon}{2(|p|+1)}$. Now choose $N=\max(N_a,N_b)$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows that $n\geq N\geq N_a$, so we know that $|a_n-p|<\min(\frac{\epsilon}{2(|q|+1)},1)$. Similarly, $|b_n-q|<\frac{\epsilon}{2(|p|+1)}$. As a last note before we launch into the main inequality, observe that $|a_n|-|p|\leq |a_n-p|<\min(\frac{\epsilon}{2(|p|+1)},1)\leq 1$, i.e., that $|a_n|<1+|p|$. Therefore, we have that
+            \begin{align*}
+                |a_n\cdot b_n-p\cdot q| &= |a_n(b_n-q)+q(a_n-p)|\\
+                &\leq |a_n|\cdot|b_n-q|+|q|\cdot|a_n-p|\tag*{Lemma \ref{lem:8.8}}\\
+                &< (1+|p|)\cdot\frac{\epsilon}{2(|p|+1)}+|q|\cdot\frac{\epsilon}{2(|q|+1)}\\
+                &= \frac{\epsilon}{2}\cdot\frac{1+|p|}{1+|p|}+\frac{\epsilon}{2}\cdot\frac{|q|}{|q|+1}\\
+                &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+                &= \epsilon
+            \end{align*}
+        \end{proof}
+    \end{enumerate}
+    Moreover, if $\lim_{n\to\infty}b_n\neq 0$, then
+    \begin{enumerate}[resume,label={\textup{(}\alph*\textup{)}}]
+        \item $\lim_{n\to\infty}\frac{a_n}{b_n}=\frac{\lim_{n\to\infty}a_n}{\lim_{n\to\infty}b_n}$.
+        \begin{proof}
+            Let $p=\lim_{n\to\infty}a_n$ and let $q=\lim_{n\to\infty}b_n$. To prove that $\lim_{n\to\infty}\frac{a_n}{b_n}$ exists and equals $\frac{\lim_{n\to\infty}a_n}{\lim_{n\to\infty}b_n}$, Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} tell us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|\frac{a_n}{b_n}-\frac{p}{q}|<\epsilon$. Let $\epsilon>0$ be arbitrary. It follows by consecutive applications of Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} that there exist natural numbers $N_a,N_b$ such that for all $n\geq N_a$, we have $|a_n-p|<\frac{\epsilon|q|}{4}$ and for all $n\geq N_b$, we have $|b_n-q|<\min(\frac{|q|}{2},\frac{\epsilon|q|^2}{4|p|})$. Now choose $N=\max(N_a,N_b)$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows that $n\geq N\geq N_a$, so we know that $|a_n-p|<\frac{\epsilon|q|}{4}$. Similarly, $|b_n-q|<\min(\frac{|q|}{2},\frac{\epsilon|q|^2}{4|p|})$.\par
+            Before we get into the body of the proof, we need a preliminary result: it follows from the fact that $|b_n-q|<\frac{|q|}{2}$ that
+            \begin{align*}
+                |q| &= 2|q|-|q|\\
+                &= 2(|q|-|b_n|+|b_n|)-|q|\\
+                &\leq 2(|q-b_n|+|b_n|)-|q|\\
+                &= 2(|b_n-q|+|b_n|)-|q|\\
+                &< 2\left( \frac{|q|}{2}+|b_n| \right)-|q|\\
+                &= |q|+2|b_n|-|q|\\
+                &= 2|b_n|
+            \end{align*}
+            With this result, we are ready to introduce the main inequality:
+            \begin{align*}
+                \left| \frac{a_n}{b_n}-\frac{p}{q} \right| &= \left| \frac{a_nq-b_np}{b_nq} \right|\\
+                &= \frac{|q(a_n-p)+p(q-b_n)|}{|b_n|\cdot|q|}\\
+                &\leq \frac{|q|\cdot|a_n-p|+|p|\cdot|q-b_n|}{|b_n|\cdot|q|}\\
+                &< \frac{|q|\cdot\frac{\epsilon|q|}{4}+|p|\cdot\frac{\epsilon|q|^2}{4|p|}}{|b_n|\cdot|q|}\\
+                &= \frac{\epsilon|q|}{2|b_n|}\\
+                &< \frac{\epsilon|q|}{|q|}\\
+                &= \epsilon
+            \end{align*}
+        \end{proof}
+    \end{enumerate}
+\end{theorem}
+
 
 
 

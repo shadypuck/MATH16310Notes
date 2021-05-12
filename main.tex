@@ -95,6 +95,30 @@
 \section{Discussion}
 \begin{itemize}
     \item \marginnote{5/6:}Using Lemma \ref{lem:8.10} in Exercise \ref{exr:15.3} is overly strong; use Theorem \ref{trm:4.10} instead.
+    \item \marginnote{5/11:}Exercise \ref{exr:15.8b} requires that we consider the case where $x=0$ and where $x\neq 0$.
+    \item In Theorem \ref{trm:15.9}, use $a$ and $b$ instead of $p$ and $q$.
+    \begin{itemize}
+        \item Put $(a_n+b_n)$ and derivatives in parentheses.
+        \item For part $c$, we must choose $N$ such that $b_n\neq 0$ for all $b_n$ past $N$. Just choose a point $q<y$ and consider the region $(0,y)$ (symmetric if $q$ is negative). Let $M$ be a bound on all values of $a_n,b_n$ past $N$ including $a,b$. Then if we assert $|a_n-a|<\frac{\epsilon}{2M}$ and $|b_n-b|<\frac{\epsilon}{2M}$, we have
+        \begin{align*}
+            |a_nb_n-ab| &= |a_n(b_n-b)+b(a_n-a)|\\
+            &\leq |a_n|\cdot|b_n-b|+|b|\cdot|a_n-a|\\
+            &\leq |M|\cdot|b_n-b|+|M|\cdot|a_n-a|\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        \item For part (c): Let $M$ be a positive upper bound on both sequences, $m$ be a positive lower bound on $|b_n|$ and $q$.
+        \begin{align*}
+            \left| \frac{a_n}{b_n}-\frac{p}{q} \right| &= \left| \frac{a_nq-b_np}{b_nq} \right|\\
+            &= \frac{|q(a_n-p)+p(q-b_n)|}{|b_n|\cdot|q|}\\
+            &\leq \frac{|q|\cdot|a_n-p|+|p|\cdot|q-b_n|}{|b_n|\cdot|q|}\\
+            &\leq \frac{M\cdot|a_n-p|+M\cdot|q-b_n|}{m\cdot m}\\
+            &= \frac{M}{m^2}\cdot|a_n-p|+\frac{M}{m^2}\cdot|b_n-q|\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        \item We should draw upon both Theorem \ref{trm:11.9} and Exercise \ref{exr:13.9} to prove this result.
+    \end{itemize}
 \end{itemize}
 
 

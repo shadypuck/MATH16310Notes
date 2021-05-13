@@ -47,23 +47,26 @@
             %     \item Contradiction.
             % \end{itemize}
 
-            To prove that $f$ is not uniformly continuous on $\R$, Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ for which no $\delta>0$ exists such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|y^2-x^2|<\epsilon$. Let $\epsilon=2$, and suppose for the sake of contradiction that $\delta>0$ is a number such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|y^2-x^2|<2$. By Theorem \ref{trm:5.2}, there exists a number $y$ such that $0<y<\delta$. Since $-\delta<0<y<\delta$ by Lemma \ref{lem:7.23}, it follows by Definitions \ref{dfn:3.6} and \ref{dfn:3.10} that $y\in(-\delta,\delta)$. Thus, by Exercise \ref{exr:8.9}, $|y-0|=|y|<\delta$. Consequently, $|(y+n)-n|<\delta$. It follows by the above that $|(y+n)^2-n^2|=|y^2+2yn|<2$. If we now let $n=\frac{1}{y}$, then $|y^2+2|<2$. But since $y>0$, we have that $y^2>0$ by Lemma \ref{lem:7.26}. It follows that $y^2+2>2$ by Definition \ref{dfn:7.21}. Therefore, by Definition \ref{dfn:8.4}, we can also show that $|y^2+2|>2$, a contradiction.
+            To prove that $f$ is not uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ for which no $\delta>0$ exists such that for all $x,y\in A$, if $|y-x|<\delta$, then $|y^2-x^2|<\epsilon$. Let $\epsilon=2$, and suppose for the sake of contradiction that $\delta>0$ is a number such that for all $x,y\in A$, if $|y-x|<\delta$, then $|y^2-x^2|<2$. By Theorem \ref{trm:5.2}, there exists a number $y$ such that $0<y<\delta$. Since $-\delta<0<y<\delta$ by Lemma \ref{lem:7.23}, we have by the lemma from Exercise \ref{exr:8.9}, that $|y|<\delta$. Consequently, $|(y+n)-n|<\delta$. It follows by the above that $|(y+n)^2-n^2|=|y^2+2yn|<2$. If we now let $n=\frac{1}{y}$, then $|y^2+2|<2$. But since $y>0$, we have that $y^2>0$ by Lemma \ref{lem:7.26}. It follows that $y^2+2>2$ by Definition \ref{dfn:7.21}. Therefore, by Definition \ref{dfn:8.4}, we can also show that $|y^2+2|>2$, a contradiction.
         \end{proof}
         \item $f(x)=x^2$ on $A=(-2,2)$.
         \begin{proof}
-            To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{4}$, and let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Since $x,y\in A$, consecutive applications of Equations \ref{eqn:8.1} and the lemma from Exercise \ref{exr:8.9} imply that $|x|<2$ and $|y|<2$. It follows that $|x|+|y|<2+2=4$. Consequently, by Lemma \ref{lem:8.8}, $|x+y|<4$. Additionally, since $0\leq|y+x|$ by Definition \ref{dfn:8.4}, we have $|x-y|\cdot|x+y|\leq\frac{\epsilon}{4}\cdot|x+y|$. Combining all of the above results, we have that
+            To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{4}$, and let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Since $x,y\in A$, consecutive applications of Equations \ref{eqn:8.1} and the lemma from Exercise \ref{exr:8.9} imply that $|x|<2$ and $|y|<2$. It follows that $|x|+|y|<2+2=4$. Consequently, by Lemma \ref{lem:8.8}, $|x+y|<4$. Additionally, since $0\leq|y+x|$ by Definition \ref{dfn:8.4}, we have by Definition \ref{dfn:7.21} $|x-y|\cdot|x+y|\leq\frac{\epsilon}{4}\cdot|x+y|$. Combining all of the above results, we have that
+            \begingroup
+            \allowdisplaybreaks
             \begin{align*}
                 |f(y)-f(x)| &= |y^2-x^2|\\
                 &= |y+x|\cdot|y-x|\\
-                &< 4\cdot|y-x|\\
-                &\leq 4\cdot\frac{\epsilon}{4}\\
+                &\leq |x+y|\cdot\frac{\epsilon}{4}\\
+                &< 4\cdot\frac{\epsilon}{4}\\
                 &= \epsilon
             \end{align*}
+            \endgroup
             as desired.
         \end{proof}
         \item $f(x)=\frac{1}{x}$ on $A=(0,+\infty)$.
         \begin{proof}
-            To prove that $f$ is not uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ for which no $\delta>0$ exists such that for all $x,y\in A$, if $|y-x|<\delta$, then $|\frac{1}{y}-\frac{1}{x}|<\epsilon$. Let $\epsilon=1$, and suppose for the sake of contradiction that $\delta>0$ is a number such that for all $x,y\in A$, if $|y-x|<\delta$, then $|\frac{1}{y}-\frac{1}{x}|<1$. As in part (a), choose $0<x<\min(\delta,\frac{1}{2})$. Consequently, $|(x+x)-x|<\delta$. It follows by the above that $|\frac{1}{2x}-\frac{1}{x}|<1$. But this implies that $|\frac{x-2x}{2x^2}|=|\frac{-1}{2x}|=\frac{1}{2x}<1$. However, $x<\frac{1}{2}$ implies that $1<\frac{1}{2x}$, a contradiction.
+            To prove that $f$ is not uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to find an $\epsilon>0$ for which no $\delta>0$ exists such that for all $x,y\in A$, if $|y-x|<\delta$, then $|\frac{1}{y}-\frac{1}{x}|<\epsilon$. Let $\epsilon=1$, and suppose for the sake of contradiction that $\delta>0$ is a number such that for all $x,y\in A$, if $|y-x|<\delta$, then $|\frac{1}{y}-\frac{1}{x}|<1$. As in part (a), choose $0<x<\min(\delta,\frac{1}{2})$. Consequently, $|(x+x)-x|<\delta$. It follows by the above that $|\frac{1}{2x}-\frac{1}{x}|<1$. But this implies that $|\frac{x-2x}{2x^2}|=|\frac{-1}{2x}|=\frac{1}{2x}<1$. However, $x<\frac{1}{2}$ implies by Lemma \ref{lem:7.24} that $1<\frac{1}{2x}$, a contradiction.
         \end{proof}
         \item $f(x)=\frac{1}{x}$ on $A=[1,+\infty)$.
         \begin{proof}
@@ -80,12 +83,12 @@
         \end{proof}
         \item $f(x)=\sqrt{x}$ on $A=[1,+\infty)$.
         \begin{proof}
-            To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$, and let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Since $x,y\in A$, consecutive applications of Equations \ref{eqn:8.1} imply that $1\leq x$ and $1\leq y$. It follows by Script \ref{sct:7} that $1\leq\sqrt{x}$ and $1\leq\sqrt{y}$. Thus, by Script \ref{sct:7} again, $2\leq|\sqrt{y}+\sqrt{x}|$. Note that it follows that $1<|\sqrt{y}+\sqrt{x}|$. This combined with the fact that $|y-x|<\delta=\epsilon$ implies that
+            To prove that $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$, and let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Since $x,y\in A$, consecutive applications of Equations \ref{eqn:8.1} imply that $1\leq x$ and $1\leq y$. It follows by Script \ref{sct:7} that $1\leq\sqrt{x}$ and $1\leq\sqrt{y}$. Thus, by Scripts \ref{sct:7} and \ref{sct:8}, $2\leq|\sqrt{y}+\sqrt{x}|$. Note that it follows that $1<|\sqrt{y}+\sqrt{x}|$. This combined with the fact that $|y-x|<\delta=\epsilon$ implies that
             \begin{align*}
                 |f(y)-f(x)| &= |\sqrt{y}-\sqrt{x}|\\
                 &< |\sqrt{y}-\sqrt{x}|\cdot|\sqrt{y}+\sqrt{x}|\\
                 &= |y-x|\\
-                &= \epsilon
+                &< \epsilon
             \end{align*}
             as desired.
         \end{proof}
@@ -196,7 +199,7 @@
         \item For any constant $c\in\R$, the function $c\cdot f$ is uniformly continuous on $A$.
     \end{enumerate}
     \begin{proof}[Proof of a]
-        To prove that $f+g$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|(f+g)(y)-(f+g)(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f,g$ are uniformly continuous on $A$, consecutive applications of Definition \ref{dfn:13.1} reveal that there exist $\delta_1,\delta_2>0$ such that for all $x,y\in A$, $|y-x|<\delta_1$ implies $|f(y)-f(x)|<\frac{\epsilon}{2}$ and $|y-x|<\delta_2$ implies $|g(y)-f(x)|<\frac{\epsilon}{2}$. Choose $\delta=\min(\delta_1,\delta_2)$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. It follows that $|y-x|<\delta_1$ (so $|f(y)-f(x)|<\frac{\epsilon}{2}$), and that $|y-x|<\delta_2$ (so $|g(y)-g(x)|<\frac{\epsilon}{2}$). These two results when combined imply by Script \ref{sct:7} that $|f(y)-f(x)|+|g(y)-g(x)|<\frac{\epsilon}{2}+\frac{\epsilon}{2}$. Therefore, since $|f(y)-f(x)+g(y)-g(x)|\leq|f(y)-f(x)|+|g(y)-g(x)|$ by Lemma \ref{lem:8.8}, we have that
+        To prove that $f+g$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|(f+g)(y)-(f+g)(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $f,g$ are uniformly continuous on $A$, consecutive applications of Definition \ref{dfn:13.1} reveal that there exist $\delta_1,\delta_2>0$ such that for all $x,y\in A$, $|y-x|<\delta_1$ implies $|f(y)-f(x)|<\frac{\epsilon}{2}$ and $|y-x|<\delta_2$ implies $|g(y)-g(x)|<\frac{\epsilon}{2}$. Choose $\delta=\min(\delta_1,\delta_2)$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. It follows that $|y-x|<\delta_1$ (so $|f(y)-f(x)|<\frac{\epsilon}{2}$), and that $|y-x|<\delta_2$ (so $|g(y)-g(x)|<\frac{\epsilon}{2}$). These two results when combined imply by Script \ref{sct:7} that $|f(y)-f(x)|+|g(y)-g(x)|<\frac{\epsilon}{2}+\frac{\epsilon}{2}$. Therefore, since $|f(y)-f(x)+g(y)-g(x)|\leq|f(y)-f(x)|+|g(y)-g(x)|$ by Lemma \ref{lem:8.8}, we have that
         \begin{align*}
             |(f+g)(y)-(f+g)(x)| &= |f(y)-f(x)+g(y)-g(x)|\\
             &\leq |f(y)-f(x)|+|g(y)-g(x)|\\
@@ -209,6 +212,7 @@
         To prove that $c\cdot f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|c\cdot f(y)-c\cdot f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. We divide into two cases ($c=0$ and $c\neq 0$). Suppose first that $c=0$. Choose $\delta=1$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. It follows that $|0\cdot f(y)-0\cdot f(x)|=0<\epsilon$, as desired. Now suppose that $c\neq 0$. Then since $f$ is uniformly continuous on $A$, Definition \ref{dfn:13.1} tells us that there exists a $\delta>0$ such that for all $x,y\in A$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\frac{\epsilon}{|c|}$. Choose this $\delta$ to be our $\delta$. Let $x,y$ be arbitrary elements of $A$ that satisfy $|y-x|<\delta$. Then by the above, we have that $|f(y)-f(x)|<\frac{\epsilon}{|c|}$. Therefore, $|c|\cdot|f(y)-f(x)|<\epsilon$, so we have that $|c\cdot f(y)-c\cdot f(x)|<\epsilon$, as desired.
     \end{proof}
 \end{exercise}
+\newpage
 
 \begin{theorem}\label{trm:13.6}\marginnote{\emph{4/13:}}
     Suppose that $X\subset\R$ is compact and $f:X\to\R$ is continuous. Then $f$ is uniformly continuous.
@@ -392,7 +396,7 @@
 
         We will prove that $L(f,P)\leq L(f,Q)$. The proof will be symmetric in the other case. Let's begin.\par
         By Definition \ref{dfn:13.10}, $P\subset Q$. Thus, by Theorem \ref{exr:1.34}, $|P|\leq|Q|$. It follows by Script \ref{sct:1} that $|Q|-|P|=n\in\Z^+$. Thus, to prove the claim for $P$ and $Q$ in general, it will suffice to prove it for each $n$. To do so, we divide into two cases ($n=0$ and $n\in\N$). If $n=0$, then $|P|=|Q|$. This combined with the fact that $P\subset Q$ implies by Script \ref{sct:1} that $P=Q$. Therefore, $L(f,P)=L(f,Q)$, which we can weaken to $L(f,P)\leq L(f,Q)$, as desired.\par
-        On the other hand, if $n\in\N$, then we induct on $n$. For the base case $n=1$, we have by Script \ref{sct:1} that $Q=P\cup\{y\}$ where $y\notin P$. Therefore, by the lemma, we have that $L(f,P)\leq L(f,P\cup\{y\})=L(f,Q)$, as desired. Now suppose inductively that the claim holds or $n$; we wish to prove it for $n+1$. Let $y$ be an arbitrary element of $Q$. Then by Script \ref{sct:1}, $|Q\setminus\{y\}|-|P|=n$. Thus, by the inductive hypothesis, $L(f,P)\leq L(f,Q\setminus\{x\})$. Additionally, by the lemma, $L(f,Q\setminus\{x\})\leq L(f,Q)$. Therefore, by transitivity, $L(f,P)\leq L(f,Q)$, as desired.
+        On the other hand, if $n\in\N$, then we induct on $n$. For the base case $n=1$, we have by Script \ref{sct:1} that $Q=P\cup\{y\}$ where $y\notin P$. Therefore, by the lemma, we have that $L(f,P)\leq L(f,P\cup\{y\})=L(f,Q)$, as desired. Now suppose inductively that the claim holds for $n$; we wish to prove it for $n+1$. Let $y$ be an arbitrary element of $Q$. Then by Script \ref{sct:1}, $|Q\setminus\{y\}|-|P|=n$. Thus, by the inductive hypothesis, $L(f,P)\leq L(f,Q\setminus\{x\})$. Additionally, by the lemma, $L(f,Q\setminus\{x\})\leq L(f,Q)$. Therefore, by transitivity, $L(f,P)\leq L(f,Q)$, as desired.
     \end{proof}
 \end{lemma}
 
@@ -482,7 +486,7 @@
     Fix $c\in\R$ and let $f:[a,b]\to\R$ be defined by $f(x)=c$, for each $x\in[a,b]$. Show that $f$ is integrable on $[a,b]$ and that $\int_a^bf=c(b-a)$.
     \begin{proof}
         To prove that $f$ is integrable on $[a,b]$ and that $\int_a^bf=c(b-a)$, Definition \ref{dfn:13.16} tells us that it will suffice to show that $f$ is bounded on $[a,b]$, and that $L(f)=U(f)=c(b-a)$.\par
-        To confirm that $f$ is bounded on $[a,b]$, Definition \ref{dfn:10.1} tells us that it will suffice to demonstrate that $f([a,b])$ is a bounded subset of $\R$. By Definition \ref{dfn:1.18}, $f([a,b])=\{f(x)\in\R\mid x\in[a,b]\}$. But since $f(x)=c$ for all $x\in[a,b]$, $f([a,b])=\{c\}$. Thus, since $c\leq c\leq c$, Definition \ref{dfn:5.6} implies that $f([a,b])$ is bounded. Additionally, since $c\in\R$, Definition \ref{dfn:1.3} asserts that $f([a,b])=\{c\}\subset\R$.\par
+        To confirm that $f$ is bounded on $[a,b]$, Definition \ref{dfn:10.1} tells us that it will suffice to demonstrate that $f([a,b])$ is a bounded subset of $\R$. By Definition \ref{dfn:1.18}, $f([a,b])=\{f(x)\in\R\mid x\in[a,b]\}$. But since $f(x)=c$ for all $x\in[a,b]$, we have that $c\leq f(x)\leq c$ for all $x\in[a,b]$. It follows by Definition \ref{dfn:5.6} that $f([a,b])$ is bounded. Additionally, since $c\in\R$, Definition \ref{dfn:1.3} asserts that $f([a,b])=\{c\}\subset\R$.\par
         To confirm that $L(f)=U(f)=c(b-a)$, Definition \ref{dfn:13.14} tells us that it will suffice to demonstrate that $L(f,P)=U(f,P)=c(b-a)$ for all partitions $P$ of $[a,b]$. For similar reasons to the above (i.e., $f(x)=c$ for all $x\in[a,b]$), we can show that $m_i(f)=M_i(f)=c$ for all $m_i(f)$ and $M_i(f)$. Therefore, by Definition \ref{dfn:13.11} that
         \begin{align*}
             L(f,P) &= \sum_{i=1}^nc(t_i-t_{i-1})&
@@ -524,7 +528,7 @@
             &= \epsilon
         \end{align*}
         as desired.\par
-        Now suppose that $f$ is not integrable; we seek to prove that there exists an $\epsilon>0$ such that for all partitions $P$ of $[a,b]$, $U(f,P)-L(f,P)\geq\epsilon$. Since $f$ is not integrable, we have by Definition \ref{dfn:13.16} that $L(f)\neq U(f)$. It follows by Exercise \ref{exr:13.15} that $L(f)<U(f)$. Thus, we can define $\epsilon=\frac{U(f)-L(f)}{2}>0$. Now let $P$ be an arbitrary partition of $[a,b]$. It follows that $L(f,P)\leq L(f)$ by Definitions \ref{dfn:13.14}, \ref{dfn:5.7}, and \ref{dfn:5.6}. Similarly, $U(f)\leq U(f,P)$. Therefore, knowing that $U(f)\leq U(f,P)$ and that $-L(f)\leq -L(f,P)$ (the latter by Lemma \ref{lem:7.24}), we have by Definition \ref{dfn:7.21} that $\epsilon<U(f)-L(f)\leq U(f,P)-L(f,P)$, as desired.
+        Now suppose that $f$ is not integrable; we seek to prove that there exists an $\epsilon>0$ such that for all partitions $P$ of $[a,b]$, $U(f,P)-L(f,P)\geq\epsilon$. Since $f$ is not integrable, we have by Definition \ref{dfn:13.16} that $L(f)\neq U(f)$. It follows by Exercise \ref{exr:13.15} that $L(f)<U(f)$. Thus, we can define $\epsilon=\frac{U(f)-L(f)}{2}>0$. Now let $P$ be an arbitrary partition of $[a,b]$. It follows that $L(f,P)\leq L(f)$ by Definitions \ref{dfn:13.14}, \ref{dfn:5.7}, and \ref{dfn:5.6}. Similarly, $U(f)\leq U(f,P)$. Therefore, knowing that $U(f)\leq U(f,P)$ and that $-L(f)\leq -L(f,P)$ (the latter by Lemma \ref{lem:7.24}), we have by Definition \ref{dfn:7.21} that $\epsilon=\frac{U(f)-L(f)}{2}<U(f)-L(f)\leq U(f,P)-L(f,P)$, as desired.
     \end{proof}
 \end{theorem}
 
@@ -611,7 +615,7 @@
         We now seek to confirm that $M_i(f)-m_i(f)<\frac{\epsilon}{b-a}$ for all $i$ satisfying $1\leq i\leq n$. Let $i$ be an arbitrary such number, and consider $f|_{[t_{i-1},t_i]}$. Since $f$ is continuous and $[t_{i-1},t_i]\subset[a,b]$, Proposition \ref{prp:9.7} asserts that $f|_{[t_{i-1},t_i]}$ is continuous. Thus, by Exercise \ref{exr:10.21}, there exist $c,d\in[t_{i-1},t_i]$ such that $f(c)\leq f(x)\leq f(d)$ for all $x\in[t_{i-1},t_i]$. It follows by consecutive applications of Definitions \ref{dfn:13.11} and \ref{dfn:3.3} as well as Exercise \ref{exr:5.9} that $m_i(f)=f(c)$ and $M_i(f)=f(d)$. Additionally, since $c,d\in[t_{i-1},t_i]$, we have by Script \ref{sct:8} that $|d-c|\leq t_i-t_{i-1}$. This combined with the fact that $t_i-t_{i-1}<\delta$ by the above implies by transitivity that $|d-c|<\delta$. But this implies by the above that
         \begin{align*}
             M_i(f)-m_i(f) &= f(d)-f(c)\\
-            &\leq |f(d)-f(c)|\\
+            &= |f(d)-f(c)|\\
             &< \frac{\epsilon}{b-a}
         \end{align*}
         as desired.\par
@@ -732,7 +736,7 @@
 \begin{exercise}\label{exr:13.21}
     Define $f:[0,b]\to\R$ by the formula $f(x)=x$. Show that $f$ is integrable on $[0,b]$ and that $\int_0^bf=\frac{b^2}{2}$.
     \begin{proof}
-        To prove that $f$ is integrable on $[0,b]$ and that $\int_0^bf=\frac{b^2}{2}$, Lemma \ref{lem:13.20} tells us that it will suffice to show that for all $\epsilon>0$, there is some partition $P$ such that $U(f,P)-\frac{b^2}{2}<\epsilon$ and $\frac{b^2}{2}-L(f,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\frac{2\epsilon}{b^2}$ is a positive real number by Script \ref{sct:7}, Corollary \ref{cly:6.12} asserts that there exists a number $n\in\N$ such that $\frac{1}{n}<\frac{2\epsilon}{b^2}$. Equipped with this $n$, we can now define the set $P=\{\frac{b}{n}\cdot i\mid 0\leq i\leq n\}$. By a symmetric argument to that used in the proof of Theorem \ref{trm:13.19}, we can confirm that $P$ is a partition of $[a,b]$ and that $t_i-t_{i-1}=\frac{b}{n}$.\par
+        To prove that $f$ is integrable on $[0,b]$ and that $\int_0^bf=\frac{b^2}{2}$, Lemma \ref{lem:13.20} tells us that it will suffice to show that for all $\epsilon>0$, there is some partition $P$ such that $U(f,P)-\frac{b^2}{2}<\epsilon$ and $\frac{b^2}{2}-L(f,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\frac{2\epsilon}{b^2}$ is a positive real number by Script \ref{sct:7}, Corollary \ref{cly:6.12} asserts that there exists a number $n\in\N$ such that $\frac{1}{n}<\frac{2\epsilon}{b^2}$. Equipped with this $n$, we can now define the set $P=\{\frac{b}{n}\cdot i\mid 0\leq i\leq n\}$. By a symmetric argument to that used in the proof of Theorem \ref{trm:13.19}, we can confirm that $P$ is a partition of $[0,b]$ and that $t_i-t_{i-1}=\frac{b}{n}$.\par
         We now turn our attention strictly to proving that $U(f,P)-\frac{b^2}{2}<\epsilon$; the proof of the other statement will be symmetric. Under the partition $P$ as defined, consider an arbitrary $M_i(f)$. By Definition \ref{dfn:13.11}, $M_i(f)=\sup\{f(x)\mid t_{i-1}\leq x\leq t_i\}$. Since $f(x)=x$ for all $x\in[t_{i-1},t_i]\subset[0,b]$, we have by Equations \ref{eqn:8.1} that $M_i(f)=\sup[t_{i-1},t_i]$. Thus, by Script \ref{sct:5}, $M_i(f)=t_i=\frac{bi}{n}$. Therefore,
         \begin{align*}
             U(f,P)-\frac{b^2}{2} &= \sum_{i=1}^nM_i(f)(t_i-t_{i-1})-\frac{b^2}{2}\tag*{Definition \ref{dfn:13.11}}\\
@@ -818,7 +822,7 @@
             &< \frac{\epsilon}{2}+\frac{\epsilon}{2}&
                 &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
             &= \epsilon&
-                &< \epsilon
+                &= \epsilon
         \end{align*}
         Note that since the claim technically asks us to prove that $\int_a^cf=\int_a^bf+\int_b^cf$ follows from $f$ being integrable on $[a,c]$, not $[a,b]$ and $[b,c]$, we can do this with the above using the following logic. Let $f$ be integrable on $[a,c]$. Then by the first part of the proof, it is integrable on $[a,b]$ and $[b,c]$. It follows by the second part of the proof that $\int_a^cf=\int_a^bf+\int_b^cf$, as desired.
     \end{proof}
@@ -963,7 +967,7 @@ always holds, regardless of the ordering of $a,b,c$ whenever $f$ is integrable o
             \end{align*}
             which can be weakened to $M_i(|f|)-m_i(|f|)\leq M_i(f)-m_i(f)$, as desired.\par\smallskip
             Third, suppose that there exist $x,y\in[a,b]$ such that $f(x)<0<f(y)$. We divide into two subcases ($|M_i(f)|\geq|m_i(f)|$ and $|M_i(f)|<|m_i(f)|$).\par
-            Suppose first that $|M_i(f)|\geq|m_i(f)|$. By Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6} as well as the hypothesis, $M_i(f)\geq f(y)>0$. Thus, by Definition \ref{dfn:8.4}, $|M_i(f)|=M_i(f)$. Similarly, $|m_i(f)|=-m_i(f)$. It follows by Lemma (c) from Theorem \ref{trm:13.24} that $-m_i(f)=M_i(-f)$. This combined with the fact that $|M_i(f)|=M_i(f)$ implies by the hypothesis that $M_i(f)\geq M_i(-f)$. Additionally, we clearly have that $M_i(f)\geq M_i(f)$. Consequently, since $M_i(f)\geq M_i(-f)$ and $M_i(f)\geq M_i(f)$, we have by Script \ref{sct:5} that $M_i(f)\geq M_i(|f|)$. Furthermore, we have by Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, \ref{dfn:5.6}, and \ref{dfn:8.4} that $m_i(|f|)\geq 0>f(x)\geq m_i(f)$. Therefore, since $M_i(|f|)\leq M_i(f)$ and $m_i(f)<m_i(|f|)$, we have that
+            Suppose first that $|M_i(f)|\geq|m_i(f)|$. By Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, and \ref{dfn:5.6} as well as the hypothesis, $M_i(f)\geq f(y)>0$. Thus, by Definition \ref{dfn:8.4}, $|M_i(f)|=M_i(f)$. Similarly, $|m_i(f)|=-m_i(f)$. It follows by Lemma (c) from Theorem \ref{trm:13.24} that $-m_i(f)=M_i(-f)$. Combining the last three results, we have by the hypothesis that $M_i(f)\geq M_i(-f)$. Additionally, we clearly have that $M_i(f)\geq M_i(f)$. Consequently, since $M_i(f)\geq M_i(-f)$ and $M_i(f)\geq M_i(f)$, we have by Script \ref{sct:5} that $M_i(f)\geq M_i(|f|)$. Furthermore, we have by Definitions \ref{dfn:13.11}, \ref{dfn:5.7}, \ref{dfn:5.6}, and \ref{dfn:8.4} that $m_i(|f|)\geq 0>f(x)\geq m_i(f)$. Therefore, since $M_i(|f|)\leq M_i(f)$ and $m_i(f)<m_i(|f|)$, we have that
             \begin{align*}
                 M_i(|f|)-m_i(|f|) &\leq M_i(f)-m_i(|f|)\\
                 &< M_i(f)-m_i(f)
@@ -1028,6 +1032,7 @@ always holds, regardless of the ordering of $a,b,c$ whenever $f$ is integrable o
             &= \left| \int_x^yf \right|\tag*{Theorem \ref{trm:13.23}}\\
             &\leq \int_x^y|f|\tag*{Theorem \ref{trm:13.26}}\\
             &\leq s(y-x)\tag*{Theorem \ref{trm:13.27}}\\
+            &\leq s\cdot|y-x|\\
             &< s\cdot\frac{\epsilon}{s}\\
             &= \epsilon
         \end{align*}

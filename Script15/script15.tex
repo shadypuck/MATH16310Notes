@@ -44,23 +44,23 @@
 
 \begin{exercise}\label{exr:15.6}
     Which of the following sequences $(a_n)$ converge? Which diverge? For each that converges, what is the limit? Give proofs for your answers.
-    \begin{enumerate}[label={(\alph*)}]
-        \item $a_n=5$.
+    \begin{enumerate}[label={(\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:15.6a}$a_n=5$.
         \begin{proof}
             To prove that this sequence converges with limit $\lim_{n\to\infty}a_n=5$, Definition \ref{dfn:15.5} tells us that it will suffice to show that $(a_n)$ converges to 5. To do so, Definition \ref{dfn:15.2} tells us that it will suffice to verify that for every open interval $I$ containing 5, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in I$. Let's begin.\par
             Let $I$ be an arbitrary open interval containing 5. Choose $N=1$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows by the definition of the sequence that $a_n=5\in I$, as desired.
         \end{proof}
-        \item $a_n=n$.
+        \item \label{exr:15.6b}$a_n=n$.
         \begin{proof}
             To prove that this sequence diverges, Definition \ref{dfn:15.2} tells us that it will suffice to show that for every point $p\in\R$, there exists an open interval $I$ containing $p$ such that for all $N\in\N$, there exists an $n\geq N$ such that $a_n\notin I$. Let's begin.\par
             Let $p$ be an arbitrary element of $\R$. Choose $I=(p-1,p+1)$. Clearly $p\in I$. Let $N$ be an arbitrary natural number. By Corollary \ref{cly:6.12}, there exists a natural number $N'$ such that $p+1<N'$. Choose $M=\max(N,N')$. Thus, $M\geq N$. Additionally, it follows by the definition of the sequence that $a_M=M$. But this implies that $a_M\geq N'>p+1$, i.e., $a_M\notin I$ by Equations \ref{eqn:8.1}.
         \end{proof}
-        \item $a_n=\frac{1}{n}$.
+        \item \label{exr:15.6c}$a_n=\frac{1}{n}$.
         \begin{proof}
             To prove that this sequence converges with limit $\lim_{n\to\infty}a_n=0$, Definitions \ref{dfn:15.5} and \ref{dfn:15.2} tell us that it will suffice to show that for every open interval $I$ containing 0, there exists $N\in\N$ such that if $n\geq N$, then $a_n\in I$. Let's begin.\par
             Let $I$ be an arbitrary interval containing 0. By Lemma \ref{lem:8.10}, there exists a region $(a,b)$ containing 0 such that $(a,b)\subset I$. By Corollary \ref{cly:6.12}, there exists a natural number $N$ such that $\frac{1}{b}<N$. Choose this $N$ to be our $N$. Now let $n$ be an arbitrary natural number such that $n\geq N$. It follows that $\frac{1}{b}<n$. Thus, since $0<b$ and $0<n$, we have by consecutive applications of Lemma \ref{lem:7.24} that $0<\frac{1}{n}<b$. Consequently, since we also know that $a<0$ and $a_n=\frac{1}{n}$, we have by transitivity and substitution that $a<a_n<b$. It follows by Equations \ref{eqn:8.1} that $a_n\in(a,b)$. Therefore, by Definition \ref{dfn:1.3}, $a_n\in I$, as desired.
         \end{proof}
-        \item $a_n=(-1)^n$.
+        \item \label{exr:15.6d}$a_n=(-1)^n$.
         \begin{proof}
             To prove that this sequence diverges, Definition \ref{dfn:15.2} tells us that it will suffice to show that for every point $p\in\R$, there exists an open interval $I$ containing $p$ such that for all $N\in\N$, there exists an $n\geq N$ such that $a_n\notin I$. Let's begin.\par
             Let $p$ be an arbitrary element of $R$. Choose $I=(p-1,p+1)$. Clearly $p\in I$. Let $N$ be an arbitrary natural number. By Script \ref{sct:0}, either $N$ is even and $N+1$ is odd or vice versa. Thus, let $N$ be even (the case where $N$ is odd is symmetric). It follows that $N\geq N$ yields $a_N=(-1)^{2m}=((-1)^2)^m=1^m=1$ and that $N+1\geq N$ yields $a_{N+1}=(-1)^{2m+1}=1(-1)^1=-1$. Now suppose for the sake of contradiction that $a_N\in I$ and $a_{N+1}\in I$. Since $a_N=1\in I$, we have by Equations \ref{eqn:8.1} that $p-1<1<p+1$. It follows by Definition \ref{dfn:7.21} that $p-3<-1<p-1$. But $-1<p-1$ implies by Equations \ref{eqn:8.1} that $a_{N+1}=-1\notin I$, a contradiction. Therefore, $N+1\geq N$ is a number such that $a_{N+1}\notin I$, as desired.
@@ -122,7 +122,7 @@
         \end{proof}
         \item \label{trm:15.9b}$\lim_{n\to\infty}(a_n\cdot b_n)=\left( \lim_{n\to\infty}a_n \right)\cdot\left( \lim_{n\to\infty}b_n \right)$.
         \begin{proof}
-            Let $a=\lim_{n\to\infty}a_n$ and let $b=\lim_{n\to\infty}b_n$. To prove that $\lim_{n\to\infty}(a_n\cdot b_n)$ exists and equals $\left( \lim_{n\to\infty}a_n \right)\cdot\left( \lim_{n\to\infty}b_n \right)$, Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} tell us that it will suffice too show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n\cdot b_n-a\cdot b|<\epsilon$. Let $\epsilon>0$ be arbitrary. By Theorem \ref{trm:15.13}\footnote{The proof of Theorem \ref{trm:15.13} does not depend on any following results, so its use here is not circular logic.}, $(a_n)$ is bounded. Thus, by Definition \ref{dfn:15.12}, $a(\N)$ is bounded. Consequently, by the proof of Exercise \ref{exr:13.9}, there exists a number $M_a$ such that $|a_n|<M_a$ for all $n\in\N$. Now define $M=\max(M_a,b)$. Using this $M$ (which by definition is positive since it's greater than $|a_n|$, which is at least 0) as well as our previously defined arbitrary $\epsilon$, we have by consecutive applications of Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} that there exist natural numbers $N_a,N_b$ such that for all $n\geq N_a$, we have $|a_n-a|<\frac{\epsilon}{2M}$ and for all $n\geq N_b$, we have $|b_n-b|<\frac{\epsilon}{2M}$. Now choose $N=\max(N_a,N_b)$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows that $n\geq N\geq N_a$, so we know that $|a_n-a|<\frac{\epsilon}{2M}$. Similarly, $|b_n-b|<\frac{\epsilon}{2M}$. Therefore,
+            Let $a=\lim_{n\to\infty}a_n$ and let $b=\lim_{n\to\infty}b_n$. To prove that $\lim_{n\to\infty}(a_n\cdot b_n)$ exists and equals $\left( \lim_{n\to\infty}a_n \right)\cdot\left( \lim_{n\to\infty}b_n \right)$, Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} tell us that it will suffice too show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n\cdot b_n-a\cdot b|<\epsilon$. Let $\epsilon>0$ be arbitrary. By Theorem \ref{trm:15.13}\footnote{The proof of Theorem \ref{trm:15.13} does not depend on any following results, so its use here is not circular logic.}, $(a_n)$ is bounded. Thus, by Definition \ref{dfn:15.12}, $\{a_n\mid n\in\N\}$ is bounded. Consequently, by the proof of Exercise \ref{exr:13.9}, there exists a number $M_a$ such that $|a_n|<M_a$ for all $n\in\N$. Now define $M=\max(M_a,b)$. Using this $M$ (which by definition is positive since it's greater than $|a_n|$, which is at least 0) as well as our previously defined arbitrary $\epsilon$, we have by consecutive applications of Definition \ref{dfn:15.5} and Theorem \ref{trm:15.7} that there exist natural numbers $N_a,N_b$ such that for all $n\geq N_a$, we have $|a_n-a|<\frac{\epsilon}{2M}$ and for all $n\geq N_b$, we have $|b_n-b|<\frac{\epsilon}{2M}$. Now choose $N=\max(N_a,N_b)$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows that $n\geq N\geq N_a$, so we know that $|a_n-a|<\frac{\epsilon}{2M}$. Similarly, $|b_n-b|<\frac{\epsilon}{2M}$. Therefore,
             \begin{align*}
                 |a_nb_n-ab| &= |a_n(b_n-b)+b(a_n-a)|\\
                 &\leq |a_n|\cdot|b_n-b|+|b|\cdot|a_n-a|\tag*{Lemma \ref{lem:8.8}}\\
@@ -158,6 +158,112 @@
             \end{align*}
         \end{proof}
     \end{enumerate}
+\end{theorem}
+
+\begin{exercise}\label{exr:15.10}\marginnote{5/13:}
+    Which of the following sequences $(a_n)$ converge? Which diverge? For each that converges, what is the limit? Give proofs for your answers.
+    \begin{enumerate}[label={(\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:15.10a}$a_n=(-1)^n\cdot n$.
+        \begin{proof}
+            Suppose for the sake of contradiction that $\lim_{n\to\infty}a_n$ converges. Then since $(b_n)$ defined by $b_n=\frac{1}{n}$ converges by Exercise \ref{exr:15.6c}, we have by Theorem \ref{trm:15.9} that
+            \begin{align*}
+                \left( \lim_{n\to\infty}(-1)^n\cdot n \right)\cdot\left( \lim_{n\to\infty}\frac{1}{n} \right) &= \lim_{n\to\infty}(-1)^n\cdot n\cdot\frac{1}{n}\\
+                &= \lim_{n\to\infty}(-1)^n
+            \end{align*}
+            But by Exercise \ref{exr:15.6d}, $\lim_{n\to\infty}(-1)^n$ diverges, a contradiction.
+        \end{proof}
+        \item \label{exr:15.10b}$a_n=\frac{1}{n^2+1}(2+\frac{1}{n})$.
+        \begin{proof}
+            To prove that $\lim_{n\to\infty}\frac{1}{n^2+1}(2+\frac{1}{n})=0$, we will first confirm that $\lim_{n\to\infty}\frac{1}{n^2+1}=0$ and $\lim_{n\to\infty}2=2$. These results can be tied together with the fact that $\lim_{n\to\infty}\frac{1}{n}=0$ (by Exercise \ref{exr:15.6c}) to prove the desired result with Theorem \ref{trm:15.9}. Let's begin.\par
+            To confirm that $\lim_{n\to\infty}\frac{1}{n^2+1}=0$, Theorem \ref{trm:15.7} tells us that it will suffice to demonstrate that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|\frac{1}{n^2+1}-0|=|\frac{1}{n^2+1}|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{n\to\infty}\frac{1}{n}=0$ by Exercise \ref{exr:15.6c}, we have by Theorem \ref{trm:15.7} that there exists an $N\in\N$ such that for all $n\geq N$, we have $|\frac{1}{n}|<\epsilon$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then since $n\leq n^2<n^2+1$ by Script \ref{sct:7}, we have that
+            \begin{align*}
+                \left| \frac{1}{n^2+1} \right| &= \frac{1}{n^2+1}\tag*{Definition \ref{dfn:8.4}}\\
+                &< \frac{1}{n^2}\\
+                &\leq \frac{1}{n}\\
+                &= \left| \frac{1}{n} \right|\tag*{Definition \ref{dfn:8.4}}\\
+                &< \epsilon
+            \end{align*}
+            as desired.\par
+            The proof that $\lim_{n\to\infty}2=2$ is symmetric to that of Exercise \ref{exr:15.6a}.\par
+            Having established that $\lim_{n\to\infty}\frac{1}{n^2+1}=0$, $\lim_{n\to\infty}2=2$, and $\lim_{n\to\infty}\frac{1}{n}=0$, we have by consecutive applications of Theorem \ref{trm:15.9} that
+            \begin{align*}
+                0 &= 0\cdot(2+0)\\
+                &= \left( \lim_{n\to\infty}\frac{1}{n^2+1} \right)\cdot\left( \lim_{n\to\infty}2+\lim_{n\to\infty}\frac{1}{n} \right)\\
+                &= \lim_{n\to\infty}\frac{1}{n^2+1}\left( 2+\frac{1}{n} \right)
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item \label{exr:15.10c}$a_n=\frac{5n+1}{2n+3}$.
+        \begin{proof}
+            The proof that $\lim_{n\to\infty}3=3$ is symmetric to that of Exercise \ref{exr:15.6a}. Additionally, by Exercise \ref{exr:15.6a}, the proof of Exercise \ref{exr:15.10b}, and Exercise \ref{exr:15.6c}, we know that $\lim_{n\to\infty}5=5$, $\lim_{n\to\infty}2=2$, and $\lim_{n\to\infty}\frac{1}{n}=0$, respectively. Therefore, by consecutive applications of Theorem \ref{trm:15.9}, we have that
+            \begin{align*}
+                \frac{5}{2} &= \frac{5+0}{2+3\cdot 0}\\
+                &= \frac{\lim_{n\to\infty}5+\lim_{n\to\infty}\frac{1}{n}}{\lim_{n\to\infty}2+\left( \lim_{n\to\infty}3 \right)\cdot\left( \lim_{n\to\infty}\frac{1}{n} \right)}\\
+                &= \lim_{n\to\infty}\frac{5+\frac{1}{n}}{2+3\cdot\frac{1}{n}}\\
+                &= \lim_{n\to\infty}\frac{5n+1}{2n+3}
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item \label{exr:15.10d}$a_n=\frac{(-1)^n+1}{n}$.
+        \begin{proof}
+            By Exercises \ref{exr:15.8a} and \ref{exr:15.6c}, we know that $\lim_{n\to\infty}\frac{(-1)^n}{n}=0$ and $\lim_{n\to\infty}\frac{1}{n}=0$, respectively. Therefore, by Theorem \ref{trm:15.9},
+            \begin{align*}
+                0 &= 0+0\\
+                &= \lim_{n\to\infty}\frac{(-1)^n}{n}+\lim_{n\to\infty}\frac{1}{n}\\
+                &= \lim_{n\to\infty}\left( \frac{(-1)^n}{n}+\frac{1}{n} \right)\\
+                &= \lim_{n\to\infty}\frac{(-1)^n+1}{n}
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+We've used the word "limit" in two contexts now: The limit of a point in a set, and the limit of a sequence. The definitions of these two terms may seem similar. Is there a formal connection? Theorem \ref{trm:15.11} alludes to an answer.
+
+\begin{theorem}\label{trm:15.11}
+    Let $A\subset\R$. Then $p\in\overline{A}$ if and only if there exists a sequence $(a_n)$, with each $a_n\in A$, that converges to $p$.
+    \begin{proof}
+        % Suppose for the sake of contradiction that $p\notin\overline{A}$. Then by Definition \ref{dfn:4.4}, $p\notin A$ and $p\notin LP(A)$. Consider an arbitrary region $R$ containing $p$. Since $\lim_{n\to\infty}a_n=p$, there exists $N\in\N$ such that for all $n\geq N$, $a_n\in R$. It follows that $R\cap A\neq\emptyset$. Additionally, $A=A\setminus\{p\}$ since $p\notin A$. Thus, $R\cap(A\setminus\{p\})\neq\emptyset$. Therefore, $p\in LP(A)$, a contradiction.
+
+        Suppose first that $p\in\overline{A}$. Then by Definitions \ref{dfn:4.4} and \ref{dfn:1.5}, $p\in A$ or $p\in LP(A)$. We now divide into two cases. If $p\in A$, then define $(a_n)$ by $a_n=p$ for all $n\in\N$. Clearly, each $a_n\in A$ since $p\in A$, and $\lim_{n\to\infty}a_n=p$ by a proof symmetric to that of Exercise \ref{exr:15.6a}, as desired. If $p\in LP(A)$, then define $R_n=(p-\frac{1}{n},p+\frac{1}{n})$ for all $n\in\N$. Since $p\in LP(A)$, we have by Definition \ref{dfn:3.13} that $R_n\cap(A\setminus\{p\})\neq\emptyset$ for all $n\in\N$. It follows by the axiom of choice that we can choose a point $a_n$ in $R_n\cap(A\setminus\{p\})$ for all $n\in\N$. Thus, by Definitions \ref{dfn:1.6} and \ref{dfn:1.11}, each $a_n\in A$ (as desired) and $a_n\in R_n$ for all $n\in\N$. We now seek to prove that $(a_n)$ converges to $p$; to do so, Theorem \ref{trm:15.7} tells us that it will suffice to show that for all $\epsilon>0$, there exists an $N\in\N$ such that for all $n\geq N$, $|a_n-p|<\epsilon$. Let $\epsilon>0$ be arbitrary. By Corollary \ref{cly:6.12}, there exists an $N\in\N$ such that $\frac{1}{N}<\epsilon$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then by consecutive applications of Lemma \ref{lem:7.24}, $\frac{1}{n}\leq\frac{1}{N}$. Consequently, by Script \ref{sct:1} as well as the definitions of $R_n$ and $R_N$, $R_n\subset R_N$. It follows by Definition \ref{dfn:1.3} since $a_n\in R_n$ that $a_n\in R_N$. Therefore, by Exercise \ref{exr:8.9}, $|a_n-p|<\frac{1}{N}<\epsilon$, as desired.\par
+        Now suppose that there exists a sequence $(a_n)$ with each $a_n\in A$ that converges to $p$. We divide into two cases ($p\in A$ and $p\notin A$). If $p\in A$, then by Definitions \ref{dfn:1.5} and \ref{dfn:4.4}, $p\in\overline{A}$, as desired. If $p\notin A$, then to prove that $p\in\overline{A}$, Definitions \ref{dfn:4.4} and \ref{dfn:1.5} tell us that we must show that $p\in LP(A)$. To do so, Definition \ref{dfn:3.13} tells us that it will suffice to verify that for all regions $R$ containing $p$, $R\cap(A\setminus\{p\})\neq\emptyset$. Let $R$ be an arbitrary region $R$ with $p\in R$. By Corollary \ref{cly:4.11} and \ref{lem:8.3}, $R$ is an open interval. Thus, by Definition \ref{dfn:15.2}, there exists an $N\in\N$ such that if $n\geq N$, then $a_n\in R$. It follows that $a_N\in R$. Additionally, by hypothesis, $a_N\in A$. These results combined with the fact that $A=A\setminus\{p\}$ (since $p\notin A$) imply by Definition \ref{dfn:1.6} that $a_N\in R\cap(A\setminus\{p\})$. Therefore, by Definition \ref{dfn:1.8}, $R\cap(A\setminus\{p\})\neq\emptyset$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:15.12}
+    A sequence $(a_n)$ is \textbf{bounded} if its image $\{a_n\mid n\in\N\}$ is bounded.
+\end{definition}
+
+\begin{theorem}\label{trm:15.13}
+    Every convergent sequence is bounded.
+    \begin{proof}
+        Let $(a_n)$ be a sequence that converges to $p$. To prove that $(a_n)$ is bounded, Definitions \ref{dfn:15.12} and \ref{dfn:5.6} tell us that it will suffice to find numbers $l,u$ such that $l\leq a_n\leq u$ for all $a_n$. Let $(x,y)$ be a region that contains $p$. By Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, $(x,y)$ is an open interval. Thus, by Exercise \ref{exr:15.3}, we have that $(x,y)$ contains all but finitely many terms of the sequence, i.e., $\{a_n\mid a_n\notin(x,y)\}$ is finite. We divide into two cases ($\{a_n\mid a_n\notin(x,y)\}=\emptyset$ and $\{a_n\mid a_n\notin(x,y)\neq\emptyset$). If $\{a_n\mid a_n\notin(x,y)\}=\emptyset$, then $a_n\in(x,y)$ for all $a_n$. It follows by Equations \ref{eqn:8.1} that $x<a_n<y$ for all $a_n$. If we now choose $l=x$ and $u=y$, we can weaken the previous statement to $l=x\leq a_n\leq y=u$, as desired. On the other hand, if $\{a_n\mid a_n\notin(x,y)\}\neq\emptyset$, then by Lemma \ref{lem:3.4}, $\{a_n\mid a_n\notin(x,y)\}$ has a first and a last point. It follows by Exercise \ref{exr:5.9} that $\{a_n\mid a_n\notin(x,y)\}$ is bounded by $\inf\{a_n\mid a_n\notin(x,y)\}$ and $\sup\{a_n\mid a_n\notin(x,y)\}$. Choose $l=\min(x,\inf\{a_n\mid a_n\notin(x,y)\})$ and $u=\max(y,\sup\{a_n\mid a_n\notin(x,y)\})$. Let $a_n$ be an arbitrary term in the sequence. We divide into two subcases ($a_n\in(x,y)$ and $a_n\notin(x,y)$). If $a_n\in(x,y)$, then $l\leq x<a_n<y\leq u$, as desired. On the other hand, if $a_n\notin(x,y)$, then $l\leq\inf\{a_n\mid a_n\notin(x,y)\}\leq a_n\leq\sup\{a_n\mid a_n\notin(x,y)\}\leq u$, as desired.
+    \end{proof}
+\end{theorem}
+
+The converse is not true, but there are important partial converses. For the first, Theorem \ref{trm:15.14}, we recall Definition \ref{dfn:8.16} along with Definition \ref{dfn:15.1}, which say that $(a_n)$ is an increasing sequence if $a_n\leq a_{n+1}$ for all $n\in\N$, and $(a_n)$ is decreasing if $a_n\geq a_{n+1}$ for all $n\in\N$. The definitions for strictly increasing/strictly decreasing are similar but with strict inequalities.
+
+\begin{theorem}\label{trm:15.14}
+    Every bounded increasing sequence converges to the supremum of its image. Every bounded decreasing sequence converges to the infimum of its image.
+    \begin{proof}
+        We will only address the first part of the theorem; the proof of the second part is symmetric.\par
+        Let $(a_n)$ be a bounded increasing sequence and let $p=\sup\{a_n\mid n\in\N\}$. To prove that $(a_n)$ converges to $p$, Theorem \ref{trm:15.7} tells us  that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\epsilon$. Let $\epsilon>0$ be arbitrary. By Lemma \ref{lem:5.11}, there exists $a_N\in\{a_n\mid n\in\N\}$ such that $p-\epsilon<a_N\leq p$. Choose $N$ to be the natural number that generates $a_N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then since $a_N\leq a_{N+1}\leq\cdots\leq a_{n-1}\leq a_n$, we have by transitivity that $a_N\leq a_n$. Additionally, since $a_n\in\{a_n\mid n\in\N\}$, we have by Definitions \ref{dfn:5.7} and \ref{dfn:5.6} that $a_n\leq p$. Thus, since $p-\epsilon<a_N\leq a_n\leq p<p+\epsilon$, we have by Equations \ref{eqn:8.1} that $a_n\in(p-\epsilon,p+\epsilon)$. Therefore, by Exercise \ref{exr:8.9}, $|a_n-p|<\epsilon$, as desired.
+    \end{proof}
+\end{theorem}
+
+To discuss the second partial converse, Theorem \ref{trm:15.18}, we need another definition.
+
+\begin{definition}\label{dfn:15.15}
+    Let $(a_n)$ be a sequence. A \textbf{subsequence} of $(a_n)$ is a sequence $b:\N\to\R$ defined by the composition $b=a\circ i$, where $i:\N\to\N$ is a strictly increasing function. If $(a_n)$ has a subsequence with limit $p$, we call $p$ a \textbf{subsequential limit} of $(a_n)$.
+\end{definition}
+
+We can write $b_k=a(i(k))=a_{i(k)}=a_{i_k}$, so that $(b_k)$ is the sequence $b_1,b_2,b_3,\dots$, which is equal to the sequence $a_{i_1},a_{i_2},a_{i_3},\dots$, where $i_1<i_2<i_3<\cdots$.
+
+\begin{theorem}\label{trm:15.16}
+    If $(a_n)$ converges to $p$, then so do all of its subsequences.
+    \begin{proof}
+        Let $(b_n)$ be an arbitrary subsequence of $(a_n)$. To prove that $(b_n)$ converges to $p$, Theorem \ref{trm:15.7} tells us that it will suffice to show that for all $\epsilon>0$, there exists an $N\in\N$ such that for all $n\geq N$, we have $|b_n-p|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $(a_n)$ converges to $p$, Theorem \ref{trm:15.7} implies that there exists an $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\epsilon$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. By Definition \ref{dfn:15.15} and Script \ref{sct:1}, $i(n)\geq n$. Therefore, we have by the above that $|b_n-p|=|a_{i_n}-p|<\epsilon$, as desired.
+    \end{proof}
 \end{theorem}
 
 

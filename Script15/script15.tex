@@ -266,6 +266,54 @@ We can write $b_k=a(i(k))=a_{i(k)}=a_{i_k}$, so that $(b_k)$ is the sequence $b_
     \end{proof}
 \end{theorem}
 
+\begin{exercise}\label{exr:15.17}\marginnote{5/18:}
+    Construct a sequence with two subsequential limits. Construct a sequence with infinitely many subsequential limits.
+    \begin{proof}
+        Let $(a_n)$ be a sequence defined by $a_n=(-1)^n$ for all $n\in\N$. Let $(b_n)$ be a subsequence of $(a_n)$ defined be defined by $b_n=a_{2n}$ for all $n\in\N$. Then by the proof of Exercise \ref{exr:15.6d}, $b_n=1$ for all $n\in\N$. It follows by the proof of Exercise \ref{exr:15.6a} that $\lim_{n\to\infty}b_n=1$. Similarly, if we let $(c_n)$ be defined by $c_n=a_{2n+1}$, then $\lim_{n\to\infty}c_n=-1$.\par
+        Now let $(a_n)$ be defined by $a_1=1$; $a_2=1$ and $a_3=2$; $a_4=1$, $a_5=2$, and $a_6=3$; $a_7=1$, $a_8=2$, $a_9=3$, and $a_{10}=4$; and so on. Clearly there will be infinitely many terms that evaluate to each natural number in this sequence. Therefore, each of the infinitely many natural numbers is a subsequential limit of this sequence.
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:15.18}
+    Every bounded sequence has a convergent subsequence.
+    \begin{proof}
+        Let $(a_n)$ be an arbitrary bounded sequence, and define $A=\{a_n\mid n\in\N\}$. By Definition \ref{dfn:15.12}, $A$ is bounded. Additionally, by Script \ref{sct:1}, $A$ is infinite. Furthermore, by Script \ref{sct:6}, $A$ is a subset of $\R$. Combining these last three results, we have by Theorem \ref{trm:10.18} that there exists a limit point $p$ of $A$. It follows by Definition \ref{dfn:4.4} that $p\in\overline{A}$. Thus, by Theorem \ref{trm:15.11}, there exists a sequence $(b_n)$ with each $b_n\in A$ that converges to $p$. Since each $b_n$ equals an $a_n$, we have by Definition \ref{dfn:15.15} that $(b_n)$ is a subsequence of $(a_n)$. Therefore, we have found a convergent subsequence of $(a_n)$, as desired.
+    \end{proof}
+\end{theorem}
+
+We are now able to prove a useful characterization of convergent sequences.
+
+\begin{theorem}\label{trm:15.19}
+    A sequence $(a_n)$ of real numbers converges if and only if for all $\epsilon>0$, there is some $N\in\N$ such that $|a_n-a_m|<\epsilon$ for all $n,m\geq N$.
+    \begin{proof}
+        Suppose first that $(a_n)$ converges to $p$. Let $\epsilon>0$ be arbitrary. Then by Theorem \ref{trm:15.7}, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\frac{\epsilon}{2}$. Choose this $N$ to be our $N$. Let $n,m$ be arbitrary natural numbers such that $n,m\geq N$. Then $|a_n-p|<\frac{\epsilon}{2}$ and $|a_m-p|<\frac{\epsilon}{2}$. Therefore,
+        \begin{align*}
+            |a_n-a_m| &\leq |a_n-p|+|p-a_m|\tag*{Lemma \ref{lem:8.8}}\\
+            &= |a_n-p|+|a_m-p|\tag*{Exercise \ref{exr:8.5}}\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.\par\smallskip
+        Now suppose that for all $\epsilon>0$, there is some $N\in\N$ such that $|a_n-a_m|<\epsilon$ for all $n,m\geq N$. To prove that $(a_n)$ converges, we will first show that it is bounded. It will then follow by Theorem \ref{trm:15.18} that $(a_n)$ has a subsequence $(b_n)$ that converges to $p$. The existence of $(b_n)$ combined with the hypothesis will suffice to show that $(a_n)$ converges to $p$. Let's begin.\par
+        To confirm that $(a_n)$ is bounded, Definitions \ref{dfn:15.12} and \ref{dfn:5.6} tell us that it will suffice to find numbers $l,u$ such that $l\leq a_n\leq u$ for all $a_n$. Since $1>0$ by Corollary \ref{cly:7.27}, we have by the hypothesis that there is some $N\in\N$ such that $|a_n-a_m|<1$ for all $n,m\geq N$. Thus, we know that $|a_N-a_n|<1$ for all $n\geq N$. Consequently, by Exercise \ref{exr:8.9}, $a_n\in(a_N-1,a_N+1)$ for all $n\geq N$. It follows by Script \ref{sct:1} that $\{a_n\mid a_n\notin(a_N-1,a_N+1)$ is finite, since it can contain at most $N-1$ terms. If we now divide into two cases and evaluate them in a symmetric fashion to the way we did in the proof of Theorem \ref{trm:15.13}, we can establish that $(a_n)$ is bounded, as desired.\par
+        Since $(a_n)$ is bounded, we have by Theorem \ref{trm:15.18} that there exists a convergent subsequence $(b_n)$ of $(a_n)$. Let $\lim_{n\to\infty}b_n=p$.\par
+        To prove that $(a_n)$ converges to $p$, Theorem \ref{trm:15.7} tells us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $(b_n)$ converges to $p$, Theorem \ref{trm:15.7} asserts that there is some $N_1\in\N$ such that for all $n\geq N_1$, we have $|b_n-p|<\frac{\epsilon}{2}$. Additionally, we have by the hypothesis that there is some $N_2\in\N$ such that $|a_n-a_m|<\frac{\epsilon}{2}$ for all $n,m\geq N_2$. Choose $N=\max(N_1,N_2)$. Let $n$ be an arbitrary natural number such that $n\geq N$. By Corollary \ref{cly:6.13}, there exists a $b_m=a_{i_m}$ with $i_m\geq N$. Thus, since $i_m\geq N\geq N_1$, we have that $|a_{i_m}-p|<\frac{\epsilon}{2}$. Additionally, since $n\geq N\geq N_2$ and $i_m\geq N\geq N_2$, we have that $|a_n-a_{i_m}|<\frac{\epsilon}{2}$. Therefore,
+        \begin{align*}
+            |a_n-p| &\leq |a_n-a_{i_m}|+|a_{i_m}-p|\tag*{Lemma \ref{lem:8.8}}\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:15.20}
+    Use Theorem \ref{trm:15.19} to show that the sequence in Exercise \ref{exr:15.10a} does not converge.
+    \begin{proof}
+        Suppose for the sake of contradiction that $a_n=(-1)^n\cdot n$ converges to some $p\in\R$. Then if we choose $\epsilon=1$, we have by Theorem \ref{trm:15.19} that there exists some $N\in\N$ such that $|a_n-a_m|<1$ for all $n,m\geq N$. But we also have that $|a_N-a_{N+1}|=2N+1>1$, regardless of which natural number $N$ is, a contradiction.
+    \end{proof}
+\end{theorem}
+
 
 
 

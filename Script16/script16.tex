@@ -1,0 +1,142 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{15}
+
+\begin{document}
+
+
+
+
+\chapter{Series}\label{sct:16}
+\section{Journal}
+\begin{definition}\label{dfn:16.1}\marginnote{5/20:}
+    Let $N_0\in\N\cup\{0\}$ and let $(a_n)_{n=N_0}^\infty$ be a sequence of real numbers. Then the formal sum
+    \begin{equation*}
+        \sum_{n=N_0}^\infty a_n
+    \end{equation*}
+    is called an \textbf{infinite series}. (In most instances, we will start the series at $N_0=0$ or $N_0=1$.)\par
+    We will define the \textbf{sequence of partial sums} $(p_n)$ of the series by
+    \begin{equation*}
+        p_n = a_{N_0}+\cdots+a_{N_0+n-1} = \sum_{i=N_0}^{N_0+n-1}a_i
+    \end{equation*}
+    Thus, $p_n$ is the sum of the first $n$ terms in the sequence $(a_n)$. We say that the series \textbf{converges} if there exists $L\in\R$ such that $\lim_{n\to\infty}p_n=L$. When this is the case, we write this as
+    \begin{equation*}
+        \sum_{n=N_0}^\infty a_n = L
+    \end{equation*}
+    and we say that $L$ is the \textbf{sum} of the series. When there does not exist such an $L$, we say that the series \textbf{diverges}.
+\end{definition}
+
+\begin{lemma}\label{lem:16.2}
+    Let $(a_n)_{n=0}^\infty$ be a sequence of real numbers. Let $N_0\in\N$. Then $\sum_{n=0}^\infty a_n$ converges if and only if $\sum_{n=N_0}^\infty a_n$ converges.
+    \begin{lemma*}
+        Let $n\in\N$. Then
+        \begin{equation*}
+            \sum_{i=0}^{N_0+n-1}a_i = \sum_{i=0}^{N_0-1}a_i+\sum_{i=N_0}^{N_0+n-1}a_i
+        \end{equation*}
+        \begin{proof}
+            This simple result follows immediately from Script \ref{sct:0}, so no formal proof will be given.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Lemma \ref{lem:16.2}]
+        Suppose first that $\sum_{n=0}^\infty a_n$ converges, and let $M=\sum_{n=0}^\infty a_n=\lim_{n\to\infty}\sum_{i=0}^{n-1}a_i$, where the latter equality holds by Definition \ref{dfn:16.1}. To prove that $\sum_{n=N_0}^\infty a_n$ converges, Definition \ref{dfn:16.1} tells us that it will suffice to find an $L\in\R$ such that $\lim_{n\to\infty}\sum_{i=N_0}^{N_0+n-1}a_i=L$. Choose $L=M-\sum_{i=0}^{N_0-1}a_i$. To verify that $\lim_{n\to\infty}\sum_{i=N_0}^{N_0+n-1}a_i=L$, Theorem \ref{trm:15.7} tells us that it will suffice to show that for all $\epsilon>0$, there exists an $N\in\N$ such that for all $n\geq N$, $|\sum_{i=N_0}^{N_0+n-1}a_i-L|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{n\to\infty}\sum_{i=0}^{n-1}a_i=M$, Theorem \ref{trm:15.7} implies that there is some $N\in\N$ such that for all $n\geq N$, $|\sum_{i=0}^{n-1}a_i-M|<\epsilon$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Since $N_0+n>n\geq N$, we have by the above that $|\sum_{i=0}^{N_0+n-1}a_i-M|<\epsilon$. Therefore,
+        \begin{align*}
+            \left| \sum_{i=N_0}^{N_0+n-1}a_i-L \right| &= \left| \sum_{i=0}^{N_0+n-1}a_i-\sum_{i=0}^{N_0-1}a_i-L \right|\tag*{The Lemma}\\
+            &= \left| \sum_{i=0}^{N_0+n-1}a_i-\left( \sum_{i=0}^{N_0-1}a_i+L \right) \right|\\
+            &= \left| \sum_{i=0}^{N_0+n-1}a_i-M \right|\\
+            &< \epsilon
+        \end{align*}
+        as desired.\par
+        The proof is symmetric in the other direction.
+    \end{proof}
+\end{lemma}
+
+\begin{exercise}\label{exr:16.3}
+    Prove that $\sum_{n=1}^\infty(\frac{1}{n}-\frac{1}{n+1})$ converges. What is its sum?
+    \begin{proof}
+        Let $(a_n)$ be defined by $a_n=\frac{1}{n}-\frac{1}{n+1}$, and let $(p_n)$ be defined by $p_n=\sum_{i=1}^na_i$. Then
+        \begin{align*}
+            p_n &= a_1+a_2+\cdots+a_n\\
+            &= \left( \frac{1}{1}-\frac{1}{2} \right)+\left( \frac{1}{2}-\frac{1}{3} \right)+\cdots+\left( \frac{1}{n}-\frac{1}{n+1} \right)\\
+            &= \frac{1}{1}-\frac{1}{n+1}
+        \end{align*}
+        To prove that $\sum_{n=1}^\infty(\frac{1}{n}-\frac{1}{n+1})=1$, Definition \ref{dfn:16.1} tells us that it will suffice to show that $\lim_{n\to\infty}p_n=1$. By a proof symmetric to that of Exercise \ref{exr:15.6a}, we have that $\lim_{n\to\infty}1=1$. By a proof symmetric to that of Exercise \ref{exr:15.6c}, we have that $\lim_{n\to\infty}\frac{1}{n+1}=0$. Therefore, by Theorem \ref{trm:15.9} and the above, we have that
+        \begin{align*}
+            \lim_{n\to\infty}p_n &= \lim_{n\to\infty}\left( 1-\frac{1}{n+1} \right)\\
+            &= \lim_{n\to\infty}1-\lim_{n\to\infty}\frac{1}{n+1}\\
+            &= 1-0\\
+            &= 1
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:16.4}
+    If $\sum_{n=1}^\infty a_n$ converges, then $\lim_{n\to\infty}a_n=0$.
+    \begin{proof}
+        To prove that $\lim_{n\to\infty}a_n=0$, Theorem \ref{trm:15.7} tells us that it will suffice to show that for all $\epsilon>0$, there exists an $N\in\N$ such that for all $n\geq N$, $|a_n-0|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\sum_{n=1}^\infty a_n$ converges, we have by Theorem \ref{trm:15.19} that there exists an $N\in\N$ such that $|\sum_{i=1}^na_i-\sum_{i=1}^ma_i|<\epsilon$ for all $n,m\geq N$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then choosing $n,n-1\geq N$, we have by the above that $|\sum_{i=1}^na_i-\sum_{i=1}^{n-1}a_i|<\epsilon$. Therefore,
+        \begin{align*}
+            |a_n-0| &= |a_n|\\
+            &= \left| \sum_{i=1}^na_i-\sum_{i=1}^{n-1}a_i \right|\\
+            &< \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+The converse of this theorem, however, is not true, as we see in Theorem \ref{trm:16.6}.
+
+\begin{theorem}\label{trm:16.5}
+    A series $\sum_{n=1}^\infty a_n$ converges if and only if for all $\epsilon>0$, there is some $N\in\N$ such that $|\sum_{k=m+1}^na_k|<\epsilon$ for all $n>m\geq N$.
+    \begin{proof}
+        Suppose first that $\sum_{n=1}^\infty a_n$ converges. Let $\epsilon>0$ be arbitrary. By Definition \ref{dfn:16.1}, $(p_n)$ converges. Thus, by Theorem \ref{trm:15.19}, there is some $N\in\N$ such that $|p_n-p_m|<\epsilon$ for all $n,m\geq N$. Choose this $N$ to be our $N$. Let $n,m$ be two arbitrary natural numbers satisfying $n>m\geq N$. Therefore,
+        \begin{align*}
+            \left| \sum_{k=m+1}^na_k \right| &= \left| \sum_{k=1}^na_k-\sum_{k=1}^ma_k \right|\\
+            &= |p_n-p_m|\\
+            &< \epsilon
+        \end{align*}
+        as desired.\par
+        The proof is symmetric in the other direction.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:16.6}
+    The series $\sum_{n=1}^\infty\frac{1}{n}$ diverges.
+    \begin{lemma*}
+        For all $N\in\N$, we have
+        \begin{equation*}
+            \sum_{n=N+1}^{2N}\frac{1}{n} \geq \frac{1}{2}
+        \end{equation*}
+        \begin{proof}
+            We induct on $N$. For the base case $N=1$, we have
+            \begin{equation*}
+                \sum_{n=1+1}^{2\cdot 1}\frac{1}{n} = \frac{1}{2} \geq \frac{1}{2}
+            \end{equation*}
+            as desired. Now suppose inductively that we have proven the claim for $N$. To prove it for $N+1$, we do the following.
+            \begin{align*}
+                \sum_{n=N+2}^{2N+2}\frac{1}{n} &= \sum_{n=N+1}^{2N}\frac{1}{n}-\frac{1}{N+1}+\frac{1}{2N+1}+\frac{1}{2(N+1)}\\
+                % &= \sum_{n=N+1}^{2N}\frac{1}{n}-\frac{2(2N+1)}{2(N+1)(2N+1)}+\frac{2(N+1)}{2(N+1)(2N+1)}+\frac{2N+1}{2(N+1)(2N+1)}\\
+                % &= \sum_{n=N+1}^{2N}\frac{1}{n}+\frac{-2(2N+1)+2(N+1)+(2N+1)}{2(N+1)(2N+1)}\\
+                &= \sum_{n=N+1}^{2N}\frac{1}{n}+\frac{1}{2(N+1)(2N+1)}\\
+                &> \sum_{n=N+1}^{2N}\frac{1}{n}\\
+                &\geq \frac{1}{2}
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:16.6}]
+        To prove that $\sum_{n=1}^\infty\frac{1}{n}$ diverges, Theorem \ref{trm:16.5} tells us that it will suffice to find an $\epsilon>0$ such that for all $N\in\N$, there exist $n>m\geq N$ with $|\sum_{k=m+1}^n1/k|\geq\epsilon$. Choose $\epsilon=\frac{1}{2}$. Let $N$ be an arbitrary element of $N$. If we now choose $n=2N$ and $m=N$, we will have $n>m\geq N$. It will follow by the lemma that
+        \begin{align*}
+            \left| \sum_{k=m+1}^n\frac{1}{k} \right| &= \left| \sum_{k=N+1}^{2N}\frac{1}{k} \right|\\
+            &\geq \frac{1}{2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+
+
+
+\end{document}

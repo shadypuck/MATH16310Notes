@@ -136,6 +136,152 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
     \end{proof}
 \end{theorem}
 
+\begin{theorem}\label{trm:16.7}\marginnote{\emph{5/25:}}
+    Let $-1<x<1$. Then
+    \begin{equation*}
+        \sum_{n=0}^\infty x^n = \frac{1}{1-x}
+    \end{equation*}
+    \begin{proof}
+        Let $(a_n)$ be defined by $a_n=x^n$. Then $p_n=x^0+x^1+\cdots+x^{n-1}$ so that
+        \begin{align*}
+            p_n-xp_n &= x^0+\cdots+x^{n-1}-x(x^0+\cdots+x^{n-1})\\
+            p_n-xp_n &= 1-x^n\\
+            p_n(1-x) &= 1-x^n\\
+            p_n &= \frac{1-x^n}{1-x}
+        \end{align*}
+        Therefore, we have that
+        \begin{align*}
+            \frac{1}{1-x} &= \frac{1-0}{1-x}\\
+            &= \frac{1-\lim_{n\to\infty}x^n}{1-x}\tag*{Exercise \ref{exr:15.8b}}\\
+            &= \lim_{n\to\infty}\frac{1-x^n}{1-x}\tag*{Theorem \ref{trm:15.9}}\\
+            &= \lim_{n\to\infty}p_n\\
+            &= \sum_{n=0}^\infty x^n\tag*{Definition \ref{dfn:16.1}}
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:16.8}
+    If $\sum_{n=1}^\infty a_n=L$, $\sum_{n=1}^\infty b_n=M$, and $c\in\R$, then
+    \begin{gather*}
+        \sum_{n=1}^\infty(a_n+b_n) = L+M\\
+        \sum_{n=1}^\infty(c\cdot a_n) = c\cdot L
+    \end{gather*}
+    \begin{proof}
+        For the first claim, we have that
+        \begin{align*}
+            L+M &= \sum_{n=1}^\infty a_n+\sum_{n=1}^\infty b_n\\
+            &= \lim_{n\to\infty}\sum_{i=1}^na_i+\lim_{n\to\infty}\sum_{i=1}^nb_i\tag*{Definition \ref{dfn:16.1}}\\
+            &= \lim_{n\to\infty}\left( \sum_{i=1}^na_i+\sum_{i=1}^nb_i \right)\tag*{Theorem \ref{trm:15.9}}\\
+            &= \lim_{n\to\infty}\sum_{i=1}^n(a_i+b_i)\\
+            &= \sum_{n=1}^\infty(a_n+b_n)\tag*{Definition \ref{dfn:16.1}}
+        \end{align*}\par
+        The proof is symmetric for the second claim.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:16.9}
+    We say that the series $\sum_{n=1}^\infty a_n$ \textbf{converges absolutely} if the series $\sum_{n=1}^\infty|a_n|$ converges.
+\end{definition}
+
+\begin{lemma}\label{lem:16.10}
+    A series $\sum_{n=1}^\infty a_n$ with all $a_n\geq 0$ converges if and only if its sequence of partial sums is bounded.
+    \begin{proof}
+        Suppose first that the series $\sum_{n=1}^\infty a_n$ with all $a_n\geq 0$ converges. Then by Definition \ref{dfn:16.1} its sequence of partial sums $(p_n)$ converges. Therefore, by Theorem \ref{trm:15.13}, $(p_n)$ is bounded, as desired.\par
+        Now suppose that the sequence of partial sums $(p_n)$ corresponding to a series $\sum_{n=1}^\infty a_n$ with all $a_n\geq 0$ is bounded. To prove that $\sum_{n=1}^\infty a_n$ converges, Definition \ref{dfn:16.1} tells us that it will suffice to show that $(p_n)$ converges. To do so, Theorem \ref{trm:15.14} tells us that it will suffice to verify in addition to the fact that $(p_n)$ is bounded that $(p_n)$ is increasing. To do this, Script \ref{sct:15} tells us that it will suffice to confirm that $p_n\leq p_{n+1}$ for all $n\in\N$. Let $n$ be an arbitrary natural number. By Definition \ref{dfn:16.1}, $p_{n+1}-p_n=a_{n+1}$. Since $a_{n+1}\geq 0$ by hypothesis, we have by transitivity that $p_{n+1}-p_n\geq 0$, i.e., $p_n\leq p_{n+1}$ by Definition \ref{dfn:7.21}, as desired.
+    \end{proof}
+\end{lemma}
+
+\begin{theorem}\label{trm:16.11}
+    If $\sum_{n=1}^\infty a_n$ converges absolutely, then $\sum_{n=1}^\infty a_n$ converges and
+    \begin{equation*}
+        \left| \sum_{n=1}^\infty a_n \right| \leq \sum_{n=1}^\infty|a_n|
+    \end{equation*}
+    \begin{proof}
+        To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.5} tells us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that $|\sum_{k=m+1}^na_k|<\epsilon$ for all $n>m\geq N$. Let $\epsilon>0$ be arbitrary. Since $\sum_{n=1}^\infty a_n$ converges absolutely by hypothesis, we have by Definition \ref{dfn:16.9} that $\sum_{n=1}^\infty|a_n|$ converges. Thus, by Theorem \ref{trm:16.5}, there is some $N\in\N$ such that $|\sum_{k=m+1}^n|a_k||<\epsilon$ for all $n>m\geq N$. Choose this $N$ to be our $N$. Let $n,m$ be arbitrary natural numbers such that $n>m\geq N$. Therefore,
+        \begin{align*}
+            \left| \sum_{k=m+1}^na_k \right| &\leq \sum_{k=m+1}^n|a_k|\tag*{Lemma \ref{lem:8.8}}\\
+            &= \left| \sum_{k=m+1}^n|a_k| \right|\\
+            &< \epsilon
+        \end{align*}
+        as desired.\par\smallskip
+        As to the other part of the claim, to begin, let $(b_n)$ and $(c_n)$ be defined by $b_n=\max(0,a_n)$ and $c_n=\min(0,a_n)$. We will prove a few preliminary results with these definitions that will enable us to tackle the big inequality.\par
+        To confirm that $a_n=b_n+c_n$, we divide into two cases ($a_n\geq 0$ and $a_n<0$). If $a_n\geq 0$, then by their definitions, $b_n=a_n$ and $c_n=0$. Thus, $a_n=b_n+c_n$ as desired. The argument is symmetric in the other case.\par
+        To confirm that $|\sum_{n=1}^\infty b_n|+|\sum_{n=1}^\infty -c_n|=|\sum_{n=1}^\infty b_n+\sum_{n=1}^\infty -c_n|$, we can acknowledge that $b_n\geq 0$ and $-c_n\geq 0$ for all $n\in\N$ to demonstrate that
+        \begin{align*}
+            \left| \sum_{n=1}^\infty b_n \right|+\left| \sum_{n=1}^\infty -c_n \right| &= \sum_{n=1}^\infty b_n+\sum_{n=1}^\infty -c_n\\
+            &= \left| \sum_{n=1}^\infty b_n+\sum_{n=1}^\infty -c_n \right|
+        \end{align*}\par
+        To confirm that $|a_n|=b_n-c_n$, we divide into two cases ($a_n\geq 0$ and $a_n<0$). If $a_n\geq 0$, then $b_n=a_n$ and $c_n=0$. Thus, by Definition \ref{dfn:8.4}, $|a_n|=a_n=b_n-c_n$, as desired. On the other hand, if $a_n<0$, then $b_n=0$ and $c_n=a_n$. Thus, by Definition \ref{dfn:8.4} again, $|a_n|=-a_n=b_n-c_n$, as desired.\par
+        Having established that $a_n=b_n+c_n$, $|\sum_{n=1}^\infty b_n|+|\sum_{n=1}^\infty -c_n|=|\sum_{n=1}^\infty b_n+\sum_{n=1}^\infty -c_n|$, and $|a_n|=b_n-c_n$, we have that
+        \begin{align*}
+            \left| \sum_{n=1}^\infty a_n \right| &= \left| \sum_{n=1}^\infty(b_n+c_n) \right|\\
+            &= \left| \sum_{n=1}^\infty b_n+\sum_{n=1}^\infty c_n \right|\tag*{Theorem \ref{trm:16.8}}\\
+            &\leq \left| \sum_{n=1}^\infty b_n \right|+\left| \sum_{n=1}^\infty c_n \right|\tag*{Lemma \ref{lem:8.8}}\\
+            &= \left| \sum_{n=1}^\infty b_n \right|+\left| -\sum_{n=1}^\infty c_n \right|\tag*{Exercise \ref{exr:8.5}}\\
+            &= \left| \sum_{n=1}^\infty b_n \right|+\left| \sum_{n=1}^\infty -c_n \right|\tag*{Theorem \ref{trm:16.8}}\\
+            &= \left| \sum_{n=1}^\infty b_n+\sum_{n=1}^\infty -c_n \right|\\
+            &= \left| \sum_{n=1}^\infty(b_n-c_n) \right|\tag*{Theorem \ref{trm:16.8}}\\
+            &= \left| \sum_{n=1}^\infty|a_n| \right|\\
+            &= \sum_{n=1}^\infty|a_n|
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:16.12}
+    Let $(a_n)$ be a decreasing sequence of positive numbers such that $\lim_{n\to\infty}a_n=0$. Then $\sum_{n=1}^\infty(-1)^{n+1}a_n$ converges.
+    % \begin{lemma*}
+    %     Let $k$ be even, $j$ be odd. Then $p_k\leq p_j$.
+    %     \begin{proof}
+            
+    %     \end{proof}
+    % \end{lemma*}
+    \begin{lemma*}\leavevmode
+        \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+            \item For any natural numbers $n,m$ satisfying $n>m$, we have
+            \begin{equation*}
+                \left| \sum_{k=m+1}^n(-1)^{k+1}a_k \right| = |a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+a_{m+5}-\cdots\pm a_n|
+            \end{equation*}
+            \begin{proof}
+                By Script \ref{sct:0}, either $|\sum_{k=m+1}^n(-1)^{k+1}a_k|=|a_{m+1}-a_{m+2}+a_{m+3}-\cdots\pm a_n|$ or $|\sum_{k=m+1}^n(-1)^{k+1}a_k|=|-a_{m+1}+a_{m+2}-a_{m+3}+\cdots\pm a_n|$. However, by Exercise \ref{exr:8.5}, the two results are equal. Thus, we may choose the former WLOG.
+            \end{proof}
+            \item We have
+            \begin{equation*}
+                0 \leq a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+\cdots\pm a_n
+            \end{equation*}
+            \begin{proof}
+                Since $(a_n)$ is a decreasing sequence, we have by Script \ref{sct:15} that $a_{i+1}\leq a_i$ for all $i\in\N$. It follows by Definition \ref{dfn:7.21} that $0\leq a_i-a_{i+1}$ for all $i\in\N$. We now divide into two cases (there are an even number of terms in the sum $a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+a_{m+5}-\cdots\pm a_n$ and there are an odd number of terms in said sum). In the first case, we have that the sum is of the form $a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+\cdots+a_{n-1}-a_n$. Thus, since $0\leq a_{m+1}-a_{m+2}$, $0\leq a_{m+3}-a_{m+4}$, and on and on, we have by Script \ref{sct:7} that $0\leq a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+\cdots-a_n$, as desired. On the other hand, in the second case, we have that the sum is of the form $a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+\cdots+a_{n-2}-a_{n-1}+a_n$. For the same reason as before, we have that $0\leq a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+\cdots+a_{n-2}-a_{n-1}$. However, we need the additional hypothesis that every $a_i$ is positive, i.e., $a_i\geq 0$ for all $i\in\N$ to know that $0\leq a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+\cdots+a_n$, as desired.
+            \end{proof}
+            \item For all $i\in\N$, we have
+            \begin{align*}
+                -a_i+a_{i+1} \leq 0
+            \end{align*}
+            \begin{proof}
+                Since $(a_n)$ is a decreasing sequence, we have by Script \ref{sct:15} that $a_{i+1}\leq a_i$ for all $i\in\N$. It follows by Definition \ref{dfn:7.21} that $-a_i+a_{i+1}\leq 0$ for all $i\in\N$.
+            \end{proof}
+        \end{enumerate}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:16.12}]
+        To prove that $\sum_{n=1}^\infty(-1)^{n+1}a_n$ converges, Theorem \ref{trm:16.5} tells us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that $|\sum_{k=m+1}^n(-1)^{k+1}a_k|<\epsilon$ for all $n>m\geq N$. Let $\epsilon>0$ be arbitrary. Since $\lim_{n\to\infty}a_n=0$ by hypothesis, we have by Theorem \ref{trm:15.7} that there exists an $N\in\N$ such that for all $n\geq N$, we have $|a_n-0|=|a_n|<\epsilon$, as desired. Choose this $N$ to be our $N$. Let $n,m$ be arbitrary natural numbers such that $n>m\geq N$.\par
+        We divide into two cases ($n-m$ is even [i.e., there are an even number of terms in the sum $\sum_{k=m+1}^n(-1)^{k+1}a_k$] and $n-m$ is odd [i.e., there are an odd number of terms in the sum $\sum_{k=m+1}^n(-1)^{k+1}a_k$]). If $n-m$ is even, then we have
+        \begin{align*}
+            \left| \sum_{k=m+1}^n(-1)^{k+1}a_k \right| &= |a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+a_{m+5}-\cdots-a_{n-2}+a_{n-1}-a_n|\tag*{Lemma (a)}\\
+            &= a_{m+1}-a_{m+2}+a_{m+3}-a_{m+4}+a_{m+5}-\cdots-a_{n-2}+a_{n-1}-a_n\tag*{Lemma (b) \& Definition \ref{dfn:8.4}}\\
+            &= a_{m+1}+(-a_{m+2}+a_{m+3})+(-a_{m+4}+a_{m+5})+\cdots+(-a_{n-2}+a_{n-1})-a_n\\
+            &\leq a_{m+1}+(-a_{m+4}+a_{m+5})+\cdots+(-a_{n-2}+a_{n-1})-a_n\tag*{Lemma (c)}\\
+            &\leq a_{m+1}+\cdots+(-a_{n-2}+a_{n-1})-a_n\tag*{Lemma (c)}\\
+            &\hspace{5pt}\vdots\tag*{Lemma (c)}\\
+            &\leq a_{m+1}+(-a_{n-2}+a_{n-1})-a_n\tag*{Lemma (c)}\\
+            &\leq a_{m+1}-a_n\tag*{Lemma (c)}\\
+            &\leq a_{m+1}\\
+            &= |a_{m+1}|\\
+            &< \epsilon
+        \end{align*}
+        The argument is symmetric if $n-m$ is odd.
+    \end{proof}
+\end{theorem}
+
 
 
 

@@ -282,6 +282,29 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
     \end{proof}
 \end{theorem}
 
+\marginnote{5/27:}The following theorem will be useful to prove more specialized tests for convergence of series.
+
+\begin{theorem}\label{trm:16.13}
+    Let $(c_n)$ be a sequence of positive numbers and let $(a_n)$ be a sequence such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer. If $\sum_{n=1}^\infty c_n$ converges, then $\sum_{n=1}^\infty a_n$ converges.
+    \begin{proof}
+        To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.11} and Definition \ref{dfn:16.9} tell us that it will suffice to show that $\sum_{n=1}^\infty|a_n|$ converges. To do this, Theorem \ref{trm:16.5} tells us that it will suffice to verify that for all $\epsilon>0$, there exists an $N\in\N$ such that $|\sum_{k=m+1}^n|a_k||<\epsilon$ for all $n>m\geq N$. Let $\epsilon>0$ be arbitrary. Since $\sum_{n=1}^\infty c_n$ converges by hypothesis, we have by Theorem \ref{trm:16.5} that there is some $N_1\in\N$ such that $|\sum_{k=m+1}^nc_k|<\epsilon$ for all $n>m\geq N_1$. Choose $N=\max(N_0,N_1)$. Let $n,m$ be arbitrary natural numbers such that $n>m\geq N$. Since $c_k\geq 0$ for all $k\in\N$ by hypothesis, it follows by Script \ref{sct:7} that $\sum_{k=m+1}^nc_k\geq 0$. Thus, Definition \ref{dfn:8.4} implies that $\sum_{k=m+1}^nc_k=|\sum_{k=m+1}^nc_k|<\epsilon$. Similarly, we have that $|\sum_{k=m+1}^n|a_k||=\sum_{k=m+1}^n|a_k|$. Lastly, since we know by hypothesis that $|a_k|\leq c_k$ for all $k\geq N_0$, i.e., for all $k\geq N$, Script \ref{sct:7} asserts that $\sum_{k=m+1}^n|a_k|\leq\sum_{k=m+1}^nc_n$. Therefore, combining the last three results, we have that $|\sum_{k=m+1}^n|a_k||=\sum_{k=m+1}^n|a_k|\leq\sum_{k=m+1}^nc_n<\epsilon$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{lemma}\label{lem:16.14}
+    Suppose that $(b_n)$ is a sequence of nonnegative numbers with $\lim_{n\to\infty}b_n=L$, where $L<1$. Then there is some $N\in\N$ such that $0\leq b_n<\frac{1+L}{2}$ for all $n\geq N$.
+    \begin{proof}
+        Suppose for the sake of contradiction that $L<0$. By Exercise \ref{exr:6.5}, choose $a<L$. Since $a<L<0$, Equations \ref{eqn:8.1} allow us to define the $L$-containing region $(a,0)$. Thus, since $(a,0)$ is an open interval by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, respectively, we have by Definition \ref{dfn:15.2} that there exists an $N\in\N$ such that for all $n\geq N$, $n\in(a,0)$. Specifically, this implies that $b_N\in(a,0)$. But by Equations \ref{eqn:8.1}, this means that $b_N<0$, contradicting the hypothesis that all $b_n$ are nonnegative.\par
+        Additionally, it will be useful later on to know that $L<\frac{1+L}{2}$, as we can demonstrate with the following.
+        \begin{align*}
+            L &= 2\cdot\frac{L}{2}\\
+            &= \frac{L+L}{2}\\
+            &< \frac{1+L}{2}
+        \end{align*}\par
+        Having established that $0\leq L$ and that $L<\frac{1+L}{2}$, we know that implies that $L\in R$, where $R=(-1,\frac{1+L}{2})$. Additionally, by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, $R$ is an open interval. It follows by Definition \ref{dfn:15.2} that there exists an $N\in\N$ such that for all $n\geq N$, $b_n\in R$. Choose this $N$ to be our $N$. Let $b_n$ be an arbitrary element of the sequence with $n\geq N$. Since $b_n$ is nonnegative, we know that $0\leq b_n$. Additionally, since $b_n\in R$, we have by Equations \ref{eqn:8.1} that $b_n<\frac{1+L}{2}$. Therefore, we have that $0\leq b_n<\frac{1+L}{2}$, as desired.
+    \end{proof}
+\end{lemma}
+
 
 
 

@@ -1,0 +1,465 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\begin{document}
+
+
+
+
+\chapter*{Final-Specific Questions}\label{sct:finalSpecificQuestions3}
+\addcontentsline{toc}{chapter}{Final-Specific Questions}
+\chaptermark{Final-Specific Questions}
+\begin{enumerate}
+    \item For any $a,b\in\R$ with $a\leq b$, define $\mathcal{F}_{[a,b]}$ to be the set of all bounded functions $f:[a,b]\to\R$. Suppose that for all $a,b$ there exists a function $\mathbb{S}_a^b:\mathcal{F}_{[a,b]}\to\R$ which satisfies the following properties:
+    \begin{enumerate}[label={(\roman*)}]
+        \item \label{qes:3-1-i}$\mathbb{S}_a^b(f+g)=\mathbb{S}_a^b(f)+\mathbb{S}_a^b(g)$.
+        \item \label{qes:3-1-ii}For any $c\in\R$, $\mathbb{S}_a^b(cf)=c\,\mathbb{S}_a^b(f)$.
+        \item \label{qes:3-1-iii}For any $c\in\R$, if $f(x)=c$ for all $x\in[a,b]$, then $\mathbb{S}_a^b(f)=c(b-a)$.
+        \item \label{qes:3-1-iv}If $f(x)\geq g(x)$ for all $x\in[a,b]$, then $\mathbb{S}_a^b(f)\geq\mathbb{S}_a^b(g)$.
+        \item \label{qes:3-1-v}If $c\in[a,b]$, then $\mathbb{S}_a^b(f)=\mathbb{S}_a^c(f)+\mathbb{S}_c^b(f)$.
+    \end{enumerate}
+    Use these properties to prove the following:
+    \begin{enumerate}[ref={(\alph*)}]
+        \item \label{qes:3-1a}Show that if $m\leq f(x)\leq M$ for all $x\in[a,b]$, then $m(b-a)\leq\mathbb{S}_a^b(f)\leq M(b-a)$.
+        \begin{proof}
+            % Things to keep in mind: This is probably a more general form of integration. Properties \ref{qes:3-1-i} and \ref{qes:3-1-ii} guarantee linearity. Property \ref{qes:3-1-iii} is analogous to Exercise \ref{exr:13.17}. Property \ref{qes:3-1-iv} is analogous to Theorem \ref{trm:13.25}. Property \ref{qes:3-1-v} is analogous to Theorem \ref{trm:13.23}. This part is asking us to prove a result analogous to Theorem \ref{trm:13.27}. These results may build on each other.
+
+            % \begin{itemize}
+            %     \item Let $g,h:[a,b]\to\R$ be defined by $g(x)=m$ and $h(x)=M$ for all $x\in[a,b]$.
+            %     \item (consecutive) Definitions \ref{dfn:5.6} and \ref{dfn:10.1}: $m\leq g(x)\leq m$ and $M\leq h(x)\leq M$ for all $x\in[a,b]$ $\Longrightarrow$ $g,h$ bounded.
+            %     \item Definition of $\mathcal{F}_{[a,b]}$: $g,h\in\mathcal{F}_{[a,b]}$.
+            %     \item (consecutive) Property \ref{qes:3-1-iii}: $\mathbb{S}_a^b(g)=m(b-a)$ and $\mathbb{S}_a^b(h)=M(b-a)$.
+            %     \item (consecutive) Property \ref{qes:3-1-iv}: $g(x)\leq f(x)\leq h(x)$ for all $x\in[a,b]$ by hypothesis $\Longrightarrow$ $\mathbb{S}_a^b(g)\leq\mathbb{S}_a^b(f)\leq\mathbb{S}_a^b(h)$.
+            %     \item The above: $m(b-a)\leq\mathbb{S}_a^b(f)\leq M(b-a)$.
+            % \end{itemize}
+
+            Let $g,h:[a,b]\to\R$ be defined by $g(x)=m$ and $h(x)=M$ for all $x\in[a,b]$. Thus, since $m\leq g(x)\leq m$ and $M\leq h(x)\leq M$ for all $x\in[a,b]$ by Script \ref{sct:0}, we have by consecutive applications of Definitions \ref{dfn:5.6} and \ref{dfn:10.1} that $g$ and $h$ are bounded functions. It follows by the definition of $\mathcal{F}_{[a,b]}$ that $g,h\in\mathcal{F}_{[a,b]}$. Consequently, consecutive applications of Property \ref{qes:3-1-iii} imply that $\mathbb{S}_a^b(g)=m(b-a)$ and $\mathbb{S}_a^b(h)=M(b-a)$. Thus, since $g(x)\leq f(x)\leq h(x)$ for all $x\in[a,b]$ by hypothesis, we have by consecutive applications of Property \ref{qes:3-1-iv} that $\mathbb{S}_a^b(g)\leq\mathbb{S}_a^b(f)\leq\mathbb{S}_a^b(h)$. Therefore, by the above, we have that $m(b-a)\leq\mathbb{S}_a^b(f)\leq M(b-a)$, as desired.
+        \end{proof}
+        \item \label{qes:3-1b}Show that if $f=g$ on $(a,b)$, then $\mathbb{S}_a^b(f)=\mathbb{S}_a^b(g)$.
+        \begin{proof}
+            % \begin{itemize}
+            %     \item Let $h:[a,b]\to\R$ be defined by $h(x)=f(x)-g(x)$ for all $x\in[a,b]$.
+            %     \item Definition of $f,g$: $h(x)=0$ for all $x\in(a,b)$.
+            %     \item To prove $\mathbb{S}_a^b(h)=0$, divide into four cases ($h(a)=h(b)=0$, $h(a)\neq 0=h(b)$, $h(a)=0\neq h(b)$, and $h(a)\neq 0\neq h(b)$).
+            %     \item Case 1:
+            %     \begin{itemize}
+            %         \item Then $h(x)=0$ for all $x\in[a,b]$.
+            %         \item Property \ref{qes:3-1-iii}: $\mathbb{S}_a^b(h)=0(b-a)=0$.
+            %     \end{itemize}
+            %     \item Case 2:
+            %     \begin{itemize}
+            %         \item Suppose $h(a)>0$.
+            %         \begin{itemize}
+            %             \item Let $c\in(a,b)$ be arbitrary.
+            %             \item Property \ref{qes:3-1-v}: $\mathbb{S}_a^b(h)=\mathbb{S}_a^c(h)+\mathbb{S}_c^b(h)$.
+            %             \item Property \ref{qes:3-1-iii}: $\mathbb{S}_c^b=0$.
+            %             \item $\mathbb{S}_a^b(h)=\mathbb{S}_a^c(h)$.
+            %             \item Part (a): $0(c-a)\leq\mathbb{S}_a^c(h)\leq h(a)\cdot(c-a)$.
+            %             \item The above: $\mathbb{S}_a^b(h)\not<0$.
+            %             \item Suppose (contradiction): $\mathbb{S}_a^b(h)>0$.
+            %             \item Lemma \ref{lem:7.24}: $0<\frac{\mathbb{S}_a^b(h)}{h(a)}$.
+            %             \item Definition \ref{dfn:7.21}: $a<a+\frac{\mathbb{S}_a^b(h)}{h(a)}$.
+            %             \item Theorem \ref{trm:5.2}: There exists $c$ such that $a<c<a+\frac{\mathbb{S}_a^b(h)}{h(a)}$.
+            %             \item Definition \ref{dfn:7.21} and Lemma \ref{lem:7.24}: $0<h(a)(c-a)<\mathbb{S}_a^b(h)$.
+            %             \item Contradicts $\mathbb{S}_a^b(h)\leq h(a)\cdot(c-a)$ for all $c\in(a,b)$.
+            %             \item Therefore: $\mathbb{S}_a^b(h)=\mathbb{S}_a^c(h)=0$.
+            %         \end{itemize}
+            %         \item Symmetric.
+            %     \end{itemize}
+            %     \item Case 3: Symmetric.
+            %     \item Case 4:
+            %     \begin{itemize}
+            %         \item Let $h_-,h^+:[a,b]\to\R$ be defined by
+            %         \begin{gather*}
+            %             h_-(x) =
+            %             \begin{cases}
+            %                 h(a) & x=a\\
+            %                 0 & x\neq a
+            %             \end{cases}\\
+            %             h^+(x) =
+            %             \begin{cases}
+            %                 0 & x\neq b\\
+            %                 h(b) & x=b
+            %             \end{cases}
+            %         \end{gather*}
+            %         \item Definitions of $h_-,h^+$: $h=h_-+h^+$.
+            %         \item Case 2: $\mathbb{S}_a^b(h_-)=0$.
+            %         \item Case 3: $\mathbb{S}_a^b(h^+)=0$.
+            %         \item Property \ref{qes:3-1-i}: $\mathbb{S}_a^b(h)=\mathbb{S}_a^b(h_-)+\mathbb{S}_a^b(h^+)=0+0=0$.
+            %     \end{itemize}
+            %     \item Definition of $h$ and Property \ref{qes:3-1-i}: $\mathbb{S}_a^b(h)=\mathbb{S}_a^b(f)-\mathbb{S}_a^b(g)$.
+            %     \item Therefore: $0=\mathbb{S}_a^b(f)-\mathbb{S}_a^b(g)$, so $\mathbb{S}_a^b(f)=\mathbb{S}_a^b(g)$.
+            % \end{itemize}
+
+            We will first deal with the trivial case where $a=b$. In this case, $f(x)=f(a)$ and $g(x)=g(b)$ for all $x\in[a,b]$. Thus, by consecutive applications of Property \ref{qes:3-1-iii}, we have that $\mathbb{S}_a^b(f)=f(a)\cdot(b-a)=f(a)\cdot(a-a)=0$ and similarly that $\mathbb{S}_a^b(g)=0$. Therefore, $\mathbb{S}_a^b(f)=\mathbb{S}_a^b(g)$.\par\bigskip
+            Having dealt with the trivial case, we can assume from now on that $a<b$. Let $h:[a,b]\to\R$ be defined by $h(x)=f(x)-g(x)$ for all $x\in[a,b]$. It follows by the hypothesis that $f=g$ for all $x\in(a,b)$ that $h(x)=0$ for all $x\in(a,b)$. Thus, by Definition \ref{dfn:1.18}, $h([a,b])=\{h(a),0,h(b)\}$, so we clearly have by Definitions \ref{dfn:5.6} and \ref{dfn:10.1} that $h$ is bounded. It follows that $h$ is in the domain of $\mathbb{S}_a^b$. Having established this, we now seek to verify that $\mathbb{S}_a^b(h)=0$ by dividing into four cases ($h(a)=h(b)=0$, $h(a)\neq 0=h(b)$, $h(a)=0\neq h(b)$, and $h(a)\neq 0\neq h(b)$). Let's begin.\par\medskip
+            In the first case, we have by the definition of $h$ that $h(x)=0$ for all $x\in[a,b]$. Therefore, by Property \ref{qes:3-1-iii}, we have that $\mathbb{S}_a^b(h)=0(b-a)=0$, as desired.\par\smallskip
+            In the second case, we divide into two subcases ($h(a)>0$ and $h(a)<0$).\par
+            Suppose first that $h(a)>0$. Let $c$ be an arbitrary element of $(a,b)$. It follows by Property \ref{qes:3-1-v} that $\mathbb{S}_a^b(h)=\mathbb{S}_a^c(h)+\mathbb{S}_c^b(h)$. By an argument symmetric to that of the first case verified herein, we have that $\mathbb{S}_c^b(h)=0$. Thus, $\mathbb{S}_a^b(h)=\mathbb{S}_a^c(h)$. We now take a closer look at $\mathbb{S}_a^c(h)$. Since $0\leq h(x)\leq h(a)$ for all $x\in[a,c]$, part \ref{qes:3-1a} asserts that $0(c-a)\leq\mathbb{S}_a^c(h)\leq h(a)\cdot(c-a)$. It follows from the first inequality that $0\leq\mathbb{S}_a^c(h)$. As such, to confirm that $\mathbb{S}_a^c(h)=0$, suppose for the sake of contradiction that $0<\mathbb{S}_a^c(h)$. Then since $h(a)>0$ by supposition, Lemma \ref{lem:7.24} asserts that $0<\frac{\mathbb{S}_a^c(h)}{h(a)}$. Consequently, by Definition \ref{dfn:7.21}, $a<a+\frac{\mathbb{S}_a^c(h)}{h(a)}$. Thus, by Theorem \ref{trm:5.2}, there exists a point $c$ such that $a<c<\min(b,\frac{\mathbb{S}_a^c(h)}{h(a)})$\footnote{Note that it is right here that we make use of the condition that $a<b$; this is why we consider the trivial case where $a=b$ separately at the beginning.}. By Definition \ref{dfn:7.21} and Lemma \ref{lem:7.24} again, we have that $0<h(a)\cdot(c-a)<\mathbb{S}_a^b(h)$. However, since $a<c<b$, Equations \ref{eqn:8.1} imply that $c\in(a,b)$. Thus, by the above, $\mathbb{S}_a^b(h)\leq h(a)\cdot(c-a)$, a contradiction. Therefore, $\mathbb{S}_a^c(h)=0$, so we have by the above that $\mathbb{S}_a^b(h)=\mathbb{S}_a^c(h)=0$, as desired.\par
+            The argument is symmetric in the other subcase.\par\smallskip
+            In the third case, the verification is symmetric to that of the second.\par\smallskip
+            In the fourth case, begin by letting $h_-,h^+:[a,b]\to\R$ be defined by
+            \begin{gather*}
+                h_-(x) =
+                \begin{cases}
+                    h(a) & x=a\\
+                    0 & x\neq a
+                \end{cases}\\
+                h^+(x) =
+                \begin{cases}
+                    0 & x\neq b\\
+                    h(b) & x=b
+                \end{cases}
+            \end{gather*}
+            It follows by the definition of $h$ that $h=h_-+h^+$. Additionally, we have by the second case that $\mathbb{S}_a^b(h_-)=0$ and by the third case that $\mathbb{S}_a^b(h^+)=0$. Therefore, by Property \ref{qes:3-1-i}, $\mathbb{S}_a^b(h)=\mathbb{S}_a^b(h_-)+\mathbb{S}_a^b(h^+)=0+0=0$, as desired.\par\medskip
+            Having established that $\mathbb{S}_a^b(h)=0$ in any case, we can show that
+            \begin{align*}
+                0 &= \mathbb{S}_a^b(h)\\
+                &= \mathbb{S}_a^b(f)+\mathbb{S}_a^b(-g)\tag*{Property \ref{qes:3-1-i}}\\
+                &= \mathbb{S}_a^b(f)-\mathbb{S}_a^b(g)\tag*{Property \ref{qes:3-1-ii}}\\
+            \end{align*}
+            Therefore, by Script \ref{sct:7}, $\mathbb{S}_a^b(f)=\mathbb{S}_a^b(g)$.
+        \end{proof}
+        \item \label{qes:3-1c}Let $P=\{t_0,\dots,t_n\}$ be a partition of $[a,b]$. Suppose that for each $i$ we have that $f(x)=f_i$ for all $x\in(t_{i-1},t_i)$. Show that
+        \begin{equation*}
+            \mathbb{S}_a^b(f) = \sum_{i=1}^nf_i\cdot(t_i-t_{i-1})
+        \end{equation*}
+        \begin{proof}
+            % \begin{itemize}
+            %     \item Let $i$ be an arbitrary natural number between 1 and $n$.
+            %     \item Let $h_i:[t_{i-1},t_i]\to\R$ be defined by $h_i(x)=f_i$.
+            %     % \item Part (b): $f(x)=f_i=h_i(x)$ for all $x\in(t_{i-1},t_i)$ $\Longrightarrow$ $\mathbb{S}_{t_{i-1}}^{t_i}(f)=\mathbb{S}_{t_{i-1}}^{t_i}(h_i)$.
+            %     % \item Property \ref{qes:3-1-iii}: $\mathbb{S}_{t_{i-1}}^{t_i}(h_i)=f_i\cdot(t_i-t_{i-1})$.
+            %     \item Therefore:
+            %     \begin{align*}
+            %         \mathbb{S}_a^b(f) &= \mathbb{S}_{t_0}^{t_1}(f)+\mathbb{S}_{t_1}^{t_2}+\cdots+\mathbb{S}_{t_{n-1}}^{t_n}(f)\tag*{Property \ref{qes:3-1-v}}\\
+            %         &= \sum_{i=1}^n\mathbb{S}_{t_{i-1}}^{t_i}(f)\\
+            %         &= \sum_{i=1}^n\mathbb{S}_{t_{i-1}}^{t_i}(h_i)\tag*{Part (b)}\\
+            %         &= \sum_{i=1}^nf_i\cdot(t_i-t_{i-1})\tag*{Property \ref{qes:3-1-iii}}
+            %     \end{align*}
+            % \end{itemize}
+
+            Let $i$ be an arbitrary natural number between 1 and $n$, and let $h_i:[t_{i-1},t_i]\to\R$ be defined by $h_i(x)=f_i$. Therefore, applying the above definitions for each $i$, we have that
+            \begin{align*}
+                \mathbb{S}_a^b(f) &= \mathbb{S}_{t_0}^{t_1}(f)+\mathbb{S}_{t_1}^{t_2}+\cdots+\mathbb{S}_{t_{n-1}}^{t_n}(f)\tag*{Property \ref{qes:3-1-v}}\\
+                &= \sum_{i=1}^n\mathbb{S}_{t_{i-1}}^{t_i}(f)\\
+                &= \sum_{i=1}^n\mathbb{S}_{t_{i-1}}^{t_i}(h_i)\tag*{Part (b)}\\
+                &= \sum_{i=1}^nf_i\cdot(t_i-t_{i-1})\tag*{Property \ref{qes:3-1-iii}}
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item \label{qes:3-1d}For $f(x)=x$, show that $\mathbb{S}_0^b(f)=\frac{b^2}{2}$.
+        \begin{proof}
+            % \begin{itemize}
+            %     \item Suppose (contradiction): $\mathbb{S}_0^b(f)\neq\frac{b^2}{2}$.
+            %     \item We divide into two cases ($\mathbb{S}_0^b(f)<\frac{b^2}{2}$ and $\mathbb{S}_0^b(f)>\frac{b^2}{2}$).
+            %     \item Suppose $\mathbb{S}_0^b(f)<\frac{b^2}{2}$.
+            %     \item Exercise \ref{exr:13.21}: $\int_0^bf=\frac{b^2}{2}$.
+            %     \item Define $\epsilon=\frac{b^2}{2}-\mathbb{S}_0^b(f)$.
+            %     \item Lemma \ref{lem:13.20}: There is some partition $P=\{t_0,\dots,t_n\}$ such that $U(f,P)-\frac{b^2}{2}<\epsilon$ and $\frac{b^2}{2}-L(f,P)<\epsilon$.
+            %     \item Definition of $\epsilon$: $\frac{b^2}{2}-L(f,P)<\epsilon$ $\Longrightarrow$ $-L(f,P)<-\mathbb{S}_0^b(f)$ $\Longrightarrow$ $\mathbb{S}_0^b(f)<L(f,P)$.
+            %     \item Definition \ref{dfn:13.11}: $L(f,P)=\sum_{i=1}^nm_i(f)(t_i-t_{i-1})$.
+            %     \item Define $m:[0,b]\to\R$ such that $m(x)=m_i(f)$ for all $x\in(t_{i-1},t_i)$ for all $i\in[n]$ and $m(t_i)=f(t_i)$.
+            %     \item Part \ref{qes:3-1c}: $\mathbb{S}_0^b(m)=\sum_{i=1}^nm_i(f)(t_i-t_{i-1})$.
+            %     \item The above: $\mathbb{S}_0^b(f)<L(f,P)=\sum_{i=1}^nm_i(f)(t_i-t_{i-1})=\mathbb{S}_0^b(m)$.
+            %     \item Definition of $m$: $m(x)\leq f(x)$ for all $x\in[0,b]$.
+            %     \item Property \ref{qes:3-1-iv}: $\mathbb{S}_0^b(m)\leq\mathbb{S}_0^b(f)$, a contradiction.
+            %     \item Symmetric in the other case.
+            % \end{itemize}
+
+
+            Suppose for the sake of contradiction that $\mathbb{S}_0^b(f)\neq\frac{b^2}{2}$. We divide into two cases ($\mathbb{S}_0^b(f)<\frac{b^2}{2}$ and $\mathbb{S}_0^b(f)>\frac{b^2}{2}$). Let's begin.\par
+            Suppose first that $\mathbb{S}_0^b(f)<\frac{b^2}{2}$. By Exercise \ref{exr:13.21}, $\int_0^bf=\frac{b^2}{2}$. Thus, if we define $\epsilon=\frac{b^2}{2}-\mathbb{S}_0^b(f)$, we have by Lemma \ref{lem:13.20} that there is some partition $P=\{t_0,\dots,t_n\}$ such that $U(f,P)-\frac{b^2}{2}<\epsilon$ and $\frac{b^2}{2}-L(f,P)<\epsilon$. It follows from the latter result by the definition of $\epsilon$ and Definition \ref{dfn:7.21} that $-L(f,P)<-\mathbb{S}_0^b(f)$. Consequently, by Lemma \ref{lem:7.24}, we have that $\mathbb{S}_0^b(f)<L(f,P)$. Switching gears for a moment, we have by Definition \ref{dfn:13.11} that $L(f,P)=\sum_{i=1}^nm_i(f)(t_i-t_{i-1})$. Additionally, if we define $m:[0,b]\to\R$ by $m(x)=m_i(f)$ for all $x\in(t_{i-1},t_i)$ for all $i\in[n]$ and $m(t_i)=f(t_i)$, we will have by Part \ref{qes:3-1c} that $\mathbb{S}_0^b(m)=\sum_{i=1}^nm_i(f)(t_i-t_{i-1})$. Combining these last two results with transitivity, we have that $\mathbb{S}_0^b(f)<L(f,P)=\mathbb{S}_0^b(m)$. However, by the definition of $m$, we also have that $m(x)\leq f(x)$ for all $x\in[0,b]$. but it follows from this by Property \ref{qes:3-1-iv} that $\mathbb{S}_0^b(m)\leq\mathbb{S}_0^b(f)$, a contradiction.\par
+            The proof is symmetric in the other case.
+        \end{proof}
+    \end{enumerate}
+    \item Suppose that $f$ is positive and decreasing on $[1,\infty)$. Suppose also that $f$ is integrable on $[1,n]$ for all $n\in\N$ and define the sequences $(a_n)$ and $(b_n)$ by
+    \begin{gather*}
+        a_n = f(n)\\
+        b_n = \int_1^nf
+    \end{gather*}
+    Show that $\sum_{n=1}^\infty a_n$ converges if and only if $\lim_{n\to\infty}b_n$ exists.
+    \begin{proof}
+        % This is the integral test.
+
+        % \begin{itemize}
+        %     \item Suppose (first): $\sum_{n=1}^\infty a_n$ converges.
+        %     \begin{itemize}
+        %         \item WTS (Theorem \ref{trm:15.19}): For all $\epsilon>0$, there is some $N\in\N$ such that $|b_n-b_m|<\epsilon$ for all $n,m\geq N$.
+        %         \item Let $\epsilon>0$ be arbitrary.
+        %         \item Theorem \ref{trm:16.5}: There is some $(N-1)\in\N$ such that $|\sum_{k=m+1}^na_k|<\epsilon$ for all $n>m\geq N$.
+        %         \item Choose $N=(N-1)+1$ to be our $N$.
+        %         \item Let $n,m\in\N$ be arbitrary and satisfy $n,m\geq N$.
+        %         \item We divide into three cases ($n>m$, $n=m$, and $n<m$).
+        %         \item Suppose $n>m$.
+        %         \begin{itemize}
+        %             \item Confirm $\int_m^nf\geq 0$.
+        %             \begin{itemize}
+        %                 \item $f$ is positive: $f(x)\geq 0$ for all $x\in[1,\infty)$.
+        %                 \item Theorem \ref{trm:13.27}: $0(n-m)=0\leq\int_m^nf$.
+        %             \end{itemize}
+        %             \item Confirm $\int_i^{i+1}\leq a_i$.
+        %             \begin{itemize}
+        %                 \item $a_i=f(i)$.
+        %                 \item Definition \ref{dfn:8.16}: $f(i)\geq f(x)$ for all $x>i$.
+        %                 \item Theorem \ref{trm:13.27}: $\int_i^{i+1}f\leq a_i((i+1)-i)=a_i$.
+        %             \end{itemize}
+        %             \item Confirm $\sum_{k=(m-1)+1}^{n-1}a_k\geq 0$.
+        %             \begin{itemize}
+        %                 \item $f$ is positive: $a_i\geq 0$.
+        %                 \item Script \ref{sct:7}: $\sum_{k=(m-1)+1}^{n-1}a_k\geq 0$.
+        %             \end{itemize}
+        %             \begin{align*}
+        %                 |b_n-b_m| &= \left| \int_1^nf-\int_1^mf \right|\\
+        %                 &= \left| \int_m^nf \right|\tag*{Theorem \ref{trm:13.23}}\\
+        %                 &= \int_m^nf\tag*{Definition \ref{dfn:8.4}}\\
+        %                 &= \int_m^{m+1}f+\int_{m+1}^{m+2}f+\cdots+\int_{n-1}^nf\tag*{Theorem \ref{trm:13.23}}\\
+        %                 &\leq a_m+a_{m+1}+\cdots+a_{n-1}\\
+        %                 &= \sum_{k=(m-1)+1}^{n-1}a_k\\
+        %                 &= \left| \sum_{k=(m-1)+1}^{n-1}a_k \right|\tag*{Definition \ref{dfn:8.4}}\\
+        %                 &< \epsilon
+        %             \end{align*}
+        %         \end{itemize}
+        %         \item $n=m$:
+        %         \begin{equation*}
+        %             |b_n-b_m| = 0 < \epsilon
+        %         \end{equation*}
+        %         \item $n<m$: Symmetric to Case 1.
+        %     \end{itemize}
+        %     \item Suppose (now): $\lim_{n\to\infty}b_n$ exists.
+        %     \begin{itemize}
+        %         \item WTS (Theorem \ref{trm:16.5}): For all $\epsilon>0$, there is some $N\in\N$ such that $|\sum_{k=m+1}^na_k|<\epsilon$ for all $n>m\geq N$.
+        %         \item Let $\epsilon>0$ be arbitrary.
+        %         \item Theorem \ref{trm:15.19}: There is some $N\in\N$ such that $|b_n-b_m|<\epsilon$ for all $n,m\geq N$.
+        %         \item Choose this $N$ to be our $N$.
+        %         \item Let $n,m\in\N$ be arbitrary and satisfy $n>m\geq N$.
+        %         \item Confirm $a_{i+1}\leq\int_i^{i+1}f$.
+        %         \begin{itemize}
+        %             \item $a_i=f(i)$.
+        %             \item Definition \ref{dfn:8.16}: $f(x)\geq f(i)$ for all $x<i$.
+        %             \item Theorem \ref{trm:13.27}: $a_{i+1}=a_{i+1}((i+1)-1)\leq\int_i^{i+1}f$.
+        %         \end{itemize}
+        %         \begin{align*}
+        %             \left| \sum_{k=m+1}^na_k \right| &= \sum_{k=m+1}^na_k\tag*{Definition \ref{dfn:8.4}}\\
+        %             &= a_{m+1}+a_{m+2}+\cdots+a_n\\
+        %             &\leq \int_m^{m+1}f+\int_{m+1}^{m+2}f+\cdots+\int_{n-1}^nf\\
+        %             &= \int_m^nf\tag*{Theorem \ref{trm:13.23}}\\
+        %             &= \left| \int_m^nf \right|\tag*{Definition \ref{dfn:8.4}}\\
+        %             &= \left| \int_1^nf-\int_1^mf \right|\tag*{Theorem \ref{trm:13.23}}\\
+        %             &= |b_n-b_m|\\
+        %             &< \epsilon
+        %         \end{align*}
+        %     \end{itemize}
+        % \end{itemize}
+
+
+        Suppose first that $\sum_{n=1}^\infty a_n$ converges. To prove that $\lim_{n\to\infty}b_n$ exists, Theorem \ref{trm:15.19} tells us that it will suffice to show that for all $\epsilon>0$, theer is some $N\in\N$ such that $|b_n-b_m|<\epsilon$ for all $n,m\geq N$. Let $\epsilon>0$ be arbitrary. By Theorem \ref{trm:16.5}, there is some $(N-1)\in\N$ such that $|\sum_{k=m+1}^na_k|<\epsilon$ for all $n>m\geq N$. Choose $N=(N-1)+1$ to be our $N$. Let $n,m$ be arbitrary natural numbers such that $n,m\geq N$. We divide into three cases ($n>m$, $n=m$, and $n<m$).\par
+        If $n>m$, then we will need a few preliminary results. First, we seek to confirm that $\int_m^nf\geq 0$. Since $f$ is positive, we know that $f(x)\geq 0$ for all $x\in[1,\infty)$. Thus, by Theorem \ref{trm:13.27}, $0=0(n-m)\leq\int_m^nf$, as desired. Next, we seek to confirm that $\int_i^{i+1}f\leq a_i$. To begin, $a_i=f(i)$. Additionally, we have by Definition \ref{dfn:8.16} that $f(i)\geq f(x)$ for all $x>i$. Thus, by Theorem \ref{trm:13.27}, $\int_i^{i+1}\leq a_i((i+1)-i)=a_i$, as desired. Lastly, we seek to confirm that $\sum_{k=(m-1)+1}^{n-1}a_k\geq 0$. Since $f$ is positive, we have by the definition of $a_i$ that $a_i\geq 0$ for all $i$. Thus, by Script \ref{sct:7}, $\sum_{k=(m-1)+1}^{n-1}a_k\geq 0$, as desired. Note that all three of these results will be used in the main inequality here, and results one and three will additionally be used in the inequality used for the reverse direction of the proof. Anyway, without further ado, we have
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            |b_n-b_m| &= \left| \int_1^nf-\int_1^mf \right|\\
+            &= \left| \int_m^nf \right|\tag*{Theorem \ref{trm:13.23}}\\
+            &= \int_m^nf\tag*{Definition \ref{dfn:8.4}}\\
+            &= \int_m^{m+1}f+\int_{m+1}^{m+2}f+\cdots+\int_{n-1}^nf\tag*{Theorem \ref{trm:13.23}}\\
+            &\leq a_m+a_{m+1}+\cdots+a_{n-1}\\
+            &= \sum_{k=(m-1)+1}^{n-1}a_k\\
+            &= \left| \sum_{k=(m-1)+1}^{n-1}a_k \right|\tag*{Definition \ref{dfn:8.4}}\\
+            &< \epsilon
+        \end{align*}
+        \endgroup
+        as desired.\par
+        If $n=m$, then we have that $|b_n-b_m|=0<\epsilon$, as desired.\par
+        If $n<m$, then the argument is symmetric to that of the first case.\par\smallskip
+        Now suppose that $\lim_{n\to\infty}b_n$ exists. To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.5} tells us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that $|\sum_{k=m+1}^na_k|<\epsilon$ for all $n>m\geq N$. Let $\epsilon>0$ be arbitrary. Then by Theorem \ref{trm:15.19}, there is some $N\in\N$ such that $|b_n-b_m|<\epsilon$ for all $n,m\geq N$. Choose this $N$ to be our $N$. Let $n,m$ be arbitrary natural numbers that satisfy $n>m\geq N$. In addition to the two aforementioned preliminary results, we need one more, i.e., we now seek to confirm that $a_{i+1}\leq\int_i^{i+1}f$. To begin, $a_i=f(i)$. Additionally, we have by Definition \ref{dfn:8.16} that $f(x)\geq f(i)$ for all $x<i$. Thus, by Theorem \ref{trm:13.27}, $a_{i+1}=a_{i+1}((i+1)-i)\leq\int_i^{i+1}f$, as desired. With these results, we have that
+        \begin{align*}
+            \left| \sum_{k=m+1}^na_k \right| &= \sum_{k=m+1}^na_k\tag*{Definition \ref{dfn:8.4}}\\
+            &= a_{m+1}+a_{m+2}+\cdots+a_n\\
+            &\leq \int_m^{m+1}f+\int_{m+1}^{m+2}f+\cdots+\int_{n-1}^nf\\
+            &= \int_m^nf\tag*{Theorem \ref{trm:13.23}}\\
+            &= \left| \int_m^nf \right|\tag*{Definition \ref{dfn:8.4}}\\
+            &= \left| \int_1^nf-\int_1^mf \right|\tag*{Theorem \ref{trm:13.23}}\\
+            &= |b_n-b_m|\\
+            &< \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+    \item Let $f:[a,b]\to\R$.
+    \begin{enumerate}
+        \item Show that if $f$ is differentiable on $[a,b]$ and $f'$ is bounded on $[a,b]$, then $f$ is uniformly continuous on $[a,b]$.
+        \begin{proof}
+            Since $f$ is differentiable on $[a,b]$, we have by Theorem \ref{trm:12.5} that $f$ is continuous on $[a,b]$. It follows by Theorem \ref{trm:9.10} that $f:[a,b]\to\R$ is continuous. Therefore, by Corollary \ref{cly:13.8}, $f$ is uniformly continuous on $[a,b]$, as desired.
+        \end{proof}
+        \item Use Theorem \ref{trm:12.15} to show that a polynomial of degree $n\geq 1$ has at most $n$ distinct roots.
+        \begin{proof}
+            % Suppose for the sake of contradiction that it has $n+1$ roots. Then we can feed $n+1$ points into Rolle's Theorem to arrive at $n$ points where $f'=0$, which should lead to some sort of contradiction. Induction is another possibility.
+
+            % \begin{itemize}
+            %     \item Corollary \ref{cly:11.12}: Polynomials are continuous.
+            %     \item Exercises \ref{exr:12.8} and \ref{exr:12.9}: Polynomials are differentiable.
+            %     \item We induct on $n$.
+            %     \item Base case ($n=1$):
+            %     \begin{itemize}
+            %         \item Let $p$ be a polynomial of degree $n$.
+            %         \item Suppose (contradiction): $p$ has $m$ distinct roots where $m>n$.
+            %         \item Choose roots $r_1,r_2$.
+            %         \item Theorem \ref{trm:12.15}: There exists a point $\lambda\in(r_1,r_2)$ such that $p'(\lambda)=0$.
+            %         \item Exercise \ref{exr:12.8}: $p'(x)=a$, where $a\in\R$, for all $x\in\R$.
+            %         \item (last 2): $p'(x)=0$ for all $x\in\R$.
+            %         \item Corollary \ref{cly:12.17}: $p$ is constant on $\R$.
+            %         \item Definition \ref{dfn:11.11}: $p$ has degree 0, contradiction.
+            %     \end{itemize}
+            %     \item Suppose (inductively): A polynomial of degree $n$ has at most $n$ roots.
+            %     \begin{itemize}
+            %         \item WTS: A polynomial of degree $n+1$ has at most $n+1$ distinct roots.
+            %         \item Let $p$ be a polynomial of degree $n$.
+            %         \item Suppose (contradiction): $p$ has $m$ distinct roots where $m>n+1$.
+            %         \item Order the roots such that $r_1<r_2<\cdots<r_m$.
+            %         \item (consecutive) Theorem \ref{trm:12.15}: There exists a point $\lambda_i\in(r_i,r_{i+1})$ such that $p'(\lambda_i)=0$ for all $i\in[m-1]$.
+            %         \item The above: $p'$ has at least $m-1$ distinct roots.
+            %         \item $m-1>n$: $p'$ has more than $n$ distinct roots.
+            %         \item Exercise \ref{exr:12.8}: $p'$ has degree $n$.
+            %         \item Inductive hypothesis: $p'$ has at most $n$ distinct roots, contradiction.
+            %     \end{itemize}
+            % \end{itemize}
+
+
+            We begin by stating two preliminary and previously proven results that will allow us to invoke Theorem \ref{trm:12.15} for any polynomial. First off, we have by Corollary \ref{cly:11.12} that polynomials are continuous. Second, we have by Exercises \ref{exr:12.8} and \ref{exr:12.9} that polynomials are differentiable. Having established these two facts, we are ready to begin in earnest.\par\smallskip
+            To prove the claim, we induct on $n$.\par
+            For the base case $n=1$, let $p$ be a polynomial of degree $n$. Suppose for the sake of contradiction that $p$ has $m$ distinct roots where $m>n$. Choose roots $r_1$ and $r_2$. By Theorem \ref{trm:12.15}, there exists a point $\lambda\in(r_1,r_2)$ such that $p'(\lambda)=0$. Additionally, we have by Exercise \ref{exr:12.8} that $p'(x)=a$, where $a\in\R$, for all $x\in\R$. These last two results when combined necessitate that $p'(x)=0$ for all $x\in\R$. Thus, by Corollary \ref{cly:12.17}, $p$ is constant on $\R$. But by Definition \ref{dfn:11.11}, this implies that $p$ has degree 0, a contradiction.\par
+            Now suppose inductively that we have proven that a polynomial of degree $n$ has at most $n$ distinct roots; we wish to prove that a polynomial of degree $n+1$ has at most $n+1$ distinct roots. To do so, suppose for the sake of contradiction that $p$ has $m$ distinct roots where $m>n+1$. By Theorem \ref{trm:3.5}, we may name the roots $r_1,\dots,r_m$ such that $r_1<r_2<\cdots<r_m$. It follows by consecutive applications of Theorem \ref{trm:12.15} that there exists a point $\lambda_i\in(r_i,r_{i+1})$ such that $p'(\lambda_i)=0$ for all $i\in[m-1]$. Consequently, since each $\lambda_i$ is in a disjoint region from all other $\lambda_i$'s, we know that each $\lambda_i$ is distinct. Thus, we know that $p'$ has at least $m-1$ distinct roots. More notably, since we defined $m>n+1$, we have by Definition \ref{dfn:7.21} that $m-1>n$, meaning that $p'$ has more than $n$ distinct roots. However, by Exercise \ref{exr:12.8}, $p'$ has degree $n$. But this means by the inductive hypothesis implies that $p'$ has at most $n$ distinct roots, a contradiction.
+        \end{proof}
+    \end{enumerate}
+    \item Let $f:\R\to\R$. Suppose that $|f(y)-f(x)|\leq c|y-x|$ for all $x,y\in\R$, where $c<1$ is a constant.
+    \begin{enumerate}
+        \item Show that $f$ is continuous.
+        \begin{proof}
+            % This is analogous to something I studied in Spivak (Lipschitz continuity).
+
+            To prove that $f$ is continuous, Theorem \ref{trm:13.2} tells us that it will suffice to show that $f$ is uniformly continuous. To do this, Definition \ref{dfn:13.1} tells us that it will suffice to verify that for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y\in\R$, if $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$. Let $x,y$ be arbitrary real numbers such that $|y-x|<\delta$. Then by the supposition,
+            \begin{align*}
+                |f(y)-f(x)| &\leq c|y-x|\\
+                &< |y-x|\\
+                &< \delta\\
+                &= \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item Show that there is at most one point $x\in\R$ where $f(x)=x$.
+        \begin{proof}
+            % \begin{itemize}
+            %     \item Suppose (contradiction): There exist multiple points $x\in\R$ where $f(x)=x$.
+            %     \item Choose $x,y$ to be two of these points.
+            %     \item Then $|y-x|=|f(y)-f(x)|\leq c|y-x|<|y-x|$, a contradiction.
+            % \end{itemize}
+
+            Suppose for the sake of contradiction that there exist multiple points $x\in\R$ where $f(x)=x$. Let $x,y\in\R$ be two such points. Then by the supposition,
+            \begin{align*}
+                |y-x| &= |f(y)-f(x)|\\
+                &\leq c|y-x|\\
+                &< |y-x|
+            \end{align*}
+            a contradiction.
+        \end{proof}
+        \item Show that there exists a point $x\in\R$ where $f(x)=x$.
+        \begin{proof}
+            % Consider the sequence $(x,f(x),f(f(x)),\dots)$ and show that it converges.
+
+            % Should converge from any $x$, but I'll choose 0 as a starter just for simplicity. The point that the sequence converges to is the point where $f(x)=x$.
+
+            % \begin{itemize}
+            %     \item Let $(a_n)$ be defined by $a_n=f^{n-1}(x)$ for all $n\in\N$.
+            %     \item WTS (Theorem \ref{trm:15.19}): For all $\epsilon>0$, there is some $N\in\N$ such that $|a_n-a_m|<\epsilon$ for all $n,m\geq N$.
+            %     \item Let $\epsilon>0$ be arbitrary.
+            %     \item Exercise \ref{exr:15.8}: $\lim_{n\to\infty}c^n=0$.
+            %     \item Theorem \ref{trm:15.7}: There is an $N\in\N$ such that $|c^n|<\epsilon$ for all $n\geq N$.
+            %     \item Let $n,m\in\N$ be arbitrary and satisfy $n,m\geq N$. WLOG let $n\geq m$.
+            %     \begin{align*}
+            %         |a_n-a_m| &= |f^{n-1}(x)-f^{m-1}(x)|\\
+            %         &\leq c|f^{n-2}(x)-f^{m-2}(x)|
+            %         &\leq c^{m-1}|f^{n-m}(x)-x|
+            %     \end{align*}
+            %     % \item Exercise \ref{trm:15.9}: $\lim_{n\to\infty}c^n|f^{l-2}(x)-f^{m-2}(x)|=0$.
+            %     \item $|f(f(x))-f(x)|\leq c|f(x)-x|<|f(x)-x|$.
+            %     \item $|f^{n+1}(x)-f^n(x)|<|f^n(x)-f^{n-1}(x)|$.
+            %     \item $|f^{m+1}(x)-f^{n+1}(x)|<|f^m(x)-f^n(x)|$.
+            % \end{itemize}
+
+            % \begin{itemize}
+            %     \item Let $(a_n)$ be defined by $a_n=f^{n-1}(x)$ for all $n\in\N$.
+            %     \item Suppose (contradiction): $a_n$ diverges.
+            %     \item Theorem \ref{trm:15.19}: There exists an $\epsilon>0$ such that for all $N\in\N$, there exist $n,m\geq N$ with $|a_n-a_m|\geq\epsilon$.
+            % \end{itemize}
+
+            % \begin{itemize}
+            %     \item Let $(a_n)$ be defined by $a_n=f^{n-1}(x)$ for all $n\in\N$.
+            %     \item WTS (Theorem \ref{trm:15.19}): For all $\epsilon>0$, there is some $N\in\N$ such that $|a_n-a_m|<\epsilon$ for all $n,m\geq N$.
+            %     \item Let $\epsilon>0$ be arbitrary.
+            % \end{itemize}
+
+
+            Let $(a_n)$ be defined by $a_n=f^{n-1}(0)$ for all $n\in\N$. To prove that $(a_n)$ converges, Theorem \ref{trm:15.19} tells us that it will suffice to show that for all $\epsilon>0$, there is some $N\in\N$ such that $|a_n-a_m|<\epsilon$ for all $n,m\geq N$. Let $\epsilon>0$ be arbitrary. Since $c<1$, by Exercise \ref{exr:15.8}, $\lim_{n\to\infty}c^n=0$. Thus, by Theorem \ref{trm:15.7}, there is some $N\in\N$ such that $|c^n|<\epsilon$ for all $n\geq N$. Choose this $N$ to be our $N$. Let $n,m$ be arbitrary natural numbers such that $n,m\geq N$ and WLOG let $n\geq m$. Then by consecutive applications of the supposition, $|a_n-a_m|=|f^{n-1}(0)-f^{m-1}(0)|\leq c^{m-1}|f^{n-m}(0)-0|<\epsilon|f^{n-m}(0)|<\epsilon$, as desired.
+
+
+
+            % \begin{itemize}
+            %     \item Let $(a_n)$ be defined by $a_n=f^{n-1}(0)$ for all $n\in\N$.
+            %     \item WTS (Theorem \ref{trm:15.19}): For all $\epsilon>0$, there is some $N\in\N$ such that $|a_n-a_m|<\epsilon$ for all $n,m\geq N$.
+            %     \item Let $\epsilon>0$ be arbitrary.
+            %     \item Exercise \ref{exr:15.8}: $\lim_{n\to\infty}c^n=0$.
+            %     \item Exercise \ref{trm:15.9}: $\lim_{n\to\infty}c^n|\frac{f(0)}{1-c}|=0$.
+            %     \item Theorem \ref{trm:15.7}: There is an $(N-1)\in\N$ such that $|c^n|\frac{f(0)}{1-c}||<\epsilon$ for all $n\geq N-1$.
+            %     \item Choose $N=(N-1)+1$ to be our $N$.
+            %     \item Let $n,m\in\N$ be arbitrary and satisfy $n,m\geq N$. WLOG let $n\geq m$.
+            %     \item We divide into three cases ($f(0)>0$, $f(0)=0$, and $f(0)<0$).
+            %     \item Suppose $f(0)>0$.
+            %     \begin{itemize}
+            %         \item Confirm that $|f^i(0)|\leq|\frac{f(0)}{1-c}|$ for all $i\in\N\cup\{0\}$.
+            %         \begin{itemize}
+            %             \item We have that
+            %             \begin{align*}
+            %                 |f(x)| &= |f(x)|-|f(0)|+|f(0)|\\
+            %                 &\leq |f(x)-f(0)|+|f(0)|\\
+            %                 &\leq c|x-0|+|f(0)|\\
+            %                 &= c|x|+|f(0)|
+            %             \end{align*}
+            %             for all $x\geq 0$.
+            %             \item For all $0\leq x\leq\frac{f(0)}{1-c}$, $|f(x)|\leq c|x|+|f(0)|\leq c|\frac{f(0)}{1-c}|+|f(0)|=\frac{f(0)}{1-c}$.
+            %             \item Clearly, $f(0)\leq\frac{f(0)}{1-c}$, so $f^2(0)\leq\frac{f(0)}{1-c}$, and so on forever.
+            %         \end{itemize}
+            %         \item Therefore,
+            %         \begin{align*}
+            %             |a_n-a_m| &= |f^{n-1}(0)-f^{m-1}(0)|\\
+            %             &\leq c^{m-1}|f^{n-m}(0)-0|\\
+            %             &\leq c^{m-1}\left| \frac{f(0)}{1-c} \right|\\
+            %             &< \epsilon
+            %         \end{align*}
+            %     \end{itemize}
+            %     \item Suppose $f(0)=0$.
+            %     \begin{itemize}
+            %         \item Then we have found a point $x\in\R$ where $f(x)=x$.
+            %     \end{itemize}
+            %     \item Suppose $f(0)<0$.
+            %     \begin{itemize}
+            %         \item Symmetric to first case.
+            %     \end{itemize}
+            %     \item Let $p=\lim_{n\to\infty}a_n$.
+            %     \item Suppose (contradiction): $f(p)\neq p$.
+            %     \item Suppose $f(p)>p$.
+            %     \begin{itemize}
+            %         \item Define $\epsilon=f(p)-p$.
+            %         \item Theorem \ref{trm:15.7}: There exists $N\in\N$ such that for all $n\geq N$, $|f^n(0)-p|<f(p)-p$.
+            %     \end{itemize}
+            % \end{itemize}
+
+            % hi
+        \end{proof}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

@@ -1,0 +1,80 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{16}
+
+\begin{document}
+
+
+
+
+\chapter{Sequences and Series of Functions}
+\begin{definition}\label{dfn:17.1}\marginnote{6/23:}
+    Let $A\subset\R$, and consider $X=\{f:A\to\R\}$, the collection of real-valued functions on $A$. A \textbf{sequence of functions} (on $A$) is an ordered list $(f_1,f_2,f_3,\dots)$ which we will denote $(f_n)$, where each $f_n\in X$. (More formally, we can think of the sequence as a function $F:\N\to X$, where $f_n=F(n)$, for each $n\in\N$, but this degree of formality is not particularly helpful.)\par
+    We can take the sequence to start at any $n_0\in\Z$ and not just at 1, just like we did for sequences of real numbers.
+\end{definition}
+
+\begin{definition}\label{dfn:17.2}
+    The sequence $(f_n)$ \textbf{converges pointwise} to a function $f:A\to\R$ if for all $x\in A$ and $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$. In other words, we have that for all $x\in A$, $\lim_{n\to\infty}f_n(x)=f(x)$.
+\end{definition}
+
+\begin{definition}\label{dfn:17.3}
+    The sequence $(f_n)$ \textbf{converges uniformly} to a function $f:A\to\R$ if for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for every $x\in A$.\par
+    Equivalently, the sequence $(f_n)$ \textbf{converges uniformly} to a function $f:A\to\R$ if for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $\sup_{x\in A}|f_n(x)-f(x)|<\epsilon$.
+\end{definition}
+
+\begin{exercise}\label{exr:17.4}
+    Suppose that a sequence $(f_n)$ converges pointwise to a function $f$. Prove that if $(f_n)$ converges uniformly to a function $g$, then $f=g$.
+    \begin{proof}
+        To prove that $f=g$, Definition \ref{dfn:1.16} tells us that it will suffice to show that $f(x)=g(x)$ for all $x\in A$. Suppose for the sake of contradiction that $f(x)\neq g(x)$ for some $x\in A$. Since $(f_n)$ converges pointwise to $f$ by hypothesis, Definition \ref{dfn:17.2} implies that for all $\epsilon>0$, there exists $N_1\in\N$ such that if $n\geq N_1$, then $|f_n(x)-f(x)|<\epsilon$. Additionally, since $(f_n)$ converges uniformly to $g$ by hypothesis, Definition \ref{dfn:17.3} asserts that for all $\epsilon>0$, there exists $N_2\in\N$ such that if $n\geq N_2$, then $|f_n(x)-g(x)|<\epsilon$.\par
+        WLOG, let $f(x)>g(x)$. Choose $\epsilon=\frac{f(x)-g(x)}{2}$, and let $N=\max(N_1,N_2)$. Since $N\geq N_1$, $|f_N(x)-f(x)|<\frac{f(x)-g(x)}{2}$. Similarly, $|f_N(x)-g(x)|<\frac{f(x)-g(x)}{2}$. But this implies that
+        \begin{align*}
+            f(x)-g(x) &= |f(x)-f_N(x)+f_N(x)-g(x)|\\
+            &\leq |f(x)-f_N(x)|+|f_N(x)-g(x)|\tag*{Lemma \ref{lem:8.8}}\\
+            &= |f_N(x)-f(x)|+|f_N(x)-g(x)|\tag*{Exercise \ref{exr:8.5}}\\
+            &< \frac{f(x)-g(x)}{2}+\frac{f(x)-g(x)}{2}\\
+            &= f(x)-g(x)
+        \end{align*}
+        a contradiction.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}\label{exr:17.5}
+    For each of the following sequences of functions, determine what function the sequence $(f_n)$ converges to pointwise. Does the sequence converge uniformly to this function?
+    \begin{enumerate}[label={(\alph*)}]
+        \item For $n\in\N$, let $f_n:[0,1]\to\R$ be given by $f_n(x)=x^n$.
+        \begin{proof}[Answer]
+            Converges to the function $f:[0,1]\to\R$ defined by
+            \begin{equation*}
+                f(x) =
+                \begin{cases}
+                    0 & x<1\\
+                    1 & x=1
+                \end{cases}
+            \end{equation*}
+            Does not converge uniformly.
+        \end{proof}
+        \item For $n\in\N$, let $f_n:\R\to\R$ be given by $f_n(x)=\frac{\sin(nx)}{n}$. (For the purposes of this example, you may assume basic knowledge of sine.)
+        \begin{proof}[Answer]
+            Converges to the function $f:\R\to\R$ defined by $f(x)=0$. Does converge uniformly.
+        \end{proof}
+        \item For $n\in\N$, let $f_n:[0,1]\to\R$ be given by
+        \begin{equation*}
+            f_n(x) =
+            \begin{cases}
+                n^2x & 0\leq x\leq\frac{1}{n}\\
+                n(2-nx) & \frac{1}{n}\leq x\leq\frac{2}{n}\\
+                0 & \frac{2}{n}\leq x\leq 1
+            \end{cases}
+        \end{equation*}
+        \begin{proof}[Answer]
+            Converges to the function $f:[0,1]\to\R$ defined by $f(x)=0$. Does converge uniformly.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+
+
+
+\end{document}

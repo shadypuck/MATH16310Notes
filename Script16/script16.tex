@@ -294,16 +294,126 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
 \begin{lemma}\label{lem:16.14}
     Suppose that $(b_n)$ is a sequence of nonnegative numbers with $\lim_{n\to\infty}b_n=L$, where $L<1$. Then there is some $N\in\N$ such that $0\leq b_n<\frac{1+L}{2}$ for all $n\geq N$.
     \begin{proof}
-        Suppose for the sake of contradiction that $L<0$. By Exercise \ref{exr:6.5}, choose $a<L$. Since $a<L<0$, Equations \ref{eqn:8.1} allow us to define the $L$-containing region $(a,0)$. Thus, since $(a,0)$ is an open interval by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, respectively, we have by Definition \ref{dfn:15.2} that there exists an $N\in\N$ such that for all $n\geq N$, $n\in(a,0)$. Specifically, this implies that $b_N\in(a,0)$. But by Equations \ref{eqn:8.1}, this means that $b_N<0$, contradicting the hypothesis that all $b_n$ are nonnegative.\par
-        Additionally, it will be useful later on to know that $L<\frac{1+L}{2}$, as we can demonstrate with the following.
+        Choose $\epsilon=\frac{1-L}{2}$; since $L<1$, we have that $0<1-L$, i.e., $0<\frac{1-L}{2}$ as needed. It follows by Theorem \ref{trm:15.7} (since $\lim_{n\to\infty}b_n=L$ by hypothesis) that there is some $N\in\N$ such that $|b_n-L|<\frac{1-L}{2}$ for all $n\geq N$. Choose this $n$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then 
         \begin{align*}
-            L &= 2\cdot\frac{L}{2}\\
-            &= \frac{L+L}{2}\\
-            &< \frac{1+L}{2}
-        \end{align*}\par
-        Having established that $0\leq L$ and that $L<\frac{1+L}{2}$, we know that implies that $L\in R$, where $R=(-1,\frac{1+L}{2})$. Additionally, by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, $R$ is an open interval. It follows by Definition \ref{dfn:15.2} that there exists an $N\in\N$ such that for all $n\geq N$, $b_n\in R$. Choose this $N$ to be our $N$. Let $b_n$ be an arbitrary element of the sequence with $n\geq N$. Since $b_n$ is nonnegative, we know that $0\leq b_n$. Additionally, since $b_n\in R$, we have by Equations \ref{eqn:8.1} that $b_n<\frac{1+L}{2}$. Therefore, we have that $0\leq b_n<\frac{1+L}{2}$, as desired.
+            |b_n-L| &< \frac{1-L}{2}\\
+            -\frac{1-L}{2} < b_n-L &< \frac{1-L}{2}\tag*{Lemma, Exercise \ref{exr:8.9}}\\
+            b_n &< \frac{1+L}{2}
+        \end{align*}
+        Additionally, since $(b_n)$ is a sequence of nonnegative numbers, $0\leq b_n$. Therefore, combining the last two results, we have that $0\leq b_n<\frac{1+L}{2}$, as desired.
     \end{proof}
 \end{lemma}
+
+\begin{theorem}\label{trm:16.15}
+    Let $(a_n)$ be a sequence such that $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|$ exists. Then
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}},ref={\thetheorem\alph*}]
+        \item \label{trm:16.15a}If $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|<1$, then $\sum_{n=1}^\infty a_n$ converges.
+        \begin{proof}
+            % \begin{itemize}
+            %     \item WTS (Theorem \ref{trm:16.13}): There exists a sequence $(c_n)$ of positive numbers such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer, for which $\sum_{n=1}^\infty c_n$ converges.
+            %     \item Lemma \ref{lem:16.14}: There is some $N_0\in\N$ such that $0\leq|\frac{a_{n+1}}{a_n}|<\frac{1+L}{2}$ for all $n\geq N$.
+            %     \item Let $(c_n)$ be defined by $c_n=(\frac{1+L}{2})^{n-N_0}\cdot|a_{N_0}|$.
+            %     \item Verify that $c_n\geq 0$ for all $n\in\N$.
+            %     \begin{itemize}
+            %         \item The above and transitivity: $0<\frac{1+L}{2}$.
+            %         \item Script \ref{sct:7}: $0<(\frac{1+L}{2})^{n-N_0}$ for all $n\geq N_0$.
+            %         \item Definition \ref{dfn:8.4} and Script \ref{sct:7}: $0\leq(\frac{1+L}{2})^{n-N_0}\cdot|a_{N_0}|=c_n$.
+            %     \end{itemize}
+            %     \item Verify that $|a_n|\leq c_n$ for all $n\geq N_0$.
+            %     \begin{itemize}
+            %         \item We induct on $\N$ using Additional Exercise \ref{axr:0.2a}.
+            %         \item Base case: $n=N_0$.
+            %         \begin{equation*}
+            %             |a_{N_0}| = 1\cdot|a_{N_0}|
+            %             = \left( \frac{1+L}{2} \right)^{N_0-N_0}\cdot|a_{N_0}|
+            %             = c_{N_0}
+            %         \end{equation*}
+            %         \item Weaken to $|a_1|\leq c_1$, as desired.
+            %         \item Suppose (inductively): Claim proven for $n$; seek to prove it for $n+1$.
+            %         \item $n\geq N_0$ (the above): $0\leq|\frac{a_{n+1}}{a_n}|<\frac{1+L}{2}$.
+            %         \item Script \ref{sct:7}: $|a_{n+1}|<\frac{1+L}{2}\cdot|a_n|$.
+            %         \item Therefore:
+            %         \begin{align*}
+            %             |a_{n+1}| &< \frac{1+L}{2}\cdot|a_n|\\
+            %             &\leq \frac{1+L}{2}\cdot c_n\\
+            %             &= \frac{1+L}{2}\cdot\left( \frac{1+L}{2} \right)^{n-N_0}\cdot|a_{N_0}|\\
+            %             &= \left( \frac{1+L}{2} \right)^{(n+1)-N_0}\cdot|a_{N_0}|\\
+            %             &= c_{n+1}
+            %         \end{align*}
+            %         \item Weaken to $|a_{n+1}|\leq c_{n+1}$.
+            %     \end{itemize}
+            %     \item $\sum_{n=1}^\infty c_n$ converges.
+            %     \begin{itemize}
+            %         \item Script \ref{sct:7}: $L<1 \Longrightarrow 1+L<2 \Longrightarrow \frac{1+L}{2}<1$.
+            %         \item Script \ref{sct:7}: $0<\frac{1+L}{2} \Longrightarrow -1<\frac{1+L}{2}$.
+            %         \item Theorem \ref{trm:16.7}: $\sum_{n=0}^\infty(\frac{1+L}{2})^n$ converges.
+            %         \item Script \ref{sct:0}: $\sum_{n=N_0}^\infty(\frac{1+L}{2})^{n-N_0}$ converges.
+            %         \item Lemma \ref{lem:16.2}: $\sum_{n=1}^\infty(\frac{1+L}{2})^{n-N_0}$ converges.
+            %         \item Theorem \ref{trm:16.8}: $\sum_{n=1}^\infty(\frac{1+L}{2})^{n-N_0}\cdot|a_{N_0}|$ converges.
+            %         \item Definition of $c_n$: $\sum_{n=1}^\infty c_n$ converges.
+            %     \end{itemize}
+            % \end{itemize}
+
+
+            Let $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|=L$. To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.13} tells us that it will suffice to find a sequence $(c_n)$ of positive numbers such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer, for which $\sum_{n=1}^\infty c_n$ converges. To begin, since $(|\frac{a_{n+1}}{a_n}|)$ is a sequence of nonnegative numbers with $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|=L$, where $L<1$, we have by Lemma \ref{lem:16.14} that there exists an $N_0\in\N$ such that $0\leq|\frac{a_{n+1}}{a_n}|<\frac{1+L}{2}$ for all $n\geq N_0$. With this result, we can define $(c_n)$ by $c_n=(\frac{1+L}{2})^{n-N_0}\cdot|a_{N_0}|$ for all $n\in\N$. We will now prove that $(c_n)$ satisfies the necessary properties outlined in the beginning.\par
+            First, we must confirm that $(c_n)$ is a sequence of positive numbers, i.e., that $c_n\geq 0$ for all $n\in\N$. Let $n$ be an arbitrary natural number. By the above result from Lemma \ref{lem:16.14} and transitivity, we know that $0<\frac{1+L}{2}$. It follows by Script \ref{sct:7} that $0<(\frac{1+L}{2})^{n-N_0}$. Therefore, by Definition \ref{dfn:8.4} and Script \ref{sct:7}, $0\leq(\frac{1+L}{2})^{n-N_0}\cdot|a_{N_0}|=c_n$, as desired.\par
+            To confirm that $|a_n|\leq c_n$ for all $n\geq N_0$, we induct on $n$ using Additional Exercise \ref{axr:0.2a}. For the base case $n=N_0$, we have that
+            \begin{equation*}
+                |a_{N_0}| = 1\cdot|a_{N_0}|
+                = \left( \frac{1+L}{2} \right)^{N_0-N_0}\cdot|a_{N_0}|
+                = c_{N_0}
+            \end{equation*}
+            which we may weaken to $|a_{N_0}|\leq c_{N_0}$, as desired. Now suppose inductively that we have demonstrated that $|a_n|\leq c_n$; we now seek to demonstrate that $|a_{n+1}|\leq c_{n+1}$. By hypothesis, $n\geq N_0$, so by the above, we have that $0\leq|\frac{a_{n+1}}{a_n}|<\frac{1+L}{2}$. It follows by Script \ref{sct:7} that $|a_{n+1}|<\frac{1+L}{2}\cdot|a_n|$. Therefore,
+            \begin{align*}
+                |a_{n+1}| &< \frac{1+L}{2}\cdot|a_n|\\
+                &\leq \frac{1+L}{2}\cdot c_n\\
+                &= \frac{1+L}{2}\cdot\left( \frac{1+L}{2} \right)^{n-N_0}\cdot|a_{N_0}|\\
+                &= \left( \frac{1+L}{2} \right)^{(n+1)-N_0}\cdot|a_{N_0}|\\
+                &= c_{n+1}
+            \end{align*}
+            which we may weaken to $|a_{n+1}|\leq|c_{n+1}|$, as desired.\par
+            Lastly, we must confirm that $\sum_{n=1}^\infty c_n$ converges. By Script \ref{sct:7}, it follows from the hypothesis that $L<1$ that $1+L<2$, which in turn implies that $\frac{1+L}{2}<1$. Additionally, the above result that $0<\frac{1+L}{2}$ implies by transitivity that $-1<\frac{1+L}{2}$. These last two results when combined imply $\sum_{n=0}^\infty(\frac{1+L}{2})^n$ satisfies the constraints of Theorem \ref{trm:16.7}, meaning that $\sum_{n=0}^\infty(\frac{1+L}{2})^n$ converges. Thus, by Script \ref{sct:0}, $\sum_{n=N_0}^\infty(\frac{1+L}{2})^{n-N_0}$ converges. Consequently, by consecutive applications of Lemma \ref{lem:16.2}, $\sum_{n=1}^\infty(\frac{1+L}{2})^{n-N_0}$ converges. It follows by Theorem \ref{trm:16.8} that $\sum_{n=1}^\infty(\frac{1+L}{2})^{n-N_0}\cdot|a_{N_0}|$ converges. Therefore, by the definition of $c_n$, $\sum_{n=1}^\infty c_n$ converges, as desired.
+        \end{proof}
+        \item \label{trm:16.15b}If $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|>1$, then $\sum_{n=1}^\infty a_n$ diverges.
+        \begin{proof}
+            Let $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|=L$. Suppose for the sake of contradiction that $\lim_{n\to\infty}a_n=0$. Then by Theorem \ref{trm:15.7}, for all $\epsilon_1>0$, there is some $N_1\in\N$ such that for all $n\geq N_1$, we have $|a_n|=|a_n-0|<\epsilon_1$. Similarly, since $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|=L$, we have that for all $\epsilon_2>0$, there is some $N_2\in\N$ such that for all $n\geq N_2$, we have $||\frac{a_{n+1}}{a_n}|-L|<\epsilon_2$. Choose $\epsilon_2=L-1$ (it follows from the fact that $L>1$ by Definition \ref{dfn:7.21} that $L-1>0$). Thus, we have that for all $n\geq N_2$,
+            \begin{align*}
+                1 &= 1+L-L+\left| \left| \frac{a_{n+1}}{a_n} \right| \right|-\left| \left| \frac{a_{n+1}}{a_n} \right| \right|\\
+                &= |L|-\left| \left| \frac{a_{n+1}}{a_n} \right| \right|+1-L+\left| \left| \frac{a_{n+1}}{a_n} \right| \right|\\
+                &\leq \left| L-\left| \frac{a_{n+1}}{a_n} \right| \right|+1-L+\left| \left| \frac{a_{n+1}}{a_n} \right| \right|\\
+                &= \left| \left| \frac{a_{n+1}}{a_n} \right|-L \right|+1-L+\left| \left| \frac{a_{n+1}}{a_n} \right| \right|\tag*{Exercise \ref{exr:8.5}}\\
+                &< L-1+1-L+\left| \left| \frac{a_{n+1}}{a_n} \right| \right|\\
+                &= \left| \frac{a_{n+1}}{a_n} \right|
+            \end{align*}
+            which can be rearranged by Lemma \ref{lem:7.24} to demonstrate that $|a_n|<|a_{n+1}|$ for all such $n$. Now consider the case where $\epsilon_1=|a_{N_2+1}|$ (note that $|a_{N_2+1}|>|a_{N_2}|\geq 0$ by Definition \ref{dfn:8.4}). Choose $N=\max(N_1,N_2+2)$. Then by the above, we have by transitivity that $|a_N|>|a_{N-1}|>\cdots>|a_{N_2+1}|$. However, since $N\geq N_1$, we also have that $|a_N|<\epsilon_1=|a_{N_2+1}|$, a contradiction. Therefore, since $\lim_{n\to\infty}a_n\neq 0$, we have by the contrapositive of Theorem \ref{trm:16.4} that $\sum_{n=1}^\infty a_n$ diverges.
+        \end{proof}
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}\label{trm:16.16}
+    Let $(a_n)$ be a sequence such that $\lim_{n\to\infty}\sqrt[n]{|a_n|}$ exists. Then
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item If $\lim_{n\to\infty}\sqrt[n]{|a_n|}<1$, then $\sum_{n=1}^\infty a_n$ converges.
+        \begin{proof}
+            % \begin{itemize}
+            %     \item Let $\lim_{n\to\infty}\sqrt[n]{|a_n|}=L$.
+            %     \item Theorem \ref{trm:16.13}: Find a sequence $(c_n)$ of positive numbers such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer, for which $\sum_{n=1}^\infty c_n$ converges.
+            %     \item Theorem \ref{trm:5.2}: There exists $x\in\R$ such that $\max(0,L)<x<1$.
+            %     \item Define $(c_n)$ by $c_n=x^n$ for all $n\in\N$.
+            %     \item Script \ref{sct:7} ($x\geq 0$): $c_n=x^n\geq 0$.
+            %     \item Theorem \ref{trm:15.7} ($x-L>0$): There is some $N_0\in\N$ such that for all $n\geq N_0$, $|\sqrt[n]{|a_n|}-L|<x-L$.
+            %     \item Script \ref{sct:7}: $|a_n|\leq x^n$.
+            %     \item Theorem \ref{trm:16.7} ($-1<\max(0,L)<x<1$): $\sum_{n=1}^\infty c_n$ converges.
+            % \end{itemize}
+
+            Let $\lim_{n\to\infty}\sqrt[n]{|a_n|}=L$. To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.13} tells us that that it will suffice to find a sequence $(c_n)$ of positive numbers such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer, for which $\sum_{n=1}^\infty c_n$ converges. Since $L<1$ by hypothesis and $0<1$ by Corollary \ref{cly:7.27}, Theorem \ref{trm:5.2} asserts that there exists a point $x\in\R$ such that $\max(0,L)<x<1$. We now define $(c_n)$ by $c_n=x^n$ for all $n\in\N$. By Script \ref{sct:7} and the fact that $x\geq 0$, we know that $(c_n)$ is a sequence of positive numbers. Additionally, since $x-L>0$, Theorem \ref{trm:15.7} implies that there is some $N_0\in\N$ such that for all $n\geq N_0$, $|\sqrt[n]{|a_n|}-L|<x-L$. It follows by Script \ref{sct:7} that $|a_n|\leq x^n=c_n$ for all $n\geq N_0$. Lastly, since $-1<\max(0,L)<x<1$, we have by Theorem \ref{trm:16.7} that $\sum_{n=1}^\infty c_n$ converges, as desired.
+        \end{proof}
+        \item If $\lim_{n\to\infty}\sqrt[n]{|a_n|}>1$, then $\sum_{n=1}^\infty a_n$ diverges.
+        \begin{proof}
+            Let $\lim_{n\to\infty}\sqrt[n]{|a_n|}=L$. Suppose for the sake of contradiction that $\lim_{n\to\infty}a_n=0$. Then by Theorem \ref{trm:15.7}, for all $\epsilon_1>0$, there is some $N_1\in\N$ such that for all $n\geq N_1$, we have $|a_n|=|a_n-0|<\epsilon_1$. Similarly, since $\lim_{n\to\infty}\sqrt[n]{|a_n|}=L$, we have that for all $\epsilon_2>0$, there is some $N_2\in\N$ such that for all $n\geq N_2$, we have $|\sqrt[n]{|a_n|}-L|<\epsilon_2$. Choose $\epsilon_2=L-1$. Thus, we have that for all $n\geq N_2$, $1<\sqrt[n]{|a_n|}$ (by an argument symmetric to that given in the proof of Theorem \ref{trm:16.15b}) which can be rearranged by Script \ref{sct:7} to demonstrate that $|a_n|>1^n=1$ for all such $n$. Now consider the case where $\epsilon_1=1$. Choose $N=\max(N_1,N_2)$. Then by the above, the fact that $N\geq N_2$ implies that $|a_N|>1$. However, since $N\geq N_1$, we also have that $|a_N|<\epsilon_1=1$, a contradiction. Therefore, since $\lim_{n\to\infty}a_n\neq 0$, we have by the contrapositive of Theorem \ref{trm:16.4} that $\sum_{n=1}^\infty a_n$ diverges.
+        \end{proof}
+    \end{enumerate}
+\end{theorem}
 
 
 

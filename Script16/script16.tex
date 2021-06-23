@@ -406,7 +406,7 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
             %     \item Theorem \ref{trm:16.7} ($-1<\max(0,L)<x<1$): $\sum_{n=1}^\infty c_n$ converges.
             % \end{itemize}
 
-            Let $\lim_{n\to\infty}\sqrt[n]{|a_n|}=L$. To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.13} tells us that that it will suffice to find a sequence $(c_n)$ of positive numbers such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer, for which $\sum_{n=1}^\infty c_n$ converges. Since $L<1$ by hypothesis and $0<1$ by Corollary \ref{cly:7.27}, Theorem \ref{trm:5.2} asserts that there exists a point $x\in\R$ such that $\max(0,L)<x<1$. We now define $(c_n)$ by $c_n=x^n$ for all $n\in\N$. By Script \ref{sct:7} and the fact that $x\geq 0$, we know that $(c_n)$ is a sequence of positive numbers. Additionally, since $x-L>0$, Theorem \ref{trm:15.7} implies that there is some $N_0\in\N$ such that for all $n\geq N_0$, $|\sqrt[n]{|a_n|}-L|<x-L$. It follows by Script \ref{sct:7} that $|a_n|\leq x^n=c_n$ for all $n\geq N_0$. Lastly, since $-1<\max(0,L)<x<1$, we have by Theorem \ref{trm:16.7} that $\sum_{n=1}^\infty c_n$ converges, as desired.
+            Let $\lim_{n\to\infty}\sqrt[n]{|a_n|}=L$. To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.13} tells us that that it will suffice to find a sequence $(c_n)$ of positive numbers such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer, for which $\sum_{n=1}^\infty c_n$ converges. Since $L<1$ by hypothesis and $0<1$ by Corollary \ref{cly:7.27}, Theorem \ref{trm:5.2} asserts that there exists a point $x\in\R$ such that $\max(0,L)<x<1$. We now define $(c_n)$ by $c_n=x^n$ for all $n\in\N$. By Script \ref{sct:7} and the fact that $x\geq 0$, we know that $(c_n)$ is a sequence of positive numbers. Additionally, since $x-L>0$, Theorem \ref{trm:15.7} implies that there is some $N_0\in\N$ such that for all $n\geq N_0$, $|\sqrt[n]{|a_n|}-L|<x-L$. It follows by Script \ref{sct:7} that $|a_n|\leq x^n=c_n$ for all $n\geq N_0$. Lastly, since $-1<\max(0,L)<x<1$, we have by Theorem \ref{trm:16.7} that $\sum_{n=0}^\infty c_n$ converges. It follows by Lemma \ref{lem:16.2} that $\sum_{n=1}^\infty c_n$ converges, as desired.
         \end{proof}
         \item If $\lim_{n\to\infty}\sqrt[n]{|a_n|}>1$, then $\sum_{n=1}^\infty a_n$ diverges.
         \begin{proof}
@@ -414,6 +414,39 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
         \end{proof}
     \end{enumerate}
 \end{theorem}
+
+\begin{definition}\label{dfn:16.17}
+    For $n\in\N$, we define the \textbf{factorial} of $n$ to be the product of all natural numbers less than or equal to $n$. We denote this by the formula
+    \begin{equation*}
+        n! = n\cdot(n-1)\cdot(n-2)\cdot\cdots\cdot 3\cdot 2\cdot 1
+    \end{equation*}
+    By convention, we also set $0!=1$.
+\end{definition}
+
+\begin{exercise}\label{exr:16.18}
+    Prove that
+    \begin{equation*}
+        \sum_{n=0}^\infty\frac{1}{n!}
+    \end{equation*}
+    converges. The number that it converges to is called e.
+    \begin{proof}
+        To prove that $\sum_{n=0}^\infty\frac{1}{n!}$ converges, Theorem \ref{trm:16.13} tells us that it will suffice to find a sequence $(c_n)$ of positive numbers such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer, for which $\sum_{n=1}^\infty c_n$ converges. Define $(c_n)$ by $c_n=(\frac{1}{2})^{n-1}$ for all $n\in\N$. We now address each property in turn.\par
+        By Script \ref{sct:7} and the fact that $\frac{1}{2}\geq 0$, we know that $(c_n)$ is a sequence of positive numbers.\par
+        Choose $N_0=2$. To confirm that $|a_n|\leq c_n$ for all $n\geq N_0$, we induct on $n$ using Additional Exercise \ref{axr:0.2a}. For the base case $n=2$, we have by Definition \ref{dfn:16.17} that $|a_2|=|\frac{1}{2!}|=\frac{1}{2}=c_2$, which we may weaken to $|a_2|\leq c_2$, as desired. Now suppose inductively that we have demonstrated that $|a_n|\leq c_n$; we now seek to demonstrate that $|a_{n+1}|\leq c_{n+1}$. But
+        \begin{align*}
+            |a_{n+1}| &= \left| \frac{1}{(n+1)!} \right|\\
+            &= \frac{1}{n+1}\cdot\frac{1}{n!}\tag*{Definition \ref{dfn:16.17}}\\
+            &= \frac{1}{n+1}\cdot|a_n|\\
+            &< \frac{1}{2}\cdot|a_n|\\
+            &\leq \frac{1}{2}\cdot c_n\\
+            &= \frac{1}{2}\cdot\left( \frac{1}{2} \right)^{n-1}\\
+            &= \left( \frac{1}{2} \right)^{(n+1)-1}\\
+            &= c_{n+1}
+        \end{align*}
+        which we may weaken to $|a_{n+1}|\leq c_{n+1}$, as desired.\par
+        Since $-1<\frac{1}{2}<1$, Theorem \ref{trm:16.7} asserts that $\sum_{n=0}^\infty c_n$ converges. It follows by Lemma \ref{lem:16.2} that $\sum_{n=1}^\infty c_n$ converges, as desired.
+    \end{proof}
+\end{exercise}
 
 
 

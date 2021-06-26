@@ -112,7 +112,7 @@
         \begin{proof}
             To prove that $f$ is integrable on $[a,b]$, Theorem \ref{trm:13.18} tells us that it will suffice to show that for every $\epsilon>0$, there exists a partition $P$ of $[a,b]$ such that $U(f,P)-L(f,P)<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $(f_n)$ converges uniformly to $f$ by hypothesis, Definition \ref{dfn:17.3} asserts that there exists $N\in\N$ such that for all $n\geq N$, $|f_n(x)-f(x)|<\frac{\epsilon}{6(b-a)}$\footnote{For the purposes of this proof, we will assume that $a<b$, on the basis of the fact that the proof of the case where $a=b$ is trivial.} for all $x\in[a,b]$. This statement will be useful in the verification of the three following results.\par\medskip
             To confirm that $|U(f_N,P)-L(f_N,P)|<\frac{\epsilon}{3}$, we first invoke Theorem \ref{trm:13.18}, which tells us that since $f_N$ is integrable by hypothesis, there exists a partition $P$ of $[a,b]$ such that $U(f_N,P)-L(f_N,P)<\frac{\epsilon}{3}$. Additionally, since $L(f_N,P)\leq U(f_N,P)$ by Theorem \ref{trm:13.13}, we have by Definition \ref{dfn:8.4} that $U(f_N,P)-L(f_N,P)=|U(f_N,P)-L(f_N,P)|$. Therefore, we have by transitivity that $|U(f_N,P)-L(f_N,P)|=U(f_N,P)-L(f_N,P)<\frac{\epsilon}{3}$, as desired.\par\medskip
-            To confirm that $|U(f,P)-U(f_N,P)|<\frac{\epsilon}{3}$, we begin with the following contradiction argument.\par
+            To confirm that $|U(f,P)-U(f_N,P)|<\frac{\epsilon}{3}$, we begin with the following contradiction argument\footnote{Note that this argument is analogous to the proof of Additional Exercise \ref{axr:13.2}.}.\par
             Suppose for the sake of contradiction that $|M_i(f)-M_i(f_N)|\geq\frac{\epsilon}{3(b-a)}$. We divide into two cases ($M_i(f)-M_i(f_N)\geq\frac{\epsilon}{3(b-a)}$ and $M_i(f_N)-M_i(f)\geq\frac{\epsilon}{3(b-a)}$). Suppose first that $M_i(f)-M_i(f_N)\geq\frac{\epsilon}{3(b-a)}$. By Lemma \ref{lem:5.11}, there exists $f(x)\in\{f(x)\mid t_{i-1}\leq x\leq t_i\}$ such that $M_i(f)-\frac{\epsilon}{6(b-a)}<f(x)\leq M_i(f)$. Similarly, there exists $f_N(x)\in\{f_N(x)\mid t_{i-1}\leq x\leq t_i\}$ such that $M_i(f_N)-\frac{\epsilon}{6(b-a)}<f_N(x)\leq M_i(f_N)$. Thus, we have that
             \begin{equation*}
                 f(x) > M_i(f)-\frac{\epsilon}{6(b-a)}
@@ -220,6 +220,49 @@
         % \end{itemize}
 
         To prove that $\lim_{n\to\infty}\int_a^bf_n=\int_a^bf$, Theorem \ref{trm:15.7} tells us that it will suffice to show that for all $\epsilon>0$, there exists $N\in\N$ such that for all $n\geq N$, we have $|\int_a^bf_n-\int_a^bf|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $(f_n)$ converges uniformly to $f$, we have by Definition \ref{dfn:17.3} that there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\frac{\epsilon}{b-a}$ for all $x\in[a,b]$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows from the lemma to Exercise \ref{exr:8.9} that $-\frac{\epsilon}{b-a}<f_n(x)-f(x)<\frac{\epsilon}{b-a}$ for all $x\in[a,b]$. Additionally, since $f_n$ is integrable on $[a,b]$ by hypothesis and $f$ is integrable on $[a,b]$ by the lemma, Theorem \ref{trm:13.24} implies that $f_n-f$ is integrable on $[a,b]$. Combining these last two results, we have by Theorem \ref{trm:13.27} that $-\frac{\epsilon}{b-a}(b-a)<\int_a^b(f_n-f)<\frac{\epsilon}{b-a}(b-a)$. Consequently, by Script \ref{sct:7} and the lemma to Exercise \ref{exr:8.9}, we have that $|\int_a^b(f_n-f)|<\epsilon$. Therefore, by Theorem \ref{trm:13.24}, we have that $|\int_a^bf_n-\int_a^bf|<\epsilon$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:17.8}
+    Let $(f_n)$ be a sequence of functions defined on an open interval containing $[a,b]$ such that each $f_n$ is differentiable on $[a,b]$ and $f'_n$ is integrable on $[a,b]$. Suppose further that $(f_n)$ converges pointwise to $f$ on $[a,b]$ and that $(f'_n)$ converges uniformly to a continuous function $g$ on $[a,b]$. Then $f$ is differentiable at every $x\in[a,b]$ and
+    \begin{equation*}
+        f'(x) = \lim_{n\to\infty}f'_n(x)
+    \end{equation*}
+    \begin{proof}
+        Let $x$ be an arbitrary element of $[a,b]$. Since $(f_n')$ converges uniformly to $g$, Definition \ref{dfn:17.3} and Theorem \ref{trm:15.7} imply that $\lim_{n\to\infty}f_n'(x)=g(x)$. Additionally, we have that
+        \begin{align*}
+            \int_a^xg &= \lim_{n\to\infty}\int_a^xf_n'\tag*{Theorem \ref{trm:17.7}}\\
+            &= \lim_{n\to\infty}(f_n(x)-f_n(a))\tag*{Theorem \ref{trm:14.4}}\\
+            &= \lim_{n\to\infty}f_n(x)-\lim_{n\to\infty}f_n(a)\tag*{Theorem \ref{trm:15.9}}\\
+            &= f(x)-f(a)\tag*{Definition \ref{dfn:17.2}}
+        \end{align*}
+        This combined with the fact that $g$ is continuous (hence continuous at $x$ by Theorem \ref{trm:9.10}) implies that
+        \begin{align*}
+            g(x) &= \dv{x}(f(x)-f(a))\tag*{Theorem \ref{trm:14.1}}\\
+            &= \dv{x}(f(x))-\dv{x}(f(a))\tag*{Exercise \ref{exr:12.9}}\\
+            &= f'(x)\tag*{Exercise \ref{exr:12.8}}
+        \end{align*}
+        Therefore, we have by transitivity that $f'(x)=\lim_{n\to\infty}f'_n(x)$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:17.9}
+    Let $(f_n)$ be a sequence of functions defined on a set $A$. Then the following are equivalent.
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item There is some function $f$ such that $(f_n)$ converges uniformly to $f$ on $A$.
+        \item For all $\epsilon>0$, there exists an $N\in\N$ such that when $m,n\geq N$, $|f_n(x)-f_m(x)|<\epsilon$ for all $x\in A$.
+    \end{enumerate}
+    \begin{proof}
+        Suppose first that there is some function $f$ to which $(f_n)$ converges uniformly on $A$. By Definition \ref{dfn:17.3}, for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in A$. It follows by Theorem \ref{trm:15.7} that $(f_n(x))$ converges to $f(x)$ for all $x\in A$. Therefore, by Theorem \ref{trm:15.19}, for all $\epsilon>0$, there exists an $N\in\N$ such that $|f_n(x)-f_m(x)|<\epsilon$ for all $n,m\geq N$ for all $x\in A$, as desired.\par\smallskip
+        Now suppose that for all $\epsilon>0$, there exists an $N\in\N$ such that when $n,m\geq N$, $|f_n(x)-f_m(x)|<\epsilon$ for all $x\in A$. It follows by Theorem \ref{trm:15.19} that $(f_n(x))$ converges for all $x\in A$, i.e., for all $x\in A$, there exists a point $f(x)\in\R$ to which $(f_n(x))$ converges. Let $f:A\to\R$ be defined by $f(x)=\lim_{n\to\infty}f_n(x)$.\par
+        To prove that $(f_n)$ converges uniformly to $f$, Definition \ref{dfn:17.3} tells us that it will suffice to show that for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in A$. Let $\epsilon>0$ be arbitrary. By the hypothesis, there exists $N\in\N$ such that for all $n,m\geq N$, $|f_n(x)-f_m(x)|<\frac{\epsilon}{2}$. Choose this $N$ to be our $N$. Now suppose for the sake of contradiction that there exists an $x\in A$ for which $|f_n(x)-f(x)|\geq\epsilon$ for some $n\geq N$. Since $(f_m(x))$ converges to $f(x)$, Theorem \ref{trm:15.7} asserts that there exists an $N'\in\N$ such that for all $m\geq N'$, $|f_m(x)-f(x)|<\frac{\epsilon}{2}$. Choose $M=\max(N,N')$. It follows that
+        \begin{align*}
+            |f_n(x)-f(x)| &= |f(x)-f_n(x)|\\
+            &\leq |f(x)-f_M(x)|+|f_M(x)-f_n(x)|\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        a contradiction. Therefore, we have that there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in A$, as desired.
     \end{proof}
 \end{theorem}
 

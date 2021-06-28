@@ -102,7 +102,7 @@
     \end{proof}
 \end{theorem}
 
-\begin{theorem}\label{trm:17.7}
+\begin{theorem}\label{trm:17.7}\marginnote{6/26:}
     Suppose that $(f_n)$ is a sequence of integrable functions on $[a,b]$ and suppose that $(f_n)$ converges uniformly to $f:[a,b]\to\R$. Then
     \begin{equation*}
         \int_a^bf = \lim_{n\to\infty}\int_a^bf_n
@@ -253,16 +253,79 @@
         \item For all $\epsilon>0$, there exists an $N\in\N$ such that when $m,n\geq N$, $|f_n(x)-f_m(x)|<\epsilon$ for all $x\in A$.
     \end{enumerate}
     \begin{proof}
-        Suppose first that there is some function $f$ to which $(f_n)$ converges uniformly on $A$. By Definition \ref{dfn:17.3}, for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in A$. It follows by Theorem \ref{trm:15.7} that $(f_n(x))$ converges to $f(x)$ for all $x\in A$. Therefore, by Theorem \ref{trm:15.19}, for all $\epsilon>0$, there exists an $N\in\N$ such that $|f_n(x)-f_m(x)|<\epsilon$ for all $n,m\geq N$ for all $x\in A$, as desired.\par\smallskip
-        Now suppose that for all $\epsilon>0$, there exists an $N\in\N$ such that when $n,m\geq N$, $|f_n(x)-f_m(x)|<\epsilon$ for all $x\in A$. It follows by Theorem \ref{trm:15.19} that $(f_n(x))$ converges for all $x\in A$, i.e., for all $x\in A$, there exists a point $f(x)\in\R$ to which $(f_n(x))$ converges. Let $f:A\to\R$ be defined by $f(x)=\lim_{n\to\infty}f_n(x)$.\par
-        To prove that $(f_n)$ converges uniformly to $f$, Definition \ref{dfn:17.3} tells us that it will suffice to show that for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in A$. Let $\epsilon>0$ be arbitrary. By the hypothesis, there exists $N\in\N$ such that for all $n,m\geq N$, $|f_n(x)-f_m(x)|<\frac{\epsilon}{2}$. Choose this $N$ to be our $N$. Now suppose for the sake of contradiction that there exists an $x\in A$ for which $|f_n(x)-f(x)|\geq\epsilon$ for some $n\geq N$. Since $(f_m(x))$ converges to $f(x)$, Theorem \ref{trm:15.7} asserts that there exists an $N'\in\N$ such that for all $m\geq N'$, $|f_m(x)-f(x)|<\frac{\epsilon}{2}$. Choose $M=\max(N,N')$. It follows that
+        % It follows by Theorem \ref{trm:15.7} that $(f_n(x))$ converges to $f(x)$ for all $x\in A$. Therefore, by Theorem \ref{trm:15.19}, for all $\epsilon>0$, there exists an $N\in\N$ such that $|f_n(x)-f_m(x)|<\epsilon$ for all $n,m\geq N$ for all $x\in A$, as desired
+
+        Suppose first that there is some function $f$ to which $(f_n)$ converges uniformly on $A$. Let $\epsilon>0$ be arbitrary. By Definition \ref{dfn:17.3}, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\frac{\epsilon}{2}$ for all $x\in A$. Choose this $N$ to be our $N$. Let $n,m$ be arbitrary natural numbers such that $n,m\geq N$. Then $|f_n(x)-f(x)|<\frac{\epsilon}{2}$ and $|f_m(x)-f(x)|<\frac{\epsilon}{2}$ for all $x\in A$. Therefore, we have that
         \begin{align*}
-            |f_n(x)-f(x)| &= |f(x)-f_n(x)|\\
-            &\leq |f(x)-f_M(x)|+|f_M(x)-f_n(x)|\\
+            |f_n(x)-f_m(x)| &\leq |f_n(x)-f(x)|+|f(x)-f_m(x)|\tag*{Lemma \ref{lem:8.8}}\\
+            &= |f_n(x)-f(x)|+|f_m(x)-f(x)|\tag*{Exercise \ref{exr:8.5}}\\
             &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
             &= \epsilon
         \end{align*}
-        a contradiction. Therefore, we have that there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in A$, as desired.
+        for all $x\in A$, as desired.\par\smallskip
+        Now suppose that for all $\epsilon>0$, there exists an $N\in\N$ such that when $n,m\geq N$, $|f_n(x)-f_m(x)|<\epsilon$ for all $x\in A$. It follows by Theorem \ref{trm:15.19} that $(f_n(x))$ converges for all $x\in A$, i.e., for all $x\in A$, there exists a point $f(x)\in\R$ to which $(f_n(x))$ converges. Let $f:A\to\R$ be defined by $f(x)=\lim_{n\to\infty}f_n(x)$.\par
+        To prove that $(f_n)$ converges uniformly to $f$, Definition \ref{dfn:17.3} tells us that it will suffice to show that for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in A$. Let $\epsilon>0$ be arbitrary. By the hypothesis, there exists $N\in\N$ such that for all $n,m\geq N$, $|f_n(x)-f_m(x)|<\frac{\epsilon}{2}$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$, and let $x$ be an arbitrary element of $A$. Since $(f_m(x))$ converges to $f(x)$, Theorem \ref{trm:15.7} asserts that there exists an $N'\in\N$ such that for all $m\geq N'$, $|f_m(x)-f(x)|<\frac{\epsilon}{2}$. Choose $M=\max(N,N')$. It follows that
+        \begin{align*}
+            |f_n(x)-f(x)| &\leq |f_n(x)-f_M(x)|+|f_M(x)-f(x)|\tag*{Lemma \ref{lem:8.8}}\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:17.10}
+    We define series of functions the same way we defined series of numbers. That is, given a sequence $(f_n)$, define the sequence of partial sums $(p_n)$ by $p_n(x)=f_1(x)+\cdots+f_n(x)$ and say that $\sum_{n=1}^\infty f_n$ converges pointwise or converges uniformly to $f$ if the sequence $(p_n)$ does.
+\end{definition}
+
+\begin{theorem}\label{trm:17.11}
+    Suppose that $f_n:A\to\R$ is a sequence of functions and that there exists a sequence of positive real numbers $(M_n)$ such that for all $x\in A$, we have $|f_n(x)|\leq M_n$. If $\sum_{n=1}^\infty M_n$ converges, then for each $x\in A$, the series of numbers $\sum_{n=1}^\infty f_n(x)$ converges absolutely. Furthermore, $\sum_{n=1}^\infty f_n$ converges uniformly to the function $f$ defined by $f(x)=\sum_{n=1}^\infty f_n(x)$.
+    \begin{proof}
+        % \begin{itemize}
+        %     % \item Theorem \ref{trm:16.5} ($\sum_{n=1}^\infty M_n$ converges): There exists $N\in\N$ such that $|\sum_{n=j+1}^kM_n|<\frac{\epsilon}{2}$ for all $k>j\geq N$.
+        %     % \item Choose this $N$ to be our $N$.
+        %     % \item Suppose (contradiction): $\sum_{n=j+1}^\infty M_n\geq\epsilon$.
+        %     % \begin{itemize}
+        %     %     \item Definition \ref{dfn:16.1}: $\sum_{n=j+1}^\infty M_n=\lim_{k\to\infty}\sum_{n=j+1}^kM_n$.
+        %     %     \item Theorem \ref{trm:15.7}: There is some $N'\in\N$ such that for all $k\geq N'$, $|\sum_{n=j+1}^kM_n-\sum_{n=j+1}^\infty M_n|<\frac{\epsilon}{2}$.
+        %     %     \item Definition \ref{dfn:16.1}: $|\sum_{n=N'+1}^\infty M_n|<\frac{\epsilon}{2}$.
+        %     %     \item $M_n$ is a sequence of positive numbers: $\sum_{n=N'+1}^\infty M_n<\frac{\epsilon}{2}$.
+        %     %     \begin{align*}
+        %     %         \frac{\epsilon}{2} &= \epsilon-\frac{\epsilon}{2}\\
+        %     %         &\leq \sum_{n=j+1}^\infty M_n-\frac{\epsilon}{2}\\
+        %     %         &= \sum_{n=j+1}^{N'}M_n+\sum_{n=N'+1}^\infty M_n-\frac{\epsilon}{2}\\
+        %     %         &< \sum_{n=j+1}^{N'}M_n+\frac{\epsilon}{2}-\frac{\epsilon}{2}\\
+        %     %         &= \sum_{n=j+1}^{N'}M_n
+        %     %     \end{align*}
+        %     %     \item Contradiction.
+        %     % \end{itemize}
+        %     \item Definition \ref{dfn:16.1}: $\sum_{n=1}^\infty M_n=\lim_{k\to\infty}\sum_{n=1}^kM_n$.
+        %     \item Theorem \ref{trm:15.7}: There is some $N\in\N$ such that for all $k\geq N$, $|\sum_{n=1}^kM_n-\sum_{n=1}^\infty M_n|<\epsilon$.
+        %     \item Script \ref{sct:16}: $|\sum_{n=N+1}^\infty M_n|<\epsilon$.
+        %     \item $M_n$ is a sequence of positive numbers: $\sum_{n=N+1}^\infty M_n=|\sum_{n=N+1}^\infty M_n|$.
+        %     \item Now let $j$ be an arbitrary natural number such that $j\geq N$.
+        %     \item Therefore:
+        %     \begin{align*}
+        %         \left| \sum_{n=1}^jf_n(x)-f(x) \right| &= \left| \sum_{n=1}^jf_n(x)-\sum_{n=1}^\infty f_n(x) \right|\\
+        %         &= \left| \sum_{n=j+1}^\infty f_n(x) \right|\\
+        %         &\leq \sum_{n=j+1}^\infty|f_n(x)|\tag*{Theorem \ref{trm:16.11}}\\
+        %         &\leq \sum_{n=j+1}^\infty M_n\\
+        %         &= \left| \sum_{n=j+1}^\infty M_n \right|\\
+        %         &< \epsilon
+        %     \end{align*}
+        % \end{itemize}
+
+        Let $x$ be an arbitrary element of $A$. To prove that $\sum_{n=1}^\infty f_n(x)$ converges absolutely, Definition \ref{dfn:16.9} tells us that it will suffice to show that $\sum_{n=1}^\infty|f_n(x)|$ converges. Since $(M_n)$ is a sequence of positive numbers and $|f_n(x)|\leq M_n$ for all $n\geq 1$, the proof of Theorem \ref{trm:16.13} asserts that $\sum_{n=1}^\infty|f_n(x)|$ converges.\par
+        To prove that $\sum_{n=1}^\infty f_n$ converges uniformly to $f$, Definition \ref{dfn:17.10} tells us that it will suffice to show that the sequence of partial sums $(p_n)$ defined by $p_k(x)=\sum_{n=1}^kf_n(x)$ converges uniformly to $f$. To do this, Definition \ref{dfn:17.3} tells us that it will suffice to verify that for all $\epsilon>0$, there exists an $N\in\N$ such that if $j\geq N$, then $|\sum_{n=1}^jf_n(x)-f(x)|<\epsilon$ for all $x\in A$. Let $\epsilon>0$ be arbitrary. By Definition \ref{dfn:16.1}, $\sum_{n=1}^\infty M_n=\lim_{k\to\infty}\sum_{n=1}^kM_n$. Thus, by Theorem \ref{trm:15.7}, there is some $N\in\N$ such that for all $j\geq N$, $|\sum_{n=1}^jM_n-\sum_{n=1}^\infty M_n|<\epsilon$. Choose this $N$ to be our $N$. Let $j$ be an arbitrary natural number such that $j\geq N$. It follows by Script \ref{sct:16} that $|\sum_{n=j+1}^\infty M_n|<\epsilon$. Additionally, since $(M_n)$ is a sequence of positive numbers, $\sum_{n=j+1}^\infty M_n=|\sum_{n=j+1}^\infty M_n|$. Therefore, combining the last several results and letting $x$ be an arbitrary element of $A$, we have that
+        \begin{align*}
+            \left| \sum_{n=1}^jf_n(x)-f(x) \right| &= \left| \sum_{n=1}^jf_n(x)-\sum_{n=1}^\infty f_n(x) \right|\\
+            &= \left| \sum_{n=j+1}^\infty f_n(x) \right|\\
+            &\leq \sum_{n=j+1}^\infty|f_n(x)|\tag*{Theorem \ref{trm:16.11}}\\
+            &\leq \sum_{n=j+1}^\infty M_n\\
+            &= \left| \sum_{n=j+1}^\infty M_n \right|\\
+            &< \epsilon
+        \end{align*}
+        as desired.
     \end{proof}
 \end{theorem}
 

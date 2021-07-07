@@ -102,7 +102,7 @@
     \end{proof}
 \end{theorem}
 
-\begin{theorem}\label{trm:17.7}\marginnote{6/26:}
+\begin{theorem}\label{trm:17.7}\marginnote{\emph{6/26:}}
     Suppose that $(f_n)$ is a sequence of integrable functions on $[a,b]$ and suppose that $(f_n)$ converges uniformly to $f:[a,b]\to\R$. Then
     \begin{equation*}
         \int_a^bf = \lim_{n\to\infty}\int_a^bf_n
@@ -326,6 +326,210 @@
             &< \epsilon
         \end{align*}
         as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:17.12}\marginnote{6/30:}
+    A function of the form $f(x)=\sum_{n=0}^\infty c_n(x-a)^n$, where $c_n\in\R$ is called a \textbf{power series}. The power series is \textbf{centered} at $a$, and the numbers $c_n$ are called the \textbf{coefficients}.
+\end{definition}
+
+\begin{theorem}\label{trm:17.13}
+    Let $f(x)=\sum_{n=0}^\infty c_nx^n$ be a power series centered at 0. Suppose that $x_0$ is a real number such that the series $f(x_0)=\sum_{n=0}^\infty c_nx_0^n$ converges. Let $r$ be any number such that $0<r<|x_0|$. Then the following series of functions converges uniformly on $[-r,r]$ (and absolutely for each $x\in[-r,r]$):
+    \begin{align*}
+        f(x) &= \sum_{n=0}^\infty c_nx^n&
+        g(x) &= \sum_{n=0}^\infty nc_nx^{n-1}&
+        h(x) &= \sum_{n=0}^\infty c_n\cdot\frac{x^{n+1}}{n+1}
+    \end{align*}
+    Furthermore, $f$ is differentiable on $[-r,r]$ and $f'=g$. Also, $h$ is differentiable on $[-r,r]$ and $h'=f$.\par
+    We may paraphrase this theorem as follows: If a (zero-centered) power series converges at $x_0$, then it may be differentiated and anti-differentiated term-by-term on $(-|x_0|,|x_0|)$ to obtain power series representations of the derivative and antiderivative of $f$.
+    \begin{proof}
+        % Theorem \ref{trm:17.13}: $g(x)=\sum_{n=1}^\infty nc_nx^{n-1}$. There exists some $M$ such that $|c_nx_0^n|\leq M$ for all $n\in\N$. Because $x\in[-r,r]$, $|x|\leq|r|$.
+        % We have $|nc_nx^{n-1}|=n|c_n||x^{n-1}|\leq n|c_n||r^{n-1}|=\frac{|c_n|}{|r|}|x_0|^nn|\frac{r}{x_0}|^n\leq\frac{M}{|r|}n|\frac{r}{x_0}|^n$. $r<|x_0|$ by supposition. Thus, $|\frac{r}{x_0}|<1$. Consider $\sum_{n=0}^\infty a_n=\sum_{n=0}^\infty\frac{M}{|r|}n|\frac{r}{x_0}|^n=\frac{M}{|r|}\sum_{n=0}^\infty n|\frac{r}{x_0}|^n$. Ratio test: $|\frac{a_{n+1}}{a_n}|=|(n+1)|\frac{r}{x_0}|^{n+1}\cdot\frac{1}{n}|\frac{x_0}{r}|^n|=\frac{n+1}{n}|\frac{r}{x_0}|$. Therefore, $\frac{n+1}{n}\to 1$ and $|\frac{r}{x_0}|<1$ implies convergence. We then show that $M_n=\frac{M}{|r|}|\frac{r}{x_0}|^n$ helps with Theorem \ref{trm:17.11}.
+
+        % $h(x)=\sum_{n=0}^\infty c_n\cdot\frac{x^{n+1}}{n+1}$. There exists $M$ such that $|c_n||x_0|^n\leq M$ for all $n\in\N$.
+        % \begin{align*}
+        %     |c_n\cdot\frac{x^{n+1}}{n+1}| &= |c_n||x^{n+1}|\cdot\frac{1}{n+1}\\
+        %     &\leq |c_n||r^{n+1}|\cdot\frac{1}{n+1}\\
+        %     &= \frac{|c_n|}{|r^{-1}|}\cdot|x_0|^n|\frac{r}{x_0}|^n\frac{1}{n+1}\\
+        %     &\leq \frac{M}{|r^{-1}|}|\frac{r}{x_0}|^n\frac{1}{n+1}
+        % \end{align*}
+        % $|\frac{r}{x_0}|<1$.
+        % \begin{align*}
+        %     \sum_{n=1}^\infty a_n &= \sum_{n=1}^\infty\frac{M}{|r^{-1}|}|\frac{r}{x_0}|^n\frac{1}{n+1}\\
+        %     &= \frac{M}{|r^{-1}|}\sum_{n=1}^\infty|\frac{r}{x_0}|^n\frac{1}{n+1}
+        % \end{align*}
+        % \begin{align*}
+        %     |\frac{a_{n+1}}{a_n}| &= ||\frac{r}{x_0}|^{n+1}\frac{1}{n+2}|\frac{x_0}{r}|^n\frac{n+1}{1}\\
+        %     &= \frac{n+1}{n+2}|\frac{r}{x_0}|
+        % \end{align*}
+        % Series converges. $M_n=\frac{M}{|r^{-1}|}|\frac{r}{x_0}|^n$. Implies $h$ converges uniformly by \ref{trm:17.11}.
+
+        % Lemma: Let $\sum_{n=1}^\infty f_n$ converge uniformly to $f$ on $[a,b]$.
+        % \begin{enumerate}
+        %     \item If each $f_n$ is continuous, then $f$ is continuous.
+        %     \begin{proof}
+        %         By induction and Corollary \ref{cly:11.10}, $\sum_{n=1}^Nf_n$ is continuous. \ref{trm:17.6}: $f$ continuous.
+        %     \end{proof}
+        %     \item If each $f_n$ and $f$ are integrable on $[a,b]$, then $\int_a^bf=\sum_{n=1}^\infty\int_a^bf_n$.
+        %     \begin{proof}
+        %         Since $\sum_{n=1}^Nf_n$ converges uniformly to $f$, Theorem \ref{trm:17.7} and \ref{trm:13.24a} implies that $\int_a^bf=\lim_{n\to\infty}\int_a^b(f_1+\cdots+f_n)=\lim_{n\to\infty}(\int_a^bf_1+\cdots+\int_a^bf_n)=\sum_{n=1}^\infty\int_a^bf_n$.
+        %     \end{proof}
+        %     \item If $\sum_{n=1}^\infty f_n$ converges pointwise to $f$ on $[a,b]$, each $f_n$ has an integrable derivative $f_n'$, and $\sum_{n=1}^\infty f_n'$ converges uniformly on $[a,b]$ to a continuous function, then $f'(x)=\sum_{n=1}^\infty f_n'(x)$ for all $x\in[a,b]$.
+        %     \begin{proof}
+        %         By induction and Exercise \ref{exr:12.9}, $f_1+\cdots+f_n$ is differentiable with derivative $f_1'+\cdots+f_n'$. By part (1), $\sum_{n=1}^\infty f_n'$ converges uniformly to continuous function. \ref{trm:17.8}: $f'(x)=\lim_{n\to\infty}(f_1'(x)+\cdots+f_n'(x))=\sum_{n=1}^\infty f_n'(x)$.
+        %     \end{proof}
+        % \end{enumerate}
+        % Invoke the lemma and derivative/integral of a power series. Power rule: $f_n'=f_n$. We may not need Lemma part (2)?
+
+        % \begin{itemize}
+        %     \item $(f_k)$ defined by $f_k(x)=\sum_{n=0}^kc_nx^n$ converges uniformly on $[-r,r]$ (and absolutely for each $x\in[-r,r]$).
+        %     \begin{itemize}
+        %         \item WTS (Theorem \ref{trm:17.11}): There exists a sequence of positive real numbers $(M_n)$ such that for all $x\in[-r,r]$, we have $|c_nx^n|\leq M_n$ and such that $\sum_{n=1}^\infty M_n$ converges.
+        %         \item There exists a number $M$ such that $|c_nx_0^n|\leq M$ for all $n\in\N$.
+        %         \begin{itemize}
+        %             \item Hypothesis: $f(x_0)=\sum_{n=0}^\infty c_nx_0^n$ converges.
+        %             \item Theorem \ref{trm:16.4}: $\lim_{n\to\infty}c_nx_0^n=0$.
+        %             \item Theorem \ref{trm:15.13}: $(c_nx_0^n)$ is bounded.
+        %             \item Definition \ref{dfn:15.12}: $\{c_nx_0^n\mid n\in\N\}$ is bounded.
+        %             \item Definition \ref{dfn:5.6}: There exist numbers $l,u\in\R$ such that $l\leq c_nx_0^n\leq u$ for all $n\in\N$.
+        %             \item Let $M=\max(|l|,|u|)$.
+        %             \item Script \ref{sct:0}: $-M\leq l\leq c_nx_0^n\leq u\leq M$ for all $n\in\N$.
+        %             \item Lemma, Exercise \ref{exr:8.9}: $|c_nx_0^n|\leq M$ for all $n\in\N$.
+        %         \end{itemize}
+        %         \item Let $(M_n)$ be defined by $M_n=M(\frac{r}{|x_0|})^n$ for all $n\in\N$.
+        %         \item For all $x\in[-r,r]$, $|c_nx^n|\leq M_n$ for all $n\in\N$.
+        %         \begin{itemize}
+        %             \item Let $x$ be an arbitrary element of $[-r,r]$.
+        %             \item Equations \ref{eqn:8.1}: $-r\leq x\leq r$.
+        %             \item Lemma, Exercise \ref{exr:8.9}: $|x|\leq r$.
+        %             \item Exercise \ref{exr:12.22}: $|x^n|\leq|r^n|$ for all $n\in\N$.
+        %             \item Script \ref{sct:7}: $|c_nx^n|\leq|c_nr^n|=|c_nx_0^n|(\frac{|r^n|}{|x_0^n|})=|c_nx_0^n|(\frac{r}{|x_0|})^n$ for all $n\in\N$.
+        %             \item The above and Lemma \ref{lem:7.24}: $|c_nx_0^n|(\frac{r}{|x_0|})^n\leq M(\frac{r}{|x_0|})^n=M_n$ for all $n\in\N$.
+        %             \item Transitivity: $|c_nx^n|\leq M_n$ for all $n\in\N$.
+        %         \end{itemize}
+        %         \item $(M_n)$ is a sequence of positive real numbers.
+        %         \item $\sum_{n=1}^\infty M_n$ converges.
+        %         \begin{itemize}
+        %             \item Script \ref{sct:7} ($0<r<|x_0|$): $-1<\frac{r}{|x_0|}<1$.
+        %             \item Theorem \ref{trm:16.7}: $\sum_{n=0}^\infty(\frac{r}{|x_0|})^n$ converges.
+        %             \item Lemma \ref{lem:16.2}: $\sum_{n=1}^\infty(\frac{r}{|x_0|})^n$ converges.
+        %             \item Theorem \ref{trm:16.8}: $\sum_{n=1}^\infty M(\frac{r}{|x_0|})^n$ converges.
+        %             \item $\sum_{n=1}^\infty M_n$ converges.
+        %         \end{itemize}
+        %     \end{itemize}
+        %     \item $(g_k)$ defined by $g_k(x)=\sum_{n=0}^knc_nx^{n-1}$ converges uniformly on $[-r,r]$ (and absolutely for each $x\in[-r,r]$).
+        %     \begin{itemize}
+        %         \item WTS (Theorem \ref{trm:17.11}): There exists a sequence of positive real numbers $(M_n)$ such that for all $x\in[-r,r]$, we have $|nc_nx^{n-1}|\leq M_n$ and such that $\sum_{n=1}^\infty M_n$ converges.
+        %         \item Defining $(M_n)$.
+        %         \begin{itemize}
+        %             \item Let $(M_n)$ be defined by $M_n=\frac{Mn}{|r|}|\frac{r}{x_0}|^n$ for all $n\in\N$.
+        %             \item Let $x$ be an arbitrary element of $[-r,r]$.
+        %             \item The above ($x\in[-r,r]$): $|x|\leq|r|$.
+        %             \item Therefore:
+        %             \begin{align*}
+        %                 |nc_nx^{n-1}| &= n|c_n||x^{n-1}|\\
+        %                 &\leq n|c_n||r^{n-1}|\tag*{Exercise \ref{exr:12.22}}\\
+        %                 &= \frac{|c_n|}{|r|}|x_0|^nn\left| \frac{r}{x_0} \right|^n\\
+        %                 &\leq \frac{Mn}{|r|}\left| \frac{r}{x_0} \right|^n\\
+        %                 &= M_n
+        %             \end{align*}
+        %         \end{itemize}
+        %         \item $\sum_{n=1}^\infty M_n$ converges (Theorem \ref{trm:16.15}): $\lim_{n\to\infty}|\frac{M_{n+1}}{M_n}|<1$.
+        %         \begin{itemize}
+        %             \item Hypothesis: $r<|x_0|$.
+        %             \item Lemma \ref{lem:7.24}: $|\frac{r}{x_0}|<1$.
+        %             \item Exercise \ref{exr:15.6a} (symmetric): $\lim_{n\to\infty}|\frac{r}{x_0}|$ converges to $|\frac{r}{x_0}|$.
+        %             \item Exercise \ref{exr:15.10c} (symmetric): $\lim_{n\to\infty}|\frac{n+1}{n}|$ converges to 1.
+        %             \item Therefore:
+        %             \begin{align*}
+        %                 \lim_{n\to\infty}\left| \frac{M_{n+1}}{M_n} \right| &= \lim_{n\to\infty}\left| \frac{\frac{M(n+1)}{|r|}\left| \frac{r}{x_0} \right|^{n+1}}{\frac{Mn}{|r|}\left| \frac{r}{x_0} \right|^n} \right|\\
+        %                 &= \lim_{n\to\infty}\left| \frac{n+1}{n}\left| \frac{r}{x_0} \right| \right|\\
+        %                 &= \left( \lim_{n\to\infty}\left| \frac{r}{x_0} \right| \right)\left( \lim_{n\to\infty}\left| \frac{n+1}{n} \right| \right)\tag*{Theorem \ref{trm:15.9}}\\
+        %                 &= \left| \frac{r}{x_0} \right|\cdot 1\\
+        %                 &< 1
+        %             \end{align*}
+        %         \end{itemize}
+        %     \end{itemize}
+        %     \item Symmetric for $(h_k)$ defined by $h_k(x)=\sum_{n=0}^kc_n\cdot\frac{x^{n+1}}{n+1}$.
+        %     \item $f$ is differentiable on $[-r,r]$ and $f'=g$.
+        %     \begin{itemize}
+        %         \item WTS (Theorem \ref{trm:14.1}): $g$ is integrable on $[-r,r]$, $f(x)+c=\int_{-r}^xg$ where $c\in\R$ is a constant, $g$ is continuous on $[-r,r]$.
+        %         \item $g$ is integrable on $[-r,r]$ with $\int_{-r}^xg=f(x)+c$.
+        %         \begin{itemize}
+        %             \item Let $k$ be an arbitrary natural number.
+        %             \item $g_k(x)=\sum_{n=0}^knc_nx^{n-1}$.
+        %             \item Definition \ref{dfn:11.11}: $g_k$ is a polynomial.
+        %             \item Corollary \ref{cly:11.12}: $g_k$ is continuous.
+        %             \item Theorem \ref{trm:13.19}: $g_k$ is integrable.
+        %             \item Lemma, Theorem \ref{trm:17.7} ($(g_k)$ is a sequence of integrable function on $[-r,r]$): $g$ is integrable on $[-r,r]$.
+        %             \item Therefore:
+        %             \begin{align*}
+        %                 \int_{-r}^xg &= \lim_{k\to\infty}\int_{-r}^xg_k\tag*{Theorem \ref{trm:17.7}}\\
+        %                 &= \lim_{k\to\infty}\int_{-r}^x\sum_{n=0}^knc_nt^{n-1}\dd{t}\\
+        %                 &= \lim_{k\to\infty}\sum_{n=0}^k\int_{-r}^xnc_nt^{n-1}\dd{t}\tag*{Theorem \ref{trm:13.24}}\\
+        %                 &= \lim_{k\to\infty}\sum_{n=0}^k(c_nx^n-c_n(-r)^n)\footnotemark\tag*{Theorem \ref{trm:14.4}}\\
+        %                 &= \sum_{n=0}^\infty(c_nx^n-c_n(-r)^n)\tag*{Definition \ref{dfn:16.1}}\\
+        %                 &= \sum_{n=0}^\infty c_nx^n-\sum_{n=0}^\infty c_n(-r)^n\tag*{Theorem \ref{trm:16.8}}\\
+        %                 &= f(x)+c
+        %             \end{align*}
+        %             \footnotetext{Note that in order to verify the equality of the previous equation and this one, we must technically prove the power rule (analogous to Exercise \ref{exr:13.21}) in general for arbitrary domains and $n$. However, as this would be a Script \ref{sct:13} proof in nature, we omit it.}
+        %         \end{itemize}
+        %         \item $g$ is continuous on $[-r,r]$.
+        %         \begin{itemize}
+        %             \item Theorem \ref{trm:17.6} (each $g_k$ is continuous and $(g_k)$ converges uniformly to $g$): $g$ is continuous on $[-r,r]$.
+        %         \end{itemize}
+        %     \end{itemize}
+        %     \item Symmetric for proving that $h$ is differentiable on $[-r,r]$ and $h'=f$.
+        % \end{itemize}
+
+        Let $(f_k)$ be defined by $f_k(x)=\sum_{n=0}^kc_nx^n$ for each $k\in\N$. To prove that $(f_k)$ converges uniformly on $[-r,r]$ and that $(f_k(x))$ converges absolutely for each $x\in[-r,r]$, Theorem \ref{trm:17.11} tells us that it will suffice to find a sequence of positive real numbers $(M_n)$ such that for all $x\in[-r,r]$, we have $|c_nx^n|\leq M_n$ and such that $\sum_{n=1}^\infty M_n$ converges.\par\smallskip
+        To begin, we will show that there exists a number $M$ such that $|c_nx_0^n|\leq M$ for all $n\in\N$. By the hypothesis, $f(x_0)=\sum_{n=0}^\infty c_nx_0^n$ converges. Thus, by Theorem \ref{trm:16.4}, $\lim_{n\to\infty}c_nx_0^n=0$. Consequently, by Theorem \ref{trm:15.13}, $(c_nx_0^n)$ is bounded. It follows by Definition \ref{dfn:15.12} that $\{c_nx_0^n\mid n\in\N\}$ is bounded. Thus, by Definition \ref{dfn:5.6}, there exist numbers $l,u\in\R$ such that $l\leq c_nx_0^n\leq u$ for all $n\in\N$. Let $M=\max(|l|,|u|)$. It follows by Script \ref{sct:0} that $-M\leq l\leq c_nx_0^n\leq u\leq M$ for all $n\in\N$. Therefore, by the lemma to Exercise \ref{exr:8.9}, $|c_nx_0^n|\leq M$ for all $n\in\N$, as desired.\par
+        We can now define $(M_n)$: Let $(M_n)$ be defined by $M_n=M(\frac{r}{|x_0|})^n$ for all $n\in\N$.\par
+        Next, we will show that for all $x\in[-r,r]$, $|c_nx^n|\leq M_n$ for all $n\in\N$. Let $x$ be an arbitrary element of $[-r,r]$. It follows by Equations \ref{eqn:8.1} that $-r\leq x\leq r$. Thus, by the lemma to Exercise \ref{exr:8.9}, $|x|\leq r$. Consequently, by Exercise \ref{exr:12.22}, $|x^n|\leq|r^n|$ for all $n\in\N$. Therefore,
+        \begin{align*}
+            |c_nx^n| &\leq |c_nr^n|\\
+            &= |c_nx_0^n|\left( \frac{|r^n|}{|x_0^n|} \right)\\
+            &\leq M\left( \frac{r}{|x_0|} \right)^n\\
+            &= M_n
+        \end{align*}
+        for all $n\in\N$, as desired. Note that this result also implies by Definition \ref{dfn:8.4} that $(M_n)$ is a sequence of positive real numbers.\par
+        Lastly, we will show that $\sum_{n=1}^\infty M_n$ converges. Since $0<r<|x_0|$ by hypothesis, Script \ref{sct:7} implies that $-1<\frac{r}{|x_0|}<1$. Thus, by Theorem \ref{trm:16.7}, $\sum_{n=0}^\infty(\frac{r}{|x_0|})^n$ converges. Consequently, by Lemma \ref{lem:16.2}, $\sum_{n=1}^\infty(\frac{r}{|x_0|})^n$ converges. Therefore, by Theorem \ref{trm:16.8}, $\sum_{n=1}^\infty M(\frac{r}{|x_0|})^n$ (i.e., $\sum_{n=1}^\infty M_n$) converges, as desired.\par\medskip
+        Let $(g_k)$ be defined by $g_k(x)=\sum_{n=0}^knc_nx^{n-1}$ for each $k\in\N$. To prove that $(g_k)$ converges uniformly on $[-r,r]$ and that $(g_k(x))$ converges absolutely for each $x\in[-r,r]$, Theorem \ref{trm:17.11} tells us that it will suffice to find a sequence of positive real numbers $(M_n)$ such that for all $x\in[-r,r]$, we have $|nc_nx^{n-1}|\leq M_n$ and such that $\sum_{n=1}^\infty M_n$ converges.\par\smallskip
+        To begin, we define $(M_n)$ and prove its basic properties. Let $(M_n)$ be defined by $M_n=\frac{Mn}{|r|}|\frac{r}{x_0}|^n$ for all $n\in\N$, where $M$ is the same constant defined above. We now show that for all $x\in[-r,r]$, we have $|nc_nx^{n-1}\leq M_n$ for all $n\in\N$. Let $x$ be an arbitrary element of $[-r,r]$. It follows as before that $|x^{n-1}|\leq|r^{n-1}|$ for all $n\in\N$. Therefore,
+        \begin{align*}
+            |nc_nx^{n-1}| &= n|c_n||x^{n-1}|\\
+            &\leq n|c_n||r^{n-1}|\\
+            &= \frac{|c_n|}{|r|}|x_0|^nn\left| \frac{r}{x_0} \right|^n\\
+            &\leq \frac{Mn}{|r|}\left| \frac{r}{x_0} \right|^n\\
+            &= M_n
+        \end{align*}
+        for all $n\in\N$, as desired. Note that as before, this result also implies that $(M_n)$ is a sequence of positive real numbers.\par
+        Next, we will show that $\sum_{n=1}^\infty M_n$ converges. To do so, Theorem \ref{trm:16.15} tells us that it will suffice to show that $\lim_{n\to\infty}|\frac{M_{n+1}}{M_n}|<1$. As before, $|\frac{r}{x_0}|<1$. Additionally, by an argument symmetric to that used in Exercise \ref{exr:15.6a}, we know that $\lim_{n\to\infty}|\frac{r}{x_0}|$ converges to $|\frac{r}{x_0}|$. Furthermore, by an argument symmetric to that used in Exercise \ref{exr:15.10c}, we have that $\lim_{n\to\infty}|\frac{n+1}{n}|$ converges to 1. Combining these last three results, we have that
+        \begin{align*}
+            \lim_{n\to\infty}\left| \frac{M_{n+1}}{M_n} \right| &= \lim_{n\to\infty}\left| \frac{\frac{M(n+1)}{|r|}\left| \frac{r}{x_0} \right|^{n+1}}{\frac{Mn}{|r|}\left| \frac{r}{x_0} \right|^n} \right|\\
+            &= \lim_{n\to\infty}\left| \frac{n+1}{n}\left| \frac{r}{x_0} \right| \right|\\
+            &= \left( \lim_{n\to\infty}\left| \frac{r}{x_0} \right| \right)\left( \lim_{n\to\infty}\left| \frac{n+1}{n} \right| \right)\tag*{Theorem \ref{trm:15.9}}\\
+            &= \left| \frac{r}{x_0} \right|\cdot 1\\
+            &< 1
+        \end{align*}
+        as desired.\par\medskip
+        The argument for $(h_k)$ defined by $h_k(x)=\sum_{n=0}^kc_n\cdot\frac{x^{n+1}}{n+1}$ is symmetric to that for $(g_k)$.\par\bigskip
+        To prove that $f$ is differentiable on $[-r,r]$ and $f'=g$, Theorem \ref{trm:14.1} tells us that it will suffice to show that $g$ is integrable on $[-r,r]$, that $f(x)+c=\int_{-r}^xg$ where $c\in\R$ is a constant, and that $g$ is continuous on $[-r,r]$. We will verify each constraint in order.\par\smallskip
+        Let $k$ be an arbitrary natural number. Thus, by the definition of $(g_k)$, $g_k(x)=\sum_{n=0}^knc_nx^{n-1}$. Consequently, by Definition \ref{dfn:11.11}, $g_k$ is a polynomial. It follows by Corollary \ref{cly:11.12} that $g_k$ is continuous. Thus, by Theorem \ref{trm:13.19}, $g_k$ is integrable. Therefore, since $(g_k)$ is a sequence of integrable functions on $[-r,r]$, the lemma to Theorem \ref{trm:17.7} asserts that $g$ is integrable on $[-r,r]$, as desired.\par
+        It follows from the above that
+        \begin{align*}
+            \int_{-r}^xg &= \lim_{k\to\infty}\int_{-r}^xg_k\tag*{Theorem \ref{trm:17.7}}\\
+            &= \lim_{k\to\infty}\int_{-r}^x\sum_{n=0}^knc_nt^{n-1}\dd{t}\\
+            &= \lim_{k\to\infty}\sum_{n=0}^k\int_{-r}^xnc_nt^{n-1}\dd{t}\tag*{Theorem \ref{trm:13.24}}\\
+            &= \lim_{k\to\infty}\sum_{n=0}^k(c_nx^n-c_n(-r)^n)\footnotemark\tag*{Theorem \ref{trm:14.4}}\\
+            &= \sum_{n=0}^\infty(c_nx^n-c_n(-r)^n)\tag*{Definition \ref{dfn:16.1}}\\
+            &= \sum_{n=0}^\infty c_nx^n-\sum_{n=0}^\infty c_n(-r)^n\tag*{Theorem \ref{trm:16.8}}\\
+            &= f(x)+c
+        \end{align*}
+        \footnotetext{Note that in order to verify the equality of the previous equation and this one, we must technically prove the power rule (analogous to Exercise \ref{exr:13.21}) in general for arbitrary domains and $n$. However, as this would be a Script \ref{sct:13} proof in nature, we omit it.}
+        as desired.\par
+        Lastly, since each $g_k$ is continuous and $(g_k)$ converges uniformly to $g$, Theorem \ref{trm:17.6} asserts that $g$ is continuous on $[-r,r]$, as desired.\par\medskip
+        The argument for that $h$ is differentiable on $[-r,r]$ and $h'=f$ is symmetric to the above.
     \end{proof}
 \end{theorem}
 

@@ -1,0 +1,134 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{17}
+
+\begin{document}
+
+
+
+
+\chapter[The Euclidean Space \texorpdfstring{$\protect\fakeboldb{\R}^{\bm{n}}$}{TEXT}]{The Euclidean Space \texorpdfstring{$\protect\fakeboldc{\R}^{\bm{n}}$}{TEXT}}\label{sct:18}
+\begin{definition}\label{dfn:18.1}\marginnote{7/7:}
+    The \textbf{Euclidean $\bm{n}$-space} $\R^n$ is the $n$-fold Cartesian product of $\R$. Symbolically,
+    \begin{equation*}
+        \R^n = \{(x_1,\dots,x_n)\mid x_1,\dots,x_n\in\R\}
+    \end{equation*}
+    is the set of $n$-tuples of real numbers. We often write
+    \begin{equation*}
+        \x = (x_1,\dots,x_n)
+    \end{equation*}
+    to denote an element, which is also referred to as a \textbf{vector}, in $\R^n$ and
+    \begin{equation*}
+        \bm{0} = (0,\dots,0)
+    \end{equation*}
+\end{definition}
+
+\begin{definition}\label{dfn:18.2}
+    Let $\x=(x_1,\dots,x_n),\y=(y_1,\dots,y_n)\in\R^n$ and $\lambda\in\R$. We define the following operations.
+    \begin{enumerate}[label={(\alph*)}]
+        \item (Addition) $\x+\y=(x_1+y_1,\dots,x_n+y_n)$.
+        \item (Scalar Multiplication) $\lambda\x=(\lambda x_1,\dots,\lambda x_n)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{exercise}\label{exr:18.3}
+    Prove that the addition on $\R^n$ satisfies FA1-FA4 (see Definition \ref{dfn:7.8}). Moreover, prove that
+    \begin{enumerate}[label={VS\arabic*.}]
+        \item (Associativity of Scalar Multiplication) If $\lambda,\mu\in\R$ and $\x\in\R^n$, then $(\lambda\mu)\x=\lambda(\mu\x)$.
+        \item (Distributivity of Scalars) If $\lambda,\mu\in\R$ and $\x\in\R^n$, then $(\lambda+\mu)\x=\lambda\x+\mu\x$.
+        \item (Distributivity of Vectors) If $\lambda\in\R$ and $\x,\y\in\R^n$, then $\lambda(\x+\y)=\lambda\x+\lambda\y$.
+        \item (Scalar Multiplicative Identity) If $\x\in\R^n$, then $1\x=\x$.
+    \end{enumerate}
+    These eight properties together are called the \textbf{vector space axioms}.
+    \begin{proof}
+        To prove that $\R^n$ obeys FA1 from Definition \ref{dfn:7.8}, it will suffice to show that for all $\x,\y\in\R^n$, $\x+\y=\y+\x$. Let $\x,\y$ be arbitrary elements of $\R^n$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            \x+\y &= (x_1+y_1,\dots,x_n+y_n)\\
+            &= (y_1+x_1,\dots,y_n+x_n)\\
+            &= \y+\x
+        \end{align*}
+        as desired.\par
+        To prove that $\R^n$ obeys FA2 from Definition \ref{dfn:7.8}, it will suffice to show that for all $\x,\y,\z\in\R^n$, $(\x+\y)+\z=\x+(\y+\z)$. Let $\x,\y,\z$ be arbitrary elements of $\R^n$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            (\x+\y)+\z &= (x_1+y_1,\dots,x_n+y_n)+\z\\
+            &= ((x_1+y_1)+z_1,\dots,(x_n+y_n)+z_n)\\
+            &= (x_1+(y_1+z_1),\dots,x_n+(y_n+z_n))\\
+            &= \x+(y_1+z_1,\dots,y_n+z_n)\\
+            &= \x+(\y+\z)
+        \end{align*}
+        as desired.\par
+        To prove that $\R^n$ obeys FA3 from Definition \ref{dfn:7.8}, it will suffice to find an element $0\in\R^n$ such that $\x+0=0+\x=\x$ for all $\x\in\R^n$. Choose $\bm{0}$ to be our $0$. Let $\x$ be an arbitrary element of $\R^n$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            \x+\bm{0} &= (x_1+0,\dots,x_n+0)\\
+            &= (x_1,\dots,x_n)\\
+            &= \x\\
+            &= (0+x_1,\dots,0+x_n)\\
+            &= \bm{0}+\x
+        \end{align*}
+        as desired.\par
+        To prove that $\R^n$ obeys FA4 from Definition \ref{dfn:7.8}, it will suffice to show that for all $\x\in\R^n$, there exists $\y\in\R^n$ such that $\x+\y=\y+\x=0$. Let $\x$ be an arbitrary element of $\R^n$. Choose $\y=(-x_1,\dots,-x_n)$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            \x+\y &= (x_1+(-x_1),\dots,x_n+(-x_n))\\
+            &= (0,\dots,0)\\
+            &= \bm{0}\\
+            &= ((-x_1)+x_1,\dots,(-x_n)+x_n)\\
+            &= \y+\x
+        \end{align*}
+        as desired.\par
+        To prove that $\R^n$ obeys VS1, it will suffice to show that for all $\lambda,\mu\in\R$ and $\x\in\R^n$, we have $(\lambda\mu)\x=\lambda(\mu\x)$. Let $\lambda,\mu$ be arbitrary elements of $\R$, and let $\x$ be an arbitrary element of $\R^n$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            (\lambda\mu)\x &= ((\lambda\mu)x_1,\dots,(\lambda\mu)x_n)\\
+            &= (\lambda(\mu x_1),\dots,\lambda(\mu x_n))\\
+            &= \lambda(\mu\x)
+        \end{align*}
+        as desired.\par
+        To prove that $\R^n$ obeys VS2, it will suffice to show that for all $\lambda,\mu\in\R$ and $\x\in\R^n$, we have $(\lambda+\mu)\x=\lambda\x+\mu\x$. Let $\lambda,\mu$ be arbitrary elements of $\R$, and let $\x$ be an arbitrary element of $\R^n$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            (\lambda+\mu)\x &= ((\lambda+\mu)x_1,\dots,(\lambda+\mu)x_n)\\
+            &= (\lambda x_1+\mu x_1,\dots,\lambda x_n+\mu x_n)\\
+            &= (\lambda x_1,\dots,\lambda x_n)+(\mu x_1,\dots,\mu x_n)\\
+            &= \lambda\x+\mu\x
+        \end{align*}
+        as desired.\par
+        To prove that $\R^n$ obeys VS3, it will suffice to show that for all $\lambda\in\R$ and $\x,\y\in\R^n$, we have $\lambda(\x+\y)=\lambda\x+\lambda\y$. Let $\lambda$ be an arbitrary element of $\R$, and let $\x,\y$ be arbitrary elements of $\R^n$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            \lambda(\x+\y) &= \lambda(x_1+y_1,\dots,x_n+y_n)\\
+            &= (\lambda(x_1+y_1),\dots,\lambda(x_n+y_n))\\
+            &= (\lambda x_1+\lambda y_1,\dots,\lambda x_n+\lambda y_n)\\
+            &= (\lambda x_1,\dots,\lambda x_n)+(\lambda y_1,\dots,\lambda y_2)\\
+            &= \lambda\x+\lambda\y
+        \end{align*}
+        as desired.\par
+        To prove that $\R^n$ obeys VS4, it will suffice to show that for all $\x\in\R^n$, we have $1\x=\x$. Let $\x$ be an arbitrary element of $\R^n$. Then by Definition \ref{dfn:18.2},
+        \begin{align*}
+            1\x &= (1x_1,\dots,1x_n)\\
+            &= (x_1,\dots,x_n)\\
+            &= \x
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{remark}\label{rmk:18.4}
+    Since $\R^n$ with the two operations defined as above satisfies these eight axioms, we call $\R^n$ a \textbf{vector space}.
+\end{remark}
+
+\begin{exercise}\label{exr:18.5}
+    Prove that if $\x\in\R^n$, then $0\x=\bm{0}$.
+    \begin{proof}
+        By Definition \ref{dfn:18.2}, we have that
+        \begin{align*}
+            0\x &= (0x_1,\dots,0x_n)\\
+            &= (0,\dots,0)\\
+            &= \bm{0}
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{exercise}
+
+
+
+
+\end{document}

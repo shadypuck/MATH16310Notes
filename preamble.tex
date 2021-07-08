@@ -7,6 +7,7 @@
 \usepackage[bottom]{footmisc}
 \usepackage{enumitem}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm,scalerel}
 \usepackage{physics}
 \usepackage[hidelinks]{hyperref}
 
@@ -48,5 +49,24 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+
+\newlength\bshft
+\bshft=.08pt\relax
+\newcommand{\fakeboldb}[1]{
+    \ThisStyle{\ooalign{$\SavedStyle#1$\cr%
+    \kern-\bshft$\SavedStyle#1$\cr%
+    \kern\bshft$\SavedStyle#1$}}
+}
+\newlength\cshft
+\cshft=.38pt\relax
+\newcommand{\fakeboldc}[1]{
+    \ThisStyle{\ooalign{$\SavedStyle#1$\cr%
+    \kern-\cshft$\SavedStyle#1$\cr%
+    \kern\cshft$\SavedStyle#1$}}
+}
 
 \usepackage{subfiles}

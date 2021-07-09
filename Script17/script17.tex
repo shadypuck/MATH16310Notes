@@ -45,7 +45,7 @@
     \begin{enumerate}[label={(\alph*)}]
         \item For $n\in\N$, let $f_n:[0,1]\to\R$ be given by $f_n(x)=x^n$.
         \begin{proof}[Answer]
-            Converges to the function $f:[0,1]\to\R$ defined by
+            The sequence $(f_n)$ converges pointwise, but not uniformly, to the function $f:[0,1]\to\R$ defined by
             \begin{equation*}
                 f(x) =
                 \begin{cases}
@@ -53,11 +53,47 @@
                     1 & x=1
                 \end{cases}
             \end{equation*}
-            Does not converge uniformly.
+        \end{proof}
+        \begin{proof}
+            To prove that $(f_n)$ converges pointwise to $f$, Definition \ref{dfn:17.2} tells us that it will suffice to show that for all $x\in[0,1]$, $\lim_{n\to\infty}f_n(x)=f(x)$. We divide into two cases ($x\in[0,1)$ and $x=1$). If $x\in[0,1)$, then by Script \ref{sct:8}, $|x|<1$. Therefore,
+            \begin{align*}
+                \lim_{n\to\infty}f_n(x) &= \lim_{n\to\infty}x^n\\
+                &= 0\tag*{Exercise \ref{exr:15.8b}}\\
+                &= f(x)
+            \end{align*}
+            as desired. On the other hand, if $x=1$, then
+            \begin{align*}
+                \lim_{n\to\infty}f_n(1) &= \lim_{n\to\infty}1^n\\
+                &= \lim_{n\to\infty}1\\
+                &= 1\tag*{Exercise \ref{exr:15.6a}}\\
+                &= f(1)
+            \end{align*}
+            as desired.\par
+            Suppose for the sake of contradiction that $(f_n)$ converges uniformly to $f$. Then by Definition \ref{dfn:17.3}, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\frac{1}{2}$ for all $x\in[0,1]$. Let $x=\frac{1}{2^{1/N}}$. We have that $0<\frac{1}{2^{1/N}}$ and that
+            \begin{align*}
+                \frac{1}{2^{1/N}} &= \frac{1^{1/N}}{2^{1/N}}\\
+                &< \frac{2^{1/N}}{2^{1/N}}\\
+                &= 1
+            \end{align*}
+            for all $N\in\N$, so this is an acceptable $x$. However, we have that
+            \begin{align*}
+                |f_N(x)-f(x)| &= \left| \left( \frac{1}{2^{1/N}} \right)^N-0 \right|\\
+                &= \frac{1}{2}
+            \end{align*}
+            a contradiction\footnote{Note that as an alternative to this second contradiction argument, we can prove that $(f_n)$ does not converge uniformly to $f$ via the contrapositive of Theorem \ref{trm:17.6}. Indeed, since $f$ has a discontinuity at 1 while each $f_n$ is continuous by Corollary \ref{cly:11.12}, the contrapositive of Theorem \ref{trm:17.6} implies that $(f_n)$ cannot converge uniformly to $f$.}.
         \end{proof}
         \item For $n\in\N$, let $f_n:\R\to\R$ be given by $f_n(x)=\frac{\sin(nx)}{n}$. (For the purposes of this example, you may assume basic knowledge of sine.)
         \begin{proof}[Answer]
-            Converges to the function $f:\R\to\R$ defined by $f(x)=0$. Does converge uniformly.
+            The sequence $(f_n)$ converges uniformly to the function $f:\R\to\R$ defined by $f(x)=0$.
+        \end{proof}
+        \begin{proof}
+            To prove that $(f_n)$ converges uniformly to $f$, Definition \ref{dfn:17.3} tells us that it will suffice to show that for all $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$ for all $x\in\R$. Let $\epsilon>0$ be arbitrary. By Exercise \ref{exr:15.6c} and Theorem \ref{trm:15.7}, there exists $N\in\N$ such that for all $n\geq N$, we have $|\frac{1}{n}-0|<\epsilon$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Before constructing the main inequality, recall from our basic knowledge of sine that $|\sin(nx)|\leq 1$ for all $x\in\R$. Therefore,
+            \begin{align*}
+                |f_n(x)-f(x)| &= \left| \frac{\sin(nx)}{n}-0 \right|\\
+                &\leq \left| \frac{1}{n} \right|\\
+                &< \epsilon
+            \end{align*}
+            as desired.
         \end{proof}
         \item For $n\in\N$, let $f_n:[0,1]\to\R$ be given by
         \begin{equation*}
@@ -69,7 +105,34 @@
             \end{cases}
         \end{equation*}
         \begin{proof}[Answer]
-            Converges to the function $f:[0,1]\to\R$ defined by $f(x)=0$. Does not converge uniformly.
+            The sequence $(f_n)$ converges pointwise, but not uniformly, to the function $f:[0,1]\to\R$ defined by $f(x)=0$.
+        \end{proof}
+        \begin{proof}
+            To prove that $(f_n)$ converges pointwise to $f$, Definition \ref{dfn:17.2} tells us that it will suffice to show that for all $x\in[0,1]$ and $\epsilon>0$, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. We divide into two cases ($x=0$ and $x\in(0,1]$). Suppose first that $x=0$. Choose $N=1$. Let $n$ be an arbitrary natural number such that $n\geq N$. Therefore,
+            \begin{align*}
+                |f_n(0)-f(0)| &= |n^2\cdot 0-0|\\
+                &= 0\\
+                &< \epsilon
+            \end{align*}
+            as desired. Now suppose that $x\in(0,1]$. Choose $N=\frac{2}{x}$. Let $n$ be an arbitrary natural number such that $n\geq N$. It follows that
+            \begin{align*}
+                \frac{2}{n} &\leq \frac{2}{N}\\
+                &= x
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                |f_n(x)-f(x)| &= |0-0|\\
+                &= 0\\
+                &< \epsilon
+            \end{align*}
+            as desired.\par
+            Suppose for the sake of contradiction that $(f_n)$ converges uniformly to $f$. Then by Definition \ref{dfn:17.3}, there exists $N\in\N$ such that if $n\geq N$, then $|f_n(x)-f(x)|<1$ for all $x\in[0,1]$. Let $x=\frac{1}{N}$. By Script \ref{sct:7}, $0\leq\frac{1}{N}\leq 1$ for all $N\in\N$, so this is an acceptable $x$. However, we have that
+            \begin{align*}
+                |f_N(x)-f(x)| &= |N^2\cdot\frac{1}{N}-0|\\
+                &= N\\
+                &\geq 1
+            \end{align*}
+            a contradiction.
         \end{proof}
     \end{enumerate}
 \end{exercise}
@@ -342,7 +405,14 @@
     \end{align*}
     Furthermore, $f$ is differentiable on $[-r,r]$ and $f'=g$. Also, $h$ is differentiable on $[-r,r]$ and $h'=f$.\par
     We may paraphrase this theorem as follows: If a (zero-centered) power series converges at $x_0$, then it may be differentiated and anti-differentiated term-by-term on $(-|x_0|,|x_0|)$ to obtain power series representations of the derivative and antiderivative of $f$.
-    \begin{proof}
+    \begin{lemma*}
+        Let $n\in\N$. Suppose $f:[a,b]\to\R$ is given by $f(x)=nx^{n-1}$. Then $f$ is integrable and $\int_a^bf=b^n-a^n$.
+        \begin{proof}
+            By Definition \ref{dfn:11.11}, $f$ is a polynomial. Thus, by Corollary \ref{cly:11.12}, $f$ is continuous. Consequently, by Theorem \ref{trm:13.19}, $f$ is integrable.\par
+            To prove that $\int_a^bf=b^n-a^n$, Theorem \ref{trm:14.4} tells us that it will suffice to show that the function $G:[a,b]\to\R$ defined by $G(x)=x^n$ is continuous on $[a,b]$, differentiable on $(a,b)$, and such that $f=G'$. By Definition \ref{dfn:11.11}, $G$ is a polynomial. Thus, by Corollary \ref{cly:11.12}, $G$ is continuous (notably on $[a,b]$), as desired. Additionally, by Exercise \ref{exr:12.8}, $G$ is differentiable (notably on $(a,b)$) and $G'(x)=nx^{n-1}=f(x)$ for all $x\in\R$ (notably all $x\in[a,b]$), as desired.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:17.13}]
         % Theorem \ref{trm:17.13}: $g(x)=\sum_{n=1}^\infty nc_nx^{n-1}$. There exists some $M$ such that $|c_nx_0^n|\leq M$ for all $n\in\N$. Because $x\in[-r,r]$, $|x|\leq|r|$.
         % We have $|nc_nx^{n-1}|=n|c_n||x^{n-1}|\leq n|c_n||r^{n-1}|=\frac{|c_n|}{|r|}|x_0|^nn|\frac{r}{x_0}|^n\leq\frac{M}{|r|}n|\frac{r}{x_0}|^n$. $r<|x_0|$ by supposition. Thus, $|\frac{r}{x_0}|<1$. Consider $\sum_{n=0}^\infty a_n=\sum_{n=0}^\infty\frac{M}{|r|}n|\frac{r}{x_0}|^n=\frac{M}{|r|}\sum_{n=0}^\infty n|\frac{r}{x_0}|^n$. Ratio test: $|\frac{a_{n+1}}{a_n}|=|(n+1)|\frac{r}{x_0}|^{n+1}\cdot\frac{1}{n}|\frac{x_0}{r}|^n|=\frac{n+1}{n}|\frac{r}{x_0}|$. Therefore, $\frac{n+1}{n}\to 1$ and $|\frac{r}{x_0}|<1$ implies convergence. We then show that $M_n=\frac{M}{|r|}|\frac{r}{x_0}|^n$ helps with Theorem \ref{trm:17.11}.
 
@@ -521,12 +591,13 @@
             \int_{-r}^xg &= \lim_{k\to\infty}\int_{-r}^xg_k\tag*{Theorem \ref{trm:17.7}}\\
             &= \lim_{k\to\infty}\int_{-r}^x\sum_{n=0}^knc_nt^{n-1}\dd{t}\\
             &= \lim_{k\to\infty}\sum_{n=0}^k\int_{-r}^xnc_nt^{n-1}\dd{t}\tag*{Theorem \ref{trm:13.24}}\\
-            &= \lim_{k\to\infty}\sum_{n=0}^k(c_nx^n-c_n(-r)^n)\footnotemark\tag*{Theorem \ref{trm:14.4}}\\
+            &= \lim_{k\to\infty}\sum_{n=0}^kc_n\int_{-r}^xnt^{n-1}\dd{t}\tag*{Theorem \ref{trm:13.24}}\\
+            &= \lim_{k\to\infty}\sum_{n=0}^kc_n(x^n-(-r)^n)\tag*{Lemma}\\
+            &= \lim_{k\to\infty}\sum_{n=0}^k(c_nx^n-c_n(-r)^n)\\
             &= \sum_{n=0}^\infty(c_nx^n-c_n(-r)^n)\tag*{Definition \ref{dfn:16.1}}\\
             &= \sum_{n=0}^\infty c_nx^n-\sum_{n=0}^\infty c_n(-r)^n\tag*{Theorem \ref{trm:16.8}}\\
             &= f(x)+c
         \end{align*}
-        \footnotetext{Note that in order to verify the equality of the previous equation and this one, we must technically prove the power rule (analogous to Exercise \ref{exr:13.21}) in general for arbitrary domains and $n$. However, as this would be a Script \ref{sct:13} proof in nature, we omit it.}
         as desired.\par
         Lastly, since each $g_k$ is continuous and $(g_k)$ converges uniformly to $g$, Theorem \ref{trm:17.6} asserts that $g$ is continuous on $[-r,r]$, as desired.\par\medskip
         The argument for that $h$ is differentiable on $[-r,r]$ and $h'=f$ is symmetric to the above.

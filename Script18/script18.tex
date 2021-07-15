@@ -147,8 +147,8 @@
 
 \begin{lemma}\label{lem:18.9}
     \leavevmode
-    \begin{enumerate}[label=\textup{(}\alph*\textup{)}]
-        \item If $x,y\in\R$, then $xy\leq\frac{x^2+y^2}{2}$.
+    \begin{enumerate}[label=\textup{(}\alph*\textup{)},ref={\thelemma\alph*}]
+        \item \label{lem:18.9a}If $x,y\in\R$, then $xy\leq\frac{x^2+y^2}{2}$.
         \begin{proof}
             Let $x,y$ be arbitrary elements of $\R$. Then by Lemma \ref{lem:7.26}, $0\leq(x-y)^2$. Therefore, we have that
             \begin{align*}
@@ -159,12 +159,14 @@
             \end{align*}
             as desired.
         \end{proof}
-        \item If $\x,\y\in\R^n$, then $|x_1y_1+\cdots+x_ny_n|\leq\norm{\x}\cdot\norm{\y}$.
+        \item \label{lem:18.9b}If $\x,\y\in\R^n$, then $|x_1y_1+\cdots+x_ny_n|\leq\norm{\x}\cdot\norm{\y}$.
         \begin{proof}
             Suppose first that $\norm{\x}=\norm{\y}=1$. Then by Definition \ref{dfn:18.6}, $\norm{\x}=1=\sqrt{x_1^2+\cdots+x_n^2}$, from which it follows that $1=x_1^2+\cdots+x_n^2$. Therefore, we have that
             \begin{align*}
                 |x_1y_1+\cdots+x_ny_n| &\leq |x_1y_1|+\cdots+|x_ny_n|\tag*{Lemma \ref{lem:8.8}}\\
-                &\leq \frac{x_1^2+y_1^2}{2}+\cdots+\frac{x_n^2+y_n^2}{2}\\
+                &= |x_1||y_1|+\cdots+|x_n||y_n|\\
+                &\leq \frac{|x_1|^2+|y_1|^2}{2}+\cdots+\frac{|x_n|^2+|y_n|^2}{2}\tag*{Lemma \ref{lem:18.9a}}\\
+                &= \frac{x_1^2+y_1^2}{2}+\cdots+\frac{x_n^2+y_n^2}{2}\\
                 &= \frac{(x_1^2+\cdots+x_n^2)+(y_1^2+\cdots+y_n^2)}{2}\\
                 &= \frac{1+1}{2}\\
                 &= 1
@@ -184,15 +186,15 @@
 
 \begin{theorem}\label{trm:18.10}
     If $\x,\y\in\R^n$ and $\lambda\in\R$, then
-    \begin{enumerate}[label=\textup{(}\alph*\textup{)}]
-        \item $\norm{\x}\geq 0$. Moreover, $\norm{\x}=0$ if and only if $\x=\bm{0}$.
+    \begin{enumerate}[label=\textup{(}\alph*\textup{)},ref={\thetheorem\alph*}]
+        \item \label{trm:18.10a}$\norm{\x}\geq 0$. Moreover, $\norm{\x}=0$ if and only if $\x=\bm{0}$.
         \begin{proof}
             Let $\x$ be an arbitrary element of $\R^n$.\par\smallskip
             We first prove that $\norm{\x}\geq 0$. By Lemma \ref{lem:7.26}, $x_i^2\geq 0$ for all $i\in[n]$. Thus, by Definition \ref{dfn:7.21}, $x_1^2+\cdots+x_n^2\geq 0$. Therefore, we have by Definition \ref{dfn:18.6} that $\norm{\x}=\sqrt{x_1^2+\cdots+x_n^2}\geq 0$, as desired.\par\smallskip
             We now prove that $\norm{\x}=0$ if and only if $\x=\bm{0}$. Suppose first that $\norm{\x}=0$. Then by Definition \ref{dfn:18.6} and Script \ref{sct:7}, $x_1^2+\cdots+x_n^2=0$. Now suppose for the sake of contradiction that $\x\neq\bm{0}$. Then there exists an $x_i$ such that $x_i\neq 0$. Thus, by Lemma \ref{lem:7.26}, $x_i^2>0$. Additionally, $x_j^2\geq 0$ for all $j\in[n]$. Thus, we have that $0<x_i^2\leq x_1^2+\cdots+x_n^2$. But by Definition \ref{dfn:3.1}, this implies that $x_1^2+\cdots+x_n^2\neq 0$, a contradiction.\par
             Now suppose that $\x=\bm{0}$. Then by Definition \ref{dfn:18.6}, $\norm{\x}=\sqrt{0^2+\cdots+0^2}=0$, as desired.
         \end{proof}
-        \item $\norm{\lambda\x}=|\lambda|\cdot\norm{\x}$.
+        \item \label{trm:18.10b}$\norm{\lambda\x}=|\lambda|\cdot\norm{\x}$.
         \begin{proof}
             Let $\lambda$ be an arbitrary element of $\R$, and let $\x$ be an arbitrary element of $\R^n$. Then we have that
             \begin{align*}
@@ -202,13 +204,13 @@
             \end{align*}
             as desired.
         \end{proof}
-        \item $\norm{\x+\y}\leq\norm{\x}+\norm{\y}$.
+        \item \label{trm:18.10c}$\norm{\x+\y}\leq\norm{\x}+\norm{\y}$.
         \begin{proof}
             Let $\x,\y$ be arbitrary elements of $\R^n$. Then we have that
             \begin{align*}
                 \norm{\x+\y} &= \sqrt{(x_1+y_1)^2+\cdots+(x_n+y_n)^2}\tag*{Definition \ref{dfn:18.6}}\\
                 &= \sqrt{(x_1^2+\cdots+x_n^2)+(2x_1y_1+\cdots+2x_ny_n)+(y_1^2+\cdots+y_n^2)}\\
-                &\leq \sqrt{\norm{\x}^2+2\norm{\x}\norm{\y}+\norm{y}^2}\tag*{Lemma \ref{lem:18.9}}\\
+                &\leq \sqrt{\norm{\x}^2+2\norm{\x}\norm{\y}+\norm{\y}^2}\tag*{Lemma \ref{lem:18.9}}\\
                 &= \sqrt{(\norm{\x}+\norm{\y})^2}\\
                 &= \norm{\x}+\norm{\y}
             \end{align*}
@@ -221,7 +223,7 @@
     If $\x,\y,\z\in\R^n$ and $\lambda\in\R$, then
     \begin{enumerate}[label=\textup{(}\alph*\textup{)}]
         \item $\norm{\x-\z}\leq\norm{\x-\y}+\norm{\y-\z}$.
-        \item $|\norm{\x}-\norm{\y}|\leq\norm{x-y}$.
+        \item $|\norm{\x}-\norm{\y}|\leq\norm{\x-\y}$.
     \end{enumerate}
     \begin{proof}
         The proofs are symmetric to those of Lemma \ref{lem:8.8}.
@@ -240,7 +242,7 @@
 \end{definition}
 
 \begin{definition}\label{dfn:18.14}
-    A subset $U\subset\R^n$ is \textbf{open} if for all $\mathbf{a}\in U$, there exists an open rectangle $R$ such that $\mathbf{a}\in R\subset U$. A subset $C\in\R^n$ is closed if its compliment is open.
+    A subset $U\subset\R^n$ is \textbf{open} if for all $\x\in U$, there exists an open rectangle $R$ such that $\x\in R\subset U$. A subset $C\in\R^n$ is closed if its compliment is open.
 \end{definition}
 
 \begin{exercise}\label{exr:18.15}
@@ -261,9 +263,81 @@
     Show that if $R_1,\dots,R_m$ are open rectangles containing $\x\in\R^n$, then $R=R_1\cap\cdots\cap R_m$ is an open rectangle containing $\x\in\R^n$. If $R=(a_1,b_1)\times\cdots\times(a_n,b_n)$, derive formulas for $a_i$ and $b_i$ in terms of the corresponding quantities for $R_1,\dots,R_m$.
     \begin{proof}
         Let $R_i=(r_{ij},s_{ij})_{j=1}^n$ for all $i\in[m]$. To prove that $R=\bigcap_{i=1}^mR_i$ is an open rectangle containing $\x$, Definitions \ref{dfn:18.13} and \ref{dfn:1.15} tell us that it will suffice to show that $R$ is the Cartesian product of open intervals, each containing its respective $x_j$. Since $\x\in R_i$ for all $i\in[m]$, we have by Definition \ref{dfn:1.15} that $x_j\in(r_{ij},s_{ij})$ for all $i\in[m],\ j\in[n]$. Thus, by Corollary \ref{cly:3.19}, $\bigcap_{i=1}^m(r_{ij},s_{ij})$ is a region (hence an open interval by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}) containing $x_j$ for all $j\in[n]$. Therefore, since $R=\bigcap_{i=1}^mR_i=\prod_{i=1}^n(\bigcap_{i=1}^m(r_{ij},s_{ij}))$ by Script \ref{sct:1}, we have that $R$ is the Cartesian product of open intervals, each containing its respective $x_j$, as desired.\par
-        Let $a_j=\max_{i=1}^m(r_{ij})$ and let $b_j=\min_{i=1}^m(s_{ij})$ for all $j\in[n]$. To prove that $R=(a_j,b_j)_{j=1}^n$, Definition \ref{dfn:1.2} tells us that it will suffice to show that every $\x\in R$ is an element of $(a_j,b_j)_{j=1}^n$ and vice versa. Suppose first that $\x$ is an arbitrary element of $R$. Then by the definition of $R$, $\x\in R_i$ for all $i\in[m]$. It follows by Definition \ref{dfn:1.15} that $x_j\in(r_{ij},s_{ij})$ for all $i\in[m],\ j\in[n]$, including the $j,j'$ for which $r_{ij}$ is at its maximum and $s_{ij'}$ is at its minimum. In other words, $x_j\in(a_j,b_j)$ for all $j\in[n]$. Therefore, by Definition \ref{dfn:1.15}, $\x\in(a_j,b_j)_{j=1}^n$, as desired. The proof is symmetric in the other direction.
+        Let $a_j=\max_{i=1}^m(r_{ij})$ and let $b_j=\min_{i=1}^m(s_{ij})$ for all $j\in[n]$. To prove that $R=(a_j,b_j)_{j=1}^n$, Definition \ref{dfn:1.2} tells us that it will suffice to show that every $\x\in R$ is an element of $(a_j,b_j)_{j=1}^n$ and vice versa. Suppose first that $\x$ is an arbitrary element of $R$. Then by Definition \ref{dfn:1.6}, $\x\in R_i$ for all $i\in[m]$. It follows by Definition \ref{dfn:1.15} that $x_j\in(r_{ij},s_{ij})$ for all $i\in[m],\ j\in[n]$, including the $j,j'$ for which $r_{ij}$ is at its maximum and $s_{ij'}$ is at its minimum. In other words, $x_j\in(a_j,b_j)$ for all $j\in[n]$. Therefore, by Definition \ref{dfn:1.15}, $\x\in(a_j,b_j)_{j=1}^n$, as desired. The proof is symmetric in the other direction.
     \end{proof}
 \end{exercise}
+
+\begin{definition}\label{dfn:18.17}
+    The \textbf{open ball} (in $\R^n$ with center $\mathbf{p}$ and radius $r>0$) is defined as
+    \begin{equation*}
+        B(\mathbf{p},r) = \{\x\in\R^n\mid\norm{\x-\mathbf{p}}<r\}
+    \end{equation*}
+    The \textbf{closed ball} (in $\R^n$ with center $\mathbf{p}$ and radius $r>0$) is defined as
+    \begin{equation*}
+        \bar{B}(\mathbf{p},r) = \{\x\in\R^n\mid\norm{\x-\mathbf{p}}\leq r\}
+    \end{equation*}
+\end{definition}
+
+\begin{remark}\label{rmk:18.18}
+    In $\R^1$, an open rectangle is also an open ball, and vice versa.
+\end{remark}
+
+The following results illustrate how open rectangles and open balls in $\R^n$ are "compatible" with each other.
+
+\begin{lemma}\label{lem:18.19}
+    Fix $\x\in\R$.
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}},ref={\thelemma\alph*}]
+        \item \label{lem:18.19a}If $R$ is an open rectangle containing $\x$, then there exists $r>0$ such that $B(\x,r)\subset R$.
+        \begin{proof}
+            Since $\x\in R$, Definitions \ref{dfn:18.13} and \ref{dfn:1.15} tell us that that $x_i\in(a_i,b_i)$ for all $i\in[n]$. Additionally, we know by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3} that each $(a_i,b_i)$ is an open interval. Combining the last two results, we have by Lemma \ref{lem:8.10} that for each $i\in[n]$, there exists $\delta_i>0$ such that $(x_i-\delta_i,x_i+\delta_i)\subset(a_i,b_i)$. Let $r=\min\{\delta_i\}_{i=1}^n$.\par
+            To prove that $B(\x,r)\subset R$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $\y\in B(\x,r)$ is an element of $R$. Let $\y$ be an arbitrary element of $B(\x,r)$. Then by Definition \ref{dfn:18.17}, $\norm{\y-\x}<r$. It follows that
+            \begin{align*}
+                |y_i-x_i| &= \sqrt{(y_i-x_i)^2}\\
+                &\leq \sqrt{(y_1-x_1)^2+\cdots+(y_n-x_n)^2}\tag*{Lemma \ref{lem:7.26}}\\
+                &= \norm{\y-\x}\tag*{Definition \ref{dfn:18.6}}\\
+                &< r
+            \end{align*}
+            for all $i\in[n]$. Thus, by the definition of $r$, $|y_i-x_i|\leq\delta_i$ for all $i\in[n]$. Consequently, by Exercise \ref{exr:8.9} and Definition \ref{dfn:1.3}, $y_i\in(a_i,b_i)$ for all $i\in[n]$. Therefore, by Definitions \ref{dfn:1.15} and \ref{dfn:18.13}, $\y\in R$, as desired.
+        \end{proof}
+        \item \label{lem:18.19b}If $B$ is an open ball containing $\x$, then there exists an open rectangle $R$ such that $\x\in R\subset B$.
+        \begin{lemma*}
+            If $\x\in\R^n$, then $\norm{\x}\leq\sum_{i=1}^n|x_i|$.
+            \begin{proof}
+                By Definition \ref{dfn:18.2}, we can decompose $\x$ into the sum of $n$ unit vectors $\mathbf{u_i}$ (where $\mathbf{u_i}$ points one unit in the $i^\text{th}$ direction), each scaled by $x_i$; symbolically, let $\x=\sum_{i=1}^nx_i\mathbf{u_i}$. Therefore,
+                \begin{align*}
+                    \norm{\x} &= \norm{\sum_{i=1}^nx_i\mathbf{u_i}}\\
+                    &= \sum_{i=1}^n\norm{x_i\mathbf{u_i}}\tag*{Theorem \ref{trm:18.10c}}\\
+                    &= \sum_{i=1}^n|x_i|\cdot\norm{\mathbf{u_i}}\tag*{Theorem \ref{trm:18.10b}}\\
+                    &= \sum_{i=1}^n|x_i|\cdot\sqrt{1^2}\tag*{Definition \ref{dfn:18.6}}\\
+                    &= \sum_{i=1}^n|x_i|
+                \end{align*}
+                as desired.
+            \end{proof}
+        \end{lemma*}
+        \begin{proof}[Proof of Lemma \ref{lem:18.19b}]
+            Suppose $\x\in B(\y,r)$. Then by Definition \ref{dfn:18.17}, $\norm{\x-\y}<r$. Thus, we can define $r'=r-\norm{\x-\y}$ such that $r'>0$. With this term defined, we can let $R=(x_i-\frac{r'}{n},x_i+\frac{r'}{n})_{i=1}^n$.\par
+            To prove that $\x\in R$, Definition \ref{dfn:18.13} tells us that it will suffice to show that $x_i\in(x_i-\frac{r'}{n},x_i+\frac{r'}{n})$ for all $i\in[n]$. But since $|x_i-x_i|=0<\frac{r'}{n}$ for all $i\in[n]$, Exercise \ref{exr:8.9} asserts that this is true.\par
+            To prove that $R\subset B$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $\z\in R$ is an element of $B$. Let $\z$ be an arbitrary element of $R$. Then by Definition \ref{dfn:18.13}, $z_i\in(x_i-\frac{r'}{n},x_i+\frac{r'}{n})$ for all $i\in[n]$. It follows by Exercise \ref{exr:8.9} that $|z_i-x_i|<\frac{r'}{n}$ for all $i\in[n]$. Consequently,
+            \begin{align*}
+                \norm{\z-\y} &\leq \norm{\z-\x}+\norm{\x-\y}\tag*{Corollary \ref{cly:18.11}}\\
+                &\leq \sum_{i=1}^n|z_i-x_i|+\norm{\x-\y}\tag*{Lemma}\\
+                &< \sum_{i=1}^n\frac{r'}{n}+\norm{\x-\y}\\
+                &= r'+\norm{\x-\y}\\
+                &= r-\norm{\x-\y}+\norm{\x-\y}\\
+                &= r
+            \end{align*}
+            Therefore, by Definition \ref{dfn:18.17}, $\z\in B$, as desired.
+        \end{proof}
+    \end{enumerate}
+\end{lemma}
+
+\begin{corollary}\label{cly:18.20}
+    A set $U\subset\R^n$ is open if and only if for every $\x\in U$, there exists $r>0$ such that $B(\x,r)\subset U$.
+    \begin{proof}
+        Suppose first that $U\subset\R^n$ is open. Let $\x$ be an arbitrary element of $U$. By Definition \ref{dfn:18.14}, there exists an open rectangle $R$ such that $\x\in R\subset U$. Therefore, by Lemma \ref{lem:18.19}, there exists $r>0$ such that $B(\x,r)\subset R\subset U$, as desired.\par
+        Now suppose that for all $\x\in U$, there exists $r>0$ such that $B(\x,r)\subset U$. To prove that $U$ is open, Definition \ref{dfn:18.14} tells us that it will suffice to show that for all $\x\in U$, there exists an open rectangle $R$ such that $\x\in R\subset U$. Let $\x$ be an arbitrary element of $U$. Then there exists $r>0$ such that $B(\x,r)\subset U$. Therefore, by Lemma \ref{lem:18.19}, there exists an open rectangle $R$ such that $\x\in R\subset B\subset U$, as desired.
+    \end{proof}
+\end{corollary}
 
 
 

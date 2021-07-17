@@ -242,7 +242,7 @@
 \end{definition}
 
 \begin{definition}\label{dfn:18.14}
-    A subset $U\subset\R^n$ is \textbf{open} if for all $\x\in U$, there exists an open rectangle $R$ such that $\x\in R\subset U$. A subset $C\in\R^n$ is closed if its compliment is open.
+    A subset $U\subset\R^n$ is \textbf{open} if for all $\x\in U$, there exists an open rectangle $R$ such that $\x\in R\subset U$. A subset $C\in\R^n$ is \textbf{closed} if its compliment is open.
 \end{definition}
 
 \begin{exercise}\label{exr:18.15}
@@ -274,7 +274,7 @@
     \end{equation*}
     The \textbf{closed ball} (in $\R^n$ with center $\mathbf{p}$ and radius $r>0$) is defined as
     \begin{equation*}
-        \bar{B}(\mathbf{p},r) = \{\x\in\R^n\mid\norm{\x-\mathbf{p}}\leq r\}
+        \overline{B}(\mathbf{p},r) = \{\x\in\R^n\mid\norm{\x-\mathbf{p}}\leq r\}
     \end{equation*}
 \end{definition}
 
@@ -338,6 +338,85 @@ The following results illustrate how open rectangles and open balls in $\R^n$ ar
         Now suppose that for all $\x\in U$, there exists $r>0$ such that $B(\x,r)\subset U$. To prove that $U$ is open, Definition \ref{dfn:18.14} tells us that it will suffice to show that for all $\x\in U$, there exists an open rectangle $R$ such that $\x\in R\subset U$. Let $\x$ be an arbitrary element of $U$. Then there exists $r>0$ such that $B(\x,r)\subset U$. Therefore, by Lemma \ref{lem:18.19}, there exists an open rectangle $R$ such that $\x\in R\subset B\subset U$, as desired.
     \end{proof}
 \end{corollary}
+
+\begin{corollary}\label{cly:18.21}\marginnote{\emph{7/14:}}
+    Open balls are open and closed balls are closed.
+    \begin{proof}
+        We will take this one claim at a time.\par\smallskip
+        Let $B(\x,r)$ be an arbitrary open ball. To prove that $B$ is open, Definition \ref{dfn:18.14} tells us that it will suffice to show that for all $\y\in B$, there exists an open rectangle $R$ such that $\y\in R\subset B$. But by Lemma \ref{lem:18.19}, this is true.\par
+        Let $\overline{B}(\x,r)$ be an arbitrary closed ball. To prove that $\overline{B}$ is closed, Definition \ref{dfn:18.14} tells us that it will suffice to show that $\R^n\setminus\overline{B}$ is open. To do this, Definition \ref{dfn:18.14} tells us again that it will suffice to verify that for all $\y\in\R^n\setminus\overline{B}$, there exists an open rectangle $R$ such that $\y\in R\subset\R^n\setminus\overline{B}$. Let $\y$ be an arbitrary element of $\R^n\setminus\overline{B}$. Then by Definition \ref{dfn:18.17}, $\norm{\y-\x}>r$. Thus, $\norm{\y-\x}-r>0$, so we may define $r'=\norm{\y-\x}-r$. Now consider $B(\y,r')$. By Lemma \ref{lem:18.19}, there exists an open rectangle $R$ such that $\y\in R\subset B$. Consequently, by Script \ref{sct:1}, the only thing left to do to verify that $R\subset\R^n\setminus\overline{B}$ is to show that $B\cap\overline{B}=\emptyset$. As such, suppose for the sake of contradiction that $B\cap\overline{B}\neq\emptyset$. Then there exists $\z\in\R^n$ such that $\z\in B$ and $z\in\overline{B}$. It follows by consecutive applications of Definition \ref{dfn:18.17} that $\norm{\z-\y}<r'$ and $\norm{\z-\x}\leq r$. But then we have that
+        \begin{align*}
+            \norm{\x-\y} &\leq \norm{\x-\z}+\norm{\z-\y}\tag*{Corollary \ref{cly:18.11}}\\
+            &< r'+r\\
+            &= \norm{\y-\x}-r+r\\
+            &= \norm{\x-\y}
+        \end{align*}
+        a contradiction, as desired.
+    \end{proof}
+\end{corollary}
+
+\begin{proposition}\label{prp:18.22}
+    Let $U\subset\R^n$. The following are equivalent:
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item $U$ is open.
+        \item $U$ is a (possibly empty) union of open balls.
+        \item $U$ is a (possibly empty) union of open rectangles.
+    \end{enumerate}
+    \begin{proof}
+        As in Theorem \ref{trm:11.5}, to prove that statements a-c are equivalent, it will suffice to verify that $a\Rightarrow b$, $b\Rightarrow c$, and $c\Rightarrow a$. Let's begin.\par\smallskip
+        First, suppose that $U$ is open. Then by Corollary \ref{cly:18.20}, for every $\x\in U$, there exists $r>0$ such that $B_\x(\x,r)\subset U$. Therefore, $U=\bigcup_{\x\in U}B_\x$, as desired.\par
+        Second, suppose that $U$ is a union of open balls. Then for every open ball $B(\x,r)$ comprising $U$, Lemma \ref{lem:18.19} asserts that for every $\y\in B$, there exists an open rectangle $R_\y$ such that $\y\in R_\y\subset B$. Therefore, $U=\bigcup_{\y\in U}R_\y$, as desired.\par
+        Third, suppose that $U$ is a union of open rectangles. Then for every $\x\in U$, there exists an open rectangle $R$ such that $\x\in R\subset U$. Therefore, by Definition \ref{dfn:18.14}, $U$ is open, as desired.
+    \end{proof}
+\end{proposition}
+
+\begin{remark}\label{rmk:18.23}
+    If $X\subset\R^n$, then $X$ is also a topolotical space with the \textbf{subspace topology}. That is, $A\subset X$ is \textbf{open} (in $X$) if there exists an open set $U\subset\R^n$ such that $X\cap U=A$. (See Script \ref{sct:8}.)
+\end{remark}
+
+We now discuss functions between Euclidean spaces.
+
+\begin{definition}\label{dfn:18.24}
+    Let $A\subset\R^n$ and let $f:A\to\R$. Define the \textbf{graph} of $f$ by
+    \begin{equation*}
+        \graph(f) = \{(x_1,\dots,x_n,f(x_1,\dots,x_n))\in\R^{n+1}\mid(x_1,\dots,x_n)\in A\}
+    \end{equation*}
+\end{definition}
+
+\begin{exercise}\label{exr:18.25}
+    For each of the following functions, describe the graph as a subset of $\R^3$.
+    \begin{enumerate}[label={(\alph*)}]
+        \item $f:\R^2\to\R$ given by $f(x,y)=2$ for all $(x,y)\in\R^2$.
+        \begin{proof}[Description]
+            For this function, we have $\graph(f)=\{(x,y,2)\in\R^3\mid(x,y)\in\R^2\}$. This makes the graph equal to the set of all points in $\R^3$ with $z=2$, which will be a planar, constant, infinite subspace of $\R^3$.
+        \end{proof}
+        \item $f:\R^2\to\R$ given by $f(x,y)=x+y+1$ for all $(x,y)\in\R^2$.
+        \begin{proof}[Description]
+            For this function, we have $\graph(f)=\{(x,y,x+y+1)\in\R^3\mid(x,y)\in\R^2\}$. Thus, the graph will be a planar, sloped, infinite subspace of $\R^3$ with gradient pointing in the $\mathbf{\hat{\imath}}+\mathbf{\hat{\jmath}}$ direction.
+        \end{proof}
+        \item $f:\R^2\to\R$ given by $f(x,y)=x^2+y^2$ for all $(x,y)\in\R^2$.
+        \begin{proof}[Description]
+            For this function, we have $\graph(f)=\{(x,y,x^2+y^2)\in\R^3\mid(x,y)\in\R^2\}$. Thus, the graph will be the paraboloid centered at the origin.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+In Script \ref{sct:9}, we gave a definition of continuity that we can generalize to this case:
+
+\begin{definition}\label{dfn:18.26}
+    Let $X,Y$ be topological spaces. A function $f:X\to Y$ is \textbf{continuous} if for every open set $U\subset Y$, the preimage $f^{-1}(U)$ is open in $X$.\par
+    The function $f:X\to Y$ is \textbf{continuous} at $x\in X$ if for every open set $U\subset Y$ containing $f(x)$, the preimage $f^{-1}(U)$ is open in $X$.
+\end{definition}
+
+\begin{theorem}\label{trm:18.27}\leavevmode
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item A function $f:X\to Y$ is continuous if and only if it is continuous at every $x\in X$.
+        \item A function $f:X\to Y$ is continuous if and only if $f^{-1}(B)$ is closed in $X$ whenever $B$ is closed in $Y$.
+    \end{enumerate}
+    \begin{proof}
+        The proofs are symmetric to those of Theorem \ref{trm:9.10} and Proposition \ref{prp:9.5}, respectively.
+    \end{proof}
+\end{theorem}
 
 
 

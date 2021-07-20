@@ -418,6 +418,158 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
     \end{proof}
 \end{theorem}
 
+\begin{remark}\label{rmk:18.28}\marginnote{7/17:}
+    There is also a characterization of continuity in terms of limits, as in one variable, as we shall now see. First we need the definitions of limit point and limit.
+\end{remark}
+
+\begin{definition}\label{dfn:18.29}
+    Let $A\subset\R^n$.
+    \begin{enumerate}[label={(\alph*)}]
+        \item We say that $\x$ is a \textbf{limit point} of $A$ if for every open set $U$ containing $\x$, $A\cap(U\setminus\{\x\})\neq\emptyset$.
+        \item Let $\x\in LP(A)$ and $f:A\to\R^m$. We say $\mathbf{L}\in\R^m$ is the \textbf{limit} (of $f$ at $\x$) if for every $\epsilon>0$, there exists $\delta>0$ such that if $\y\in A$ and $0<\norm{\y-\x}<\delta$, then $\norm{f(\x)-\mathbf{L}}<\epsilon$. As in one variable, we can show that limits are unique. If $\mathbf{L}$ is the limit of $f$ at $\x$, we write $\lim_{\y\to\x}f(\x)=\mathbf{L}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{exercise}\label{exr:18.30}
+    Compute the following limits if they exist, or prove that the limit does not exist.
+    \begin{lemma*}
+        Let $\x=(x_1,\dots,x_n)$ be an arbitrary element of $\R^n$. Then $\norm{\x}<\delta$ implies that $|x_i|<\delta$ for all $1\leq i\leq n$.
+        \begin{proof}
+            Suppose for the sake of contradiction that for some $1\leq i\leq n$, $|x_i|\geq\delta$. Note that since $0\leq\norm{\x}<\delta$ by Theorem \ref{trm:18.10}, $|\delta|=\delta$ by Definition \ref{dfn:8.4}. Then
+            \begin{align*}
+                \norm{\x} &= \sqrt{x_1^2+\cdots+x_{i-1}^2+x_i^2+x_{i+1}^2+\cdots+x_n^2}\tag*{Definition \ref{dfn:18.6}}\\
+                &\geq \sqrt{x_1^2+\cdots+x_{i-1}^2+\delta^2+x_{i+1}^2+\cdots+x_n^2}\\
+                &\geq \sqrt{\delta^2}\\
+                &= \delta\\
+                &> \norm{\x}
+            \end{align*}
+            a contradiction.
+        \end{proof}
+    \end{lemma*}
+    \begin{enumerate}[label={(\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:18.30a}$\lim_{(x,y)\to(a,b)}4xy$.
+        \begin{proof}
+            To prove that $\lim_{(x,y)\to(a,b)}4xy=4ab$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $(x,y)\in\R^2$ and $0<\norm{(x,y)-(a,b)}<\delta$, then $\norm{4xy-4ab}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\min(\min(\frac{\epsilon}{8(|b|+1)},1),\frac{\epsilon}{8(|a|-1)})$. Then since $\norm{(x-a,y-b)}<\delta$ by hypothesis and Definition \ref{dfn:18.2}, the lemma asserts that $|x-a|<\delta$ and $|y-b|<\delta$. It follows that $|x-a|<\min(\frac{\epsilon}{8(|b|+1)},1)$ and $|y-b|<\frac{\epsilon}{8(|a|-1)}$. Consequently, by an argument symmetric to the proof of Theorem \ref{trm:11.9}, $|xy-ab|<\frac{\epsilon}{4}$. Therefore, $\norm{4xy-4ab}=|4xy-4ab|<4\cdot\frac{\epsilon}{4}=\epsilon$, as desired.
+        \end{proof}
+        \item \label{exr:18.30b}$\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}$.
+        \begin{proof}
+            To prove that $\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}=0$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $(x,y)\in\R^2$ and $0<\norm{(x,y)-(0,0)}<\delta$, then $||\frac{x^3-y^3}{x^2+y^2}-0||=|\frac{x^3-y^3}{x^2+y^2}|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{3}$. Then from previous results, we can prove three important bounds on combinations of $x$ and $y$ that will be useful in the final inequality. Let's begin.\par
+            First, we have that
+            \begin{align*}
+                |x^2+y^2| &= (\sqrt{x^2+y^2})^2\\
+                &= \norm{(x,y)-(0,0)}^2\tag*{Definition \ref{dfn:18.6}}\\
+                &< \left( \frac{\epsilon}{3} \right)^2\\
+                &= \frac{\epsilon^2}{9}
+            \end{align*}
+            Second, it follows from the above that
+            \begin{align*}
+                |xy| &\leq \frac{x^2+y^2}{2}\tag*{Lemma \ref{lem:18.9}}\\
+                &< \frac{\epsilon^2}{18}
+            \end{align*}
+            Third, since we know from the lemma that $|x|<\frac{\epsilon}{3}$ and $|y|<\frac{\epsilon}{3}$, we have that
+            \begin{align*}
+                |x-y| &\leq |x|+|-y|\tag*{Lemma \ref{lem:8.8}}\\
+                &< \frac{\epsilon}{3}+\frac{\epsilon}{3}\\
+                &= \frac{2\epsilon}{3}
+            \end{align*}\par
+            Therefore, combining the last three results, we have that
+            \begin{align*}
+                \left| \frac{x^3-y^3}{x^2+y^2} \right| &= \left| \frac{(x-y)(x^2+xy+y^2)}{x^2+y^2} \right|\\
+                &= \frac{|x-y|\cdot|x^2+y^2|+|x-y|\cdot|xy|}{|x^2+y^2|}\\
+                &< \frac{\frac{2\epsilon}{3}\cdot\frac{\epsilon^2}{9}+\frac{2\epsilon}{3}\cdot\frac{\epsilon^2}{18}}{\frac{\epsilon^2}{9}}\\
+                &= \frac{9}{\epsilon^2}\left( \frac{2\epsilon^3}{27}+\frac{\epsilon^3}{27} \right)\\
+                &= \frac{9}{\epsilon^2}\cdot\frac{\epsilon^3}{9}\\
+                &= \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item \label{exr:18.30c}$\lim_{(x,y)\to(0,0)}\frac{x^2-y^2}{x^2+y^2}$.
+        \begin{proof}
+            To prove that $\lim_{(x,y)\to(0,0)}\frac{x^2-y^2}{x^2+y^2}$ does not exist, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $L\in\R$, there exists an $\epsilon>0$ such that for all $\delta>0$, there exists $(x,y)\in\R^2$ satisfying $0<\norm{(x,y)-(0,0)}<\delta$ such that $||\frac{x^2-y^2}{x^2+y^2}-L||\geq\epsilon$. Let $L$ be an arbitrary element of $\R$. We divide into two cases ($L\geq 0$ and $L<0$). Suppose first that $L\geq 0$. Choose $\epsilon=1$. Let $\delta>0$ be arbitrary. Choose $(0,\frac{\delta}{2})\in\R^2$. By Definition \ref{dfn:18.6}, $0<\norm{(0,\frac{\delta}{2})}=\sqrt{\delta^2/4}=\frac{\delta}{2}<\delta$. Additionally,
+            \begin{align*}
+                \norm{\frac{0^2-\left( \frac{\delta}{2} \right)^2}{0^2+\left( \frac{\delta}{2} \right)^2}-L} &= \left| \frac{-1}{1}-L \right|\\
+                &= |-1-L|\\
+                &\geq 1-|L|\\
+                &\geq 1\\
+                &= \epsilon
+            \end{align*}
+            as desired. The proof is symmetric in the other case.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{theorem}\label{trm:18.31}
+    Let $A\subset\R^n$ and $\x\in A$. Let $f:A\to\R^m$. Then the following are equivalent:
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item $f$ is continuous at $\x$.
+        \item For every $\epsilon>0$, there exists $\delta>0$ such that if $\y\in A$ and $\norm{\y-\x}<\delta$, then $\norm{f(\y)-f(\x)}<\epsilon$.
+        \item Either $\x\notin LP(A)$ or $\lim_{\y\to\x}f(\y)=f(\x)$.
+    \end{enumerate}
+    \begin{proof}
+        The proof is symmetric to that of Theorem \ref{trm:11.9}.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:18.32}
+    For each of the following, prove that $f$ is continuous at every point in its domain.
+    \begin{enumerate}[label={(\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:18.32a}$A\subset\R^n$ and $f:A\to\R^m$ is a constant function.
+        \begin{proof}
+            Since $f$ is a constant function, we may let $f(\x)=\mathbf{c}$ for all $\x\in A$. To prove that $f$ is continuous at every $\x\in A$, let $\x$ be an arbitrary element of $A$; then Theorem \ref{trm:18.31} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $\y\in A$ and $\norm{\y-\x}<\delta$, then $\norm{f(\y)-f(\x)}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=1$. Let $\y$ be an arbitrary element of $A$ satisfying $\norm{\y-\x}<\delta$. Then
+            \begin{align*}
+                \norm{f(\y)-f(\x)} &= \norm{\mathbf{c}-\mathbf{c}}\\
+                &= \norm{\mathbf{0}}\\
+                &= 0\tag*{Theorem \ref{trm:18.10}}\\
+                &< \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item \label{exr:18.32b}Fix $\mathbf{a}\in\R^m$. Define $f:\R\to\R^m$ by $f(h)=h\mathbf{a}$.
+        \begin{proof}
+            We divide into two cases ($\mathbf{a}=0$ and $\mathbf{a}\neq 0$). If $\mathbf{a}=0$, then by Exercise \ref{exr:18.32a}, $f$ is continuous at every point in its domain. If $\mathbf{a}\neq 0$, we continue.\par
+            Let $x$ be an arbitrary element of $\R$. To prove that $f$ is continuous at $x$, Theorem \ref{trm:18.31} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $y\in\R$ and $\norm{y-x}=|y-x|<\delta$, then $\norm{f(y)-f(x)}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{\norm{\mathbf{a}}}$ (by Theorem \ref{trm:18.10} and the supposition that $\mathbf{a}\neq 0$, we know that $\norm{\mathbf{a}}\neq 0$). Let $y$ be an arbitrary element of $\R$ satisfying $|y-x|<\delta$. Then
+            \begin{align*}
+                \norm{f(y)-f(x)} &= \norm{y\mathbf{a}-x\mathbf{a}}\\
+                \norm{(y-x)\mathbf{a}}\\
+                &= |y-x|\cdot\norm{\mathbf{a}}\tag*{Theorem \ref{trm:18.10}}\\
+                &< \frac{\epsilon}{\norm{\mathbf{a}}}\cdot\norm{\mathbf{a}}\\
+                &= \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item \label{exr:18.32c}Fix $\x\in\R^n$. Define $f:\R^n\to\R$ by $f(\y)=\norm{\y-\x}$.
+        \begin{proof}
+            Let $\y$ be an arbitrary element of $\R^n$. To prove that $f$ is continuous at $y$, Theorem \ref{trm:18.31} tells us that it will suffice to show that for all $\epsilon>0$, there exists $\delta>0$ such that if $\z\in\R^n$ and $\norm{\z-\y}<\delta$, then $\norm{f(\z)-f(\y)}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$. Let $\z$ be an arbitrary element of $\R^n$ satisfying $\norm{\z-\y}<\delta$. Then
+            \begin{align*}
+                \norm{f(\z)-f(\y)} &= \norm{\norm{\z-\x}-\norm{\y-\x}}\\
+                &\leq \norm{(\z-\x)-(\y-\x)}\tag*{Corollary \ref{cly:18.11}}\\
+                &= \norm{\z-\y}\\
+                &< \epsilon
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item \label{exr:18.32d}$f:\R^2\to\R$ given by $f(x,y)=4xy$.
+        \begin{proof}
+            Let $(a,b)$ be an arbitrary element of $\R^2$. To prove that $f$ is continuous at $(a,b)$, Theorem \ref{trm:18.31} tells us that it will suffice to show that either $(a,b)\notin LP(\R^2)$ or $\lim_{(x,y)\to(a,b)}4xy=4ab$. But by Exercise \ref{exr:18.30a}, $\lim_{(x,y)\to(a,b)}4xy=4ab$, as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exr:18.33}
+    Consider the function $f:\R^2\setminus\{(0,0)\}\to\R$ given by $f(x,y)=\frac{x^3-y^3}{x^2+y^2}$ (see Exercise \ref{exr:18.30c}). It can be shown that this function is continuous on its domain. Can you extend this function continuously to $\R^2$? More specifically, can you define a continuous function $g:\R^2\to\R$ such that $g(x,y)=f(x,y)$ for all $(x,y)\neq(0,0)$?
+    \begin{proof}
+        Let $g:\R^2\to\R$ be defined by
+        \begin{equation*}
+            g(x,y) =
+            \begin{cases}
+                f(x,y) & (x,y)\neq(0,0)\\
+                0 & (x,y)=(0,0)
+            \end{cases}
+        \end{equation*}
+        By the continuity of $f$ on $\R^2\setminus\{(0,0)\}$, $g$ is continuous on $\R^2\setminus\{(0,0)\}$. Additionally, by Exercise \ref{exr:18.30c}, $\lim_{(x,y)\to(0,0)}g(x,y)=0=g(0,0)$. Thus, by Theorem \ref{trm:18.31}, $g$ is continuous at $(0,0)$. Therefore, $g$ is continuous on $(\R^2\setminus\{(0,0)\})\cup\{(0,0)\}=\R^2$, as desired.
+    \end{proof}
+\end{exercise}
+
 
 
 

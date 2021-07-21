@@ -453,32 +453,25 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
         \end{proof}
         \item \label{exr:18.30b}$\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}$.
         \begin{proof}
-            To prove that $\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}=0$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $(x,y)\in\R^2$ and $0<\norm{(x,y)-(0,0)}<\delta$, then $||\frac{x^3-y^3}{x^2+y^2}-0||=|\frac{x^3-y^3}{x^2+y^2}|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{3}$. Then from previous results, we can prove three important bounds on combinations of $x$ and $y$ that will be useful in the final inequality. Let's begin.\par
+            To prove that $\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}=0$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $(x,y)\in\R^2$ and $0<\norm{(x,y)-(0,0)}<\delta$, then $||\frac{x^3-y^3}{x^2+y^2}-0||=|\frac{x^3-y^3}{x^2+y^2}|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{3}$. Then from previous results, we can prove two important bounds on combinations of $x$ and $y$ that will be useful in the final inequality. Let's begin.\par
             First, we have that
             \begin{align*}
-                |x^2+y^2| &= (\sqrt{x^2+y^2})^2\\
-                &= \norm{(x,y)-(0,0)}^2\tag*{Definition \ref{dfn:18.6}}\\
-                &< \left( \frac{\epsilon}{3} \right)^2\\
-                &= \frac{\epsilon^2}{9}
+                \left| \frac{xy}{x^2+y^2} \right| &= |xy|\cdot\left| \frac{1}{x^2+y^2} \right|\\
+                &\leq \frac{x^2+y^2}{2}\cdot\left| \frac{1}{x^2+y^2} \right|\tag*{Lemma \ref{lem:18.9}}\\
+                &= \frac{1}{2}
             \end{align*}
-            Second, it follows from the above that
-            \begin{align*}
-                |xy| &\leq \frac{x^2+y^2}{2}\tag*{Lemma \ref{lem:18.9}}\\
-                &< \frac{\epsilon^2}{18}
-            \end{align*}
-            Third, since we know from the lemma that $|x|<\frac{\epsilon}{3}$ and $|y|<\frac{\epsilon}{3}$, we have that
+            Second, since we know from the lemma that $|x|<\frac{\epsilon}{3}$ and $|y|<\frac{\epsilon}{3}$, we have that
             \begin{align*}
                 |x-y| &\leq |x|+|-y|\tag*{Lemma \ref{lem:8.8}}\\
                 &< \frac{\epsilon}{3}+\frac{\epsilon}{3}\\
                 &= \frac{2\epsilon}{3}
             \end{align*}\par
-            Therefore, combining the last three results, we have that
+            Therefore, combining the last two results, we have that
             \begin{align*}
                 \left| \frac{x^3-y^3}{x^2+y^2} \right| &= \left| \frac{(x-y)(x^2+xy+y^2)}{x^2+y^2} \right|\\
-                &= \frac{|x-y|\cdot|x^2+y^2|+|x-y|\cdot|xy|}{|x^2+y^2|}\\
-                &< \frac{\frac{2\epsilon}{3}\cdot\frac{\epsilon^2}{9}+\frac{2\epsilon}{3}\cdot\frac{\epsilon^2}{18}}{\frac{\epsilon^2}{9}}\\
-                &= \frac{9}{\epsilon^2}\left( \frac{2\epsilon^3}{27}+\frac{\epsilon^3}{27} \right)\\
-                &= \frac{9}{\epsilon^2}\cdot\frac{\epsilon^3}{9}\\
+                &= |x-y|\cdot\left| \frac{xy}{x^2+y^2}+1 \right|\\
+                &\leq |x-y|\cdot\left| \frac{xy}{x^2+y^2} \right|+|x-y|\tag*{Lemma \ref{lem:8.8}}\\
+                &< \frac{2\epsilon}{3}\cdot\frac{1}{2}+\frac{2\epsilon}{3}\\
                 &= \epsilon
             \end{align*}
             as desired.
@@ -569,6 +562,194 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
         By the continuity of $f$ on $\R^2\setminus\{(0,0)\}$, $g$ is continuous on $\R^2\setminus\{(0,0)\}$. Additionally, by Exercise \ref{exr:18.30c}, $\lim_{(x,y)\to(0,0)}g(x,y)=0=g(0,0)$. Thus, by Theorem \ref{trm:18.31}, $g$ is continuous at $(0,0)$. Therefore, $g$ is continuous on $(\R^2\setminus\{(0,0)\})\cup\{(0,0)\}=\R^2$, as desired.
     \end{proof}
 \end{exercise}
+
+\begin{definition}\label{dfn:18.34}\marginnote{7/21:}
+    Let $m\in\N$. Suppose $I=\{i_1,\dots,i_k\}\subset[m]$ with $i_1<\cdots<i_k$. We define the \textbf{projection function} $\pi_I:\R^m\to\R^k$ as
+    \begin{equation*}
+        \pi_I(\x) = (x_{i_1},\dots,x_{i_k})
+    \end{equation*}
+    If $I=\{i\}$ has only one element, we write $\pi_i$ instead of $\pi_{\{i\}}$.
+\end{definition}
+
+\begin{exercise}\label{exr:18.35}
+    Prove that each $\pi_I$ is continuous.
+    \begin{proof}
+        Let $I$ be an arbitrary subset of $[m]$, and let $\x$ be an arbitrary element of $\R^m$. To prove that $\pi_I$ is continuous at $\x$, Theorem \ref{trm:18.31} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $\y\in\R^m$ and $\norm{\y-\x}<\delta$, then $\norm{\pi_I(\y)-\pi_I(\x)}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$. Let $\y$ be an arbitrary element of $\R^m$ such that $\norm{\y-\x}<\delta$. Then
+        \begin{align*}
+            \norm{\pi_I(\y)-\pi_I(\x)} &= \norm{(y_{i_1}-x_{i_1},\dots,y_{i_k}-x_{i_k})}\tag*{Definition \ref{dfn:18.2}}\\
+            &= \sqrt{(y_{i_1}-x_{i_1})^2+\cdots+(y_{i_k}-x_{i_k})^2}\tag*{Definition \ref{dfn:18.6}}\\
+            &\leq \sqrt{(y_1-x_1)^2+\cdots+(y_m-x_m)^2}\\
+            &= \norm{(y_1-x_1,\dots,y_m-x_m)}\tag*{Definition \ref{dfn:18.6}}\\
+            &= \norm{\y-\x}\tag*{Definition \ref{dfn:18.2}}\\
+            &< \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{remark}\label{rmk:18.36}
+    Let $A\subset\R^n$ be a rectangle (open or closed). Then
+    \begin{equation*}
+        A = \pi_1(A)\times\cdots\times\pi_n(A)
+    \end{equation*}
+\end{remark}
+
+\begin{definition}\label{dfn:18.37}
+    Let $f:A\to\R^m$. Its $i^\text{th}$ component function $f_i:A\to\R$ is defined as
+    \begin{equation*}
+        f_i = \pi_i\circ f
+    \end{equation*}
+    In other words,
+    \begin{equation*}
+        f(\x) = (f_1(\x),\dots,f_m(\x))
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}\label{trm:18.38}
+    Let $A\subset\R^n$ and let $\x$ be a limit point of $A$. Suppose $f:A\to\R^m$. If $\lim_{\y\to\x}f(\y)=\z$ exists (with $\z=(z_1,\dots,z_m)$), then for all $i\in[m]$, $\lim_{\y\to\x}f_i(\y)$ exists and equals $z_i$. Conversely, if for all $i\in[m]$, $\lim_{\y\to\x}f_i(\y)=z_i$, then $\lim_{\y\to\x}f(\y)$ exists and equals $\z=(z_1,\dots,z_m)$.
+    \begin{proof}
+        Suppose first that $\lim_{\y\to\x}f(\y)=\z$. Let $i$ be an arbitrary element of $[m]$. To prove that $\lim_{\y\to\x}f_i(\y)=z_i$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $\y\in A$ and $0<\norm{\y-\x}<\delta$, then $\norm{f_i(\y)-z_i}<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{\y\to\x}f(\y)=\z$, Definition \ref{dfn:18.29} asserts that there exists $\delta>0$ such that if $\y\in A$ and $0<\norm{\y-\x}<\delta$, then $\norm{f(\y)-\z}<\epsilon$. Choose this $\delta$ to be our $\delta$. Let $\y$ be an arbitrary element of $A$ satisfying $0<\norm{\y-\x}<\delta$. Then
+        \begin{align*}
+            \norm{f_i(\y)-z_i} &= \sqrt{(f_i(\y)-z_i)^2}\tag*{Definition \ref{dfn:18.6}}\\
+            &\leq \sqrt{(f_1(\y)-z_1)^2+\cdots+(f_m(\y)-z_m)^2}\\
+            &= \norm{(f_1(\y),\dots,f_m(\y))-(z_1,\dots,z_m)}\tag*{Definition \ref{dfn:18.6}}\\
+            &= \norm{f(\y)-\z}\tag*{Definition \ref{dfn:18.37}}\\
+            &< \epsilon
+        \end{align*}
+        as desired.\par
+        Now suppose that for all $i\in[m]$, $\lim_{\y\to\x}f_i(\y)=z_i$. To prove that $\lim_{\y\to\x}f(\y)=\z$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for all $\epsilon>0$, there exists $\delta>0$ such that if $\y\in A$ and $0<\norm{\y-\x}<\delta$, then $\norm{f(\y)-\z}<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{\y\to\x}f_i(\y)=z_i$ for all $i\in[m]$, Definition \ref{dfn:18.29} asserts that for all $i\in[m]$, there exists $\delta_i>0$ such that if $\y\in A$ and $0<\norm{\y-\x}<\delta$, then $\norm{f_i(\y)-z_i}<\frac{\epsilon}{m}$. Choose $\delta=\min(\delta_1,\dots,\delta_m)$. Let $\y$ be an arbitrary element of $A$ satisfying $0<\norm{\y-\x}<\delta$. Then
+        \begin{align*}
+            \norm{f(\y)-\z} &= \norm{(f_1(\y)-z_1)+\cdots+(f_m(\y)-z_m)}\\
+            &\leq \norm{f_1(\y)-z_1}+\cdots+\norm{f_m(\y)-z_m}\tag*{Theorem \ref{trm:18.10}}\\
+            &< \underbrace{\frac{\epsilon}{m}+\cdots+\frac{\epsilon}{m}}_{m\text{ times}}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+    \begin{proof}[Proposed Alternate Proof of Forward Direction]
+        Suppose first that $\lim_{\y\to\x}f(\y)=\z$. Let $i$ be an arbitrary element of $[m]$. By Exercise \ref{exr:18.35}, $\pi_i$ is continuous. Notably, $\pi_i$ is continuous at $\x$. Therefore,
+        \begin{align*}
+            \lim_{\y\to\x}f_i(\y) &= \lim_{\y\to\x}(\pi_i\circ f)(\y)\tag*{Definition \ref{dfn:18.37}}\\
+            &= \pi_i(\z)\tag*{Theorem \ref{trm:11.13}}\\
+            &= z_i\tag*{Definition \ref{dfn:18.34}}
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:18.39}
+    Let $A\subset\R^n$. A function $f:A\to\R^m$ is continuous if and only if $f_1,\dots,f_m$ are all continuous.
+    \begin{proof}
+        Suppose first that $f$ is continuous. Let $\x$ be an arbitrary element of $A$, and let $i$ be an arbitrary element of $[m]$. To prove that $f_i$ is continuous at $\x$, Theorem \ref{trm:18.31} tells us that it will suffice to show that either $\x\notin LP(A)$ or $\lim_{\y\to\x}f_i(\y)=f_i(\x)$. Since $f$ is continuous at $\x$ by hypothesis, Theorem \ref{trm:18.31} asserts that either $\x\notin LP(A)$ or $\lim_{\y\to\x}f(\y)=f(\x)$. We now divide into two cases. If $\x\notin LP(A)$, then we are done. On the other hand, if $\lim_{\y\to\x}f(\y)=f(\x)$, then by Theorem \ref{trm:18.38} and Definition \ref{dfn:18.37}, $\lim_{\y\to\x}f_i(\y)=f_i(\x)$, as desired.\par
+        The proof is symmetric in the other direction.
+    \end{proof}
+\end{corollary}
+
+Now we revisit compactness, but in $\R^n$. For our purposes, the key result is Corollary \ref{cly:18.48}.
+
+\begin{definition}\label{dfn:18.40}
+    Let $A\subset\R^n$. Then $A$ is \textbf{compact} if every open cover $\mathcal{G}$ of $A$ has a finite subcover.
+\end{definition}
+
+\begin{proposition}\label{prp:18.41}
+    Let $A\subset\R^n$. Then $A$ is compact if and only if every open cover $\mathcal{G}$ of $A$ consisting solely of open rectangles has a finite subcover.
+    \begin{proof}
+        Suppose first that $A$ is compact. Let $\mathcal{G}$ be an arbitrary open cover of $A$ consisting solely of open rectangles. Then since $A$ is compact, by Definition \ref{dfn:18.40}, $\mathcal{G}$ has a finite subcover.\par
+        Now suppose that every open cover $\mathcal{G}$ of $A$ consisting solely of open rectangles has a finite subcover. To prove that $A$ is compact, Definition \ref{dfn:18.40} tells us that it will suffice to show that every open cover $\mathcal{G}$ of $A$ has a finite subcover. Let $\mathcal{G}=\{G_\lambda\mid\lambda\in\Lambda\}$ be an arbitrary open cover of $A$, and let $G_\lambda$ be an arbitrary element of $\mathcal{G}$. By Definition \ref{dfn:10.3}, $G_\lambda$ is open. Thus, by Proposition \ref{prp:18.22}, $G_\lambda=\bigcup_{\gamma\in\Gamma_\lambda}R_{\lambda_\gamma}$, where each $R_{\lambda_\gamma}$ is an open rectangle. Now let $\mathcal{H}=\{R_{\lambda_\gamma}\mid\lambda\in\Lambda,\gamma\in\Gamma_\lambda\}$. It follows by Script \ref{sct:1} that $\mathcal{G}=\mathcal{H}$. Additionally, by the hypothesis, there exists a finite subcover $\mathcal{H}'\subset\mathcal{H}$ of $A$. Finally, if $R_{\lambda_\gamma}\in\mathcal{H}'$, let $G_\lambda\in\mathcal{G}'$. It follows that $\mathcal{G}'$ is a finite subcover of $\mathcal{G}$, as desired.
+    \end{proof}
+\end{proposition}
+
+\begin{definition}\label{dfn:18.42}
+    Let $A\subset\R^n$ and $f:A\to\R^m$. We say that $f$ is \textbf{uniformly continuous} if for every $\epsilon>0$, there exists $\delta>0$ such that if $\x,\y\in A$ and $\norm{\x-\y}<\delta$, then $\norm{f(\x)-f(\y)}<\epsilon$.
+\end{definition}
+
+\begin{theorem}\label{trm:18.43}
+    Let $A\subset\R^n$ be compact and $f:A\to\R^m$ be continuous. Then $f$ is uniformly continuous.
+    \begin{proof}
+        The proof is symmetric to that of Theorem \ref{trm:13.6}.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:18.44}
+    If $A\subset\R^n$ is compact and $f:A\to\R^m$ is continuous, then $f(A)$ is compact.
+    \begin{proof}
+        The proof is symmetric to that of Theorem \ref{trm:10.19}.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:18.45}
+    Let $\x\in\R^n$. If $B$ is a compact subset of $\R^m$, then $\{\x\}\times B$ is a compact subset of $\R^{n+m}$.
+    \begin{proof}
+        Let $f:B\to\R^{n+m}$ be defined by $f(\y)=(x_1,\dots,x_n,y_1,\dots,y_m)$ for all $\y\in B$. Let $\y$ be an arbitrary element of $B$. To prove that $f$ is continuous at $\y$, Theorem \ref{trm:18.31} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta$ such that if $\z\in B$ and $\norm{\z-\y}<\delta$, then $\norm{f(\z)-f(\y)}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\epsilon$. Let $\z$ be an arbitrary element of $B$ satisfying $\norm{\z-\y}<\delta$. Then
+        \begin{align*}
+            \norm{f(\z)-f(\y)} &= \norm{(x_1-x_1,\dots,x_n-x_n,z_1-y_1,\dots,z_m-y_m)}\\
+            &= \norm{(z_1-y_1,\dots,z_m-y_m)}\\
+            &= \norm{\z-\y}\\
+            &< \epsilon
+        \end{align*}
+        as desired. Therefore, since $B\subset\R^m$ is compact and $f:B\to\R^{n+m}$ is continuous, Theorem \ref{trm:18.44} asserts that $f(B)$ is compact. Naturally, $f(B)=\{\x\}\times B$, so the latter set is compact, too, as desired.
+    \end{proof}
+\end{corollary}
+
+\begin{lemma}\label{lem:18.46}
+    Let $\x\in\R^n$ and $B\subset\R^m$. If $\mathcal{G}$ is a finite set of open rectangles that covers $\{\x\}\times B\subset\R^{n+m}$, then there exists an open rectangle $R\subset\R^n$ containing $\x$ such that $\mathcal{G}$ covers $R\times B$.
+    \begin{proof}
+        % \begin{itemize}
+        %     \item Let $\mathcal{G}=\{R_i\mid i\in[k]\}$.
+        %     \item Every $\pi_{[n]}(R_i)$ is an open rectangle.
+        %     \begin{itemize}
+        %         \item Let $i\in[k]$ be arbitrary.
+        %         \item Let $R_i=(r_{i_j},s_{i_j})_{j=1}^{n+m}$.
+        %         \item WTS (Definition \ref{dfn:18.13}): $\pi_{[n]}(R_i)=(r_{i_j},s_{i_j})_{j=1}^n$.
+        %         \item Let $\y\in\pi_{[n]}(R_i)$ be arbitrary.
+        %         \item Definition \ref{dfn:1.18}: $\y=\pi_{[n]}(\z)$ for some $\z\in R_i$.
+        %         \item Definition \ref{dfn:18.34}: $y_j=z_j$ for all $j\in[n]$.
+        %         \item Definition \ref{dfn:18.13}: $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n]$.
+        %         \item Definition \ref{dfn:1.15}: $\y\in(r_{i_j},s_{i_j})_{j=1}^n$.
+        %         \item Symmetric in the other direction.
+        %     \end{itemize}
+        %     \item Every $\pi_{[n]}(R_i)$ contains $\x$.
+        %     \begin{itemize}
+        %         \item Let $i\in[k]$ be arbitrary.
+        %         \item Let $\y\in\{\x\}\times B$ such that $\y\in R_i$.
+        %         \item Definition \ref{dfn:1.18}: $\pi_{[n]}(\y)\in\pi_{[n]}(R_i)$.
+        %         \item Definition \ref{dfn:1.15}: $\y=(x_1,\dots,x_n,y_1,\dots,y_m)$.
+        %         \item Definition \ref{dfn:18.34}: $\pi_{[n]}(\y)=\x$.
+        %         \item Therefore: $\x\in\pi_{[n]}(R_i)$.
+        %     \end{itemize}
+        %     \item Let $R=\bigcap_{i\in[k]}\pi_{[n]}(R_i)$.
+        %     \item Exercise \ref{exr:18.16}: $R$ is an open rectangle containing $\x$.
+        %     \item $\mathcal{G}$ covers $R\times B$.
+        %     \begin{itemize}
+        %         \item WTS (Definition \ref{dfn:10.3}): For all $\y\in R\times B$, $\y\in R_i$ for some $R_i\in\mathcal{G}$.
+        %         \item Let $\y=(y_1,\dots,y_{n+m})\in R\times B$ be arbitrary.
+        %         \item Definition \ref{dfn:1.15}: $(y_1,\dots,y_n)\in R$ and $(y_{n+1},\dots,y_{n+m})\in B$.
+        %         \item Definition \ref{dfn:10.3} ($\mathcal{G}$ is a cover of $\{\x\}\times B$): $(x_1,\dots,x_n,y_{n+1},\dots,y_{n+m})\in R_i$ for some $i\in[k]$.
+        %         \item Consider this $R_i$; we will show that $\y\in R_i$.
+        %         \item WTS (Definition \ref{dfn:18.13}): $y_i\in(r_{i_j},s_{i_j})$ for all $j\in[n+m]$.
+        %         \item Case 1: $j\in[n]$.
+        %         \begin{itemize}
+        %             \item Theorem \ref{trm:1.7} ($R=\bigcap_{i\in[k]}\pi_{[n]}(R_i)$): $R\subset\pi_{[n]}(R_i)$.
+        %             \item Definition \ref{dfn:1.3} ($(y_1,\dots,y_n)\in R$): $(y_1,\dots,y_n)\in\pi_{[n]}(R_i)$.
+        %             \item The above: $\pi_{[n]}(R_i)=(r_{i_j},s_{i_j})_{j=1}^n$.
+        %             \item Definition \ref{dfn:1.2}: $(y_1,\dots,y_n)\in(r_{i_j},s_{i_j})_{j=1}^n$.
+        %             \item Definition \ref{dfn:18.13}: $y_i\in(r_{i_j},s_{i_j})$ for all $j\in[n]$.
+        %         \end{itemize}
+        %         \item Case 2: $j\in[n+1:m]$.
+        %         \begin{itemize}
+        %             \item The above: $(x_1,\dots,x_n,y_{n+1},\dots,y_{n+m})\in R_i$.
+        %             \item Definition \ref{dfn:18.13}: $y_i\in(r_{i_j},s_{i_j})$ for all $j\in[n+1:m]$.
+        %         \end{itemize}
+        %     \end{itemize}
+        % \end{itemize}
+
+        Let $\mathcal{G}=\{R_i\mid i\in[k]\}$. To begin, we will show that every $\pi_{[n]}(R_i)$ is an open rectangle containing $\x$. It will follow that the intersection of all $\pi_{[n]}(R_i)$ is an open rectangle $R$ containing $\x$. Thus, since this $R$ is a subset of each $R_i$ in dimensions 1 through $n$, we will be able to show that $\mathcal{G}$ covers $R\times B$. Let's begin.\par\smallskip
+        First, we will show that every $\pi_{[n]}(R_i)$ is an open rectangle. Let $i$ be an arbitrary element of $[k]$, and let $R_i=(r_{i_j},s_{i_j})_{j=1}^{n+m}$. To show that $\pi_{[n]}(R_i)$ is an open rectangle, Definition \ref{dfn:18.13} tells us that it will suffice to verify that $\pi_{[n]}(R_i)=(r_{i_j},s_{i_j})_{j=1}^n$. Let $\y$ be an arbitrary element of $\pi_{[n]}(R_i)$. By Definition \ref{dfn:1.18}, $\y=\pi_{[n]}(\z)$ for some $\z\in R_i$. Thus, by Definition \ref{dfn:18.34}, $y_j=z_j$ for all $j\in[n]$. Consequently, since $z_j\in(r_{i_j},s_{i_j})$ for all $j\in[n]$ by Definition \ref{dfn:18.13}, we have that $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n]$. Therefore, by Definition \ref{dfn:1.15}, $\y\in(r_{i_j},s_{i_j})_{j=1}^n$. The argument is symmetric in the other direction. Both arguments, when combined, imply by Definition \ref{dfn:1.2} that $\pi_{[n]}(R_i)=(r_{i_j},s_{i_j})_{j=1}^n$, as desired.\par
+        Next, we will show that every $\pi_{[n]}(R_i)$ contains $\x$. Let $i$ be an arbitrary element of $[k]$, and let $\y$ be an arbitrary element of $\{\x\}\times B$ satisfying $\y\in R_i$ (Definition \ref{dfn:10.3} guarantees that $\y$ is in some $R_i$). Thus, by Definition \ref{dfn:1.18}, $\pi_{[n]}(\y)\in\pi_{[n]}(R_i)$. Additionally, by Definition \ref{dfn:1.15}, $\y=(x_1,\dots,x_n,y_1,\dots,y_m)$. It follows by Definition \ref{dfn:18.34} that $\pi_{[n]}(\y)=\x$. Therefore, $\x\in\pi_{[n]}(R_i)$, as desired.\par
+        Let $R=\bigcap_{i\in[k]}\pi_{[n]}(R_i)$. Consequently, by Exercise \ref{exr:18.16}, $R$ is an open rectangle containing $\x$.\par
+        To prove that $\mathcal{G}$ covers $R\times B$, Definition \ref{dfn:10.3} tells us that it will suffice to show that for all $\y\in R\times B$, $\y\in R_i$ for some $R_i\in\mathcal{G}$. Let $\y=(y_1,\dots,y_{n+m})$ be an arbitrary element of $R\times B$. By Definition \ref{dfn:1.15}, $(y_1,\dots,y_n)\in R$ and $(y_{n+1},\dots,y_{n+m})\in B$. It follows from the latter statement and the fact that $\mathcal{G}$ is a cover of $\{\x\}\times B$ that $(x_1,\dots,x_n,y_{n+1},\dots,y_{n+m})\in R_i$ for some $i\in[k]$. Consider this $R_i$; we will confirm that $\y$ is an element of it. To do so, Definition \ref{dfn:18.13} tells us that it will suffice to demonstrate that $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n+m]$. We divide into two cases ($j\in[n]$ and $j\in[n+1:m]$). Suppose first that $j\in[n]$. Then since $R=\bigcap_{i\in[k]}\pi_{[n]}(R_i)$, Theorem \ref{trm:1.7} asserts that $R\subset\pi_{[n]}(R_i)$. Thus, since $(y_1,\dots,y_n)\in R$ by the above, Definition \ref{dfn:1.3} implies that $(y_1,\dots,y_n)\in\pi_{[n]}(R_i)$. Additionally, by the above, $\pi_{[n]}(R_i)$ can be written in the form $(r_{i_j},s_{i_j})_{j=1}^n$. Combining the last two results, we have by Definition \ref{dfn:1.2} that $(y_1,\dots,y_n)\in(r_{i_j},s_{i_j})_{j=1}^n$. Therefore, by Definition \ref{dfn:18.13}, $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n]$, as desired. Now suppose that $j\in[n+1:m]$. By the above, $(x_1,\dots,x_n,y_{n+1},\dots,y_{n+m})\in R_i$. Therefore, by Definition \ref{dfn:18.13}, $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n+1:m]$, as desired.
+    \end{proof}
+\end{lemma}
 
 
 

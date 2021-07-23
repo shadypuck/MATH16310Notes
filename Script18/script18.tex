@@ -451,10 +451,12 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
         \begin{proof}
             To prove that $\lim_{(x,y)\to(a,b)}4xy=4ab$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $(x,y)\in\R^2$ and $0<\norm{(x,y)-(a,b)}<\delta$, then $\norm{4xy-4ab}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\min(\min(\frac{\epsilon}{8(|b|+1)},1),\frac{\epsilon}{8(|a|-1)})$. Then since $\norm{(x-a,y-b)}<\delta$ by hypothesis and Definition \ref{dfn:18.2}, the lemma asserts that $|x-a|<\delta$ and $|y-b|<\delta$. It follows that $|x-a|<\min(\frac{\epsilon}{8(|b|+1)},1)$ and $|y-b|<\frac{\epsilon}{8(|a|-1)}$. Consequently, by an argument symmetric to the proof of Theorem \ref{trm:11.9}, $|xy-ab|<\frac{\epsilon}{4}$. Therefore, $\norm{4xy-4ab}=|4xy-4ab|<4\cdot\frac{\epsilon}{4}=\epsilon$, as desired.
         \end{proof}
+        % Prove that $(0,0)$ is a limit point of $\R^2\setminus\{(0,0)\}$.
         \item \label{exr:18.30b}$\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}$.
         \begin{proof}
+            To ensure that $\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}$ is well-defined, Definition \ref{dfn:18.29} tells us that we must show that $(0,0)\in LP(\R^2\setminus\{(0,0)\})$, assuming that $\R^2\setminus\{(0,0)\}$ is the domain of $\frac{x^3-y^3}{x^2+y^2}$ since the domain is not explicitly specified. To do so, Definition \ref{dfn:18.29} tells us again that it will suffice to verify that for every open set $U$ containing $(0,0)$, $(\R^2\setminus\{(0,0)\})\cap(U\setminus\{(0,0)\})\neq\emptyset$. Let $U$ be an arbitrary open set containing $(0,0)$. By Definition \ref{dfn:18.14}, there exists an open rectangle $R$ such that $(0,0)\in R\subset U$. By Definition \ref{dfn:18.13}, $R$ is not a singleton set. Thus, there exist at least one point in $R$, i.e., in $U$ that is not equal to $(0,0)$ and is (naturally) in $\R^2$, as desired.\par
             To prove that $\lim_{(x,y)\to(0,0)}\frac{x^3-y^3}{x^2+y^2}=0$, Definition \ref{dfn:18.29} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $(x,y)\in\R^2$ and $0<\norm{(x,y)-(0,0)}<\delta$, then $||\frac{x^3-y^3}{x^2+y^2}-0||=|\frac{x^3-y^3}{x^2+y^2}|<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{3}$. Then from previous results, we can prove two important bounds on combinations of $x$ and $y$ that will be useful in the final inequality. Let's begin.\par
-            First, we have that
+            First, since $0<\norm{(x,y)}$, Theorem \ref{trm:18.10} implies that $x\neq 0$ or $y\neq 0$. Thus, $x^2+y^2\neq 0$. Consequently, we may argue in a well-defined manner that
             \begin{align*}
                 \left| \frac{xy}{x^2+y^2} \right| &= |xy|\cdot\left| \frac{1}{x^2+y^2} \right|\\
                 &\leq \frac{x^2+y^2}{2}\cdot\left| \frac{1}{x^2+y^2} \right|\tag*{Lemma \ref{lem:18.9}}\\
@@ -523,7 +525,7 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
             Let $x$ be an arbitrary element of $\R$. To prove that $f$ is continuous at $x$, Theorem \ref{trm:18.31} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $y\in\R$ and $\norm{y-x}=|y-x|<\delta$, then $\norm{f(y)-f(x)}<\epsilon$. Let $\epsilon>0$ be arbitrary. Choose $\delta=\frac{\epsilon}{\norm{\mathbf{a}}}$ (by Theorem \ref{trm:18.10} and the supposition that $\mathbf{a}\neq 0$, we know that $\norm{\mathbf{a}}\neq 0$). Let $y$ be an arbitrary element of $\R$ satisfying $|y-x|<\delta$. Then
             \begin{align*}
                 \norm{f(y)-f(x)} &= \norm{y\mathbf{a}-x\mathbf{a}}\\
-                \norm{(y-x)\mathbf{a}}\\
+                &= \norm{(y-x)\mathbf{a}}\\
                 &= |y-x|\cdot\norm{\mathbf{a}}\tag*{Theorem \ref{trm:18.10}}\\
                 &< \frac{\epsilon}{\norm{\mathbf{a}}}\cdot\norm{\mathbf{a}}\\
                 &= \epsilon
@@ -549,7 +551,7 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
 \end{exercise}
 
 \begin{exercise}\label{exr:18.33}
-    Consider the function $f:\R^2\setminus\{(0,0)\}\to\R$ given by $f(x,y)=\frac{x^3-y^3}{x^2+y^2}$ (see Exercise \ref{exr:18.30c}). It can be shown that this function is continuous on its domain. Can you extend this function continuously to $\R^2$? More specifically, can you define a continuous function $g:\R^2\to\R$ such that $g(x,y)=f(x,y)$ for all $(x,y)\neq(0,0)$?
+    Consider the function $f:\R^2\setminus\{(0,0)\}\to\R$ given by $f(x,y)=\frac{x^3-y^3}{x^2+y^2}$ (see Exercise \ref{exr:18.30b}). It can be shown that this function is continuous on its domain. Can you extend this function continuously to $\R^2$? More specifically, can you define a continuous function $g:\R^2\to\R$ such that $g(x,y)=f(x,y)$ for all $(x,y)\neq(0,0)$?
     \begin{proof}
         Let $g:\R^2\to\R$ be defined by
         \begin{equation*}
@@ -583,7 +585,7 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
             &= \norm{\y-\x}\tag*{Definition \ref{dfn:18.2}}\\
             &< \epsilon
         \end{align*}
-        as desired.
+        as desired.\footnote{This can also be done, without much difficulty, with the open preimage form of continuity.}
     \end{proof}
 \end{exercise}
 
@@ -623,15 +625,6 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
             &\leq \norm{f_1(\y)-z_1}+\cdots+\norm{f_m(\y)-z_m}\tag*{Theorem \ref{trm:18.10}}\\
             &< \underbrace{\frac{\epsilon}{m}+\cdots+\frac{\epsilon}{m}}_{m\text{ times}}\\
             &= \epsilon
-        \end{align*}
-        as desired.
-    \end{proof}
-    \begin{proof}[Proposed Alternate Proof of Forward Direction]
-        Suppose first that $\lim_{\y\to\x}f(\y)=\z$. Let $i$ be an arbitrary element of $[m]$. By Exercise \ref{exr:18.35}, $\pi_i$ is continuous. Notably, $\pi_i$ is continuous at $\x$. Therefore,
-        \begin{align*}
-            \lim_{\y\to\x}f_i(\y) &= \lim_{\y\to\x}(\pi_i\circ f)(\y)\tag*{Definition \ref{dfn:18.37}}\\
-            &= \pi_i(\z)\tag*{Theorem \ref{trm:11.13}}\\
-            &= z_i\tag*{Definition \ref{dfn:18.34}}
         \end{align*}
         as desired.
     \end{proof}

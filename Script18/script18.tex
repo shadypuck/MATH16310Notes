@@ -638,7 +638,7 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
     \end{proof}
 \end{corollary}
 
-Now we revisit compactness, but in $\R^n$. For our purposes, the key result is Corollary \ref{cly:18.48}.
+\marginnote{7/24:}Now we revisit compactness, but in $\R^n$. For our purposes, the key result is Corollary \ref{cly:18.48}.
 
 \begin{definition}\label{dfn:18.40}
     Let $A\subset\R^n$. Then $A$ is \textbf{compact} if every open cover $\mathcal{G}$ of $A$ has a finite subcover.
@@ -743,6 +743,75 @@ Now we revisit compactness, but in $\R^n$. For our purposes, the key result is C
         To prove that $\mathcal{G}$ covers $R\times B$, Definition \ref{dfn:10.3} tells us that it will suffice to show that for all $\y\in R\times B$, $\y\in R_i$ for some $R_i\in\mathcal{G}$. Let $\y=(y_1,\dots,y_{n+m})$ be an arbitrary element of $R\times B$. By Definition \ref{dfn:1.15}, $(y_1,\dots,y_n)\in R$ and $(y_{n+1},\dots,y_{n+m})\in B$. It follows from the latter statement and the fact that $\mathcal{G}$ is a cover of $\{\x\}\times B$ that $(x_1,\dots,x_n,y_{n+1},\dots,y_{n+m})\in R_i$ for some $i\in[k]$. Consider this $R_i$; we will confirm that $\y$ is an element of it. To do so, Definition \ref{dfn:18.13} tells us that it will suffice to demonstrate that $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n+m]$. We divide into two cases ($j\in[n]$ and $j\in[n+1:m]$). Suppose first that $j\in[n]$. Then since $R=\bigcap_{i\in[k]}\pi_{[n]}(R_i)$, Theorem \ref{trm:1.7} asserts that $R\subset\pi_{[n]}(R_i)$. Thus, since $(y_1,\dots,y_n)\in R$ by the above, Definition \ref{dfn:1.3} implies that $(y_1,\dots,y_n)\in\pi_{[n]}(R_i)$. Additionally, by the above, $\pi_{[n]}(R_i)$ can be written in the form $(r_{i_j},s_{i_j})_{j=1}^n$. Combining the last two results, we have by Definition \ref{dfn:1.2} that $(y_1,\dots,y_n)\in(r_{i_j},s_{i_j})_{j=1}^n$. Therefore, by Definition \ref{dfn:18.13}, $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n]$, as desired. Now suppose that $j\in[n+1:m]$. By the above, $(x_1,\dots,x_n,y_{n+1},\dots,y_{n+m})\in R_i$. Therefore, by Definition \ref{dfn:18.13}, $y_j\in(r_{i_j},s_{i_j})$ for all $j\in[n+1:m]$, as desired.
     \end{proof}
 \end{lemma}
+
+\begin{theorem}\label{trm:18.47}
+    If $A\subset\R^n$ and $B\subset R^m$ are compact, then $A\times B\subset\R^{n+m}$ is also compact.
+    \begin{proof}
+        % \begin{itemize}
+        %     \item WTS (Proposition \ref{prp:18.41}): Every open cover $\mathcal{G}$ of $A\times B$ consisting solely of open rectangles has a finite subcover.
+        %     \item Let $\mathcal{G}$ be an arbitrary open cover of $A\times B$ consisting solely of open rectangles.
+        %     \item Corollary \ref{cly:18.45}: For all $\x\in A$, $\{\x\}\times B$ is compact.
+        %     \item Definition \ref{dfn:18.40}: For all $\x\in A$, there is a finite subcover $\mathcal{G}_\x\subset\mathcal{G}$ that covers $\{\x\}\times B$.
+        %     \item Lemma \ref{lem:18.46}: For each $\mathcal{G}_\x$, there is an open rectangle $R_\x$ containing $\x$ such that $\mathcal{G}_\x$ covers $R_\x\times B$.
+        %     \item Definition \ref{dfn:10.4}: The set $\{R_\x\mid\x\in A\}$ is an open cover of $A$.
+        %     \item Definition \ref{dfn:18.40} ($A$ is compact): There exists a finite subcover $\{R_\x\mid \x\in I\}\subset\{\R_\x\mid\x\in A\}$ of $A$, where $I\subset A$.
+        %     \item Let $\mathcal{G}'=\bigcup_{\x\in I}\mathcal{G}_\x$.
+        %     \item Clearly, $\mathcal{G}'$ is a finite subset of $\mathcal{G}$.
+        %     \item $\mathcal{G}'$ is an open cover of $A\times B$.
+        %     \begin{itemize}
+        %         \item WTS (Definition \ref{dfn:10.3}): Every $\y\in A\times B$ is an element of $G$ for some $G\in\mathcal{G}'$.
+        %         \item Let $\y\in A\times B$ be arbitrary.
+        %         \item Definition \ref{dfn:1.15}: $\y=(a_1,\dots,a_n,b_1,\dots,b_m)$, where $(a_1,\dots,a_n)\in A$ and $(b_1,\dots,b_m)\in B$.
+        %         \item The above ($(a_1,\dots,a_n)\in A$): $(a_1,\dots,a_n)\in R_\x$ for some $\x\in I$.
+        %         \item Definition \ref{dfn:1.15} ($(a_1,\dots,a_n)\in R_\x$ and $(b_1,\dots,b_m)\in B$): $\y\in R_\x\times B$.
+        %         \item Definition \ref{dfn:10.3} ($R_\x\times B$ is covered by $\mathcal{G}_\x$): There exists $G\in\mathcal{G}_\x$ such that $\y\in G$.
+        %         \item Theorem \ref{trm:1.7}: $\mathcal{G}_\x\subset\mathcal{G}'$.
+        %         \item Definition \ref{dfn:1.3}: $G\in\mathcal{G}'$.
+        %         \item Therefore: $\y\in G$ for some $G\in\mathcal{G}'$, as desired.
+        %     \end{itemize}
+        % \end{itemize}
+
+        To prove that $A\times B$ is compact, Proposition \ref{prp:18.41} tells us that it will suffice to show that every open cover $\mathcal{G}$ of $A\times B$ consisting solely of open rectangles has a finite subcover. Let $\mathcal{G}$ be an arbitrary open cover of $A\times B$ consisting solely of open rectangles. By Corollary \ref{cly:18.45}, for all $\x\in A$, $\{\x\}\times B$ is compact. Thus, by Definition \ref{dfn:18.40}, for all $\x\in A$, there is a finite subcover $\mathcal{G}_\x\subset\mathcal{G}$ that covers $\{\x\}\times B$. Since $\mathcal{G}_\x$ is a finite set of open rectangles that covers $\{\x\}\times B$, it follows by Lemma \ref{lem:18.46} that for each $\mathcal{G}_\x$, there is an open rectangle $R_\x$ containing $\x$ such that $\mathcal{G}_\x$ covers $R_\x\times B$. Additionally, since each $R_\x$ is open and $\x\in R_\x$ for all $\x\in A$, Definition \ref{dfn:10.3} asserts that $\{\R_\x\mid\x\in A\}$ is an open cover of $A$. But since $A$ is compact, there exists a finite subcover $\{R_\x\mid\x\in I\}\subset\{R_\x\mid\x\in A\}$ of $A$, where $I\subset A$. We are now ready to define our finite subcover $\mathcal{G}'\subset\mathcal{G}$ of $A\times B$, and verify that it is such.\par
+        Let $\mathcal{G}'=\bigcup_{\x\in I}\mathcal{G}_\x$. Since $\mathcal{G}'$ is the union of finitely many finite subsets of $\mathcal{G}$, Script \ref{sct:1} guarantees that $\mathcal{G}'$ is, itself, a finite subset of $\mathcal{G}$. To confirm that $\mathcal{G}'$ is an open cover of $A\times B$, Definition \ref{dfn:10.3} tells us that it will suffice to show that every $\y\in A\times B$ is an element of $G$ for some $G\in\mathcal{G}'$. Let $\y$ be an arbitrary element of $A\times B$. By Definition \ref{dfn:1.15}, $\y=(a_1,\dots,a_n,b_1,\dots,b_m)$, where $(a_1,\dots,a_n)\in A$ and $(b_1,\dots,b_m)\in B$. It follows from the former statement and the definition of $\{R_\x\mid\x\in I\}$ that $(a_1,\dots,a_n)\in R_\x$ for some $\x\in I$. This combined with the latter statement implies by Definition \ref{dfn:1.15} that $\y\in R_\x\times B$. Thus, since $\mathcal{G}_\x$ covers $R_\x\times B$, there exists $G\in\mathcal{G}_\x$ such that $y\in G$. Additionally, Theorem \ref{trm:1.7} implies that $\mathcal{G}_\x\subset\mathcal{G}$, so we have by Definition \ref{dfn:1.3} that $G\in\mathcal{G}'$. Therefore, $\y\in G$ for some $G\in\mathcal{G}'$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:18.48}
+    If $A_1,\dots,A_n$ are all compact, then so is $A_1\times\cdots\times A_n$. In particular, a closed rectangle is compact.
+    \begin{proof}
+        We induct on $n$. For the base case $n=1$, if $A_1$ is compact, then $\prod_{i=1}^1A_i=A_i$ is trivially compact. Now suppose inductively that we have proven the claim for $n$; we now seek to prove it for $n+1$. Let $A_1,\dots,A_{n+1}$ be compact. By hypothesis, $\prod_{i=1}^nA_i$ is compact. Thus, by Theorem \ref{trm:18.47}, $\prod_{i=1}^{n+1}A_i=(\prod_{i=1}^nA_i)\times A_{n+1}$ is compact, as desired.\par
+        Let $R$ be an arbitrary closed rectangle. By Definition \ref{dfn:18.13}, $R=[a_i,b_i]_{i=1}^n$. Additionally, by Theorem \ref{trm:10.14}, every $[a_i,b_i]$ is compact. Thus, since $R$ is the Cartesian product of $n$ compact sets, we have by the above that $R$ is compact, as desired.
+    \end{proof}
+\end{corollary}
+
+\begin{theorem}\label{trm:18.49}
+    If $A\subset X\subset\R^n$ with $X$ compact and $A$ closed in $\R^n$, then $A$ is compact.
+    \begin{proof}
+        The proof is symmetric to that of Theorem \ref{trm:10.15}.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:18.50}
+    Closed balls are compact.
+    \begin{proof}
+        Let $\overline{B}(\x,r)$ be an arbitrary closed ball. By Definition \ref{dfn:18.13}, $R=\prod_{i=1}^n[x_i-r,x_i+r]$ is a closed rectangle. Thus, to prove that $\overline{B}(\x,r)$ is compact, Theorem \ref{trm:18.49} tells us that it will suffice to show that $\overline{B}\subset R$, that $R$ is compact, and that $\overline{B}$ is closed. Let's begin.\par\smallskip
+        To prove that $\overline{B}\subset R$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $\y\in\overline{B}$ is an element of $R$. Let $\y$ be an arbitrary element of $\overline{B}$. Then by Definition \ref{dfn:18.17}, $\norm{\y-\x}\leq r$. It follows by the lemma to Exercise \ref{exr:18.30} that $|y_i-x_i|\leq r$ for all $1\leq i\leq n$. Thus, by Exercise \ref{exr:8.9}, $y_i\in[x_i-r,x_i+r]$ for all $1\leq i\leq n$. Consequently, by Definition \ref{dfn:18.13}, $\y\in R$, as desired.\par
+        By Corollary \ref{cly:18.48}, $R$ is compact, as desired.\par
+        By Corollary \ref{cly:18.21}, $\overline{B}$ is closed, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:18.51}
+    A subset $A$ of $\R^n$ is bounded if there exists a closed rectangle $R$ such that $A\subset R$.
+\end{definition}
+
+\begin{theorem}[The Heine-Borel theorem in $\R^n$]\label{trm:18.52}
+    A subset of $\R^n$ is compact if and only if it is closed and bounded.
+    \begin{proof}
+        Suppose first that $X$ is a compact subset of $\R^n$.\par
+        Now suppose that $X$ is a closed and bounded subset of $\R^n$. Since $X$ is bounded, Definition \ref{dfn:18.51} implies that there exists a closed rectangle $R$ such that $X\subset R$. Additionally, since $R$ is a closed rectangle, Corollary \ref{cly:18.48} implies that $R$ is compact. Thus, since $X\subset R$ with $R$ compact and $X$ closed, Theorem \ref{trm:18.49} asserts that $X$ is compact.
+    \end{proof}
+\end{theorem}
 
 
 

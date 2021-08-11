@@ -638,7 +638,7 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
     \end{proof}
 \end{corollary}
 
-\marginnote{7/24:}Now we revisit compactness, but in $\R^n$. For our purposes, the key result is Corollary \ref{cly:18.48}.
+\marginnote{7/28:}Now we revisit compactness, but in $\R^n$. For our purposes, the key result is Corollary \ref{cly:18.48}.
 
 \begin{definition}\label{dfn:18.40}
     Let $A\subset\R^n$. Then $A$ is \textbf{compact} if every open cover $\mathcal{G}$ of $A$ has a finite subcover.
@@ -669,6 +669,8 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
         The proof is symmetric to that of Theorem \ref{trm:10.19}.
     \end{proof}
 \end{theorem}
+
+% Exr 18.32 and Cly 18.39 for continuity.
 
 \begin{corollary}\label{cly:18.45}
     Let $\x\in\R^n$. If $B$ is a compact subset of $\R^m$, then $\{\x\}\times B$ is a compact subset of $\R^{n+m}$.
@@ -771,7 +773,7 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
         %     \end{itemize}
         % \end{itemize}
 
-        To prove that $A\times B$ is compact, Proposition \ref{prp:18.41} tells us that it will suffice to show that every open cover $\mathcal{G}$ of $A\times B$ consisting solely of open rectangles has a finite subcover. Let $\mathcal{G}$ be an arbitrary open cover of $A\times B$ consisting solely of open rectangles. By Corollary \ref{cly:18.45}, for all $\x\in A$, $\{\x\}\times B$ is compact. Thus, by Definition \ref{dfn:18.40}, for all $\x\in A$, there is a finite subcover $\mathcal{G}_\x\subset\mathcal{G}$ that covers $\{\x\}\times B$. Since $\mathcal{G}_\x$ is a finite set of open rectangles that covers $\{\x\}\times B$, it follows by Lemma \ref{lem:18.46} that for each $\mathcal{G}_\x$, there is an open rectangle $R_\x$ containing $\x$ such that $\mathcal{G}_\x$ covers $R_\x\times B$. Additionally, since each $R_\x$ is open and $\x\in R_\x$ for all $\x\in A$, Definition \ref{dfn:10.3} asserts that $\{\R_\x\mid\x\in A\}$ is an open cover of $A$. But since $A$ is compact, there exists a finite subcover $\{R_\x\mid\x\in I\}\subset\{R_\x\mid\x\in A\}$ of $A$, where $I\subset A$. We are now ready to define our finite subcover $\mathcal{G}'\subset\mathcal{G}$ of $A\times B$, and verify that it is such.\par
+        To prove that $A\times B$ is compact, Proposition \ref{prp:18.41} tells us that it will suffice to show that every open cover $\mathcal{G}$ of $A\times B$ consisting solely of open rectangles has a finite subcover. Let $\mathcal{G}$ be an arbitrary open cover of $A\times B$ consisting solely of open rectangles. By Corollary \ref{cly:18.45}, for all $\x\in A$, $\{\x\}\times B$ is compact. Thus, by Definition \ref{dfn:18.40}, for all $\x\in A$, there is a finite subcover $\mathcal{G}_\x\subset\mathcal{G}$ that covers $\{\x\}\times B$. Since $\mathcal{G}_\x$ is a finite set of open rectangles that covers $\{\x\}\times B$, it follows by Lemma \ref{lem:18.46} that for each $\mathcal{G}_\x$, there is an open rectangle $R_\x$ containing $\x$ such that $\mathcal{G}_\x$ covers $R_\x\times B$. Additionally, since each $R_\x$ is open and $\x\in R_\x$ for all $\x\in A$, Definition \ref{dfn:10.3} asserts that $\{R_\x\mid\x\in A\}$ is an open cover of $A$. But since $A$ is compact, there exists a finite subcover $\{R_\x\mid\x\in I\}\subset\{R_\x\mid\x\in A\}$ of $A$, where $I\subset A$. We are now ready to define our finite subcover $\mathcal{G}'\subset\mathcal{G}$ of $A\times B$, and verify that it is such.\par
         Let $\mathcal{G}'=\bigcup_{\x\in I}\mathcal{G}_\x$. Since $\mathcal{G}'$ is the union of finitely many finite subsets of $\mathcal{G}$, Script \ref{sct:1} guarantees that $\mathcal{G}'$ is, itself, a finite subset of $\mathcal{G}$. To confirm that $\mathcal{G}'$ is an open cover of $A\times B$, Definition \ref{dfn:10.3} tells us that it will suffice to show that every $\y\in A\times B$ is an element of $G$ for some $G\in\mathcal{G}'$. Let $\y$ be an arbitrary element of $A\times B$. By Definition \ref{dfn:1.15}, $\y=(a_1,\dots,a_n,b_1,\dots,b_m)$, where $(a_1,\dots,a_n)\in A$ and $(b_1,\dots,b_m)\in B$. It follows from the former statement and the definition of $\{R_\x\mid\x\in I\}$ that $(a_1,\dots,a_n)\in R_\x$ for some $\x\in I$. This combined with the latter statement implies by Definition \ref{dfn:1.15} that $\y\in R_\x\times B$. Thus, since $\mathcal{G}_\x$ covers $R_\x\times B$, there exists $G\in\mathcal{G}_\x$ such that $y\in G$. Additionally, Theorem \ref{trm:1.7} implies that $\mathcal{G}_\x\subset\mathcal{G}$, so we have by Definition \ref{dfn:1.3} that $G\in\mathcal{G}'$. Therefore, $\y\in G$ for some $G\in\mathcal{G}'$, as desired.
     \end{proof}
 \end{theorem}
@@ -808,7 +810,12 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
 \begin{theorem}[The Heine-Borel theorem in $\R^n$]\label{trm:18.52}
     A subset of $\R^n$ is compact if and only if it is closed and bounded.
     \begin{proof}
-        Suppose first that $X$ is a compact subset of $\R^n$.\par
+        Suppose first that $X$ is a compact subset of $\R^n$.\par\smallskip
+        The proof that $X$ is closed is symmetric to the proof of Theorem \ref{trm:10.11}.\par\smallskip
+        To prove that $X$ is bounded, Definition \ref{dfn:18.51} tells us that it will suffice to show that there exists a closed rectangle $R$ such that $X\subset R$. Let $\mathcal{G}=\{\prod_{i=1}^n(x_i,x_i+2)\mid x_1,\dots,x_n\in\Z\}$.\par
+        To confirm that $\mathcal{G}$ is an open cover of $X$, Definition \ref{dfn:10.3} tells us that it will suffice to show that for all $\y\in X$, $\y\in\prod_{i=1}^n(x_i,x_i+2)$ for some $\prod_{i=1}^n(x_i,x_i+2)\in\mathcal{G}$. Let $\y$ be an arbitrary element of $X$. By consecutive applications of Corollary \ref{cly:6.14}, there exist $n$ integers $x_i+2\in\Z$ such that $(x_i+2)-1\leq y_i<(x_i+2)$ for each $i\in[n]$. Thus, $x_i<x_i+1\leq y_i<x_i+2$ for all $i\in[n]$. It follows by Equations \ref{eqn:8.1} that $y_i\in(x_i,x_i+2)$ for all $i\in[n]$. Consequently, by Definition \ref{dfn:1.15}, we have that $\y\in\prod_{i=1}^n(x_i,x_i+2)$, where $\prod_{i=1}^n(x_i,x_i+2)\in\mathcal{G}$ by definition, as desired.\par
+        Having established that $\mathcal{G}$ is an open cover, we know by Definition \ref{dfn:18.40}, since $X$ is compact by hypothesis, that there exists a finite subcover $\mathcal{G}'\subset\mathcal{G}$ of $X$. It follows by the definition of $\mathcal{G}$ that $\mathcal{G}'$ is of the form $\mathcal{G}'=\{\prod_{i=1}^n(x_{ij},x_{ij}+2)\mid x_{ij}\in\Z,i\in[n],j\in[m]\}$ for some natural number $m$. Let $R$ be defined by $R=\prod_{i=1}^n(x_{i_1},x_{i_2}+2)$, where $x_{i_1}=\min_j\{x_{ij}\}$ and $x_{i_2}=\max_j\{x_{ij}\}$ for all $j\in[m]$.\par
+        To confirm that $X\subset R$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $\y\in X$ is an element of $R$. Let $\y$ be an arbitrary element of $X$. Then by the definition of $\mathcal{G}'$, $\y\in\prod_{i=1}^n(x_{ij},x_{ij}+2)$ for some $j\in[m]$. Thus, by Definition \ref{dfn:1.15} and Equations \ref{eqn:8.1}, $x_{ij}<y_i<x_{ij}+2$ for all $i\in[n]$. It follows that $x_{i_1}\leq x_{ij}<y_i<x_{ij}+2\leq x_{i_2}+2$. Consequently, by Equations \ref{eqn:8.1} and Definition \ref{dfn:1.15}, $\y\in\prod_{i=1}^n(x_{i_1},x_{i_2}+2)$. Therefore, $\y\in R$, as desired.\par\medskip
         Now suppose that $X$ is a closed and bounded subset of $\R^n$. Since $X$ is bounded, Definition \ref{dfn:18.51} implies that there exists a closed rectangle $R$ such that $X\subset R$. Additionally, since $R$ is a closed rectangle, Corollary \ref{cly:18.48} implies that $R$ is compact. Thus, since $X\subset R$ with $R$ compact and $X$ closed, Theorem \ref{trm:18.49} asserts that $X$ is compact.
     \end{proof}
 \end{theorem}

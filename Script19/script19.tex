@@ -1,0 +1,343 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{18}
+
+\begin{document}
+
+
+
+
+\chapter[Differentiation in \texorpdfstring{$\protect\fakeboldb{\R}^{\bm{n}}$}{TEXT}]{Differentiation in \texorpdfstring{$\protect\fakeboldc{\R}^{\bm{n}}$}{TEXT}}\label{sct:19}
+\begin{definition}\label{dfn:19.1}\marginnote{8/4:}
+    A \textbf{linear transformation} $\varphi:\R^n\to\R^m$ is a function such that for any $\x,\y\in\R^n$ and for any $\lambda\in\R$,
+    \begin{enumerate}[label={(\alph*)}]
+        \item $\varphi(\x+\y)=\varphi(\x)+\varphi(\y)$;
+        \item $\varphi(\lambda\x)=\lambda\varphi(\x)$.
+    \end{enumerate}
+    That is, $\varphi$ is a linear transformation if it respects the two operations in Definition \ref{dfn:18.2}.
+\end{definition}
+
+\begin{lemma}\label{lem:19.2}
+    Let $\varphi:\R^n\to\R^m$ be a linear transformation. Then $\varphi(\mathbf{0})=\mathbf{0}$.
+    \begin{proof}
+        Suppose for the sake of contradiction that $\varphi(\mathbf{0})\neq\mathbf{0}$. Then
+        \begin{align*}
+            \mathbf{0} &= \varphi(\x)-\varphi(\x)\\
+            &= \varphi(\x-\x)\tag*{Definition \ref{dfn:19.1}}\\
+            &= \varphi(\mathbf{0})\\
+            &\neq \mathbf{0}
+        \end{align*}
+        a contradiction.
+    \end{proof}
+\end{lemma}
+
+\begin{exercise}\label{exr:19.3}
+    We denote $\x\in\R^2$ by $\x=(x,y)$. Determine whether the following functions are linear transformations:
+    \begin{enumerate}[label={(\alph*)}]
+        \item $\varphi:\R^2\to\R$, $\varphi(x,y)=x+y$.
+        \begin{proof}[Answer]
+            $\varphi$ is a linear transformation.
+        \end{proof}
+        \begin{proof}
+            To prove that $\varphi$ is a linear transformation, Definition \ref{dfn:19.1} tells us that it will suffice to show that for any $\x,\y\in\R^2$ and for any $\lambda\in\R$, $\varphi(\x+\y)=\varphi(\x)+\varphi(\y)$ and $\varphi(\lambda\x)=\lambda\varphi(\x)$. Let $\x,\y$ be arbitrary elements of $\R^2$, and let $\lambda$ be an arbitrary element of $\R$. Then
+            \begin{align*}
+                \varphi(\x+\y) &= (x_1+y_1)+(x_2+y_2)\\
+                &= (x_1+x_2)+(y_1+y_2)\\
+                &= \varphi(\x)+\varphi(\y)
+            \end{align*}
+            and
+            \begin{align*}
+                \varphi(\lambda\x) &= \lambda x_1+\lambda x_2\\
+                &= \lambda(x_1+x_2)\\
+                &= \lambda\varphi(\x)
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item $\varphi:\R^2\to\R^2$, $\varphi(x,y)=(x,y+1)$.
+        \begin{proof}[Answer]
+            $\varphi$ is not a linear transformation.
+        \end{proof}
+        \begin{proof}
+            By the definition of $\varphi$, $\varphi(\mathbf{0})=(0,1)\neq\mathbf{0}$. Thus, by the contrapositive of Lemma \ref{lem:19.2}, $\varphi$ is not a linear transformation, as desired.
+        \end{proof}
+        \item $\varphi:\R^2\to\R^3$, $\varphi(x,y)=(3x-y,x+2y,0)$.
+        \begin{proof}[Answer]
+            $\varphi$ is a linear transformation.
+        \end{proof}
+        \begin{proof}
+            To prove that $\varphi$ is a linear transformation, Definition \ref{dfn:19.1} tells us that it will suffice to show that for any $\x,\y\in\R^2$ and for any $\lambda\in\R$, $\varphi(\x+\y)=\varphi(\x)+\varphi(\y)$ and $\varphi(\lambda\x)=\lambda\varphi(\x)$. Let $\x,\y$ be arbitrary elements of $\R^2$, and let $\lambda$ be an arbitrary element of $\R$. Then
+            \begin{align*}
+                \varphi(\x+\y) &= (3[x_1+y_1]-[x_2+y_2],[x_1+y_1]+2[x_2+y_2],0)\\
+                &= ([3x_1-x_2]+[3y_1-y_2],[x_1+2x_2]+[y_1+2y_1],0)\\
+                &= (3x_1-x_2,x_1+2x_2,0)+(3y_1-y_2,y_1+2y_2,0)\\
+                &= \varphi(\x)+\varphi(\y)
+            \end{align*}
+            and
+            \begin{align*}
+                \varphi(\lambda\x) &= (3[\lambda x_1]-[\lambda x_2],[\lambda x_1]+2[\lambda x_2],0)\\
+                &= (\lambda[3x_1-x_2],\lambda[x_1+2x_2],0)\\
+                &= \lambda(3x_1-x_2,x_1+2x_2,0)\\
+                &= \lambda\varphi(\x)
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item $\varphi:\R^2\to\R^3$, $\varphi(x,y)=(x^2,x+y,x+y^3)$.
+        \begin{proof}[Answer]
+            $\varphi$ is not a linear transformation.
+        \end{proof}
+        \begin{proof}
+            Consider $(1,1)\in\R^2$ and let $2\in\R$. Then
+            \begin{align*}
+                \varphi(2(1,1)) &= (4,4,10)\\
+                &\neq (2,4,4)\\
+                &= 2(1,2,2)\\
+                &= 2\varphi(1,1)
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exr:19.4}\leavevmode
+    \begin{enumerate}[label={(\alph*)}]
+        \item Let $\varphi:\R\to\R$ be a linear transformation. What does the graph of $\varphi$ look like?
+        \begin{proof}[Answer]
+            A line through the origin with finite slope.
+        \end{proof}
+        \item Let $\varphi:\R^2\to\R$ be a linear transformation. What does the graph of $\varphi$ look like?
+        \begin{proof}[Answer]
+            A plane through the origin with finite slope in both directions.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{exr:19.5}\leavevmode
+    \begin{enumerate}[label={(\alph*)}]
+        \item Let $\varphi:\R^n\to\R^m$ and $\psi:\R^m\to\R^\ell$ be linear transformations. Prove that $\psi\circ\varphi$ is also a linear transformation.
+        \begin{proof}
+            To prove that $\psi\circ\varphi:\R_n\to\R^\ell$ is a linear transformation, Definition \ref{dfn:19.1} tells us that it will suffice to show that for any $\x,\y\in\R^n$ and for any $\lambda\in\R$, $(\psi\circ\varphi)(\x+\y)=(\psi\circ\varphi)(\x)+(\psi\circ\varphi)(\y)$ and $(\psi\circ\varphi)(\lambda\x)=\lambda(\psi\circ\varphi)(\x)$. Let $\x,\y$ be arbitrary elements of $\R^n$, and let $\lambda$ be an arbitrary element of $\R$. Then since $\varphi$ and $\psi$ are linear transformations themselves, we have that
+            \begin{align*}
+                (\psi\circ\varphi)(\x+\y) &= \psi(\varphi(\x+\y))\\
+                &= \psi(\varphi(\x)+\varphi(\y))\tag*{Definition \ref{dfn:19.1}}\\
+                &= \psi(\varphi(\x))+\psi(\varphi(\y))\tag*{Definition \ref{dfn:19.1}}\\
+                &= (\psi\circ\varphi)(\x)+(\psi\circ\varphi)(\y)
+            \end{align*}
+            and
+            \begin{align*}
+                (\psi\circ\varphi)(\lambda\x) &= \psi(\varphi(\lambda\x))\\
+                &= \psi(\lambda\varphi(\x))\tag*{Definition \ref{dfn:19.1}}\\
+                &= \lambda\psi(\varphi(\x))\tag*{Definition \ref{dfn:19.1}}\\
+                &= \lambda(\psi\circ\varphi)(\x)
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item Let $\varphi,\psi:\R^n\to\R^m$ be linear transformations and let $\lambda\in\R$. Prove that $\varphi+\psi$ and $\lambda\varphi$ are linear transformations.
+        \begin{proof}
+            To prove that $\varphi+\psi$ is a linear transformation, Definition \ref{dfn:19.1} tells us that it will suffice to show that for any $\x,\y\in\R^n$ and for any $\lambda\in\R$, $(\varphi+\psi)(\x+\y)=(\varphi+\psi)(\x)+(\varphi+\psi)(\y)$ and $(\varphi+\psi)(\lambda\x)=\lambda(\varphi+\psi)(\x)$. Let $\x,\y$ be arbitrary elements of $\R^n$, and let $\lambda$ be an arbitrary element of $\R$. Then since $\varphi$ and $\psi$ are linear transformations themselves, we have that
+            \begin{align*}
+                (\varphi+\psi)(\x+\y) &= \varphi(\x+\y)+\psi(\x+\y)\\
+                &= \varphi(\x)+\varphi(\y)+\psi(\x)+\psi(\y)\tag*{Definition \ref{dfn:19.1}}\\
+                &= \varphi(\x)+\psi(\x)+\varphi(\y)+\psi(\y)\\
+                &= (\varphi+\psi)(\x)+(\varphi+\psi)(\y)
+            \end{align*}
+            and
+            \begin{align*}
+                (\varphi+\psi)(\lambda\x) &= \varphi(\lambda\x)+\psi(\lambda\x)\\
+                &= \lambda\varphi(\x)+\lambda\psi(\x)\tag*{Definition \ref{dfn:19.1}}\\
+                &= \lambda(\varphi(\x)+\psi(\x))\\
+                &= \lambda(\varphi+\psi)(\x)
+            \end{align*}
+            as desired.\par\smallskip
+            To prove that $\lambda\varphi$ is a linear transformation, Definition \ref{dfn:19.1} tells us that it will suffice to show that for any $\x,\y\in\R^n$ and for any $\gamma\in\R$, $(\lambda\varphi)(\x+\y)=(\lambda\varphi)(\x)+(\lambda\varphi)(\y)$ and $(\lambda\varphi)(\gamma\x)=\gamma(\lambda\varphi)(\x)$. Let $\x,\y$ be arbitrary elements of $\R^n$, and let $\gamma$ be an arbitrary element of $\R$. Then since $\varphi$ is a linear transformation itself, we have that
+            \begin{align*}
+                (\lambda\varphi)(\x+\y) &= \lambda\varphi(\x+\y)\\
+                &= \lambda(\varphi(\x)+\varphi(\y))\tag*{Definition \ref{dfn:19.1}}\\
+                &= \lambda\varphi(\x)+\lambda\varphi(\y)\\
+                &= (\lambda\varphi)(\x)+(\lambda\varphi)(\y)
+            \end{align*}
+            and
+            \begin{align*}
+                (\lambda\varphi)(\gamma\x) &= \lambda\varphi(\gamma\x)\\
+                &= \lambda\gamma\varphi(\x)\tag*{Definition \ref{dfn:19.1}}\\
+                &= \gamma\lambda\varphi(\x)\\
+                &= \gamma(\lambda\varphi)(\x)
+            \end{align*}
+            as desired.
+        \end{proof}
+        \item Let $\pi_I:\R^m\to\R^k$ be the projection function from Definition \ref{dfn:18.34}. Prove that $\pi_I$ is a linear transformation.
+        \begin{proof}
+            To prove that $\pi_I$ is a linear transformation, Definition \ref{dfn:19.1} tells us that it will suffice to show that for any $\x,\y\in\R^n$ and for any $\lambda\in\R$, $\pi_I(\x+\y)=\pi_I(\x)+\pi_I(\y)$ and $\pi_I(\lambda\x)=\lambda\pi_I(\x)$. Let $\x,\y$ be arbitrary elements of $\R^n$, and let $\lambda$ be an arbitrary element of $\R$. Then we have that
+            \begin{align*}
+                \pi_I(\x+\y) &= (x_{i_1}+y_{i_k},\dots,x_{i_k}+y_{i_k})\\
+                &= (x_{i_1},\dots,x_{i_k})+(y_{i_1},\dots,y_{i_k})\\
+                &= \pi_I(\x)+\pi_I(\y)
+            \end{align*}
+            and
+            \begin{align*}
+                \pi_I(\lambda\x) &= (\lambda x_{i_1},\dots,\lambda x_{i_k})\\
+                &= \lambda(x_{i_1},\dots,x_{i_k})\\
+                &= \lambda\pi_I(\x)
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{definition}\label{dfn:19.6}
+    The \textbf{$\bm{j^\text{th}}$ standard basis vector} in $\R^n$ is the vector $\mathbf{e}_j$ defined by
+    \begin{equation*}
+        (\mathbf{e}_j)_k =
+        \begin{cases}
+            1 & k=j\\
+            0 & k\neq j
+        \end{cases}
+    \end{equation*}
+\end{definition}
+
+For example, the standard basis vectors for $\R^3$ are $\mathbf{e}_1=(1,0,0)$, $\mathbf{e}_2=(0,1,0)$, and $\mathbf{e}_3=(0,0,1)$. Notice that if $\x=(x_1,\dots,x_n)\in\R^n$, then $\x=x_1\mathbf{e}_1+\cdots+x_n\mathbf{e}_n$.
+
+\begin{definition}\label{dfn:19.7}
+    For any linear transformation $\varphi:\R^n\to\R^m$, we denote by $[\varphi]_{ij}$ the $i^\text{th}$ component of the vector $\varphi(\mathbf{e}_j)$; i.e., $[\varphi]_{ij}=\varphi_i(\mathbf{e}_j)$.
+\end{definition}
+
+\begin{exercise}\label{exr:19.8}\leavevmode
+    \begin{enumerate}[label={(\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:19.8a}Let $\varphi:\R^n\to\R^m$ be a linear transformation and let $\x\in\R^n$. Find a formula for $\varphi(\x)$ in terms of $[\varphi]_{ij}$, the components of $\x$, and the standard basis vectors in $\R^m$.
+        \begin{proof}
+            Since $\x=x_1\mathbf{e}_1+\cdots+x_n\mathbf{e_n}$ by Definition \ref{dfn:19.6} and since $\varphi$ is linear, we have that
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                \varphi(\x) &= \varphi(x_1\mathbf{e}_1+\cdots+x_n\mathbf{e_n})\\
+                &= \varphi(x_1\mathbf{e}_1)+\cdots+\varphi(x_n\mathbf{e}_n)\\
+                &= x_1\varphi(\mathbf{e}_1)+\cdots+x_n\varphi(\mathbf{e}_n)\\
+                &= x_1(\varphi_1(\mathbf{e}_1)\mathbf{e_1}+\cdots+\varphi_m(\mathbf{e}_1)\mathbf{e_m})+\cdots+x_n(\varphi_1(\mathbf{e}_n)\mathbf{e_1}+\cdots+\varphi_m(\mathbf{e}_n)\mathbf{e_m})\\
+                &= x_1([\varphi]_{11}\mathbf{e_1}+\cdots+[\varphi]_{m1}\mathbf{e_m})+\cdots+x_n([\varphi]_{1n}\mathbf{e_1}+\cdots+[\varphi]_{mn}\mathbf{e_m})\\
+                &= x_1\sum_{i=1}^m[\varphi]_{i1}\mathbf{e}_i+\cdots+x_n\sum_{i=1}^m[\varphi]_{in}\mathbf{e}_i\\
+                &= \sum_{j=1}^nx_j\sum_{i=1}^m[\varphi]_{ij}\mathbf{e}_i\\
+                &= \sum_{i=1}^m\sum_{j=1}^nx_j[\varphi]_{ij}\mathbf{e}_i
+            \end{align*}
+            \endgroup
+        \end{proof}
+        \item \label{exr:19.8b}For $1\leq i\leq m$ and $1\leq j\leq n$, let $A_{ij}\in\R$. Prove that there is a unique linear transformation $\varphi:\R^n\to\R^m$ such that $[\varphi]_{ij}=A_{ij}$ for all $i,j$.
+        \begin{proof}
+            Let $\varphi$ be defined by
+            \begin{equation*}
+                \varphi(\x) = \sum_{i=1}^m\sum_{j=1}^nx_jA_{ij}\mathbf{e}_i
+            \end{equation*}
+            for all $\x\in\R^n$. Thus, by Definition \ref{dfn:19.7}, $[\varphi]_{ij}=A_{ij}$ for all $i,j$.\par
+            To prove that $\varphi$ is a linear transformation, Definition \ref{dfn:19.1} tells us that it will suffice to show that for any $\x,\y\in\R^n$ and $\lambda\in\R$, $\varphi(\x+\y)=\varphi(\x)+\varphi(\y)$ and $\varphi(\lambda\x)=\lambda\varphi(\x)$. Let $\x,\y$ be arbitrary elements of $\R^n$. Then
+            \begin{align*}
+                \varphi(\x+\y) &= \sum_{i=1}^m\sum_{j=1}^n(x_j+y_j)A_{ij}\mathbf{e}_i\\
+                &= \sum_{i=1}^m\sum_{j=1}^n(x_jA_{ij}\mathbf{e}_i+y_jA_{ij}\mathbf{e}_i)\\
+                &= \sum_{i=1}^m\sum_{j=1}^nx_jA_{ij}\mathbf{e}_i+\sum_{i=1}^m\sum_{j=1}^ny_jA_{ij}\mathbf{e}_i\\
+                &= \varphi(\x)+\varphi(\y)
+            \end{align*}
+            and
+            \begin{align*}
+                \varphi(\lambda\x) &= \sum_{i=1}^m\sum_{j=1}^n(\lambda x_j)A_{ij}\mathbf{e}_i\\
+                &= \lambda\sum_{i=1}^m\sum_{j=1}^nx_jA_{ij}\mathbf{e}_i\\
+                &= \lambda\varphi(\x)
+            \end{align*}
+            as desired.\par
+            Let $\psi:\R^n\to\R^m$ be any linear transformation satisfying $[\psi]_{ij}=A_{ij}$ for all $i,j$. To prove that $\varphi=\psi$, it will suffice to show that $\varphi(\x)=\psi(\x)$ for all $\x\in\R^n$. Let $\x$ be an arbitrary element of $\R^n$. Then
+            \begin{align*}
+                \varphi(\x) &= \sum_{i=1}^m\sum_{j=1}^nx_jA_{ij}\mathbf{e}_i\\
+                &= \sum_{i=1}^m\sum_{j=1}^nx_j[\psi]_{ij}\mathbf{e}_i\tag*{Exercise \ref{exr:19.8a}}\\
+                &= \psi(\x)
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{definition}\label{dfn:19.9}
+    We define an $m\times n$ matrix $M$ to be an array of scalars
+    \begin{equation*}
+        M = \{a_{ij}\} =
+        \begin{bmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n}\\
+            a_{21} & a_{22} & \cdots & a_{2n}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            a_{m1} & a_{m2} & \cdots & a_{mn}\\
+        \end{bmatrix}
+    \end{equation*}
+\end{definition}
+
+So $a_{ij}$ denotes the scalar in row $i$, column $j$ of the matrix. For every linear transformation $\varphi:\R^n\to\R^m$, there is a corresponding $m\times n$ matrix $\{[\varphi]_{ij}\}$. We denote $\{[\varphi]_{ij}\}$ by $[\varphi]$. Also, by Exercise \ref{exr:19.8}, given a matrix of scalars, there is a unique linear transformation $\varphi:\R^n\to\R^m$ that corresponds to it.
+
+\begin{exercise}\label{exr:19.10}\leavevmode
+    \begin{enumerate}[label={(\alph*)}]
+        \item Let $\varphi:\R^3\to\R^2$ be given by $\varphi(x,y,z)=(3x+2y-z,4x-5y+2z)$. Write down the matrix $[\varphi]$.
+        \begin{proof}[Answer]
+            The matrix is
+            \begin{equation*}
+                M =
+                \begin{bmatrix}
+                    3 & 2 & -1\\
+                    4 & -5 & 2\\
+                \end{bmatrix}
+            \end{equation*}
+        \end{proof}
+        \item What is the linear transformation that corresponds to the following matrix?
+        \begin{equation*}
+            \begin{bmatrix}
+                -2 & 3\\
+                4 & 6\\
+                1 & 0\\
+            \end{bmatrix}
+        \end{equation*}
+        \begin{proof}[Answer]
+            The linear transformation is $\varphi:\R^2\to\R^3$ defined by
+            \begin{equation*}
+                \varphi(x,y) = (-2x+3y,4x+6y,x)
+            \end{equation*}
+        \end{proof}
+    \end{enumerate}
+\end{exercise}
+
+\begin{theorem}\label{trm:19.11}
+    Let $\varphi:\R^n\to\R^m$ be a linear transformation. Then there is a constant $M_\varphi\in\R$ such that for all $\x\in\R^n$, we have $\norm{\varphi(\x)}\leq M_\varphi\norm{\x}$.
+    \begin{lemma*}\leavevmode
+        Let $a_1,\dots,a_n\in\R$. Then
+        \begin{equation*}
+            \left( \sum_{i=1}^na_i \right)^2 \leq n\sum_{i=1}^na_i^2
+        \end{equation*}
+        \begin{proof}[Proof]
+            We have that
+            \begin{align*}
+                \left( \sum_{i=1}^na_i \right)^2 &= \left( 1a_1+\cdots+1a_n \right)^2\\
+                &\leq \left( \sqrt{1^2+\cdots+1^2}\cdot\sqrt{a_1^2+\cdots+a_n^2} \right)^2\tag*{Lemma \ref{lem:18.9b}}\\
+                &= \sqrt{n}^2\sqrt{\sum_{i=1}^na_i^2}^2\\
+                &= n\sum_{i=1}^na_i^2
+            \end{align*}
+            as desired.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:19.11}]
+        Let
+        \begin{align*}
+            M &= \max_{i,j}|[\varphi]_{ij}|&
+            M_\varphi &= M\sqrt{nm}
+        \end{align*}
+        Then
+        \begin{align*}
+            \norm{\varphi(\x)} &= \sqrt{\sum_{i=1}^m\left( \sum_{j=1}^nx_j[\varphi]_{ij} \right)^2}\\
+            &\leq \sqrt{\sum_{i=1}^mn\sum_{j=1}^n(x_j[\varphi]_{ij})^2}\tag*{Lemma}\\
+            &= \sqrt{n}\cdot\sqrt{\sum_{i=1}^m\sum_{j=1}^nx_j^2[\varphi]_{ij}^2}\\
+            &= \sqrt{n}\cdot\sqrt{\sum_{j=1}^n\left( x_j^2\sum_{i=1}^m[\varphi]_{ij}^2 \right)}\\
+            &\leq \sqrt{n}\cdot\sqrt{\sum_{j=1}^n\left( x_j^2\sum_{i=1}^mM^2 \right)}\\
+            &= \sqrt{n}\cdot\sqrt{\sum_{j=1}^nmM^2x_j^2}\\
+            &= M\sqrt{nm}\cdot\sqrt{\sum_{j=1}^nx_j^2}\\
+            &= M_\varphi\norm{\x}\tag*{Definition \ref{dfn:18.6}}
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{theorem}
+
+
+
+
+\end{document}

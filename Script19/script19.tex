@@ -337,6 +337,41 @@ So $a_{ij}$ denotes the scalar in row $i$, column $j$ of the matrix. For every l
     \end{proof}
 \end{theorem}
 
+\begin{corollary}\label{cly:19.12}\marginnote{\emph{8/7:}}
+    Any linear transformation $\varphi:\R^n\to\R^m$ is uniformly continuous.
+    \begin{proof}
+        To prove that $\varphi$ is uniformly continuous, Definition \ref{dfn:18.42} tells us that it will suffice to show that for every $\epsilon>0$, there exists $\delta>0$ such that if $\x,\y\in\R^n$ and $\norm{\x-\y}<\delta$, then $\norm{\varphi(\x)-\varphi(\y)}<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\varphi$ is a linear transformation, Theorem \ref{trm:19.11} asserts that there exists $M_\varphi\in\R$ such that $\norm{\varphi(\x)}\leq M_\varphi\norm{\x}$ for all $\x\in\R^n$. With this result, choose $\delta=\frac{\epsilon}{M_\varphi}$. Now let $\x,\y$ be arbitrary elements of $\R^n$ satisfying $\norm{\x-\y}<\delta$. Then
+        \begin{align*}
+            \norm{\varphi(\x)-\varphi(\y)} &= \norm{\varphi(\x-\y)}\tag*{Definition \ref{dfn:19.1}}\\
+            &\leq M_\varphi\norm{\x-\y}\\
+            &< M_\varphi\cdot\frac{\epsilon}{M_\varphi}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{corollary}
+
+\begin{lemma}\label{lem:19.13}
+    Let $\varphi:\R^n\to\R^m$ be a linear transformation. If $\lim_{\h\to\mathbf{0}}\norm{\varphi(\mathbf{h})}/\norm{\mathbf{h}}=0$, then $\varphi$ is the zero transformation, i.e., $\varphi(\x)=\mathbf{0}$ for all $\x$.
+    \begin{proof}
+        Suppose for the sake of contradiction that $\varphi(\x)\neq\mathbf{0}$ for some $\x\in\R^n$. Since $\varphi(\x)=\sum_{i=1}^m\sum_{j=1}^nx_j[\varphi]_{ij}\mathbf{e}_i\neq 0$ by Exercise \ref{exr:19.8}, there exists at least one nonzero $[\varphi]_{ab}$. Consequently, since $\lim_{\h\to\mathbf{0}}\norm{\varphi(\h)}/\norm{\h}=0$, Definition \ref{dfn:18.29} tells us that there exists $\delta>0$ such that if $\h\in\R^n$ and $0<\norm{\h-\mathbf{0}}<\delta$, then $|\norm{\varphi(\h)}/\norm{\h}-0|=\norm{\varphi(\h)}/\norm{\h}<|[\varphi]_{ab}|$. Let $\h=(0,\dots,0,h_b,0,\dots,0)$ where $0<h_b<\delta$. It follows that $0<\norm{\h-\mathbf{0}}<\delta$. Therefore, since
+        \begin{align*}
+            \norm{\varphi(\h)} &= \norm{\sum_{i=1}^m\sum_{j=1}^nh_j[\varphi]_{ij}\mathbf{e}_i}&
+                \norm{\h} &= |h_b|\\
+            &= \norm{\sum_{i=1}^mh_b[\varphi]_{ib}\mathbf{e}_i}\\
+            &\geq \norm{h_b[\varphi]_{ab}\mathbf{e}_a}\\
+            &= |h_b[\varphi]_{ab}|
+        \end{align*}
+        we have that
+        \begin{align*}
+            |[\varphi]_{ab}| &= \frac{|h_b[\varphi]_{ab}|}{|h_b|}\\
+            &\leq \frac{\norm{\varphi(\h)}}{\norm{\h}}\\
+            &< |[\varphi]_{ab}|
+        \end{align*}
+        a contradiction.
+    \end{proof}
+\end{lemma}
+
 
 
 

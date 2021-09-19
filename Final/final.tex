@@ -175,7 +175,7 @@
             The proof is symmetric in the other case.
         \end{proof}
     \end{enumerate}
-    \item Suppose that $f$ is positive and decreasing on $[1,\infty)$. Suppose also that $f$ is integrable on $[1,n]$ for all $n\in\N$ and define the sequences $(a_n)$ and $(b_n)$ by
+    \item Integral Test: Suppose that $f$ is positive and decreasing on $[1,\infty)$. Suppose also that $f$ is integrable on $[1,n]$ for all $n\in\N$ and define the sequences $(a_n)$ and $(b_n)$ by
     \begin{gather*}
         a_n = f(n)\\
         b_n = \int_1^nf
@@ -332,7 +332,7 @@
             Now suppose inductively that we have proven that a polynomial of degree $n$ has at most $n$ distinct roots; we wish to prove that a polynomial of degree $n+1$ has at most $n+1$ distinct roots. To do so, suppose for the sake of contradiction that $p$ has $m$ distinct roots where $m>n+1$. By Theorem \ref{trm:3.5}, we may name the roots $r_1,\dots,r_m$ such that $r_1<r_2<\cdots<r_m$. It follows by consecutive applications of Theorem \ref{trm:12.15} that there exists a point $\lambda_i\in(r_i,r_{i+1})$ such that $p'(\lambda_i)=0$ for all $i\in[m-1]$. Consequently, since each $\lambda_i$ is in a disjoint region from all other $\lambda_i$'s, we know that each $\lambda_i$ is distinct. Thus, we know that $p'$ has at least $m-1$ distinct roots. More notably, since we defined $m>n+1$, we have by Definition \ref{dfn:7.21} that $m-1>n$, meaning that $p'$ has more than $n$ distinct roots. However, by Exercise \ref{exr:12.8}, $p'$ has degree $n$. But this means by the inductive hypothesis implies that $p'$ has at most $n$ distinct roots, a contradiction.
         \end{proof}
     \end{enumerate}
-    \item Let $f:\R\to\R$. Suppose that $|f(y)-f(x)|\leq c|y-x|$ for all $x,y\in\R$, where $c<1$ is a constant.
+    \item Banach Fixed-Point Theorem: Let $f:\R\to\R$. Suppose that $|f(y)-f(x)|\leq c|y-x|$ for all $x,y\in\R$, where $c<1$ is a constant.
     \begin{enumerate}
         \item Show that $f$ is continuous.
         \begin{proof}

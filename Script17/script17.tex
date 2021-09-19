@@ -137,7 +137,7 @@
     \end{enumerate}
 \end{exercise}
 
-\begin{theorem}\label{trm:17.6}
+\begin{theorem}[Uniform Limit Theorem]\label{trm:17.6}
     Let $(f_n)$ be a sequence of functions, and suppose that each $f_n:A\to\R$ is continuous. If $(f_n)$ converges uniformly to $f:A\to\R$, then $f$ is continuous.
     \begin{proof}
         % \begin{itemize}
@@ -309,7 +309,7 @@
     \end{proof}
 \end{theorem}
 
-\begin{theorem}\label{trm:17.9}
+\begin{theorem}[Uniformly Cauchy Completeness Theorem]\label{trm:17.9}
     Let $(f_n)$ be a sequence of functions defined on a set $A$. Then the following are equivalent.
     \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
         \item There is some function $f$ such that $(f_n)$ converges uniformly to $f$ on $A$.
@@ -341,7 +341,7 @@
     We define series of functions the same way we defined series of numbers. That is, given a sequence $(f_n)$, define the sequence of partial sums $(p_n)$ by $p_n(x)=f_1(x)+\cdots+f_n(x)$ and say that $\sum_{n=1}^\infty f_n$ converges pointwise or converges uniformly to $f$ if the sequence $(p_n)$ does.
 \end{definition}
 
-\begin{theorem}\label{trm:17.11}
+\begin{theorem}[Weierstrass M-Test]\label{trm:17.11}
     Suppose that $f_n:A\to\R$ is a sequence of functions and that there exists a sequence of positive real numbers $(M_n)$ such that for all $x\in A$, we have $|f_n(x)|\leq M_n$. If $\sum_{n=1}^\infty M_n$ converges, then for each $x\in A$, the series of numbers $\sum_{n=1}^\infty f_n(x)$ converges absolutely. Furthermore, $\sum_{n=1}^\infty f_n$ converges uniformly to the function $f$ defined by $f(x)=\sum_{n=1}^\infty f_n(x)$.
     \begin{proof}
         % \begin{itemize}

@@ -72,7 +72,7 @@
     \end{proof}
 \end{exercise}
 
-\begin{theorem}\label{trm:16.4}
+\begin{theorem}[Divergence Test]\label{trm:16.4}
     If $\sum_{n=1}^\infty a_n$ converges, then $\lim_{n\to\infty}a_n=0$.
     \begin{proof}
         To prove that $\lim_{n\to\infty}a_n=0$, Theorem \ref{trm:15.7} tells us that it will suffice to show that for all $\epsilon>0$, there exists an $N\in\N$ such that for all $n\geq N$, $|a_n-0|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\sum_{n=1}^\infty a_n$ converges, we have by Theorem \ref{trm:15.19} that there exists an $N\in\N$ such that $|\sum_{i=1}^na_i-\sum_{i=1}^ma_i|<\epsilon$ for all $n,m\geq N$. Choose this $N$ to be our $N$. Let $n$ be an arbitrary natural number such that $n\geq N$. Then choosing $n,n-1\geq N$, we have by the above that $|\sum_{i=1}^na_i-\sum_{i=1}^{n-1}a_i|<\epsilon$. Therefore,
@@ -87,7 +87,7 @@
 
 The converse of this theorem, however, is not true, as we see in Theorem \ref{trm:16.6}.
 
-\begin{theorem}\label{trm:16.5}
+\begin{theorem}[Cauchy Convergence Test]\label{trm:16.5}
     A series $\sum_{n=1}^\infty a_n$ converges if and only if for all $\epsilon>0$, there is some $N\in\N$ such that $|\sum_{k=m+1}^na_k|<\epsilon$ for all $n>m\geq N$.
     \begin{proof}
         Suppose first that $\sum_{n=1}^\infty a_n$ converges. Let $\epsilon>0$ be arbitrary. By Definition \ref{dfn:16.1}, $(p_n)$ converges. Thus, by Theorem \ref{trm:15.19}, there is some $N\in\N$ such that $|p_n-p_m|<\epsilon$ for all $n,m\geq N$. Choose this $N$ to be our $N$. Let $n,m$ be two arbitrary natural numbers satisfying $n>m\geq N$. Therefore,
@@ -136,7 +136,7 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
     \end{proof}
 \end{theorem}
 
-\begin{theorem}\label{trm:16.7}\marginnote{\emph{5/25:}}
+\begin{theorem}[Geometric Series Test]\label{trm:16.7}\marginnote{\emph{5/25:}}
     Let $-1<x<1$. Then
     \begin{equation*}
         \sum_{n=0}^\infty x^n = \frac{1}{1-x}
@@ -229,7 +229,7 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
     \end{proof}
 \end{theorem}
 
-\begin{theorem}\label{trm:16.12}
+\begin{theorem}[Alternating Series Test]\label{trm:16.12}
     Let $(a_n)$ be a decreasing sequence of positive numbers such that $\lim_{n\to\infty}a_n=0$. Then $\sum_{n=1}^\infty(-1)^{n+1}a_n$ converges.
     % \begin{lemma*}
     %     Let $k$ be even, $j$ be odd. Then $p_k\leq p_j$.
@@ -284,7 +284,7 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
 
 \marginnote{5/27:}The following theorem will be useful to prove more specialized tests for convergence of series.
 
-\begin{theorem}\label{trm:16.13}
+\begin{theorem}[Direct Comparison Test]\label{trm:16.13}
     Let $(c_n)$ be a sequence of positive numbers and let $(a_n)$ be a sequence such that $|a_n|\leq c_n$ for all $n\geq N_0$, where $N_0$ is some fixed integer. If $\sum_{n=1}^\infty c_n$ converges, then $\sum_{n=1}^\infty a_n$ converges.
     \begin{proof}
         To prove that $\sum_{n=1}^\infty a_n$ converges, Theorem \ref{trm:16.11} and Definition \ref{dfn:16.9} tell us that it will suffice to show that $\sum_{n=1}^\infty|a_n|$ converges. To do this, Theorem \ref{trm:16.5} tells us that it will suffice to verify that for all $\epsilon>0$, there exists an $N\in\N$ such that $|\sum_{k=m+1}^n|a_k||<\epsilon$ for all $n>m\geq N$. Let $\epsilon>0$ be arbitrary. Since $\sum_{n=1}^\infty c_n$ converges by hypothesis, we have by Theorem \ref{trm:16.5} that there is some $N_1\in\N$ such that $|\sum_{k=m+1}^nc_k|<\epsilon$ for all $n>m\geq N_1$. Choose $N=\max(N_0,N_1)$. Let $n,m$ be arbitrary natural numbers such that $n>m\geq N$. Since $c_k\geq 0$ for all $k\in\N$ by hypothesis, it follows by Script \ref{sct:7} that $\sum_{k=m+1}^nc_k\geq 0$. Thus, Definition \ref{dfn:8.4} implies that $\sum_{k=m+1}^nc_k=|\sum_{k=m+1}^nc_k|<\epsilon$. Similarly, we have that $|\sum_{k=m+1}^n|a_k||=\sum_{k=m+1}^n|a_k|$. Lastly, since we know by hypothesis that $|a_k|\leq c_k$ for all $k\geq N_0$, i.e., for all $k\geq N$, Script \ref{sct:7} asserts that $\sum_{k=m+1}^n|a_k|\leq\sum_{k=m+1}^nc_n$. Therefore, combining the last three results, we have that $|\sum_{k=m+1}^n|a_k||=\sum_{k=m+1}^n|a_k|\leq\sum_{k=m+1}^nc_n<\epsilon$, as desired.
@@ -304,7 +304,7 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
     \end{proof}
 \end{lemma}
 
-\begin{theorem}\label{trm:16.15}
+\begin{theorem}[Ratio Test]\label{trm:16.15}
     Let $(a_n)$ be a sequence such that $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|$ exists. Then
     \begin{enumerate}[label={\textup{(}\alph*\textup{)}},ref={\thetheorem\alph*}]
         \item \label{trm:16.15a}If $\lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|<1$, then $\sum_{n=1}^\infty a_n$ converges.
@@ -390,7 +390,7 @@ The converse of this theorem, however, is not true, as we see in Theorem \ref{tr
     \end{enumerate}
 \end{theorem}
 
-\begin{theorem}\label{trm:16.16}
+\begin{theorem}[Root Test]\label{trm:16.16}
     Let $(a_n)$ be a sequence such that $\lim_{n\to\infty}\sqrt[n]{|a_n|}$ exists. Then
     \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
         \item If $\lim_{n\to\infty}\sqrt[n]{|a_n|}<1$, then $\sum_{n=1}^\infty a_n$ converges.

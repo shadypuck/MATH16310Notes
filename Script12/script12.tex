@@ -128,7 +128,7 @@
     \end{proof}
 \end{exercise}
 
-\begin{exercise}\label{exr:12.8}\leavevmode
+\begin{exercise}[Power Rule]\label{exr:12.8}\leavevmode
     \begin{enumerate}[label={(\alph*)}]
         \item Let $n\in\N$. Suppose $f:\R\to\R$ is given by $f(x)=x^n$. Use Exercise \ref{exr:12.7} to prove that $f'(a)=na^{n-1}$ for all $a\in\R$.
         \begin{proof}
@@ -165,7 +165,7 @@
     \end{enumerate}
 \end{exercise}
 
-\begin{exercise}\label{exr:12.9}
+\begin{exercise}[Sum, Product, and Quotient Rules]\label{exr:12.9}
     Suppose that $f:A\to\R$ and $g:A\to\R$ are differentiable at $a\in A$.
     \begin{enumerate}[label={(\alph*)}]
         \item Prove that $f+g$ is differentiable at $a$ and compute $(f+g)'(a)$ in terms of $f'(a)$ and $g'(a)$.
@@ -240,7 +240,7 @@
 
 \marginnote{4/1:}One of the most important results concerning the differentiation of functions is the rule for the derivative of a composition of functions. Let $f:B\to\R,g:A\to\R$ be functions such that $g(A)\subset B$. The composition $(f\circ g)(x)=f(g(x))$ is defined for all $x\in A$.
 
-\begin{theorem}\label{trm:12.10}
+\begin{theorem}[Chain Rule]\label{trm:12.10}
     Let $a\in A$, $g:A\to\R$, and $f:I\to\R$ where $I$ is an interval containing $g(A)$. Suppose that $g$ is differentiable at $a$ and $f$ is differentiable at $g(a)$. Then $f\circ g$ is differentiable $a$ and
     \begin{equation*}
         (f\circ g)'(a) = f'(g(a))\cdot g'(a)
@@ -343,7 +343,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
     \end{proof}
 \end{corollary}
 
-\begin{theorem}\label{trm:12.15}
+\begin{theorem}[Rolle's Theorem]\label{trm:12.15}
     Suppose that $f:[a,b]\to\R$ is continuous, differentiable on $(a,b)$, and that $f(a)=f(b)=0$. Then there exists a point $\lambda\in(a,b)$ such that $f'(\lambda)=0$.
     \begin{proof}
         We divide into two cases ($f(x)=0$ for all $x\in[a,b]$, and $f(x)\neq 0$ for some $x\in[a,b]$).\par
@@ -352,7 +352,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
     \end{proof}
 \end{theorem}
 
-\begin{corollary}\label{cly:12.16}
+\begin{corollary}[Mean Value Theorem]\label{cly:12.16}
     Suppose that $f:[a,b]\to\R$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then there exists a point $\lambda\in(a,b)$ such that
     \begin{equation*}
         f(b)-f(a) = f'(\lambda)(b-a)
@@ -391,7 +391,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
     \end{proof}
 \end{corollary}
 
-\begin{corollary}\label{cly:12.17}\marginnote{\emph{4/6:}}
+\begin{corollary}[First Derivative Test]\label{cly:12.17}\marginnote{\emph{4/6:}}
     Suppose that $f:[a,b]\to\R$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then
     \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
         \item If $f'(x)>0$ for all $x\in(a,b)$, then $f$ is strictly increasing on $[a,b]$.
@@ -447,7 +447,7 @@ We now come to the most important theorem in differential calculus, Corollary \r
 
 Finally, we prove another very important theorem that tells us about inverse functions and their derivatives.
 
-\begin{theorem}\label{trm:12.21}
+\begin{theorem}[Inverse Function Theorem]\label{trm:12.21}
     Suppose that $f:(a,b)\to\R$ is differentiable and that the derivative $f':(a,b)\to\R$ is continuous. Also suppose that there is a point $p\in(a,b)$ such that $f'(p)\neq 0$. Then there exists a region $R\subset(a,b)$ such that $p\in R$ and $f$ with domain restricted to $R$ is injective. Furthermore, $f^{-1}:f(R)\to R$ is differentiable at the point $f(p)$ and
     \begin{equation*}
         (f^{-1})'(f(p)) = \frac{1}{f'(p)}

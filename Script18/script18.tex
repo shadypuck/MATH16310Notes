@@ -145,8 +145,7 @@
     If $n=1$, the norm coincides with the definition of the absolute value in $\R$.
 \end{remark}
 
-\begin{lemma}\label{lem:18.9}
-    \leavevmode
+\begin{lemma}[Cauchy-Schwarz Inequality]\label{lem:18.9}\leavevmode
     \begin{enumerate}[label=\textup{(}\alph*\textup{)},ref={\thelemma\alph*}]
         \item \label{lem:18.9a}If $x,y\in\R$, then $xy\leq\frac{x^2+y^2}{2}$.
         \begin{proof}
@@ -204,7 +203,7 @@
             \end{align*}
             as desired.
         \end{proof}
-        \item \label{trm:18.10c}$\norm{\x+\y}\leq\norm{\x}+\norm{\y}$.
+        \item \label{trm:18.10c}\textup{(}Minkowski's Inequality\textup{)} $\norm{\x+\y}\leq\norm{\x}+\norm{\y}$.
         \begin{proof}
             Let $\x,\y$ be arbitrary elements of $\R^n$. Then we have that
             \begin{align*}
@@ -223,7 +222,7 @@
     If $\x,\y,\z\in\R^n$ and $\lambda\in\R$, then
     \begin{enumerate}[label=\textup{(}\alph*\textup{)}]
         \item $\norm{\x-\z}\leq\norm{\x-\y}+\norm{\y-\z}$.
-        \item $|\norm{\x}-\norm{\y}|\leq\norm{\x-\y}$.
+        \item \textup{(}Reverse Triangle Inequality\textup{)} $|\norm{\x}-\norm{\y}|\leq\norm{\x-\y}$.
     \end{enumerate}
     \begin{proof}
         The proofs are symmetric to those of Lemma \ref{lem:8.8}.
@@ -656,14 +655,14 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
     Let $A\subset\R^n$ and $f:A\to\R^m$. We say that $f$ is \textbf{uniformly continuous} if for every $\epsilon>0$, there exists $\delta>0$ such that if $\x,\y\in A$ and $\norm{\x-\y}<\delta$, then $\norm{f(\x)-f(\y)}<\epsilon$.
 \end{definition}
 
-\begin{theorem}\label{trm:18.43}
+\begin{theorem}[Heine-Cantor Theorem in $\R^n$]\label{trm:18.43}
     Let $A\subset\R^n$ be compact and $f:A\to\R^m$ be continuous. Then $f$ is uniformly continuous.
     \begin{proof}
         The proof is symmetric to that of Theorem \ref{trm:13.6}.
     \end{proof}
 \end{theorem}
 
-\begin{theorem}\label{trm:18.44}
+\begin{theorem}[Extreme Value Theorem in $\R^n$]\label{trm:18.44}
     If $A\subset\R^n$ is compact and $f:A\to\R^m$ is continuous, then $f(A)$ is compact.
     \begin{proof}
         The proof is symmetric to that of Theorem \ref{trm:10.19}.
@@ -807,7 +806,7 @@ In Script \ref{sct:9}, we gave a definition of continuity that we can generalize
     A subset $A$ of $\R^n$ is bounded if there exists a closed rectangle $R$ such that $A\subset R$.
 \end{definition}
 
-\begin{theorem}[The Heine-Borel theorem in $\R^n$]\label{trm:18.52}
+\begin{theorem}[Heine-Borel Theorem in $\R^n$]\label{trm:18.52}
     A subset of $\R^n$ is compact if and only if it is closed and bounded.
     \begin{proof}
         Suppose first that $X$ is a compact subset of $\R^n$.\par\smallskip

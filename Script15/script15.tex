@@ -243,7 +243,7 @@ We've used the word "limit" in two contexts now: The limit of a point in a set, 
 
 The converse is not true, but there are important partial converses. For the first, Theorem \ref{trm:15.14}, we recall Definition \ref{dfn:8.16} along with Definition \ref{dfn:15.1}, which say that $(a_n)$ is an increasing sequence if $a_n\leq a_{n+1}$ for all $n\in\N$, and $(a_n)$ is decreasing if $a_n\geq a_{n+1}$ for all $n\in\N$. The definitions for strictly increasing/strictly decreasing are similar but with strict inequalities.
 
-\begin{theorem}\label{trm:15.14}
+\begin{theorem}[Monotone Convergence Theorem]\label{trm:15.14}
     Every bounded increasing sequence converges to the supremum of its image. Every bounded decreasing sequence converges to the infimum of its image.
     \begin{proof}
         We will only address the first part of the theorem; the proof of the second part is symmetric.\par
@@ -274,7 +274,7 @@ We can write $b_k=a(i(k))=a_{i(k)}=a_{i_k}$, so that $(b_k)$ is the sequence $b_
     \end{proof}
 \end{exercise}
 
-\begin{theorem}\label{trm:15.18}
+\begin{theorem}[Bolzano-Weierstrass Theorem]\label{trm:15.18}
     Every bounded sequence has a convergent subsequence.
     \begin{proof}
         Let $(a_n)$ be an arbitrary bounded sequence, and define $A=\{a_n\mid n\in\N\}$. We divide into two cases ($A$ is finite and $A$ is infinite).\par
@@ -285,7 +285,7 @@ We can write $b_k=a(i(k))=a_{i(k)}=a_{i_k}$, so that $(b_k)$ is the sequence $b_
 
 We are now able to prove a useful characterization of convergent sequences.
 
-\begin{theorem}\label{trm:15.19}
+\begin{theorem}[Cauchy Completeness Theorem]\label{trm:15.19}
     A sequence $(a_n)$ of real numbers converges if and only if for all $\epsilon>0$, there is some $N\in\N$ such that $|a_n-a_m|<\epsilon$ for all $n,m\geq N$.
     \begin{proof}
         Suppose first that $(a_n)$ converges to $p$. Let $\epsilon>0$ be arbitrary. Then by Theorem \ref{trm:15.7}, there is some $N\in\N$ such that for all $n\geq N$, we have $|a_n-p|<\frac{\epsilon}{2}$. Choose this $N$ to be our $N$. Let $n,m$ be arbitrary natural numbers such that $n,m\geq N$. Then $|a_n-p|<\frac{\epsilon}{2}$ and $|a_m-p|<\frac{\epsilon}{2}$. Therefore,

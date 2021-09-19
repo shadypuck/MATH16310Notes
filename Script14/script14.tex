@@ -11,7 +11,7 @@
 
 \chapter{Integrals and Derivatives}\label{sct:14}
 \section{Journal}
-\begin{theorem}\label{trm:14.1}\marginnote{\emph{5/4:}}
+\begin{theorem}[First Fundamental Theorem of Calculus --- Derivative of Integrals]\label{trm:14.1}\marginnote{\emph{5/4:}}
     Suppose that $f$ is integrable on $[a,b]$. Define $F:[a,b]\to\R$ by
     \begin{equation*}
         F(x) = \int_a^xf
@@ -56,7 +56,7 @@
     \end{proof}
 \end{lemma}
 
-\begin{theorem}\label{trm:14.4}\marginnote{\emph{5/6:}}
+\begin{theorem}[Second Fundamental Theorem of Calculus --- Integral of Derivatives]\label{trm:14.4}\marginnote{\emph{5/6:}}
     Let $f$ be integrable on $[a,b]$. Suppose that there is a function $G$ that is continuous on $[a,b]$ and differentiable on $(a,b)$ and such that $f=G'$ on $(a,b)$. Then
     \begin{equation*}
         \int_a^bf = G(b)-G(a)
@@ -84,7 +84,7 @@
     \end{proof}
 \end{theorem}
 
-\begin{corollary}\label{cly:14.5}
+\begin{corollary}[Integration by Parts]\label{cly:14.5}
     Let $f,g$ be functions defined on some open interval containing $[a,b]$ such that $f'$ and $g'$ exist and are continuous on $[a,b]$. Then
     \begin{equation*}
         \int_a^bfg' = [f(b)g(b)-f(a)g(a)]-\int_a^bf'g
@@ -101,7 +101,7 @@
     \end{proof}
 \end{corollary}
 
-\begin{corollary}\label{cly:14.6}
+\begin{corollary}[Substitution]\label{cly:14.6}
     Let $g$ be a function defined on some interval containing $[a,b]$ such that $g'$ is continuous on $[a,b]$. Suppose that $g([a,b])\subset[c,d]$ and $f:[c,d]\to\R$ is continuous. Define $F:[c,d]\to\R$ by $F(x)=\int_c^xf$. Then
     \begin{equation*}
         \int_a^bf(g(x))\cdot g'(x)\dd{x} = F(g(b))-F(g(a))
